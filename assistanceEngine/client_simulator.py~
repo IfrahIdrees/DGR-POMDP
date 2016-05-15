@@ -1,0 +1,28 @@
+#Aril 12th 2016
+#This is the client simulator
+
+import random
+
+#1
+face_washing = [['faucet', 'on'],['person_face','clean'],['faucet', 'off']]
+
+#2
+teeth_brushing = [['faucet', 'on'], ['cylinder_haswater', 'True'],['faucet','off'],['toothbrush_on','hand'],['toothbrush_haspaste', 'True'],['person_teeth,cylinder_haswater,toothbrush_haspaste','True,False,False'],['toothbrush_on', 'table']]
+
+#3
+comb_hair = [['comb_on', 'hand'], ['person_haircombed','True'], ['comb_on', 'table']]
+
+print teeth_brushing[0][0]
+
+
+current_task = []
+pool = [1, 2, 3]
+
+if len(current_task) == 0:
+    num = random.choice(pool)
+    print "the num is", num
+    
+    
+
+
+
