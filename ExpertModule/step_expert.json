@@ -1,3 +1,9 @@
+{To Arron: !!!!!!!!!!
+    In the effect list, please include all associated objects whose state has been changed. 
+    Rather than only one object and its state change.
+    But I also made an assumption that one state notification only related to one step.
+}
+
 {
     "type":"step",
     "name":"turn_off_faucet",
