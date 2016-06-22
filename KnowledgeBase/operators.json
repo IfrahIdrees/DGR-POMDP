@@ -1,0 +1,69 @@
+{
+    "type":"step",
+    "name":"turn_off_faucet",
+    "precondition":{
+        "faucet_1":{
+            "state":"on",
+            "location":"wash_room"  
+        },
+        "person_1":{
+            "location":"wash_room",
+            "ability":[">=", "0", "0.8", "0.4"]
+        }
+    },
+    "effect":{
+        "faucet_1":{
+            "state":"off"  
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+    "type":"operator",
+    "name":"turn_off_faucet",
+    "precondition":{
+        "faucet_2":{
+            "state":"on",
+            "location":"kitchen"  
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0.8", "0.4"]
+        }
+    },
+    "effect":{
+        "faucet_2":{
+            "state":"off"  
+        }
+    }
+}
+
+
+    

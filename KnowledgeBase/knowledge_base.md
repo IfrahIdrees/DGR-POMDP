@@ -39,12 +39,17 @@ A step (also known as an operator) is a knowledge base explains the step name, i
             }
         }
     }
+ 
  - "***_id***" is a unique label for the step by the system
  - "***type***" indicates this is a step category. (In the knowledge base, it also includes ***task***)
  - "***precondition***": demonstrate under what kind of condition, this step can be executed
 	 - one precondition begins with a concrete object in the environment, and then specify its required state
 	 - constraint precondition: the first element of the list explains the constrain, like the ">=" in the example
  - ***effect***: explains how the step will change the state of the environment. (Similar to precondition)  
+	 - ????????????????????????????????????????????????????????????????????????????????????????????? ***June 20 discussion: the effect list of a step only associate with one object***
+	 - If in this case, give an object, according to its state change, the only associated step can be found by search on the database. Because only this step can explain the state change, there is no need to check the precondition of this step. It's precondition must be satisfied in state_1. 
+	 - ***Choice one: allow variable:*** However, now object variables occurred in the precondition of this step, the algorithm cannot tell who they are. When doing goal recognition, the algorithm will still regard them as variables. And do planning process with them as variables. The precondition is satisfied if there exist one combination of variables works for the decomposition. 
+	 - ***Another choice***: In each step, there is no object variable. It already specified who they are. Step is associated with each concrete sensor and object. In this case, if we do goal recognition, every object is specified (not variable). It would be easier to do precondition checking. 
 
 ##MongoDB Collections##
  
