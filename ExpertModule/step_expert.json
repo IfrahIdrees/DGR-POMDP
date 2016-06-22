@@ -1,6 +1,6 @@
 {"To Arron": "!!!!!!!!!!",
-    "In the effect list, please include all associated objects whose state has been changed":"" 
-    "Rather than only one object and its state change":""
+    "In the effect list, please include all associated objects whose state has been changed":"" ,
+    "Rather than only one object and its state change":"",
     "But I also made an assumption that one state notification only related to one step.":""
 }
 
@@ -53,26 +53,3 @@
 
 
 
-
-{
-    "type":"operator",
-    "name":"turn_off_faucet",
-    "precondition":{
-        "faucet_2":{
-            "state":"on",
-            "location":"kitchen"  
-        },
-        "person_1":{
-            "location":"kitchen",
-            "ability":[">=", "0", "0.8", "0.4"]
-        }
-    },
-    "effect":{
-        "faucet_2":{
-            "state":"off"  
-        }
-    }
-}
-
-
-    
