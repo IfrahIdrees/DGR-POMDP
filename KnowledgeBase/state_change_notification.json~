@@ -1,6 +1,7 @@
 {
     "_id":"ObjectId('5760929718cc0f4a54f4d070')",
     "name":"faucet_1",
-    "change":[["state","on", "off"]]  
+    "reliablity":"0.9",
+    "change":["state","on", "off"]  
 }
 

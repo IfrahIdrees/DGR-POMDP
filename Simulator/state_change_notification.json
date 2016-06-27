@@ -4,4 +4,7 @@
     "reliablity":"0.9",
     "change":["state","on", "off"]  
 }
+{
+    "state change of another object"
+}
 

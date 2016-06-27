@@ -53,6 +53,9 @@ def find_step(state_change, db):
 #Step3: check their precondition if satisfied in the last step environment state
     stepSet = filter(lambda item: precond_check(item["precondition"], db) is True, stepSet)
     return stepSet
+    
+    
+    
 ##compare the effect list "dict_effect" with the "state change"    
 def effect_list_compare(dict_effect, state_change):
     for x in state_change:
