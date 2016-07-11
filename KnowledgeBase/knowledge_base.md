@@ -3,8 +3,7 @@
 The ***last point*** state of the environment is stored in the mongoDB in a JSON format. Each object in the environment has an corresponding document in the mongoDB collections. The document includes all the related attributes of the physical object. An example of a document is presented in Figure 1. 
 
       Figure 1
-            {           
-            			"_id": "ObjectId('5760929718cc0f4a54f4d070')"
+            {
             		    "name":"faucet_1",
             		    "type":"faucet",
             		    "state":"on",
@@ -25,7 +24,6 @@ The format of state change notification is presented in Figure 2. If the occurre
 
     Figure 2
     {
-	    "_id":"ObjectId('5760929718cc0f4a54f4d070')", (object id)
 	    "name":"faucet_1", (object name)
 	    "change":["state","on", "off"] 
 		    (object change [attribute, previous_state, current_state]) 
@@ -36,7 +34,6 @@ A step (also known as an operator) is a knowledge base explains the step name, i
 
     Figure 3
     {
-	    "_id":ObjectId('57683945db99da339bbf04dd')
         "type":"step",
         "name":"turn_off_faucet",
         "precondition":{
@@ -91,7 +88,6 @@ The ***last point*** state of the environment is stored in the mongoDB in a JSON
 
       Figure 1
             {           
-            			"_id": "ObjectId('5760929718cc0f4a54f4d070')"
             		    "name":"faucet_1",
             		    "type":"faucet",
             		    "state":{
@@ -118,11 +114,11 @@ The format of state change notification is presented in Figure 2. If the occurre
 
     Figure 2
     {
-	    "_id":"ObjectId('5760929718cc0f4a54f4d070')", (object id)
-	    "name":"faucet_1", (object name)
-	    "reliability":"0.9", (the reliability of this sensor)
-	    "change":["state","on", "off", "0.9"] 
-	(object change [attribute, previous_state, current_state]) 
+	    "name":"faucet_1",
+	    "reliability":"0.9",
+	    "attribute": "state",
+	    "previous": "on",
+	    "current": "off",
     }
 
 ##The step in Knowledge Base ##
@@ -130,7 +126,6 @@ A step (also known as an operator) is a knowledge base explains the step name, i
 
     Figure 3
     {
-	    "_id":ObjectId('57683945db99da339bbf04dd')
         "type":"step",
         "name":"turn_off_faucet",
         "precondition":{
