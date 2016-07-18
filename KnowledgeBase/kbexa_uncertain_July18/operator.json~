@@ -1,0 +1,133 @@
+{
+    "type":"step",
+    "st_name":"use_soap",
+    "precondition":{
+        "hand1":{
+            "soapy":"no",
+            "dirty":"yes"  
+        },
+        "person_1":{
+            "location":"wash_room",
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "effect":{
+        "hand1":{
+            "soapy":"yes",
+            "dry":"no"  
+        }
+    }
+}
+
+
+{
+    "type":"step",
+    "st_name":"rinse_hand",
+    "precondition":{
+        "hand1":{
+            "soapy":"yes",
+            "dirty":"yes"  
+        },
+        "faucet1":{
+            "state":"yes"
+        },
+        "person_1":{
+            "location":"wash_room",
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "effect":{
+        "hand1":{
+            "soapy":"no",
+            "dirty":"no",
+            "dry":"no"  
+        }
+    }
+}
+
+{
+    "type":"step",
+    "st_name":"turn_on_faucet",
+    "precondition":{
+        "faucet_1":{
+            "state":"off",
+            "location":"wash_room"  
+        },
+        "person_1":{
+            "location":"wash_room",
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "effect":{
+        "faucet_1":{
+            "state":"on"  
+        }
+    }
+}
+
+{
+    "type":"step",
+    "st_name":"turn_off_faucet",
+    "precondition":{
+        "faucet_1":{
+            "state":"on",
+            "location":"wash_room"  
+        },
+        "person_1":{
+            "location":"wash_room",
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "effect":{
+        "faucet_1":{
+            "state":"off"  
+        }
+    }
+}
+
+
+{
+    "type":"step",
+    "st_name":"dry_hand",
+    "precondition":{
+        "hand1":{
+            "dry":"no",
+            "clean":"yes"
+        },
+        "person_1":{
+            "location":"wash_room",
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "effect":{
+        "hand1":{
+            "dry":"yes"  
+        }
+    }
+}
+
+
+
+
+
+
+
+{
+    "type":"step",
+    "st_name":"turn_off_faucet",
+    "precondition":{
+        "faucet_1":{
+            "state":"on",
+            "location":"wash_room"  
+        },
+        "person_1":{
+            "location":"wash_room",
+            "ability":[">=", "0", "0.8", "0.4"]
+        }
+    },
+    "effect":{
+        "faucet_1":{
+            "state":"off"  
+        }
+    }
+}

@@ -1,10 +1,28 @@
 {
-    "ob_name"
+    "ob_name":"hand1",
+    "ob_type":"hand",
+    "soapy":{
+        "yes":0,
+        "no":1
+    },
+    "dirty":{
+        "yes":1,
+        "no":0
+    }
+}   
 
 
+
+{
+    "ob_name":"faucet_1",
+    "ob_type":"faucet", 
+    "state":{
+        "on":"0.9",
+        "off":"0.1"
+    },
+    "location":{
+    }
 }
-
-
 
 
 
