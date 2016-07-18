@@ -1,0 +1,21 @@
+{
+    "ob_name":"hand1",
+    
+
+
+}
+
+
+
+
+
+{              "name":"faucet_1",
+                    "type":"faucet",
+                    "state":{
+                        "on":"0.9",
+                        "off":"0.1"
+                     },
+                    "location":{
+                        "wash_room":"1"
+                    }
+        }

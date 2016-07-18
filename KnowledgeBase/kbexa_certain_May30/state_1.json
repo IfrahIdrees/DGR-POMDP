@@ -1,0 +1,23 @@
+{
+    "name":"faucet_1",
+    "type":"faucet",
+    "state":"on",
+    "location":"wash_room"
+}
+
+{
+    "name":"faucet_2",
+    "type":"faucet",
+    "state":"on",
+    "location":"kitchen"
+}
+
+{
+    "name":"person_1",
+    "type":"person",
+    "location":"wash_room",
+    "ability":["0", "0.8", "0.4"]
+}
+
+
+

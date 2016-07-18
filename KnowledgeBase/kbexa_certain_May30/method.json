@@ -1,0 +1,19 @@
+{
+    "type":"method",
+    "name":"wash hand",
+    "precondition":{
+        "faucet_1":{
+            "state":"on",
+            "location":"wash_room"  
+        },
+        "person_1":{
+            "location":"wash_room",
+            "ability":[">=", "0", "0.8", "0.4"]
+        }
+    },
+    "effect":{
+        "faucet_1":{
+            "state":"off"  
+        }
+    }
+}

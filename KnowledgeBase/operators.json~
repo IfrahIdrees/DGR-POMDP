@@ -61,4 +61,52 @@
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+    "type":"operator",
+    "name":"turn_off_faucet",
+    "precondition":{
+        "faucet_2":{
+            "state":"on",
+            "location":"kitchen"  
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0.8", "0.4"]
+        }
+    },
+    "effect":{
+        "faucet_2":{
+            "state":"off"  
+        }
+    }
+}
+
+
     

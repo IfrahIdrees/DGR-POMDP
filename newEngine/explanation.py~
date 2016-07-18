@@ -1,0 +1,15 @@
+
+
+
+class Explanation(object):
+    def __init__(self):
+        self._prob=0
+        self._forest=[] #this is the related goals inside this explanation;
+    
+
+class TaskNet(object):
+    def __init__(self):
+        self.goalName="" ##this is the goal name of the tree, it is a string;
+        self.root=(some tree node)
+        self.pendingSet=[] ##a list of actions that are possible for this tree structure
+      

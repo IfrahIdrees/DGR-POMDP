@@ -1,0 +1,12 @@
+from explaSetInit import * 
+
+explaSet=[] #explanation list
+
+
+if len(explaSet) is 0:
+    print "len 0"
+    explaSetInit(explaSet)
+    
+for x in explaSet:
+    print x
+    
