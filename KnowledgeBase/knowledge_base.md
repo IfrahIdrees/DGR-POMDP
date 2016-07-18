@@ -88,8 +88,8 @@ The ***last point*** state of the environment is stored in the mongoDB in a JSON
 
       Figure 1
             {           
-            		    "name":"faucet_1",
-            		    "type":"faucet",
+            		    "ob_name":"faucet_1",
+            		    "ob_type":"faucet",
             		    "state":{
 	            		    "on":"0.9",
 	            		    "off":"0.1"
@@ -127,7 +127,7 @@ A step (also known as an operator) is a knowledge base explains the step name, i
     Figure 3
     {
         "type":"step",
-        "name":"turn_off_faucet",
+        "st_name":"turn_off_faucet",
         "precondition":{
             "faucet_1":{
                 "state":"on",
