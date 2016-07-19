@@ -64,6 +64,7 @@ A step (also known as an operator) is a knowledge base explains the step name, i
 	 - one effect begins with a concrete object in the environment, and then specify its state after the step. 
 	 - one step can have effects on multiple objects. 
 
+
 ##MongoDB Collections##
  
 
@@ -121,7 +122,7 @@ The format of state change notification is presented in Figure 2. If the occurre
 	    "current": "off",
     }
 
-##The step in Knowledge Base ##
+##The *step* in Knowledge Base ##
 A step (also known as an operator) is a knowledge base explains the step name, its preconditions, effects, and associated objects in the environment. An example of a step is presented in Figure 3. **(please notice that each *step in knowledge base* is an instance of an abstract step in the "Expert Database (ED)". An abstract step in ED has the same components with step instances in the knowledge base. The difference is that in an abstract step, objects occur in preconditions and effects are variables. Those variables are assigned specific values (environment object) when the caregiver constructing the knowledge base. )**
 
     Figure 3
@@ -156,6 +157,40 @@ A step (also known as an operator) is a knowledge base explains the step name, i
 	 - one effect begins with a concrete object in the environment, and then specify its state after the step. 
 	 - one step can have effects on multiple objects. 
 
+
+##The *task* in Knowledge Base ##
+A task (also known as a method) is a knowledge base artifact explains the task name, its preconditions, and decomposed sub-tasks. An example of a task(method) is presented in Figure 4. The format for the precondition part is the same as that of step. However, what kind of statement should be included into the precondition of a task should be determined by its children. In an actual case, the precondition is derived from its children according the rule defined in the care-giver interface knowledge building part. (See thesis latex file. ) 
+Worth mentioning is that the sub-tasks part is a list. Each element of the list is one kind of decomposition of the parent node. There might exist multiple ways of decomposition for one parent node. For each decomposition solution, it includes following information: (1) the sub-task name, (2) the sub-task's predecessor within its parent's children, (3) the sub-task's successor within its parent's children. I am using this kind of format to express 
+Another thing about task
+
+    Figure 4.
+    {
+	    "type":"method",
+	    "m_name":"clean_hand",
+	    "precondition":{
+	        "hand1":{
+	            "dirty":"yes",
+	            "soapy":"no"  
+	        },
+	        "faucet1":{
+	            "state":"on"
+	        },
+	        "person_1":{
+	            "location":"wash_room",
+	            "ability":[">=", "0", "0", "0"]
+	        }
+	    },
+	    "subtasks":{[
+	        "use_soap":{
+	            "pre":[],
+	            "dec":["rinse_hand"]
+	        },
+	        "rinse_hand":{
+	            "pre":["use_soap"],
+	            "dec":[]
+	        }
+	   }]
+	}
 ##MongoDB Collections##
  
 
