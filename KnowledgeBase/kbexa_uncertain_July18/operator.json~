@@ -47,7 +47,7 @@
 
 {
     "type":"step",
-    "st_name":"turn_on_faucet",
+    "st_name":"turn_on_faucet1",
     "precondition":{
         "faucet_1":{
             "state":"off",
@@ -67,7 +67,7 @@
 
 {
     "type":"step",
-    "st_name":"turn_off_faucet",
+    "st_name":"turn_off_faucet1",
     "precondition":{
         "faucet_1":{
             "state":"on",

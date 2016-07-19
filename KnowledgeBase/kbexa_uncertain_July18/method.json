@@ -15,7 +15,7 @@
             "ability":[">=", "0", "0", "0"]
         }
     },
-    "subtasks":{
+    "subtasks":[{
         "use_soap":{
             "pre":[],
             "dec":["rinse_hand"]
@@ -24,7 +24,7 @@
             "pre":["use_soap"],
             "dec":[]
         }
-    }
+    }]
 }
 
 
@@ -34,7 +34,7 @@
     "precondition":{
         "hand1":{
             "dirty":"yes",
-            "soapy":"no",  
+            "soapy":"no"  
         },
         "faucet1":{
             "state":"off"
@@ -44,7 +44,7 @@
             "ability":[">=", "0", "0", "0"]
         }
     },
-    "subtasks":{
+    "subtasks":[{
         "turn_on_faucet1":{
             "pre":[],
             "dec":["rinse_hand"]
@@ -60,6 +60,6 @@
         "dry_hand":{
             "pre":["turn_off_faucet1"],
             "dec":[]
-        }
-    }
+        }}],
+    "start_action":["turn_on_faucet1"]
 }

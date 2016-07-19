@@ -10,5 +10,10 @@ Algorithm Implementation record
  <p align="center">
   <img src="../images/knowledge_base_example.png" width="450"/>
 </p>
-
+##July 19##
+ - Initialize the explanation set (explaSet)
+	 - Step 1: search in "method" collection who has a property of "start_action"
+	 - Step 2: for all the returned entries, check if their preconditions are satisfied in the current state
+	 - Step 3 : generate the pending set and initialize the explaSet.
+ - Initialize the explanation Set (explaSet): didn't finish, only store the updated knowledge base into mongoDB
 > Written with [StackEdit](https://stackedit.io/).

@@ -191,6 +191,52 @@ Another thing about task
 	        }
 	   }]
 	}
+
+
+
+##The *goal* in Knowledge Base ##
+A goal is the purpose the person aims to achieve when he/she implementing a series of actions. A goal has no parent, it is the 0 level node in the knowledge base. **Worth mentioning is that**, sometimes, a goal can be seen as a typical task.  For example, "wash-hand" can be an independent goal and also can be one of a composite task support for goal "grooming". However, a typical task can never be regarded as a goal. The format of a goal is quite similar to that of task, the only difference is that in a "goal" structure, there is a "start-action" property. This property is mainly used for **pending set initialization use**. Figure 5 gives an example of a goal. 
+
+    {
+	    "type":"method",
+	    "m_name":"wash_hand",
+	    "precondition":{
+	        "hand1":{
+	            "dirty":"yes",
+	            "soapy":"no",  
+	        },
+	        "faucet1":{
+	            "state":"off"
+	        },
+	        "person_1":{
+	            "location":"wash_room",
+	            "ability":[">=", "0", "0", "0"]
+	        }
+	    },
+	    "subtasks":[{
+	        "turn_on_faucet1":{
+	            "pre":[],
+	            "dec":["rinse_hand"]
+	        },
+	        "clean_hand":{
+	            "pre":["turn_on_faucet1"],
+	            "dec":["turn_off_faucet1"]
+	        },
+	        "turn_off_faucet1":{
+	            "pre":["clean_hand"],
+	            "dec":["dry_hand"]
+	        },
+	        "dry_hand":{
+	            "pre":["turn_off_faucet1"],
+	            "dec":[]
+	        }
+	    }],
+	    "start_action":["turn_on_faucet1"]
+    }
+
+
+
+
 ##MongoDB Collections##
  
 

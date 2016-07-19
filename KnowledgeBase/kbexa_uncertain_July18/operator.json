@@ -7,7 +7,7 @@
             "dirty":"yes"  
         },
         "person_1":{
-            "location":"wash_room",
+            "location":"kitchen",
             "ability":[">=", "0", "0", "0"]
         }
     },
@@ -32,7 +32,7 @@
             "state":"yes"
         },
         "person_1":{
-            "location":"wash_room",
+            "location":"kitchen",
             "ability":[">=", "0", "0", "0"]
         }
     },
@@ -51,10 +51,10 @@
     "precondition":{
         "faucet_1":{
             "state":"off",
-            "location":"wash_room"  
+            "location":"kitchen"  
         },
         "person_1":{
-            "location":"wash_room",
+            "location":"kitchen",
             "ability":[">=", "0", "0", "0"]
         }
     },
@@ -71,10 +71,10 @@
     "precondition":{
         "faucet_1":{
             "state":"on",
-            "location":"wash_room"  
+            "location":"kitchen"  
         },
         "person_1":{
-            "location":"wash_room",
+            "location":"kitchen",
             "ability":[">=", "0", "0", "0"]
         }
     },
@@ -95,7 +95,7 @@
             "clean":"yes"
         },
         "person_1":{
-            "location":"wash_room",
+            "location":"kitchen",
             "ability":[">=", "0", "0", "0"]
         }
     },
@@ -106,28 +106,3 @@
     }
 }
 
-
-
-
-
-
-
-{
-    "type":"step",
-    "st_name":"turn_off_faucet",
-    "precondition":{
-        "faucet_1":{
-            "state":"on",
-            "location":"wash_room"  
-        },
-        "person_1":{
-            "location":"wash_room",
-            "ability":[">=", "0", "0.8", "0.4"]
-        }
-    },
-    "effect":{
-        "faucet_1":{
-            "state":"off"  
-        }
-    }
-}
