@@ -161,7 +161,7 @@ A step (also known as an operator) is a knowledge base explains the step name, i
 ##The *task* in Knowledge Base ##
 A task (also known as a method) is a knowledge base artifact explains the task name, its preconditions, and decomposed sub-tasks. An example of a task(method) is presented in Figure 4. The format for the precondition part is the same as that of step. However, what kind of statement should be included into the precondition of a task should be determined by its children. In an actual case, the precondition is derived from its children according the rule defined in the care-giver interface knowledge building part. (See thesis latex file. ) 
 Worth mentioning is that the sub-tasks part is a list. Each element of the list is one kind of decomposition of the parent node. There might exist multiple ways of decomposition for one parent node. For each decomposition solution, it includes following information: (1) the sub-task name, (2) the sub-task's predecessor within its parent's children, (3) the sub-task's successor within its parent's children. I am using this kind of format to express 
-Another thing about task
+Another thing about task is that the "start_action" part has a null list. This is used for distinguish with goal. 
 
     Figure 4.
     {
@@ -189,7 +189,8 @@ Another thing about task
 	            "pre":["use_soap"],
 	            "dec":[]
 	        }
-	   }]
+	   }],
+	   "start_action":[]
 	}
 
 
