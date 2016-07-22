@@ -2,31 +2,29 @@
     "ob_name":"hand1",
     "ob_type":"hand",
     "soapy":{
-        "yes":"0.001",
-        "no":"0.999"
+        "yes":0.001,
+        "no":0.999
     },
     "dirty":{
-        "yes":"0.999",
-        "no":"0.001"
+        "yes":0.999,
+        "no":0.001
     },
     "dry":{
-        "yes":"0.999",
-        "no":"0.001"
+        "yes":0.999,
+        "no":0.001
     }
 }   
-
 
 
 {
     "ob_name":"faucet_1",
     "ob_type":"faucet", 
     "state":{
-        "on":"0.999",
-        "off":"0.001"
+        "on":0.001,
+        "off":0.999
     },
     "location":{
-        "kitchen":"1",
-        "wash_room":"0"
+        "kitchen":1.00
     }
 }
 
@@ -35,8 +33,10 @@
     "ob_name":"person_1",
     "ob_type":"person", 
     "location":{
-        "kitchen":"0.999",
-        "wash_room":"0.001"
+        "kitchen": 0.999,
+        "wash_room": 0.001
     },
-    "ability":[">=", "0.4", "0.4", "0.4"]
+    "ability":{
+        ">=, 0.4, 0.4, 0.4":1.00
+    }
 }

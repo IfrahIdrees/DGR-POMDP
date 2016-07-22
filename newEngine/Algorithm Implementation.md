@@ -18,7 +18,16 @@ Algorithm Implementation record
  - Initialize the explanation Set (explaSet): didn't finish, only store the updated knowledge base into mongoDB
 
 ##July 20##
-
  - realize explaSet initialization. 
+##July 21##
+ - create a database class, inside this class, all database related search and operations are included. 
+ - calculate action posterior prob based on s(t-1), and o(t), for a given action:
+	 - Step 1,  create a list for all it's related object attribute
+	 - Step 2, create a list of all possible attribute value combination
+	 - Step 3, Bayesian variable elimination to calculate posterior(a)
+##July 22##
+ - need to define p(s_t|s_t-1, a_t)
+ - need to finish action posterior probability calculation
+ - need to finish belief state update
 
 > Written with [StackEdit](https://stackedit.io/).

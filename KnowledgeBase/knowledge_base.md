@@ -92,11 +92,11 @@ The ***last point*** state of the environment is stored in the mongoDB in a JSON
             		    "ob_name":"faucet_1",
             		    "ob_type":"faucet",
             		    "state":{
-	            		    "on":"0.9",
-	            		    "off":"0.1"
+	            		    "on":0.9,
+	            		    "off":0.1
 	            		 },
             		    "location":{
-	            		    "wash_room":"1"
+	            		    "wash_room":1
             		    }
             }
 
@@ -115,7 +115,7 @@ The format of state change notification is presented in Figure 2. If the occurre
 
     Figure 2
     {
-	    "name":"faucet_1",
+	    "ob_name":"faucet_1",
 	    "reliability":"0.9",
 	    "attribute": "state",
 	    "previous": "on",

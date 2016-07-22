@@ -1,15 +1,27 @@
-from pymongo import MongoClient
-import pymongo
+from database import *
+from explanation import *
 
-def explaSetInit(explaSet):
-    client = MongoClient()
-    db = client.smart_home
-    method=db.method
+def explaSetInit():
+    
     goal = list(method.find())
-    explaSet = [x["start_action"] for x in goal if len(x["start_action"])>0]
+    
+    pendingSet = [[y, 0] for x in goal if len(x["start_action"])>0 for y in x["start_action"]]
+    #pendingSet.append(["nothing_hap", 0])
+    
+    ##provide prior prob for each action in the pending set
+    prob = float(1)/(len(pendingSet))
+    for x in pendingSet:
+        x[1]=prob
+    
+    exp = Explanation()
+    exp.set_prob(1)
+    exp.update_pendSet(pendingSet)
+    
+    explaSet = []
+    explaSet.append(exp)
+    return explaSet
 
-    for y in explaSet:
-        print y
+    
     
 
 
