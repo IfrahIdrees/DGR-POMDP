@@ -29,6 +29,11 @@ Algorithm Implementation record
 	 - Step 3, Bayesian variable elimination to calculate posterior(a)
 
 ##July 22##
- - need to define p(s_t|s_t-1, a_t)
- - need to finish action posterior probability calculation
- - need to finish belief state update
+ - define p(s_t|s_t-1, a_t)
+	 - assume that if an action has been implemented, it will ben 100% succeed. 
+	 - So **if** precondition(a_t) is satisfied in s_(t-1), and effects(a_t) is satisfied in (s_t), p(s_t|s_t-1, a_t)=1, **else**,  p(s_t|s_t-1, a_t)=0. 
+ - calculate p(a_t) give observation
+	 - The final p(a_t)[variable elimination] is given by normalizing on (**a_t happened**) and (**a_t not happen**)
+	 - for the whole explanation set, calculate **prior(a_t)*posterior(a_t)[variable elimination]**, and then normalize over all the actions in all of the pending set
+ - move notification to a class, every time the engine need notification, get it from the class instance.
+ - *need to finish belief state update*

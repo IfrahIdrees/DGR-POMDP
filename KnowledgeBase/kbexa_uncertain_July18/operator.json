@@ -106,3 +106,13 @@
     }
 }
 
+{
+    "type":"step",
+    "st_name":"nothing_hap",
+    "precondition":{
+    
+    }, 
+    "effect":{
+    }
+}
+

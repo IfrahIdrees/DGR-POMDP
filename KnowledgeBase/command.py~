@@ -13,6 +13,8 @@ mongoimport --db smart_home --collection state --drop --file ~/Documents/DIYSmar
 
 mongoimport --db smart_home --collection operator --drop --file ~/Documents/DIYSmartHome/KnowledgeBase/kbexa_uncertain_July18/operator.json
 
+mongoimport --db smart_home --collection sensor --drop --file ~/Documents/DIYSmartHome/KnowledgeBase/kbexa_uncertain_July18/sensor.json
+
 
 """clear a collection"""
 db.collection_name.remove({})
