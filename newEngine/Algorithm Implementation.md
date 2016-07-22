@@ -10,6 +10,7 @@ Algorithm Implementation record
  <p align="center">
   <img src="../images/knowledge_base_example.png" width="450"/>
 </p>
+
 ##July 19##
  - Initialize the explanation set (explaSet)
 	 - Step 1: search in "method" collection who has a property of "start_action"
@@ -19,14 +20,15 @@ Algorithm Implementation record
 
 ##July 20##
  - realize explaSet initialization. 
+
 ##July 21##
  - create a database class, inside this class, all database related search and operations are included. 
  - calculate action posterior prob based on s(t-1), and o(t), for a given action:
 	 - Step 1,  create a list for all it's related object attribute
 	 - Step 2, create a list of all possible attribute value combination
 	 - Step 3, Bayesian variable elimination to calculate posterior(a)
+
 ##July 22##
  - need to define p(s_t|s_t-1, a_t)
  - need to finish action posterior probability calculation
  - need to finish belief state update
-
