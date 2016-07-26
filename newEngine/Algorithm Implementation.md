@@ -37,3 +37,11 @@ Algorithm Implementation record
 	 - for the whole explanation set, calculate **prior(a_t)*posterior(a_t)[variable elimination]**, and then normalize over all the actions in all of the pending set
  - move notification to a class, every time the engine need notification, get it from the class instance.
  - *need to finish belief state update*
+
+
+##July 26##
+
+ - implement belief state update
+	 - when updating, only update those states that occurs in the effect list of the pending sets. Other's remain the same
+	 - finished
+ - change **explaSet** to a class. 
