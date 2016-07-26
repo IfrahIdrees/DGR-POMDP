@@ -1,19 +1,23 @@
-
-#from explanation import *
 from database import *
 from notification import * 
 from helper import *
+from explanation import *
 
+
+cond_satisfy = 1.0
+cond_notsatisfy = 0.0
 title = []
 db = DB_Object()
 
-def action_posterior(explaSet):
-    for expla in explaSet:
+def action_posterior():
+    exp = explaSet()
+    
+    for expla in exp.explaset:
         for action in expla._pendingSet:
             action[1]=action[1]*cal_posterior(action)
             print "the probability is", action[0], action[1]
             #####################
-    return explaSet
+    #return explaSet
     
 
 def cal_posterior(action):
@@ -21,7 +25,7 @@ def cal_posterior(action):
     
     beforeS = []
     for x in op["precondition"]:
-        beforeS.append(db.get_object_state(x))
+        beforeS.append(db.get_object_status(x))
     
     for x in beforeS:
         for y in x:

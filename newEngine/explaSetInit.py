@@ -16,11 +16,9 @@ def explaSetInit():
     exp.set_prob(1)
     exp.update_pendSet(pendingSet)
     
-    explaSet = []
-    explaSet.append(exp)
-    return explaSet
+    expla = explaSet()
+    expla.add_exp(exp)
 
-    
     
 
 

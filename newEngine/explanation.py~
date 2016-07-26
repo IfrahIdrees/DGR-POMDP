@@ -5,7 +5,7 @@ class Explanation(object):
     def __init__(self):
         self._prob=0
         self._forest=[] #this is a list of TaskNet;
-        self._pendingSet=[] #this is dict, each one with goalName:actionName
+        self._pendingSet=[] #this is list, each element has format of ["action_name", "prob"]
         
     def set_prob(self, v):
         self._prob = v 
@@ -28,4 +28,12 @@ class TaskNet(object):
         self.goalName="" ##this is the goal name of the tree, it is a string;
         #self.root=(some tree node)
         ##a list of actions that are possible for this tree structure
-      
+
+
+class explaSet(object):
+    explaset = []
+    def add_exp(self, e):
+        self.__class__.explaset.append(e)
+    
+        
+        

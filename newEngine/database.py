@@ -22,9 +22,15 @@ class DB_Object(object):
         return op[0]
     
     ##return the state of a specific object
-    def get_object_state(self, ob_name): 
+    def get_object_status(self, ob_name): 
         ob = list(self._state.find({"ob_name":ob_name}))
         return ob[0]
+    
+    ##return the all possible values for a specific attribute of an object     
+    def get_object_attri(self, ob_name, attri_name):
+        st = list(self._state.find({"ob_name":ob_name}))
+        return (st[0][attri_name])        
+    
             
     ##return the attribute value belief from belief state
     def get_attribute_prob(self, s, ob_name, attri_name):
@@ -41,5 +47,17 @@ class DB_Object(object):
         else:
             return (1-sensor["reliability"])/(sensor["value"][1]-1)
                 
+    def update_state_belief(self, ob_name, attri_name, attri_distri):
+        result = self._state.update_many(
+            {"ob_name":ob_name},
+            {
+                "$set":{
+                    attri_name:attri_distri
+                }
+            }
+        )
+        
+        print "then uber of changes is", result.matched_count
+      
 
 

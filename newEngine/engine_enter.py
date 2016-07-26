@@ -1,7 +1,9 @@
 from explaSetInit import * 
 from action_posterior import *
+from update_state_belief import *
+from explanation import *
 import time
-explaSet=[] #explanation list
+#explaSet=[] #explanation list
 interval = 1 ##sleep time when there is no state change notification
 
 while(True):
@@ -9,24 +11,28 @@ while(True):
     if len(notification) ==0:
         time.sleep(interval)
     else:
-        if len(explaSet) is 0:
-            explaSet = explaSetInit()
-        
+        exp = explaSet()
+        if len(exp.explaset) is 0:
+            explaSetInit()
+        '''
         for x in explaSet:
             print x._prob
             print x._forest
             print x._pendingSet
-        
+        '''
             
         ##calcuate the posterior prob of each action in pending set
-        explaSet = action_posterior(explaSet)
+        explaSet = action_posterior()
         
-        
-        for x in explaSet:
+        '''
+        for x in exp.explaset:
             print x._prob
             print x._forest
             print x._pendingSet    
-            
+        '''
+        
+        ##update the belief state
+        update_state_belief()    
             
             
             
@@ -39,13 +45,4 @@ while(True):
 
     
 
-#if 0 length, initialize the explaSet
-if len(explaSet) is 0:
-    explaSet = explaSetInit()
-    '''
-    for x in explaSet:
-        print x._prob
-        print x._forest
-        print x._pendingSet
-    '''
 

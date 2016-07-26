@@ -28,4 +28,12 @@ class TaskNet(object):
         self.goalName="" ##this is the goal name of the tree, it is a string;
         #self.root=(some tree node)
         ##a list of actions that are possible for this tree structure
-      
+
+
+class explaSet(object):
+    explaset = []
+    def add_exp(self, e):
+        self.__class__.explaset.append(e)
+    
+        
+        

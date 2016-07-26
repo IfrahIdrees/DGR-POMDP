@@ -20,8 +20,8 @@
     "ob_name":"faucet_1",
     "ob_type":"faucet", 
     "state":{
-        "on":0.001,
-        "off":0.999
+        "on":0.6,
+        "off":0.4
     },
     "location":{
         "kitchen":1.00

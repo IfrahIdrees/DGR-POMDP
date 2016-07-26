@@ -8,7 +8,6 @@ def explaSetInit():
     #pendingSet.append(["nothing_hap", 0])
     
     ##provide prior prob for each action in the pending set
-    pendingSet.append(["nothing_hap", 0])
     prob = float(1)/(len(pendingSet))
     for x in pendingSet:
         x[1]=prob
@@ -17,11 +16,9 @@ def explaSetInit():
     exp.set_prob(1)
     exp.update_pendSet(pendingSet)
     
-    explaSet = []
-    explaSet.append(exp)
-    return explaSet
+    expla = explaSet()
+    expla.add_exp(exp)
 
-    
     
 
 
