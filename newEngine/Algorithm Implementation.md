@@ -45,3 +45,37 @@ Algorithm Implementation record
 	 - when updating, only update those states that occurs in the effect list of the pending sets. Other's remain the same
 	 - finished
  - change **explaSet** to a class. 
+
+
+##July 27##
+
+ - When to trigger the engine?  According to " **no_notif_trigger_prob**"
+	 - If **there is** some notification: trigger definitely
+	 - If **there is no** notification: 0.9 cases sleep, 0.1 run the activity tracking process. 
+
+ - Update the explanation set, including three steps:
+	 - step 1: update the tree structure (not finished)
+
+ - **Revision**:
+	 - For each explanation, it has a pending set. Within the pending set, there are one or more than one actions. Because sensor probabilities are considered, we need to consider "**nothing happened**" scenario. 
+	 - How to calculate the probability of "**nothing happened**"? If the pending set is [a_1, a_2, a_3, non]:
+		 - (1) Calculate the probability of each action "**happened**"
+		 - (2) Calculate the probability of "nothing happened", multiply the corresponding not-happen-prob of each action.
+		 - (3) Calculate the probability of {one actions happens, two actions happens, three actions happens and so on..}
+		 - (4) Step (1)(2)(3) generated the explanations for the current observation. It is something like [a1, p1; a2, p2; a2, p3; a1, a2, p12; a1, a3, p13; a2, a3, p23; a1, a2, a3, p123; non, pn ]  (**example**)
+		 - (5) For each case in the action level observation explanation, update and expand the current explanation into new explanations. In this example, the explanation will generate 8 different new explanations. (when calculate the posterior (new) probability for those new explanations, be sure use the parent explanation's prior probability multiply by branch factor nodes. )
+		 - (6) finally for all explanations, normalize them.  
+
+ - Tomorrows goal:
+	 - finish action level explanation calculating
+	 - add a new task and test (expand the knowledge base)
+	 - begin the tree structure update (should begin with initialization)
+
+##Remain works
+ - Update the explanation set, including three steps
+	 - step 1: update the tree structure
+	 - step 2: calculate the probability of this explanation
+	 - step 3: generate the new pending set, including the prior probability of actions in the pending set
+
+
+ - Calculate the probability for goals and inner nodes in the tree. Because the desired assistance is hierarchical, only provide the probability of goals is not enough. We also need to calculate the probability of inner nodes in the tree structure.   

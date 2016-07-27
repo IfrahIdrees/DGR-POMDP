@@ -78,7 +78,6 @@ def get_ps_actANDs(after, before, action, index):
     if effect[title[index][0]][title[index][1]] != after:
         return cond_not_satisfy
     
-    
     ##check precondition
     #check if the precondition of the action is satisfied
     #in the previous state

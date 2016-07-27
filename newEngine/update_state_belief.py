@@ -16,10 +16,8 @@ def update_state_belief():
     get_attr_in_effect()
     for i, x in enumerate(title):
         att = db.get_object_attri(x[0], x[1])
-        #print "before", att
         att = update_attri_status_belief(att, i)
         db.update_state_belief(title[i][0], title[i][1], att)
-        print "the lenght of title", len(title)
 
 #get all the state that occur in the effect list
 #of actions in the pending set
