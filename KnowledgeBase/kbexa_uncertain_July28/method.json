@@ -1,0 +1,180 @@
+
+{
+    "type":"method",
+    "m_name":"clean_hand",
+    "precondition":{
+        "hand_1":{
+            "dirty":"yes",
+            "soapy":"no"  
+        },
+        "faucet1":{
+            "state":"on"
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "subtasks":[{
+        "use_soap":{
+            "pre":[],
+            "dec":["rinse_hand"]
+        },
+        "rinse_hand":{
+            "pre":["use_soap"],
+            "dec":[]
+        }
+    }],
+    "start_action":[]
+}
+
+
+{
+    "type":"method",
+    "m_name":"wash_hand",
+    "precondition":{
+        "hand_1":{
+            "dirty":"yes",
+            "soapy":"no"  
+        },
+        "faucet1":{
+            "state":"off"
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "subtasks":[{
+        "turn_on_faucet1":{
+            "pre":[],
+            "dec":["rinse_hand"]
+        },
+        "clean_hand":{
+            "pre":["turn_on_faucet_1"],
+            "dec":["turn_off_faucet_1"]
+        },
+        "turn_off_faucet1":{
+            "pre":["clean_hand"],
+            "dec":["dry_hand"]
+        },
+        "dry_hand":{
+            "pre":["turn_off_faucet_1"],
+            "dec":[]
+        }}],
+    "start_action":["turn_on_faucet_1"]
+}
+
+
+
+
+
+{
+    "type":"method",
+    "m_name":"kettle_1_heat_water",
+    "precondition":{
+        "kettle_1":{
+            "has_water":"yes",
+            "switch":"off"  
+        },
+        "person_1":{
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "subtasks":[{
+        "switch_on_kettle_1":{
+            "pre":[],
+            "dec":["switch_off_kettle_1"]
+        },
+        "switch_off_kettle_1":{
+            "pre":["switch_on_kettle_1"],
+            "dec":[]
+        }}],
+    "start_action":[]
+     
+        
+}
+
+
+{
+    "type":"method",
+    "m_name":"kettle_1_add_water",
+    "precondition":{
+        "faucet_1":{
+            "state":"off",
+            "location":"kitchen"  
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        },
+        "kettle_1":{
+            "has_water":"no",
+            "switch":"off"
+        }
+    },
+    "subtasks":[{
+        "turn_on_faucet_1":{
+            "pre":[],
+            "dec":["add_water_kettle_1"]
+        },
+        "add_water_kettle_1":{
+            "pre":["turn_on_faucet_1"],
+            "dec":["turn_off_faucet_1"]
+        },
+        "turn_on_faucet_1":{
+            "pre":["add_water_kettle_1"],
+            "dec":[]
+        }}],
+    "start_action":[]
+}
+
+{
+    "type":"method",
+    "m_name":"prepare_hot_water",
+    "precondition":[{
+        "faucet_1":{
+            "state":"off",
+            "location":"kitchen"  
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        },
+        "kettle_1":{
+            "has_water":"no",
+            "switch":"off"
+        }
+    },
+    {
+        "kettle_1":{
+            "has_water":"yes",
+            "switch":"off"  
+        },
+        "person_1":{
+            "ability":[">=", "0", "0", "0"]
+        }
+    }],
+    "subtasks":[{
+        "kettle_1_add_water":{
+            "pre":[],
+            "dec":["kettle_1_heat_water"]
+        },
+        "kettle_1_heat_water":{
+            "pre":["kettle_1_add_water"],
+            "dec":[]
+        }
+    },
+    {
+        "kettle_1_heat_water":{
+            "pre":[],
+            "dec":[]
+        }
+    }],
+    "start_action":["turn_on_faucet_1", "switch_on_kettle_1"]
+}
+
+
+
+
+

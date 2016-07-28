@@ -1,5 +1,5 @@
 {
-    "ob_name":"hand1",
+    "ob_name":"hand_1",
     "ob_type":"hand",
     "soapy":{
         "yes":0.001,
@@ -20,8 +20,8 @@
     "ob_name":"faucet_1",
     "ob_type":"faucet", 
     "state":{
-        "on":0.001,
-        "off":0.999
+        "on":0.6,
+        "off":0.4
     },
     "location":{
         "kitchen":1.00
@@ -38,5 +38,19 @@
     },
     "ability":{
         ">=, 0.4, 0.4, 0.4":1.00
+    }
+}
+
+
+{
+    "ob_name":"kettle_1",
+    "ob_type":"kettle",
+    "has_water":{
+        "yes": 0.1,
+        "no":0.8
+    },
+    "switch":{
+        "on":0.001,
+        "off":0.999
     }
 }

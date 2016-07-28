@@ -7,6 +7,7 @@ from explaSetInit import *
 from action_posterior import *
 from update_state_belief import *
 from explanation import *
+from exp_expand import *
 
 
 
@@ -34,11 +35,19 @@ while(True):
         update_state_belief()
         
         ##update the explanation         
-        ##includes three steps:
-            ##step1: update the tree structure
-            ##step2: calculate the probability of this explanation
-            ##step3: update the pending set
+        ##for each existing explanation, includes three steps:
+            ##step1: decide which actions has happended and its distribution
+                    ##(obtain the action level explanation for the current obs)
+            ##step2: for each action level explanation, generate new explanation and
+                    ##update the corresponding tree structure, and calculate the
+                    ##probability of the explanation
+            ##step3: calculate the probability of this explanation
+            ##step4: update the pending set
                     ##(including the prior probability of actions in the pending set)
+        explanation_expand()
+        
+        
+        
         for x in exp.explaset:
             print x._prob
             print x._forest

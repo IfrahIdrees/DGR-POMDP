@@ -14,6 +14,7 @@ def action_posterior():
     
     for expla in exp.explaset:
         for action in expla._pendingSet:
+            #if action[0]=="nothing_hap" continue #skip nothing hap scenario
             action[1]=action[1]*cal_posterior(action)
             print "the probability is", action[0], action[1]
             #####################
@@ -21,6 +22,8 @@ def action_posterior():
     
 
 def cal_posterior(action):
+    
+
     op = db.get_operator(action[0])
     
     beforeS = []

@@ -2,7 +2,7 @@
     "type":"step",
     "st_name":"use_soap",
     "precondition":{
-        "hand1":{
+        "hand_1":{
             "soapy":"no",
             "dirty":"yes"  
         },
@@ -12,7 +12,7 @@
         }
     },
     "effect":{
-        "hand1":{
+        "hand_1":{
             "soapy":"yes",
             "dry":"no"  
         }
@@ -24,7 +24,7 @@
     "type":"step",
     "st_name":"rinse_hand",
     "precondition":{
-        "hand1":{
+        "hand_1":{
             "soapy":"yes",
             "dirty":"yes"  
         },
@@ -37,7 +37,7 @@
         }
     },
     "effect":{
-        "hand1":{
+        "hand_1":{
             "soapy":"no",
             "dirty":"no",
             "dry":"no"  
@@ -47,7 +47,7 @@
 
 {
     "type":"step",
-    "st_name":"turn_on_faucet1",
+    "st_name":"turn_on_faucet_1",
     "precondition":{
         "faucet_1":{
             "state":"off",
@@ -67,7 +67,7 @@
 
 {
     "type":"step",
-    "st_name":"turn_off_faucet1",
+    "st_name":"turn_off_faucet_1",
     "precondition":{
         "faucet_1":{
             "state":"on",
@@ -90,7 +90,7 @@
     "type":"step",
     "st_name":"dry_hand",
     "precondition":{
-        "hand1":{
+        "hand_1":{
             "dry":"no",
             "clean":"yes"
         },
@@ -100,11 +100,83 @@
         }
     },
     "effect":{
-        "hand1":{
+        "hand_1":{
             "dry":"yes"  
         }
     }
 }
+
+{
+    "type":"step",
+    "st_name":"nothing_hap",
+    "precondition":{
+    
+    }, 
+    "effect":{
+    }
+}
+
+
+
+{
+    "type":"step",
+    "st_name":"switch_on_kettle_1",
+    "precondition":{
+        "kettle_1":{
+            "has_water":"yes",
+            "switch":"off"
+        },
+        "person_1":{
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "effect":{
+        "kettle_1":{
+            "switch":"on"  
+        }
+    }
+}
+
+
+{
+    "type":"step",
+    "st_name":"switch_off_kettle_1",
+    "precondition":{
+        "kettle_1":{
+            "switch":"on"
+        },
+        "person_1":{
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "effect":{
+        "kettle_1":{
+            "switch":"off"  
+        }
+    }
+}
+
+{
+    "type":"step",
+    "st_name":"add_water_kettle_1",
+    "precondition":{
+        "kettle_1":{
+            "has_water":"no",
+            "switch":"off"
+        },
+        "person_1":{
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "effect":{
+        "kettle_1":{
+            "has_water":"yes"  
+        }
+    }
+}
+
+
+
 
 {
     "type":"step",
