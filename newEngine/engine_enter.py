@@ -1,3 +1,6 @@
+import sys
+sys.dont_write_bytecode = True
+
 import time
 import random
 
@@ -29,9 +32,16 @@ while(True):
         ##explaSetInit()
         if len(exp.explaset) is 0:
             explaSetInit() 
+            
+        
         ##calcuate the posterior prob of each action in pending set
+        
+        
         explaSet = action_posterior()
+        
+        
         ##update the belief state
+        
         update_state_belief()
         
         ##update the explanation         
@@ -44,8 +54,9 @@ while(True):
             ##step3: calculate the probability of this explanation
             ##step4: update the pending set
                     ##(including the prior probability of actions in the pending set)
+        '''
         explanation_expand()
-        
+        '''
         
         
         for x in exp.explaset:

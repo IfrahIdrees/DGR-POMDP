@@ -47,7 +47,7 @@
     "ob_type":"kettle",
     "has_water":{
         "yes": 0.1,
-        "no":0.8
+        "no":0.9
     },
     "switch":{
         "on":0.001,

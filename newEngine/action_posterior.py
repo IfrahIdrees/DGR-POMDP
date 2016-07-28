@@ -1,3 +1,7 @@
+
+import sys
+sys.dont_write_bytecode = True
+
 from database import *
 from notification import * 
 from helper import *
@@ -11,18 +15,20 @@ db = DB_Object()
 
 def action_posterior():
     exp = explaSet()
-    
+    print len(exp.explaset)
     for expla in exp.explaset:
+        print len(expla._pendingSet)
         for action in expla._pendingSet:
+            print action
+            title[:] = []
             #if action[0]=="nothing_hap" continue #skip nothing hap scenario
             action[1]=action[1]*cal_posterior(action)
-            print "the probability is", action[0], action[1]
+            #print "the probability is", action[0], action[1]
             #####################
     #return explaSet
     
 
 def cal_posterior(action):
-    
 
     op = db.get_operator(action[0])
     

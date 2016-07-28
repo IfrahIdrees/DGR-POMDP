@@ -41,7 +41,7 @@ Algorithm Implementation record
 
 ##July 26##
 
- - implement belief state update
+ - implement belief state update (changed....see July 28)
 	 - when updating, only update those states that occurs in the effect list of the pending sets. Other's remain the same
 	 - finished
  - change **explaSet** to a class. 
@@ -70,6 +70,21 @@ Algorithm Implementation record
 	 - finish action level explanation calculating
 	 - add a new task and test (expand the knowledge base)
 	 - begin the tree structure update (should begin with initialization)
+
+
+##July 28##
+
+ - add new knowledge-base, including corresponding sensor, state, operator, and method
+ - **revision the state update algorithm**.
+	 - when updating, only update those states that occurs in the effect list of the pending sets. Other's remain the same.(this is kind of *approximation*)
+	 - Using the **formula** in my book
+	 - Step 1: generate the list of actions in the pending set of all explanations. The probability of those actions should be updated: **action_prob*exp_prob**
+	 - Step 2: Calculate the probability of nothing happened. noth_prob = multiply(1-a_i)
+	 - Step 3: Calculate the probability of state according to the formula in my book and normalize.
+ - Fix bugs
+
+  
+
 
 ##Remain works
  - Update the explanation set, including three steps
