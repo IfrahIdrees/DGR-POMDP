@@ -15,11 +15,11 @@ db = DB_Object()
 
 def action_posterior():
     exp = explaSet()
-    print len(exp.explaset)
+    #print len(exp.explaset)
     for expla in exp.explaset:
-        print len(expla._pendingSet)
+        #print len(expla._pendingSet)
         for action in expla._pendingSet:
-            print action
+            #print action
             title[:] = []
             #if action[0]=="nothing_hap" continue #skip nothing hap scenario
             action[1]=action[1]*cal_posterior(action)

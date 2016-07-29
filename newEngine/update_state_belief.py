@@ -20,12 +20,8 @@ def update_state_belief():
     get_attr_in_effect()
     for i, x in enumerate(title):
         att = db.get_object_attri(x[0], x[1])
-        print "before update att", att
-        print "before update title", x
         att = update_attri_status_belief(att, i)
-        print att
-        print x
-        db.update_state_belief(title[i][0], title[i][1], att)
+        #db.update_state_belief(title[i][0], title[i][1], att)
 
 #get all the state that occur in the effect list
 #of actions in the pending set
@@ -45,10 +41,7 @@ def get_attr_in_effect():
     noth_prob = 1
     for x in action_list:
         noth_prob = noth_prob*(1-x[1])
-    action_list.append(["nothing", noth_prob])
-    
-    for x in title:
-        print x
+    action_list.append(["nothing", noth_prob])   ##very important here
     return 
 
 #update the attribute status belief for a specific attribute
@@ -56,7 +49,7 @@ def update_attri_status_belief(att, index):
     newp = att
     sump=0
     for x in newp:
-        print "this attribute value is ", x
+        #print "this attribute value is ", x
         p = 0
         for y in att:
             
@@ -78,9 +71,9 @@ def update_attri_status_belief(att, index):
                 #print pa * ps_1 * po_s * ps_actANDs
                 p = p+pa * ps_1 * po_s * ps_actANDs
                  
-        print "the final result is ", p    
+        #print "the final result is ", p    
         newp[x] = p
-        print ""
+        #print ""
         sump = sump +p            
     
     

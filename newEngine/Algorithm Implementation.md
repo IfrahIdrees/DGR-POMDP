@@ -83,6 +83,16 @@ Algorithm Implementation record
 	 - Step 3: Calculate the probability of state according to the formula in my book and normalize.
  - Fix bugs
 
+
+##July 29##
+
+ - action level explanation calculation (completed)
+	 - Assumption: each step **at most one** action happen.
+	 - if the pending set (a1, a2, a3), the prob of **nothing happened** is multiple(1-ai)
+	 - then the probability of something happened is (1-nothing happened)
+	 - normalize on something happened to make it sum to (1-nothing happened)  
+ - start hierarchical tree construct (not finish), tomorrow, generate tree structure based on domain knowledge and precondition check. 
+
   
 
 

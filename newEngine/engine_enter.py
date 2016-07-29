@@ -1,17 +1,13 @@
 import sys
-sys.dont_write_bytecode = True
-
 import time
 import random
-
-
-
 from explaSetInit import * 
 from action_posterior import *
 from update_state_belief import *
 from explanation import *
 from exp_expand import *
 
+sys.dont_write_bytecode = True
 
 
 no_notif_trigger_prob = 0.2
@@ -32,16 +28,12 @@ while(True):
         ##explaSetInit()
         if len(exp.explaset) is 0:
             explaSetInit() 
-            
-        
+             
         ##calcuate the posterior prob of each action in pending set
-        
-        
         explaSet = action_posterior()
         
         
         ##update the belief state
-        
         update_state_belief()
         
         ##update the explanation         
@@ -54,16 +46,16 @@ while(True):
             ##step3: calculate the probability of this explanation
             ##step4: update the pending set
                     ##(including the prior probability of actions in the pending set)
-        '''
+        
         explanation_expand()
+        print len(exp.explaset)
+        
         '''
-        
-        
         for x in exp.explaset:
             print x._prob
             print x._forest
             print x._pendingSet    
-        
+        '''
         ##calculate the probability of goals and innner nodes in the tree
         ##this kind of information is used for promp decision making. 
         ##unlike the paper, my algorithm needs to calculate the probability of
