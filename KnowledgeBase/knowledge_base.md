@@ -127,24 +127,26 @@ A step (also known as an operator) is a knowledge base explains the step name, i
 
     Figure 3
     {
-        "type":"step",
-        "st_name":"turn_off_faucet",
-        "precondition":{
-            "faucet_1":{
-                "state":"on",
-                "location":"wash_room"  
-            },
-            "person_1":{
-                "location":"wash_room",
-                "ability":[">=", "0", "0.8", "0.4"]
-            }
-        },
-        "effect":{
-            "faucet_1":{
-                "state":"off"  
-            }
-        }
-    }
+	    "type":"step",
+	    "st_name":"turn_off_faucet_1",
+	    "precondition":{
+	        "faucet_1":{
+	            "state":"on",
+	            "location":"kitchen"  
+	        },
+	        "person_1":{
+	            "location":"kitchen",
+	            "ability":[">=", "0", "0", "0"]
+	        }
+	    },
+	    "effect":{
+	        "faucet_1":{
+	            "state":"off"  
+	        }
+	    },
+	    "parent":["wash_hand", "kettle_1_add_water"]
+	    }
+	}
 
 
  - "***_id***" is a unique label for the step by the system
@@ -190,6 +192,7 @@ Another thing about task is that the "start_action" part has a null list. This i
 	            "dec":[]
 	        }
 	   }],
+	   "parent":["wash_hand"],
 	   "start_action":[]
 	}
 
@@ -232,6 +235,7 @@ A goal is the purpose the person aims to achieve when he/she implementing a seri
 	            "dec":[]
 	        }
 	    }],
+	    "parent":[],
 	    "start_action":["turn_on_faucet1"]
     }
 

@@ -16,7 +16,8 @@
             "soapy":"yes",
             "dry":"no"  
         }
-    }
+    },
+    "parent":["clean_hand"]
 }
 
 
@@ -42,7 +43,8 @@
             "dirty":"no",
             "dry":"no"  
         }
-    }
+    },
+    "parent":["clean_hand"]
 }
 
 {
@@ -62,8 +64,10 @@
         "faucet_1":{
             "state":"on"  
         }
-    }
+    },
+    "parent":["wash_hand", "kettle_1_add_water"]
 }
+
 
 {
     "type":"step",
@@ -82,7 +86,8 @@
         "faucet_1":{
             "state":"off"  
         }
-    }
+    },
+    "parent":["wash_hand", "kettle_1_add_water"]
 }
 
 
@@ -103,19 +108,9 @@
         "hand_1":{
             "dry":"yes"  
         }
-    }
+    },
+    "parent":["wash_hand"]
 }
-
-{
-    "type":"step",
-    "st_name":"nothing_hap",
-    "precondition":{
-    
-    }, 
-    "effect":{
-    }
-}
-
 
 
 {
@@ -134,7 +129,8 @@
         "kettle_1":{
             "switch":"on"  
         }
-    }
+    },
+    "parent":["kettle_1_heat_water"]
 }
 
 
@@ -153,7 +149,8 @@
         "kettle_1":{
             "switch":"off"  
         }
-    }
+    },
+    "parent":["kettle_1_heat_water"]
 }
 
 {
@@ -172,19 +169,9 @@
         "kettle_1":{
             "has_water":"yes"  
         }
-    }
+    },
+    "parent":["kettle_1_add_water"]
 }
 
 
-
-
-{
-    "type":"step",
-    "st_name":"nothing_hap",
-    "precondition":{
-    
-    }, 
-    "effect":{
-    }
-}
 

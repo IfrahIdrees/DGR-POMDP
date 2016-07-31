@@ -120,10 +120,10 @@ def get_ps_actANDs_1(before, after, op):
             if attri=="ability":
                 ability_list = bef[index].split(",")
                 if compare_ability(ability_list, precond[ob][attri]) is False:
-                    return 0
+                    return cond_notsatisfy
             else:
                 if precond[ob][attri]!=bef[index]:
-                    return 0
+                    return cond_notsatisfy
   
     ##check effect
     effect = op["effect"]
@@ -132,9 +132,9 @@ def get_ps_actANDs_1(before, after, op):
             index=title.index([ob, attri])
             bef[index]=effect[ob][attri]
     if bef!=af:  
-        return 0
+        return cond_notsatisfy
         
-    return 1
+    return cond_satisfy
 
 
 #calculate p(s|s_t-1, a_t) not happen

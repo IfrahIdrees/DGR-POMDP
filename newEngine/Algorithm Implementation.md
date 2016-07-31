@@ -93,6 +93,16 @@ Algorithm Implementation record
 	 - normalize on something happened to make it sum to (1-nothing happened)  
  - start hierarchical tree construct (not finish), tomorrow, generate tree structure based on domain knowledge and precondition check. 
 
+
+##July 30##
+
+break ha ha ha ha ha
+
+##July 31##
+
+ - **Revise database collection for method and operator**: add new property"**parent**", this information is used for bottom up process.
+ -  
+
   
 
 

@@ -2,7 +2,7 @@
 {
     "type":"method",
     "m_name":"clean_hand",
-    "precondition":{
+    "precondition":[{
         "hand_1":{
             "dirty":"yes",
             "soapy":"no"  
@@ -14,7 +14,7 @@
             "location":"kitchen",
             "ability":[">=", "0", "0", "0"]
         }
-    },
+    }],
     "subtasks":[{
         "use_soap":{
             "pre":[],
@@ -25,6 +25,7 @@
             "dec":[]
         }
     }],
+    "parent":["wash_hand"],
     "start_action":[]
 }
 
@@ -32,19 +33,19 @@
 {
     "type":"method",
     "m_name":"wash_hand",
-    "precondition":{
+    "precondition":[{
         "hand_1":{
             "dirty":"yes",
             "soapy":"no"  
         },
-        "faucet1":{
+        "faucet_1":{
             "state":"off"
         },
         "person_1":{
             "location":"kitchen",
             "ability":[">=", "0", "0", "0"]
         }
-    },
+    }],
     "subtasks":[{
         "turn_on_faucet1":{
             "pre":[],
@@ -62,6 +63,7 @@
             "pre":["turn_off_faucet_1"],
             "dec":[]
         }}],
+    "parent":[],    
     "start_action":["turn_on_faucet_1"]
 }
 
@@ -72,7 +74,7 @@
 {
     "type":"method",
     "m_name":"kettle_1_heat_water",
-    "precondition":{
+    "precondition":[{
         "kettle_1":{
             "has_water":"yes",
             "switch":"off"  
@@ -80,7 +82,7 @@
         "person_1":{
             "ability":[">=", "0", "0", "0"]
         }
-    },
+    }],
     "subtasks":[{
         "switch_on_kettle_1":{
             "pre":[],
@@ -90,6 +92,7 @@
             "pre":["switch_on_kettle_1"],
             "dec":[]
         }}],
+    "parent":["prepare_hot_water"],
     "start_action":[]
      
         
@@ -99,7 +102,7 @@
 {
     "type":"method",
     "m_name":"kettle_1_add_water",
-    "precondition":{
+    "precondition":[{
         "faucet_1":{
             "state":"off",
             "location":"kitchen"  
@@ -112,7 +115,7 @@
             "has_water":"no",
             "switch":"off"
         }
-    },
+    }],
     "subtasks":[{
         "turn_on_faucet_1":{
             "pre":[],
@@ -126,8 +129,11 @@
             "pre":["add_water_kettle_1"],
             "dec":[]
         }}],
+    "parent":["prepare_hot_water"],
     "start_action":[]
 }
+
+
 
 {
     "type":"method",
@@ -171,6 +177,7 @@
             "dec":[]
         }
     }],
+    "parent":[],
     "start_action":["turn_on_faucet_1", "switch_on_kettle_1"]
 }
 
