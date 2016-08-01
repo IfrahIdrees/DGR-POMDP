@@ -13,11 +13,34 @@ db = DB_Object()
 #use to udpate the current explanation according to the input action_explanation
 #act_expla is the explanation for this observation, expla is the current explanation
 def generate_new_expla(act_expla, expla):
-    newexp = Explanation(expla._prob, expla._forest, expla._pendingSet)
+    #newexp = Explanation(expla._prob, expla._forest, expla._pendingSet)
+    '''
+    print "expla._prob", expla._prob
+    print "expla._forest", expla._forest
+    print "pendingset", expla._pendingSet
+    print "act_expla", act_expla
+    '''
+    #case 1: there is no expla._forest
     if len(expla._forest)==0:
-        initialize_tree_structure(act_expla[0])
-
-
+        #goals is all possible tree-format explanation for the given action
+        #with the format of [tree.root, prob]
+        goals = initialize_tree_structure(act_expla[0])
+        
+        ##for each element in goal, create new explanation and add it into the
+        exp = explaSet() 
+        for g in goals:
+            my_forest = []
+            my_forest.append(g)
+            #calculate the probability of action level and branching factors
+            prob = act_expla[1]*g._expandProb
+            #print "the new probability is", prob
+            newexp = Explanation(v=prob, forest = my_forest)
+            exp.add_exp(newexp)
+        
+        #update the probability for the explanations(this is a special step)
+        #for initialization. In this step, goal priors will be considered
+        #In this case, we are using evenly distributed goal priors. 
+        exp.add_goal_priors()
 
 
 
@@ -30,53 +53,36 @@ def initialize_tree_structure(action):
     temp_forest = deque([])
     tree = Tree()
     opdata = Node_data(complete = True)
-    #tree.create_node(action ,uuid.uuid4(), data=opdata)
     tree.create_node(action, action, data=opdata)
-    
-    #[tree, 1]: [tree structure, probability]
     temp_forest.append([tree, 1])     
     
-    while(True):
+    while temp_forest:
         length = len(temp_forest)
-        stop = True
         for i in range(length):
             thisTree = temp_forest.popleft()
             tag = thisTree[0].get_node(thisTree[0].root).tag
             parents = db.get_parent_list(tag)
             if parents==False: print "error happend here please check"
             if len(parents)>0: 
-                stop=False
                 for x in parents: #x must be an method
                     method = db.find_method(x)
                     decompose_choose = method_precond_check(method,tag)
                     for decompose in decompose_choose:
                         decompose[0]=thisTree[1]*decompose[0]
-                        wulala = my_create_new_node(x, decompose, thisTree[0])
-                        temp_forest.append(my_create_new_node(decompose, thisTree[0]))
-                        #print decompose
-                    #print decompose_choose
-                    break
-                
-                
-                
-                
+                        temp_forest.append(my_create_new_node(x, decompose, thisTree[0]))
+    
             elif len(parents)==0: #this tree already reached goal node
-                my_goal = TaskNet(root=thisTree[0], expandProb=thisTree[1])
+                #print "this child", tag, "has no parent"
+                #print "the probability for branch factor is", thisTree[1]
+                my_goal = TaskNet(goalName=tag, root=thisTree[0], expandProb=thisTree[1])
+                #print
                 task_net.append(my_goal)
-            
-        if stop==True: break
-            
-           
-            
-            
-            
-        break        
-        
-        
- 
-
-
-
+    
+    return task_net
+    
+    
+    
+    
 def method_precond_check(method, child):
     ##Step 1: calculate the precondition satisfy prob for each branch
     prob = []
@@ -92,7 +98,7 @@ def method_precond_check(method, child):
     ##Step 3: return all the branches that include the specified child
     satisfy_branch = []
     #print method["subtasks"]
-    print "the check child is ", child
+    #print "the check child is ", child
     for i, x in enumerate(method["subtasks"]):
         #print x
         find=False
@@ -112,9 +118,9 @@ def my_create_new_node(parent, decompose, childTree):
     newTree.create_node(parent, parent, data=parent_data)
     
     known_child = childTree.get_node(childTree.root)
-    print "the know child is", known_child
+    #print "the know child is", known_child
     for x in decompose[1]:
-        print x
+        #print x
         
         if x==known_child.tag:
             known_child.data._pre = decompose[1][x]["pre"]
@@ -124,8 +130,9 @@ def my_create_new_node(parent, decompose, childTree):
             mydata = Node_data(pre=decompose[1][x]["pre"], dec=decompose[1][x]["dec"])
             newTree.create_node(x, x, parent=newTree.root, data= mydata)
     
-    newTree.show(line_type = "ascii")
-    return newTree
+    #newTree.show(line_type = "ascii")
+    #print "the probability for this decompose is", decompose[0]
+    return [newTree, decompose[0]]	
     
     
     

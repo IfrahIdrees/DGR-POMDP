@@ -65,8 +65,17 @@ class explaSet(object):
     
     def length(self):
         return len(self.explaset)
-        
-        
+    
+    
+    #multiply priors of goals and normatlize
+    def add_goal_priors(self):
+        leng = len(self.explaset)
+        my_sum=0
+        for x in self.explaset:
+            x._prob = x._prob*(float(1)/leng)
+            my_sum = my_sum+x._prob    
+        for x in self.explaset:
+            x._prob = x._prob/my_sum
         
         
         

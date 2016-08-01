@@ -1,10 +1,13 @@
 import sys
+sys.dont_write_bytecode = True
+
+
 from database import *
 from explanation import *
 
 
 
-sys.dont_write_bytecode = True
+
 
 def explaSetInit():
     db = DB_Object()

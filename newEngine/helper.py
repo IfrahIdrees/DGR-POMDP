@@ -1,6 +1,8 @@
 import sys
-from database import *
 sys.dont_write_bytecode = True
+
+from database import *
+
 
 
 db = DB_Object()

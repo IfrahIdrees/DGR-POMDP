@@ -114,9 +114,12 @@ break ha ha ha ha ha
   
 ##August 1##
 
- - when calculate the prob for each branch, whether need to consider
-   prior???????????
+ - For initialization, it means before that there is no tree structure at all. (**completed**)
+	 - Firstly calculate all possible tree structures and multiply by **action level prob** and **branching factor prob**. 
+	 - Secondly, update the explanation probability using prior. In this project I am using evenly distributed probability. the function is (explanation.py - class explaSet - add_goal_priors)
+
  - Need to update the node completeness status and ready status
+ - Need to update the pending set
 
 ##Remain works
  - Update the explanation set, including three steps

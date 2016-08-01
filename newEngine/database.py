@@ -1,9 +1,12 @@
 import sys
+sys.dont_write_bytecode = True
+
+
 from pymongo import MongoClient
 import pymongo
 
 
-sys.dont_write_bytecode = True
+
 
 client = MongoClient()
 db = client.smart_home

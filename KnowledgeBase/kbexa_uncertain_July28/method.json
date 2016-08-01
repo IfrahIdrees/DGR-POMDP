@@ -125,7 +125,7 @@
             "pre":["turn_on_faucet_1"],
             "dec":["turn_off_faucet_1"]
         },
-        "turn_on_faucet_1":{
+        "turn_off_faucet_1":{
             "pre":["add_water_kettle_1"],
             "dec":[]
         }}],

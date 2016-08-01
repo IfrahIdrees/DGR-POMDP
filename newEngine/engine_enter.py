@@ -48,6 +48,12 @@ while(True):
                     ##(including the prior probability of actions in the pending set)
         
         explanation_expand()
+        
+        for x in exp.explaset:
+            print "the probability is", x._prob
+            
+            print "the pdngin set is", x._pendingSet
+        
         print len(exp.explaset)
         
         '''

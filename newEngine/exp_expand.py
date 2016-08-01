@@ -36,17 +36,8 @@ def explanation_expand():
             #case2:something happend, need to update the tree structure as well
             else:
                 generate_new_expla(y, x)
-            
-             
-            
-        
-        '''
-        for y in act_expand:
-            #create a new explanation
-            newexp = Explanation(x._prob, x._forest, y)
-            update_exp(newexp)
-            break
-           ''' 
+
+
 
             
        
