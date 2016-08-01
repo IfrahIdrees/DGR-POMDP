@@ -1,10 +1,9 @@
 import sys
-sys.dont_write_bytecode = True
-
-
 from pymongo import MongoClient
 import pymongo
-from helper import compare_ability
+
+
+sys.dont_write_bytecode = True
 
 client = MongoClient()
 db = client.smart_home
@@ -50,16 +49,40 @@ class DB_Object(object):
             
     ##find and return the attribute value belief from belief state
     def get_attribute_prob(self, s, ob_name, attri_name):
-        #print s, "  ", ob_name, "   ", attri_name
         st = list(self._state.find({"ob_name":ob_name}))
-        if attri_name == "ability":
-            if compare_ability(s, st[0][attri_name]) == True: return 1.0
-            else: return 0.0
-        
-        #print st
         return float(st[0][attri_name][s])
+    
+    ##find and return the attribute balue belief from belief state
+    ##according to method/operator's precondition!!!!!!!!!!!!!
+    ##The difference with get_attribute_prob is that here need to consider
+    ##the "ability attribute"
+    def get_attribute_prob_1(self, s, ob_name, attri_name):
+        #print s, " ", ob_name, " ", attri_name
+        st = list(self._state.find({"ob_name":ob_name}))
+        if attri_name!="ability":
+            return float(st[0][attri_name][s])
+        else:
+            for x in st[0][attri_name]:
+                y=x.split(",")
+                if self.ability_check(s, y) == True:
+                    return st[0][attri_name][x]
+                else:
+                    return 1-st[0][attri_name][x]
+
+            
         
-        
+    #can only check >= scenario!!!!!!!!!
+    def ability_check(self, precond, state):
+        for i, x in enumerate(state):
+            if i==0: continue
+            if float(state[i])<float(precond[i]): return False       
+        return True
+
+            
+    
+    
+    #########################sensor reading related#########################
+    ########################################################################    
     ##find and return the prob for p(obs|s)
     def get_obs_prob(self, s, ob_name, attri_name):
         sensor = list(self._sensor.find({"ob_name":ob_name, "attri_name":attri_name}))
@@ -69,12 +92,19 @@ class DB_Object(object):
         else:
             return (1-sensor["reliability"])/(sensor["value"][1]-1)
     
+    
+    
+    ########################parent node search related#####################
+    #######################################################################
+    
+    
     ##find and return the parent list
     ##firstly search in the method collection
     ##if not find, search the operator collection
     def get_parent_list(self, name):
         #step1: search the method collection
         parent = list(self._method.find({"m_name":name}))
+        #step2: search the operator collections
         if len(parent)==0:
             parent = list(self._operator.find({"st_name":name}))
         if len(parent)==0:
@@ -82,13 +112,14 @@ class DB_Object(object):
         return parent[0]["parent"]
         
         
-        #step2: search the operator collections
+        
         
     
     
     
     
-    
+    ######################belief state update#############################
+    ######################################################################
     ##update belief state            
     def update_state_belief(self, ob_name, attri_name, attri_distri):
         result = self._state.update_many(

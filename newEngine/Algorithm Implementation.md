@@ -101,10 +101,22 @@ break ha ha ha ha ha
 ##July 31##
 
  - **Revise database collection for method and operator**: add new property"**parent**", this information is used for bottom up process.
- -  
+ -  initialize_tree_structure(action_name): This function is used to generate all possible tree structures that can explain the given action_name(which is just happened. )
+ - bottom up process
+ - when add a new parent nodes into the tree structure:
+	 - step 1: calculate the number of alternative branches
+	 - Step 2: calculate the probability of each alternative branches(based on there precondition )
+	 - Step 3: Normalize their probability
+	 - Step 4: only return the branches whose subtasks contains the given child-node.
+ - For each possible decomposition, add the corresponding tree structure into the existing tree structure.  Need to add the **pre** and **dec** node in the node data parameter.   
 
   
+  
+##August 1##
 
+ - when calculate the prob for each branch, whether need to consider
+   prior???????????
+ - Need to update the node completeness status and ready status
 
 ##Remain works
  - Update the explanation set, including three steps

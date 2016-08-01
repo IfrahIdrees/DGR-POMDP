@@ -47,7 +47,7 @@
         }
     }],
     "subtasks":[{
-        "turn_on_faucet1":{
+        "turn_on_faucet_1":{
             "pre":[],
             "dec":["rinse_hand"]
         },
@@ -55,7 +55,7 @@
             "pre":["turn_on_faucet_1"],
             "dec":["turn_off_faucet_1"]
         },
-        "turn_off_faucet1":{
+        "turn_off_faucet_1":{
             "pre":["clean_hand"],
             "dec":["dry_hand"]
         },

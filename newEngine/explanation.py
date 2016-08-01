@@ -70,10 +70,41 @@ class explaSet(object):
         
         
         
-class Operator_my_data():
-    def __init__(self, complete = False, ready=False): 
+class Node_data():
+    def __init__(self, complete = False, ready=False, pre="", dec=""): 
             self._completeness = complete
             ##this information will tell whether this step can be implemented
             ##according to the tree structure
-            self._ready = ready  
+            self._ready = ready 
+            self._pre = pre
+            self._dec = dec
+            '''
+    def setParamter(self, complete=False, ready=False, pre=[], dec=[]):
+            self._completeness = complete
+            ##this information will tell whether this step can be implemented
+            ##according to the tree structure
+            self._ready = ready 
+            self._pre = pre
+            self._dec = dec
+            '''        
+
+class Method_my_data():
+    def __init__(self, complete = False, ready=False, pre=[], dec=[]): 
+            self._completeness = complete
+            ##this information will tell whether this step can be implemented
+            ##according to the tree structure
+            self._ready = ready 
+            self._pre = pre
+            self._dec = dec            
+            
+    def setParamter(self, complete=False, ready=False, pre=[], dec=[]):
+            self._completeness = complete
+            ##this information will tell whether this step can be implemented
+            ##according to the tree structure
+            self._ready = ready 
+            self._pre = pre
+            self._dec = dec      
+            
+            
+            
             
