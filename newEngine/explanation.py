@@ -1,6 +1,7 @@
 import sys
 from collections import deque
 from treelib import Tree
+from treelib import Node
 sys.dont_write_bytecode = True
 
 
@@ -44,18 +45,95 @@ class Explanation(object):
     
     
 class TaskNet(object):
-    def __init__(self, goalName="", root=Tree(), expandProb = 1, pendingset=[]):
+    def __init__(self, goalName="", tree=Tree(), expandProb = 1, pendingset=[]):
         self._goalName=goalName ##this is the goal name of the tree, it is a string;
-        self._root = root
+        self._tree = tree
         self._expandProb=expandProb
         self._pendingset = pendingset
+    
+    ##Functions:
+    
+    ##(1) update node completeness property
+    ##(2) update node ready property
+    ##(3) generate the new pending set
+    ##(4) for each action in the pending set, calculate the branching prob based on the tree structure 
+    
+    #rootnode.data.print_property()
+    
+    def update(self):
+        rootnode = self._tree.get_node(self._tree.root)
+        #update completeness
         
+        complete_update(rootnode, self._tree)
+        
+        #update ready-ness
+        readiness_update(self._tree.root, self._tree)
+        
+        #return 0    
         #self.root=(some tree node)
         ##a list of actions that are possible for this tree structure
+#update completeness
+def complete_update(node, tree):
+    
+        
+    if node.is_leaf(): return node.data._completeness
+    child = node._fpointer #get the id of childrens
+    for x in child:
+        if complete_update(tree.get_node(x), tree): continue
+        else:
+            node.data._completeness = False
+            return False
+    
+    node.data._completeness = True
+    
+    return True
+#update readiness
+#idea: from top to bottom, BFS
+#
+def readiness_update(root_id, tree):
+    '''
+    tree.show(line_type = "ascii")
+    all_node = tree.all_nodes()
+    print "before update the ready ones is--------------------------------"
+    for x in all_node:
+        print x.tag, "   ", x.data._ready
+    '''
+    node_queue = deque([])
+    node_queue.append(root_id)
+     
+    while node_queue:
+        cur_node = tree.get_node(node_queue.popleft())
+        #case 1: this node has no parent, readiness = true
+        if cur_node.is_root():
+            cur_node.data._ready=True
+        #case 2: this node has parent, and len(pre)=0
+                #equal to parents's readiness
+        elif len(cur_node.data._pre)==0:
+            pid = cur_node._bpointer
+            cur_node.data._ready = tree.get_node(pid).data._ready
+        #case 3: this node has parent, and len(pre)>0
+        else:
+            cur_node.data._ready=True
+            pre_list = cur_node.data._pre
+            for x in pre_list:
+                if tree.get_node(x).data._completeness == False:
+                    cur_node.data._ready = False
+                    break
+        if cur_node.is_leaf() == False:
+            child = cur_node._fpointer
+            node_queue.extend(child)
+     
+        
+
+
+    
 
 
 class explaSet(object):
     explaset = deque([])
+        #the prior_label is used to guarantee that the priors 
+        #of goals are calculated only once
+    prior_label = False
     def add_exp(self, e):
         self.__class__.explaset.append(e)
     
@@ -67,35 +145,44 @@ class explaSet(object):
         return len(self.explaset)
     
     
-    #multiply priors of goals and normatlize
-    def add_goal_priors(self):
+    #normatlize the probability of explanations
+    #case1: priors are not considered
+    #case2: priors are considered
+    def normalize(self):
         leng = len(self.explaset)
         my_sum=0
-        for x in self.explaset:
-            x._prob = x._prob*(float(1)/leng)
-            my_sum = my_sum+x._prob    
+        if self.prior_label==False:
+            for x in self.explaset:
+                x._prob = x._prob*(float(1)/leng)
+                my_sum = my_sum+x._prob
+            self.prior_label=True   
+        else: ##the priors have already been considered
+            for x in self.explaset:
+                my_sum = my_sum+x._prob       
         for x in self.explaset:
             x._prob = x._prob/my_sum
         
         
         
 class Node_data():
-    def __init__(self, complete = False, ready=False, pre="", dec=""): 
-            self._completeness = complete
+    def __init__(self, complete = False, ready=False, branch = False, pre="", dec=""): 
+            self._completeness = complete #complete or not
             ##this information will tell whether this step can be implemented
             ##according to the tree structure
-            self._ready = ready 
-            self._pre = pre
-            self._dec = dec
-            '''
-    def setParamter(self, complete=False, ready=False, pre=[], dec=[]):
-            self._completeness = complete
-            ##this information will tell whether this step can be implemented
-            ##according to the tree structure
-            self._ready = ready 
-            self._pre = pre
-            self._dec = dec
-            '''        
+            self._ready = ready #can be implemented in the next step or not
+            self._pre = pre #its predecessors
+            self._dec = dec #its decedants
+            self._branch = branch #if the branching prob for this node has been considered
+    
+    #out put all the properties of the data instance
+    def print_property(self):
+        print "completeness:", self._completeness
+        print "ready       :", self._ready
+        print "predecessors:", self._pre
+        print "decedants   :", self._dec
+        print "branch fac  :", self._branch
+    
+        
 
 class Method_my_data():
     def __init__(self, complete = False, ready=False, pre=[], dec=[]): 

@@ -117,9 +117,24 @@ break ha ha ha ha ha
  - For initialization, it means before that there is no tree structure at all. (**completed**)
 	 - Firstly calculate all possible tree structures and multiply by **action level prob** and **branching factor prob**. 
 	 - Secondly, update the explanation probability using prior. In this project I am using evenly distributed probability. the function is (explanation.py - class explaSet - add_goal_priors)
+ 
+ - **Fix a bug**: when generating new explanations based on the existing one, be remember to use copy.deepcopy() for tree structures. 
 
- - Need to update the node completeness status and ready status
- - Need to update the pending set
+ - Update the node completeness:
+	 - general idea: DFS and recursion
+	 - a parent node is completed if and only if all of its children are completed
+	 - stop criteria: leaf node 
+
+ - Update the readiness of node
+	 - general idea: BFS
+	 - for each level for each node:
+		 - if it is goal node, ready is **true**
+		 - if it is non-goal node, if it's pre is null, ready is the node's **parent's ready status**
+		 - if it is non-goal node, if it's pre is not null, 
+			 - if all pre node are completed, the node ready is **True**
+			 - otherwise, the node is ready is **False**
+
+ - ***Need to update the pending set***
 
 ##Remain works
  - Update the explanation set, including three steps

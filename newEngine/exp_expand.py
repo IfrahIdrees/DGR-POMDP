@@ -31,16 +31,12 @@ def explanation_expand():
             #case1: nothing happened: update the prob of the explanation, 
             #do not need to update tree structure. 
             if y[0]=="nothing":
-                newexpla = Explanation(x._prob*y[1], x._forest, x._pendingSet)
+                newexpla = Explanation(v=x._prob*y[1], forest = x._forest, pendingSet = x._pendingSet)
                 exp.add_exp(newexpla) 
+                #v=0, forest=[], pendingSet=[]
             #case2:something happend, need to update the tree structure as well
             else:
                 generate_new_expla(y, x)
-
-
-
-            
-       
 
     return
 

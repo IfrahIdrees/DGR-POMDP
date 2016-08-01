@@ -49,7 +49,7 @@
     "subtasks":[{
         "turn_on_faucet_1":{
             "pre":[],
-            "dec":["rinse_hand"]
+            "dec":["clean_hand"]
         },
         "clean_hand":{
             "pre":["turn_on_faucet_1"],

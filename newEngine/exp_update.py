@@ -1,5 +1,6 @@
 import sys
 import uuid
+import copy
 from collections import deque
 from treelib import Tree
 from explanation import *
@@ -13,13 +14,9 @@ db = DB_Object()
 #use to udpate the current explanation according to the input action_explanation
 #act_expla is the explanation for this observation, expla is the current explanation
 def generate_new_expla(act_expla, expla):
-    #newexp = Explanation(expla._prob, expla._forest, expla._pendingSet)
-    '''
-    print "expla._prob", expla._prob
-    print "expla._forest", expla._forest
-    print "pendingset", expla._pendingSet
-    print "act_expla", act_expla
-    '''
+    #firstly remove the just happened action from the pending set
+    expla._pendingSet = [x for x in expla._pendingSet if x[0]!=act_expla[0]]
+    
     #case 1: there is no expla._forest
     if len(expla._forest)==0:
         #goals is all possible tree-format explanation for the given action
@@ -34,14 +31,18 @@ def generate_new_expla(act_expla, expla):
             #calculate the probability of action level and branching factors
             prob = act_expla[1]*g._expandProb
             #print "the new probability is", prob
-            newexp = Explanation(v=prob, forest = my_forest)
+            newexp = Explanation(v=prob, forest = my_forest, pendingSet = expla._pendingSet)
+            #v=0, forest=[], pendingSet=[]
             exp.add_exp(newexp)
         
         #update the probability for the explanations(this is a special step)
         #for initialization. In this step, goal priors will be considered
         #In this case, we are using evenly distributed goal priors. 
-        exp.add_goal_priors()
-
+        exp.normalize()
+    
+    #case 2: this explanation has already been initialized
+    #else:
+        
 
 
 ##generate a tree structure for the action_explanation
@@ -54,6 +55,7 @@ def initialize_tree_structure(action):
     tree = Tree()
     opdata = Node_data(complete = True)
     tree.create_node(action, action, data=opdata)
+    #tree.create_node(action, uuid.uuid4(), data=opdata)
     temp_forest.append([tree, 1])     
     
     while temp_forest:
@@ -69,13 +71,14 @@ def initialize_tree_structure(action):
                     decompose_choose = method_precond_check(method,tag)
                     for decompose in decompose_choose:
                         decompose[0]=thisTree[1]*decompose[0]
-                        temp_forest.append(my_create_new_node(x, decompose, thisTree[0]))
+                        temptree = copy.deepcopy(thisTree[0])
+                        temp_forest.append(my_create_new_node(x, decompose, temptree))
     
             elif len(parents)==0: #this tree already reached goal node
                 #print "this child", tag, "has no parent"
                 #print "the probability for branch factor is", thisTree[1]
-                my_goal = TaskNet(goalName=tag, root=thisTree[0], expandProb=thisTree[1])
-                #print
+                my_goal = TaskNet(goalName=tag, tree=thisTree[0], expandProb=thisTree[1])
+                my_goal.update()
                 task_net.append(my_goal)
     
     return task_net
@@ -113,12 +116,13 @@ def method_precond_check(method, child):
    
 def my_create_new_node(parent, decompose, childTree):
     newTree = Tree()
-    parent_data = Node_data(complete=False, ready = True)
+    parent_data = Node_data(complete=False, ready = True, branch = True)
     #newTree.create_node(parent ,uuid.uuid4(), data=parent_data)
     newTree.create_node(parent, parent, data=parent_data)
     
     known_child = childTree.get_node(childTree.root)
     #print "the know child is", known_child
+    #print decompose[1]
     for x in decompose[1]:
         #print x
         
