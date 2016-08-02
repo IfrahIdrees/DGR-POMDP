@@ -26,7 +26,12 @@ class DB_Object(object):
     ## find and return the specific method
     def find_method(self, m_name):
         method = list(self._method.find({"m_name":m_name}))
-        return method[0]
+        if len(method)==0:
+            return None
+        else:
+            return method[0]
+        
+   
     
     
     ########################operator related###############################

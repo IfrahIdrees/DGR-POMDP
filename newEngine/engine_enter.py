@@ -30,7 +30,7 @@ while(True):
             explaSetInit() 
              
         ##calcuate the posterior prob of each action in pending set
-        explaSet = action_posterior()
+        action_posterior()
         
         
         ##update the belief state

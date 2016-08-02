@@ -1,9 +1,14 @@
 import sys
+import copy
 from collections import deque
 from treelib import Tree
 from treelib import Node
-sys.dont_write_bytecode = True
+from database import *
+from helper import *
 
+
+sys.dont_write_bytecode = True
+db = DB_Object()
 
 class Explanation(object):
     '''
@@ -49,7 +54,7 @@ class TaskNet(object):
         self._goalName=goalName ##this is the goal name of the tree, it is a string;
         self._tree = tree
         self._expandProb=expandProb
-        self._pendingset = pendingset
+        self._pendingset = pendingset #[tree, action, new_added branch prob compared with the self._tree]
     
     ##Functions:
     
@@ -69,9 +74,88 @@ class TaskNet(object):
         #update ready-ness
         readiness_update(self._tree.root, self._tree)
         
-        #return 0    
-        #self.root=(some tree node)
-        ##a list of actions that are possible for this tree structure
+        #update pendingset
+        self._pendingset = pendingset_update(self._tree.root, self._tree)
+        
+
+#update pending set
+#pendingset is a list, each element has the format of 
+#[tree, action, new_added branch prob compared with the initial tree]
+def pendingset_update(node, tree):
+    expand_tree = []
+    tree_queue = deque([])
+    tree_queue.append([tree, 1])
+    while tree_queue:
+        thisTree = tree_queue.popleft()
+        leaves = thisTree[0].leaves()
+        finish = True #to check if the tree finished its decomposition process
+        #for each node:
+        #if it is a leaf node, check
+            #
+        for leaf in leaves:
+            if leaf.data._ready==True:
+                method = db.find_method(leaf.tag)
+                if method==None: 
+                    print "this leaf is an step, not method:   ", leaf.tag
+                else:
+                    finish = False
+                    print "this leaf is a method     ", leaf.tag
+                    branches = method_decompose(method)
+                    for x in branches:
+                        newTree = copy.deepcopy(thisTree[0])
+                        add_child(newTree, leaf.tag, x[1])
+                        tree_queue.append([newTree, thisTree[1]*x[0]])
+                    break
+                    
+        if finish==True:
+            tree_pending=[x.tag for x in leaves if x.data._ready==True and x.data._completeness==False]
+            print "the new pending set is ", tree_pending
+            thisTree.append(tree_pending)
+            expand_tree.append(thisTree)
+    return expand_tree
+    
+    
+    
+    
+def method_decompose(method):
+    ##Step 1: calculate the precondition satisfy prob for each branch
+    prob = []
+    #print method["precondition"]
+    for branch in method["precondition"]:
+        prob_temp=1
+        for ob_name in branch:
+            for attri in branch[ob_name]:
+                prob_temp = prob_temp * db.get_attribute_prob_1(branch[ob_name][attri], ob_name, attri)    
+        prob.append(prob_temp)
+    ##Step 2: normatlize on the prob    
+    my_normalize_1(prob)
+    
+    satisfy_branch = []
+    for i, x in enumerate(method["subtasks"]):
+        satisfy_branch.append([prob[i], x])
+    return satisfy_branch      
+    
+
+def add_child(tree, node_id, branch):
+    print "the target node is", node_id
+    print "the branch is", branch
+    for x in branch:
+        print "this action is   ", x
+        mydata=None
+        if len(branch[x]["pre"]) == 0:
+            mydata=Node_data(ready=True, branch = False, pre=branch[x]["pre"], dec = branch[x]["dec"])
+        else:
+            mydata=Node_data(ready=True, branch = False, pre=branch[x]["pre"], dec = branch[x]["dec"])
+        
+        tree.create_node(x, x, parent = node_id, data = mydata)
+        #print "the length is", len(branch[x]["pre"])
+        #print branch[x]["pre"]
+
+#complete = False, ready=False, branch = False, pre="", dec=""
+#mydata = Node_data(pre=decompose[1][x]["pre"], dec=decompose[1][x]["dec"])
+        #    newTree.create_node(x, x, parent=newTree.root, data= mydata)
+
+        
 #update completeness
 def complete_update(node, tree):
     
@@ -87,9 +171,9 @@ def complete_update(node, tree):
     node.data._completeness = True
     
     return True
+    
 #update readiness
 #idea: from top to bottom, BFS
-#
 def readiness_update(root_id, tree):
     '''
     tree.show(line_type = "ascii")
