@@ -1,4 +1,6 @@
 import sys
+sys.dont_write_bytecode = True
+
 import time
 import random
 from explaSetInit import * 
@@ -6,8 +8,9 @@ from action_posterior import *
 from update_state_belief import *
 from explanation import *
 from exp_expand import *
+from pendingSet_generate import *
 
-sys.dont_write_bytecode = True
+
 
 
 no_notif_trigger_prob = 0.2
@@ -28,13 +31,24 @@ while(True):
         ##explaSetInit()
         if len(exp.explaset) is 0:
             explaSetInit() 
+        ##after initialization, print the explanation
+        #print "after initialization, print the explanation"
+        #exp.print_explaSet()
              
         ##calcuate the posterior prob of each action in pending set
+        
         action_posterior()
         
         
         ##update the belief state
+        
         update_state_belief()
+        
+        
+        ##after update state belief, and calculate action posterior
+        ##print the explanation
+        #exp.print_explaSet()
+        
         
         ##update the explanation         
         ##for each existing explanation, includes three steps:
@@ -48,14 +62,21 @@ while(True):
                     ##(including the prior probability of actions in the pending set)
         
         explanation_expand()
+        
+        pendingset_generate()
+        
+        
+        
+        
+        
         '''
         for x in exp.explaset:
             print "the probability is", x._prob
             
             print "the pdngin set is", x._pendingSet
         '''
-        print len(exp.explaset)
-        
+        print "the exlalength is", len(exp.explaset)
+        #exp.print_explaSet()
         '''
         for x in exp.explaset:
             print x._prob

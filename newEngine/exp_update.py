@@ -14,35 +14,81 @@ db = DB_Object()
 #use to udpate the current explanation according to the input action_explanation
 #act_expla is the explanation for this observation, expla is the current explanation
 def generate_new_expla(act_expla, expla):
-    #firstly remove the just happened action from the pending set
-    expla._pendingSet = [x for x in expla._pendingSet if x[0]!=act_expla[0]]
-    
-    #case 1: there is no expla._forest
-    if len(expla._forest)==0:
-        #goals is all possible tree-format explanation for the given action
-        #with the format of [tree.root, prob]
-        goals = initialize_tree_structure(act_expla[0])
+    #print "go into this function -----------------------!!!!!!!!!!!!!!!11"
+    exp = explaSet()
+    find = False
+    ##update existing tree structure, if the action exist in the 
+    ##pending set of this tree structure
+    for taskNet in expla._forest:
+        for taskNetPending in taskNet._pendingset:
+            if act_expla[0] in taskNetPending._pending_actions:
+                find = True
+                newTaskNet = generate_new_taskNet(act_expla[0], taskNetPending)
+                newforest = list(expla._forest)
+                newforest.remove(taskNet)
+                prob = act_expla[1]*newTaskNet._expandProb*expla._prob
+                
+                    ##this goal has already been completed
+                    ##remove it and add its start action into 
+                    ##the explanation start action list
+                if newTaskNet._complete==True:
+                    newstart_action = list(expla._start_action)
+                    newstart_action.append(db.get_start_action(newTaskNet._goalName))
+                    newexp = Explanation(v=prob, forest = newforest, start_action=newstart_action)
+                    
+                    ##this goal has not been completed
+                else:
+                    newforest.append(newTaskNet)
+                    newexp = Explanation(v=prob, forest = newforest, start_action=list(expla._start_action))
+                    
+                exp.add_exp(newexp)
+            
+    ##generate new tree structure if this action exist in the start action list
+    if act_expla[0] in expla._start_action:
+        find = True
+        newTaskNets = initialize_tree_structure(act_expla[0])
         
-        ##for each element in goal, create new explanation and add it into the
-        exp = explaSet() 
-        for g in goals:
-            my_forest = []
-            my_forest.append(g)
-            #calculate the probability of action level and branching factors
-            prob = act_expla[1]*g._expandProb
-            #print "the new probability is", prob
-            newexp = Explanation(v=prob, forest = my_forest, pendingSet = expla._pendingSet)
-            #v=0, forest=[], pendingSet=[]
+        
+        for g in newTaskNets:
+            newforest = list(expla._forest)
+            newstart_action = list(expla._start_action)
+            prob = act_expla[1]*g._expandProb*expla._prob
+            if g._complete==True:
+                newexp = Explanation(v=prob, forest = list(expla._forest), start_action=newstart_action)
+            else:
+                #print "the new start action is", newstart_action
+                #print "the action is", act_expla[0]
+                newstart_action.remove(act_expla[0])
+                newforest.append(g)
+                newexp = Explanation(v=prob, forest = newforest, start_action=newstart_action)
+            
+            
             exp.add_exp(newexp)
-        
-        #update the probability for the explanations(this is a special step)
-        #for initialization. In this step, goal priors will be considered
-        #In this case, we are using evenly distributed goal priors. 
-        exp.normalize()
+         
     
-    #case 2: this explanation has already been initialized
-    #else:
-        
+     
+    if find==False:
+        print "dangerous action, cannot figure out what the person is doing now"
+        """
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        """
+     
+
+
+#the action exist in the pending_actions of the TaskNetPendingSet,
+#and now this action has happened. generate a new TaskNet based on 
+#this decomposition.
+
+def generate_new_taskNet(action, taskNetPendingSet):
+    theTree = taskNetPendingSet._tree
+    action_node = theTree.get_node(action)
+    action_node.data._completeness = True
+    newTaskNet = TaskNet(goalName = tree.get_node(tree.root).tag, tree = theTree, expandProb = taskNetPendingSet._branch_factor)
+    newTaskNet.update()
+    return newTaskNet
+    
 
 
 ##generate a tree structure for the action_explanation

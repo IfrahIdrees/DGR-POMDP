@@ -30,9 +30,13 @@ class DB_Object(object):
             return None
         else:
             return method[0]
-        
-   
     
+    ##find and return the start actions of the given method
+    ##because the given method is the tag of tree root, it must be a goal
+        
+    def get_start_action(self, m_name):
+        method = list(self._method.find({"m_name":m_name}))
+        return method[0]["start_action"]
     
     ########################operator related###############################
     #######################################################################    

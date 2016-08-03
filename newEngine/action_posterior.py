@@ -22,6 +22,7 @@ def action_posterior():
             #print action
             title[:] = []
             #if action[0]=="nothing_hap" continue #skip nothing hap scenario
+            '''considered action priors here action[1]'''
             action[1]=action[1]*cal_posterior(action)
             #print "the probability is", action[0], action[1]
             #####################
@@ -97,7 +98,7 @@ def bayesian_expand(before, after, op):
         thisp = db.get_obs_prob(s, title[i][0], title[i][1])
         po_s = po_s *float(thisp)    
     
-    
+    #calculate p(s|s_t-1, a_t)
     ps_actANDs_1 = get_ps_actANDs_1(before, after, op)
     ps_actANDs_2 = get_ps_actANDs_2(before, after)
     
@@ -139,8 +140,8 @@ def get_ps_actANDs_1(before, after, op):
 
 #calculate p(s|s_t-1, a_t) not happen
 def get_ps_actANDs_2(before, after):
-    if before==after: return float(1)
-    else: return float(0)    
+    if before==after: return cond_satisfy
+    else: return cond_notsatisfy    
 
             
 

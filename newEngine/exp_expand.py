@@ -31,7 +31,7 @@ def explanation_expand():
             #case1: nothing happened: update the prob of the explanation, 
             #do not need to update tree structure. 
             if y[0]=="nothing":
-                newexpla = Explanation(v=x._prob*y[1], forest = x._forest, pendingSet = x._pendingSet)
+                newexpla = Explanation(v=x._prob*y[1], forest = x._forest, pendingSet = x._pendingSet, start_action = x._start_action)
                 exp.add_exp(newexpla) 
                 #v=0, forest=[], pendingSet=[]
             #case2:something happend, need to update the tree structure as well
@@ -40,7 +40,9 @@ def explanation_expand():
 
     return
 
-    
+#calculate the prob of nothing happen, 
+#normalize on something happen
+#delete action with prob<delete_trigger    
 def action_level_explanation(pendingset):
     nothing_happen = 1
     prob_sum = 0

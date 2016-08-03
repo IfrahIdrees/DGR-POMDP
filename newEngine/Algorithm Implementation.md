@@ -136,22 +136,55 @@ break ha ha ha ha ha
 
 ##August 2##
 
- - Update the pending set (finished)
+ - Update the pending set for taskNet (finished)
 	 - pending set is a list, each element has the structure of [tree, prob, pending]
 	 - only expand leaf node in the tree:
 		 -  who is a method
 		 -  who data._ready = True
 		 -  who data._completeness = False
 	 - When no leaf node can be expand in the tree, generate its corresponding pending actions. filter leaf nodes whose data._ready = True, and data.completeness = False
-	 
-	 
- - need to fill the logic when there is some explanations. 
+ - Pending Set of a TaskNet is different from the pending set of an explanation. It stores the next decomposition information for the current tree structure. So It is associated with the next happen action. 
+ - When an action is identified to happened, just use the corresponding tree structure in the TaskNet pending set. 
 
-##Remain works
- - Update the explanation set, including three steps
-	 - step 1: update the tree structure
-	 - step 2: calculate the probability of this explanation
-	 - step 3: generate the new pending set, including the prior probability of actions in the pending set
+	 
+##August 3##
+ 
+ - **Revision explanation initialization**: When initialize the explanation set, also initialize the start_action list. This list will be updated on the fly. The current tree structure and the start_action list will be used for generating the new pending set for one explanation. (finished)
+ - **explanation_expand**(): ***finished***. For each action in the action_level explanation:
+	 - if it is nothing happen, create new explanation, only update prob.
+	 - if it is something happen, for each possible happened action:
+		 - for each existing explanation in the last step:
+			 - for each TaskNet in that explanation
+				 - If this action exist in the pendingset of this TaskNet, generate new explanation 
+		 - if the action exist in the start_action list of the explanation, 
+			 - initialize TaskNet for that action
+			 - generate new explanation based on each of the TaskNet from initialization
+	 - If something happen, but cannot find in the explanation in the above mentioned step
+		 - this is an error action (dangerous action) 
+ - **Generate_new_expla**: Do not update pending set, it will be initialized as null. 
+	 - one exception is "nothing happened", in this case, pending set will be copied from the parent explanation. 
+	 - This difference will be useful for figure out which explanation need to be generate new pending set. 
+ - **TaskNet_update()**:
+	 -  Every time a new taskNet is generated, update it. 
+	 - This will update the completeness of each node, the readiness of each node, and the TaskNetPendingSet (The next step decomposition results from this TaskNet). 
+	 - TaskNet is updated before using it generate new explanations. 
+	 - This guaranteed that all TaskNet in the explaSet is updated. 
+	 
+ - **Update_state_belief:****Revision**.  
+	 - Combine shared pending set actions by different explanations, after calculate the probability of nothing happened. (**finished**)
+	 - It's better to normalize on other actions.(didn't do this step) 
+ - **Generating new pendingSet**: (**finished**)
+	 - firstly normalize on all explanation
+	 - produce the new pending set based on the TaskNet and start_action list
+	 - Assign probability for them. 
+		 - for explanation who has pending set already, normalize them based on the expla._prob
+		 - for explanation who do not has pending set, create pending set and normalize them based on the expla_prob. 
 
+
+
+##August 4##
 
  - Calculate the probability for goals and inner nodes in the tree. Because the desired assistance is hierarchical, only provide the probability of goals is not enough. We also need to calculate the probability of inner nodes in the tree structure.   
+ - Rearrange the code in a clear manner
+ - Test the algorithm
+ - creating new knowledge base  and test the algorithm. 

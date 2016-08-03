@@ -18,10 +18,11 @@ class Explanation(object):
         self._pendingSet=[] #this is list, each element has format of ["action_name", "prob"]
         '''
     
-    def __init__(self, v=0, forest=[], pendingSet=[]):
+    def __init__(self, v=0, forest=[], pendingSet=[], start_action = []):
         self._prob = v
         self._forest = forest
         self._pendingSet = pendingSet
+        self._start_action = start_action
     
         
     def set_prob(self, v):
@@ -48,13 +49,22 @@ class Explanation(object):
     
     
     
+class TaskNetPendingSet(object):
+    def __init__(self, tree = Tree(), branch_factor = 1, pending_actions = []):
+        self._tree = tree
+        self._branch_factor = branch_factor
+        self._pending_actions = pending_actions
+
+
     
 class TaskNet(object):
-    def __init__(self, goalName="", tree=Tree(), expandProb = 1, pendingset=[]):
+    def __init__(self, goalName="", tree=Tree(), expandProb = 1, pendingset=TaskNetPendingSet(), complete = False):
         self._goalName=goalName ##this is the goal name of the tree, it is a string;
         self._tree = tree
         self._expandProb=expandProb
         self._pendingset = pendingset #[tree, action, new_added branch prob compared with the self._tree]
+        self._complete = complete
+    
     
     ##Functions:
     
@@ -70,6 +80,9 @@ class TaskNet(object):
         #update completeness
         
         complete_update(rootnode, self._tree)
+        if rootnode.data._completeness == True:
+            self._complete=True
+            return
         
         #update ready-ness
         readiness_update(self._tree.root, self._tree)
@@ -96,10 +109,11 @@ def pendingset_update(node, tree):
             if leaf.data._ready==True:
                 method = db.find_method(leaf.tag)
                 if method==None: 
-                    print "this leaf is an step, not method:   ", leaf.tag
+                    #print "this leaf is an step, not method:   ", leaf.tag
+                    continue
                 else:
                     finish = False
-                    print "this leaf is a method     ", leaf.tag
+                    #print "this leaf is a method     ", leaf.tag
                     branches = method_decompose(method)
                     for x in branches:
                         newTree = copy.deepcopy(thisTree[0])
@@ -109,9 +123,12 @@ def pendingset_update(node, tree):
                     
         if finish==True:
             tree_pending=[x.tag for x in leaves if x.data._ready==True and x.data._completeness==False]
-            print "the new pending set is ", tree_pending
+            #print "the new pending set is ", tree_pending
             thisTree.append(tree_pending)
-            expand_tree.append(thisTree)
+            
+            mytasknetpending = TaskNetPendingSet(tree = thisTree[0], branch_factor = thisTree[1], pending_actions = thisTree[2])
+            
+            expand_tree.append(mytasknetpending)
     return expand_tree
     
     
@@ -137,10 +154,10 @@ def method_decompose(method):
     
 
 def add_child(tree, node_id, branch):
-    print "the target node is", node_id
-    print "the branch is", branch
+    #print "the target node is", node_id
+    #print "the branch is", branch
     for x in branch:
-        print "this action is   ", x
+        #print "this action is   ", x
         mydata=None
         if len(branch[x]["pre"]) == 0:
             mydata=Node_data(ready=True, branch = False, pre=branch[x]["pre"], dec = branch[x]["dec"])
@@ -228,13 +245,27 @@ class explaSet(object):
     def length(self):
         return len(self.explaset)
     
-    
-    #normatlize the probability of explanations
-    #case1: priors are not considered
-    #case2: priors are considered
+    def print_explaSet(self):
+        
+        for x in self.explaset:
+            print "--------------------------------"
+            print x._prob
+            #print x._forest
+            print x._pendingSet
+            
+            for y in x._forest:
+                print y._goalName
+                for actions in y._pendingset:
+                    print actions._pending_actions
+                #print y._pendingset._pending_actions[0]
+   
+   
     def normalize(self):
         leng = len(self.explaset)
         my_sum=0
+        for x in self.explaset:
+            my_sum=my_sum+x._prob         
+        '''
         if self.prior_label==False:
             for x in self.explaset:
                 x._prob = x._prob*(float(1)/leng)
@@ -242,7 +273,8 @@ class explaSet(object):
             self.prior_label=True   
         else: ##the priors have already been considered
             for x in self.explaset:
-                my_sum = my_sum+x._prob       
+                my_sum = my_sum+x._prob
+        '''       
         for x in self.explaset:
             x._prob = x._prob/my_sum
         
