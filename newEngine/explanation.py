@@ -249,12 +249,13 @@ class explaSet(object):
         
         for x in self.explaset:
             print "--------------------------------"
-            print x._prob
+            print "the explanation probability is:::: ", x._prob
             #print x._forest
-            print x._pendingSet
-            
+            print "the current pending set is::", x._pendingSet
+            print "the start action is", x._start_action
+            print "~~~~~~~the tree structures are:"
             for y in x._forest:
-                print y._goalName
+                print "the goal name is:::", y._goalName
                 for actions in y._pendingset:
                     print actions._pending_actions
                 #print y._pendingset._pending_actions[0]

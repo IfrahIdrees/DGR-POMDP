@@ -65,32 +65,7 @@ def action_level_explanation(pendingset):
     
     return act_expla
 
-
-
-
-
-
-'''
-##get the action level explanation
-##allow multiple action happen version 
-def action_level_explanation(exp):
-    act_expand = deque([])
-    for i in range(len(exp)):
-        if len(act_expand)==0:
-            act_expand.append([list(exp[i])])
-            act_expand.append([list(["nothing", 1-exp[i][1]])])
-        else:
-            length = len(act_expand)
-            for j in range(length):
-                temp = act_expand.popleft();
-                temp.append(exp[i])
-                act_expand.append(list(temp))
-                temp.pop()
-                temp.append(["nothing", 1-exp[i][1]])
-                act_expand.append(list(temp))
-                                
-    return act_expand                
-'''  
+  
     
     
     

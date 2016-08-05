@@ -32,8 +32,8 @@ while(True):
         if len(exp.explaset) is 0:
             explaSetInit() 
         ##after initialization, print the explanation
-        #print "after initialization, print the explanation"
-        #exp.print_explaSet()
+        print "after initialization, print the explanation"
+        exp.print_explaSet()
              
         ##calcuate the posterior prob of each action in pending set
         
@@ -76,7 +76,7 @@ while(True):
             print "the pdngin set is", x._pendingSet
         '''
         print "the exlalength is", len(exp.explaset)
-        #exp.print_explaSet()
+        exp.print_explaSet()
         '''
         for x in exp.explaset:
             print x._prob

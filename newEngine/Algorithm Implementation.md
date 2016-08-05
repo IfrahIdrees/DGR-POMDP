@@ -170,7 +170,7 @@ break ha ha ha ha ha
 	 - TaskNet is updated before using it generate new explanations. 
 	 - This guaranteed that all TaskNet in the explaSet is updated. 
 	 
- - **Update_state_belief:****Revision**.  
+ - **Update_state_belief:  Revision**.  
 	 - Combine shared pending set actions by different explanations, after calculate the probability of nothing happened. (**finished**)
 	 - It's better to normalize on other actions.(didn't do this step) 
  - **Generating new pendingSet**: (**finished**)
@@ -183,6 +183,10 @@ break ha ha ha ha ha
 
 
 ##August 4##
+didn't make any progress
+
+##August 5##
+
 
  - Calculate the probability for goals and inner nodes in the tree. Because the desired assistance is hierarchical, only provide the probability of goals is not enough. We also need to calculate the probability of inner nodes in the tree structure.   
  - Rearrange the code in a clear manner
