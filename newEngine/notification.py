@@ -1,3 +1,7 @@
+#this class will accept sensor changes
+#from the simulator
+
+
 
 from Queue import *
 

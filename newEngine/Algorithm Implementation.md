@@ -182,11 +182,11 @@ break ha ha ha ha ha
 
 
 
-##August 4##
+##August 4, 5, 6, 7##
 didn't make any progress
 
-##August 5##
-
+##August 8##
+Rearrange code
 
  - Calculate the probability for goals and inner nodes in the tree. Because the desired assistance is hierarchical, only provide the probability of goals is not enough. We also need to calculate the probability of inner nodes in the tree structure.   
  - Rearrange the code in a clear manner
