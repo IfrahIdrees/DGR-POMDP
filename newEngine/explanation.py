@@ -226,58 +226,6 @@ def readiness_update(root_id, tree):
      
         
 
-
-    
-
-
-class explaSet(object):
-    explaset = deque([])
-        #the prior_label is used to guarantee that the priors 
-        #of goals are calculated only once
-    prior_label = False
-    def add_exp(self, e):
-        self.__class__.explaset.append(e)
-    
-    ##get an explanation and remove it
-    def pop(self):
-        return self.explaset.popleft()    
-    
-    def length(self):
-        return len(self.explaset)
-    
-    def print_explaSet(self):
-        
-        for x in self.explaset:
-            print "--------------------------------"
-            print "the explanation probability is:::: ", x._prob
-            #print x._forest
-            print "the current pending set is::", x._pendingSet
-            print "the start action is", x._start_action
-            print "~~~~~~~the tree structures are:"
-            for y in x._forest:
-                print "the goal name is:::", y._goalName
-                for actions in y._pendingset:
-                    print actions._pending_actions
-                #print y._pendingset._pending_actions[0]
-   
-   
-    def normalize(self):
-        leng = len(self.explaset)
-        my_sum=0
-        for x in self.explaset:
-            my_sum=my_sum+x._prob         
-        '''
-        if self.prior_label==False:
-            for x in self.explaset:
-                x._prob = x._prob*(float(1)/leng)
-                my_sum = my_sum+x._prob
-            self.prior_label=True   
-        else: ##the priors have already been considered
-            for x in self.explaset:
-                my_sum = my_sum+x._prob
-        '''       
-        for x in self.explaset:
-            x._prob = x._prob/my_sum
         
         
         

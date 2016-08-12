@@ -6,6 +6,14 @@ from database import *
 
 
 db = DB_Object()
+
+
+##############################################################
+#################normalizing##################################
+###############################################################
+
+
+
 ###normalize the probability of pending set[action_name, prob]
 def my_normalize(act_expla):
     mysum = 0
@@ -25,16 +33,12 @@ def my_normalize_1(prob):
 ##to check if the precondition of a method is satisfied
 ## the return value is [[prob, [subtasks]]]
 
-        
-            
-
-
 def compare_ability(ab1, pre_ab2):
     if pre_ab2[0] == ">=":
         #print "come to here"
         return no_less_than(ab1, pre_ab2)
     return False
-    
+   
 #############################################################
 ###################constraint################################
 #############################################################
@@ -53,6 +57,5 @@ def no_less_than(ab1, pre_ab2):
     return True 
 
 
-    
-    
-    
+
+

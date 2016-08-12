@@ -14,13 +14,17 @@ if __name__ == '__main__':
     #the whole update process if the generated random is bigger than
     #no_notif_trigger_prob
     no_notif_trigger_prob = 0
-    
+ 
     #the sleep interval at each time the engine should sleep.  
     interval = 1
     
-    tracking_engine = Tracking_Engine(no_notif_trigger_prob, interval)
+    #the conditional probability of p(s|s_t-1, a_t)
+    cond_satisfy = 1.0
+    cond_notsatisfy = 0.0
+    
+    tracking_engine = Tracking_Engine(no_notif_trigger_prob, interval, cond_satisfy, cond_notsatisfy)
     tracking_engine.start()
-    tracking_engine.test()
+    #tracking_engine.test()
     #tracking_engine.stop()
     #tracking_engine.__detest()
     

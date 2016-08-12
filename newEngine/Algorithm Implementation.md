@@ -181,12 +181,19 @@ break ha ha ha ha ha
 		 - for explanation who do not has pending set, create pending set and normalize them based on the expla_prob. 
 
 
-
 ##August 4, 5, 6, 7##
 didn't make any progress
 
 ##August 8##
-Rearrange code
+TA proctoring
+Rearrange code(didn't finish)
+##August 9##
+TA marking
+##August 10##
+G1 testing
+##August 11##
+Other staff
+##August 12##
 
  - Calculate the probability for goals and inner nodes in the tree. Because the desired assistance is hierarchical, only provide the probability of goals is not enough. We also need to calculate the probability of inner nodes in the tree structure.   
  - Rearrange the code in a clear manner
