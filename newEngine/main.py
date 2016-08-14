@@ -22,7 +22,10 @@ if __name__ == '__main__':
     cond_satisfy = 1.0
     cond_notsatisfy = 0.0
     
-    tracking_engine = Tracking_Engine(no_notif_trigger_prob, interval, cond_satisfy, cond_notsatisfy)
+    #the threshhold that an explanation is no longer maintain
+    delete_trigger = 0.001
+    
+    tracking_engine = Tracking_Engine(no_trigger = no_notif_trigger_prob, sleep_interval = interval, cond_satisfy=cond_satisfy, cond_notsatisfy = cond_notsatisfy, delete_trigger = delete_trigger)
     tracking_engine.start()
     #tracking_engine.test()
     #tracking_engine.stop()

@@ -17,13 +17,14 @@ class explaSet(object):
     #of goals are calculated only once
     prior_label = False
     
-    def __init__(self, cond_satisfy = 1.0, cond_notsatisfy = 0.0):
+    def __init__(self, cond_satisfy = 1.0, cond_notsatisfy = 0.0, delete_trigger = 0.001):
         self._cond_satisfy = cond_satisfy
         self._cond_notsatisfy = cond_notsatisfy
+        self._delete_trigger = delete_trigger
     
     
     def add_exp(self, e):
-        self.__class__.explaset.append(e)
+        self.explaset.append(e)
     
     ##get an explanation and remove it
     def pop(self):
@@ -36,10 +37,10 @@ class explaSet(object):
     ##initialzie the explanation
     def explaInitialize(self):
         #if has been initialized, just return
-        if self.__class__.prior_label is True:
+        if self.prior_label is True:
             return
         #If has not, firstly put it into true
-        self.__class__.prior_label=True
+        self.prior_label=True
         
         goal = db.find_all_method()
         mypendingSet=[]
@@ -57,7 +58,7 @@ class explaSet(object):
             x[1]=prob
         
         exp = Explanation(v=1, pendingSet=mypendingSet, start_action=mystart_action)
-        self.__class__.explaset.append(exp)
+        self.explaset.append(exp)
         
     def print_explaSet(self):
         
@@ -98,7 +99,7 @@ class explaSet(object):
 ########################################################################################
 #########################################################################################    
     def action_posterior(self):
-        for expla in self.__class__.explaset:
+        for expla in self.explaset:
             for action in expla._pendingSet:
                 '''considered action priors here action[1]'''
                 action[1]=action[1]*self.cal_posterior(action)
@@ -214,27 +215,73 @@ class explaSet(object):
         else: return self._cond_notsatisfy
 
 
-###################################################################################
-###################################################################################
-###############update state belief according to action posteriors##################
-###################################################################################
-###################################################################################
+#########################################################################################
+#########################################################################################
+###############expand the explanation Set, each explanation can be extended into multiple explanations. Based on which actions has happened###############################
+#########################################################################################
+#########################################################################################
+    def explaSet_expand(self):
+        length = self.length() 
+        for i in range(length):
+            x = self.pop()  #get an explanation and remove it
+            act_expla = self.action_level_explanation(x._pendingSet)
+        for y in act_expla:
+            #case1: nothing happened: update the prob of the explanation, 
+            #do not need to update tree structure. 
+            if y[0]=="nothing":
+                newexpla = Explanation(v=x._prob*y[1], forest = x._forest, pendingSet = x._pendingSet, start_action = x._start_action)
+                self.add_exp(newexpla) 
+                #v=0, forest=[], pendingSet=[]
+            #case2:something happend, need to update the tree structure as well
+            else:
+                new_explas = x.generate_new_expla(y)
+                for expla in new_explas:
+                    self.add_exp(expla)
+                #generate_new_expla(y, x)
+
+        return
 
 
-    
-
+    #calculate the prob of nothing happen, 
+    #normalize on something happen
+    #delete action with prob<delete_trigger    
+    def action_level_explanation(self, pendingset):
+        nothing_happen = 1
+        prob_sum = 0
+        ##calculate the prob of nothing happen
+        for x in pendingset:
+            prob_sum = prob_sum + x[1]
+            nothing_happen = nothing_happen*(1-x[1])
+        #print "nothing happend is", nothing_happen
+        
+        ##normalize the prob of something happen prob
+        act_expla = []
+        some_happen = 1-nothing_happen
+        act_expla.append(["nothing", nothing_happen])
+        for x in pendingset:
+            act_expla.append([x[0], x[1]/prob_sum*some_happen])
+        
+        ##delete some action whose prob<delete_trigger and normalize
+        act_expla = [x for x in act_expla if x[1]>=self._delete_trigger]
+        act_expla = my_normalize(act_expla)
+        
+        return act_expla    
 
             
-            
+#########################################################################################
+#########################################################################################
+###############generate the pending set for each explanation############################
+###############based on the current tree structure #####################################
+#########################################################################################
+#########################################################################################            
+    def pendingset_generate(self):
+        self.normalize()
+        for expla in self.explaset:
+            expla.create_pendingSet()
+           
 
 
 
 
 
-
-
-
-    
-            
-            
             

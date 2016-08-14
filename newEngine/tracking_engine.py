@@ -5,11 +5,12 @@ from State import *
 
 
 class Tracking_Engine(object):
-    def __init__(self, no_trigger = 0, sleep_interval = 1, cond_satisfy=1.0, cond_notsatisfy = 0.0):
+    def __init__(self, no_trigger = 0, sleep_interval = 1, cond_satisfy=1.0, cond_notsatisfy = 0.0, delete_trigger = 0.001):
         self._no_trigger = no_trigger
         self._sleep_interval = sleep_interval
         self._cond_satisfy = cond_satisfy
         self._cond_notsatisfy = cond_notsatisfy
+        self._delete_trigger = delete_trigger
 
     
     
@@ -29,10 +30,10 @@ class Tracking_Engine(object):
                 
             #go through the engine logic to update    
             else:
-                exp = explaSet(self._cond_satisfy, self._cond_notsatisfy)
-                exp.explaInitialize()  
+                exp = explaSet(cond_satisfy = self._cond_satisfy, cond_notsatisfy = self._cond_notsatisfy, delete_trigger = self._delete_trigger)
+                exp.explaInitialize()
+                  
                 ##calcuate the posterior prob of each action in pending set
-                
                 exp.action_posterior()
                 
                 
@@ -50,11 +51,12 @@ class Tracking_Engine(object):
                     ##step3: calculate the probability of this explanation
                     ##step4: update the pending set
                             ##(including the prior probability of actions in the pending set)
-                '''
-                explanation_expand()
+                exp.explaSet_expand()
                 
-                pendingset_generate()
-                '''
+    
+                
+                exp.pendingset_generate()
+
                 
                 
                 
