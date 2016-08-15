@@ -195,6 +195,15 @@ G1 testing
 Other staff
 ##August 12##
 
+
+
+##August 15##
+
+ - add new knowledge base action level
+
+
+
+##Pending things
  - Calculate the probability for goals and inner nodes in the tree. Because the desired assistance is hierarchical, only provide the probability of goals is not enough. We also need to calculate the probability of inner nodes in the tree structure.   
  - Rearrange the code in a clear manner
  - Test the algorithm
