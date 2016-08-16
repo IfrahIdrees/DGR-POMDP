@@ -80,6 +80,7 @@
             "switch":"off"  
         },
         "person_1":{
+            "location":"kitchen",
             "ability":[">=", "0", "0", "0"]
         }
     }],
@@ -158,6 +159,7 @@
             "switch":"off"  
         },
         "person_1":{
+            "location":"kitchen",
             "ability":[">=", "0", "0", "0"]
         }
     }],
@@ -187,48 +189,162 @@ should begin from here. Add newly created method to the database.
     "type":"method",
     "m_name":"add_tea",
     "precondition":[{
-        "faucet_1":{
-            "state":"off",
-            "location":"kitchen"  
+        "tea_box_1":{
+            "open":"no",
+            "location":"table"
         },
         "person_1":{
             "location":"kitchen",
             "ability":[">=", "0", "0", "0"]
         },
-        "kettle_1":{
-            "has_water":"no",
-            "switch":"off"
-        }
-    },
-    {
-        "kettle_1":{
-            "has_water":"yes",
-            "switch":"off"  
+        "cup_1":{
+            "location":"table",
+            "has_tea":"no",
+            "has_coffee":"no"
         },
-        "person_1":{
-            "ability":[">=", "0", "0", "0"]
-        }
     }],
     "subtasks":[{
-        "kettle_1_add_water":{
+        "open_tea_box_1":{
             "pre":[],
-            "dec":["kettle_1_heat_water"]
+            "dec":["add_tea_cup_1"]
         },
-        "kettle_1_heat_water":{
-            "pre":["kettle_1_add_water"],
-            "dec":[]
-        }
-    },
-    {
-        "kettle_1_heat_water":{
-            "pre":[],
+        "add_tea_cup_1":{
+            "pre":["open_tea_box_1"],
+            "dec":["close_tea_box_1"]
+        },
+        "close_tea_box_1":{
+            "pre":["add_tea_cup_1"],
             "dec":[]
         }
     }],
-    "parent":[],
-    "start_action":["turn_on_faucet_1", "switch_on_kettle_1"]
+    "parent":["mix_tea_water"],
+    "start_action":[]
 }
 
 
 
+{
+    "type":"method",
+    "m_name":"add_coffee",
+    "precondition":[{
+        "coffee_box_1":{
+            "open":"no",
+            "location":"table"
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        },
+        "cup_1":{
+            "location":"table",
+            "has_tea":"no",
+            "has_coffee":"no"
+        },
+    }],
+    "subtasks":[{
+        "open_coffee_box_1":{
+            "pre":[],
+            "dec":["add_coffee_cup_1"]
+        },
+        "add_coffee_cup_1":{
+            "pre":["open_coffee_box_1"],
+            "dec":["close_coffee_box_1"]
+        },
+        "close_coffee_box_1":{
+            "pre":["add_coffee_cup_1"],
+            "dec":[]
+        }
+    }],
+    "parent":["mix_coffee_water"],
+    "start_action":[]
+}
+
+
+{
+    "type":"method",
+    "m_name":"mix_tea_water",
+    "precondition":[{
+        "tea_box_1":{
+            "open":"no",
+            "location":"table"
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        },
+        "cup_1":{
+            "location":"cabinet",
+            "has_tea":"no",
+            "has_coffee":"no",
+            "has_water":"no", 
+        },
+        here need to add the state of kettle water
+    }],
+    "subtasks":[{
+        "get_cup_1":{
+            "pre":[],
+            "dec":["add_tea", "add_water_cup_1"]
+        },
+        "add_tea":{
+            "pre":["get_cup_1"],
+            "dec":[]
+        },
+        "add_water_cup_1":{
+            "pre":["get_cup_1"],
+            "dec":[]
+        }
+    }],
+    "parent":["make_tea"],
+    "start_action":[]
+}
+
+
+{
+    "type":"method",
+    "m_name":"mix_coffee_water",
+    "precondition":[{
+        "coffee_box_1":{
+            "open":"no",
+            "location":"table"
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        },
+        "cup_1":{
+            "location":"cabinet",
+            "has_tea":"no",
+            "has_coffee":"no",
+            "has_water":"no", 
+        },
+        here need to add the state of kettle water
+    }],
+    "subtasks":[{
+        "get_cup_1":{
+            "pre":[],
+            "dec":["add_coffee", "add_water_cup_1"]
+        },
+        "add_coffee":{
+            "pre":["get_cup_1"],
+            "dec":[]
+        },
+        "add_water_cup_1":{
+            "pre":["get_cup_1"],
+            "dec":[]
+        }
+    }],
+    "parent":["make_coffee"],
+    "start_action":[]
+}
+
+
+make tea:   prepare hot water
+            mix tea water
+            drink
+make coffe: prepare hot water
+            mix coffee water
+            drink
+            
+make drink  make tea
+            make coffee
 

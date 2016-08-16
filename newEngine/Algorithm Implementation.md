@@ -200,6 +200,9 @@ Other staff
 ##August 15##
 
  - add new knowledge base action level
+ - **Important modification:**: need to check precondition produce method, for ordered steps. p1Up2Up3 - P2you know jagdjalksd
+ - need to consider the water has been heated, water cold/water hot
+ - state 闭环检测（begin from what, should come back to what）
 
 
 

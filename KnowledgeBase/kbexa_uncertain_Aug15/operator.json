@@ -122,6 +122,7 @@
             "switch":"off"
         },
         "person_1":{
+            "location":"kitchen",
             "ability":[">=", "0", "0", "0"]
         }
     },
@@ -139,9 +140,10 @@
     "st_name":"switch_off_kettle_1",
     "precondition":{
         "kettle_1":{
-            "switch":"on"
+            "switch":"on",
         },
         "person_1":{
+            "location":"kitchen",
             "ability":[">=", "0", "0", "0"]
         }
     },
@@ -162,6 +164,7 @@
             "switch":"off"
         },
         "person_1":{
+            "location":"kitchen",
             "ability":[">=", "0", "0", "0"]
         }
     },
@@ -189,6 +192,7 @@
             "has_coffee":"no"
         },
         "person_1":{
+            "location":"kitchen",
             "ability":[">=", "0", "0", "0"]
         }
     },
@@ -210,6 +214,7 @@
             "location":"table"
         },
         "person_1":{
+            "location":"kitchen",
             "ability":[">=", "0", "0", "0"]
         }
     },
@@ -236,6 +241,7 @@
             "has_coffee":"no"
         },
         "person_1":{
+            "location":"kitchen",
             "ability":[">=", "0", "0", "0"]
         }
     },
@@ -256,6 +262,7 @@
             "location":"table"
         },
         "person_1":{
+            "location":"kitchen",
             "ability":[">=", "0", "0", "0"]
         }
     },
@@ -276,8 +283,11 @@
             "location":"table"
         },
         "person_1":{
+            "location":"kitchen",
             "ability":[">=", "0", "0", "0"]
-        }
+        },
+        ""　
+        
     },
     "effect":{
         "cup_1":{
@@ -297,6 +307,7 @@
             "location":"table"
         },
         "person_1":{
+            "location":"kitchen",
             "ability":[">=", "0", "0", "0"]
         }
     },
@@ -323,6 +334,7 @@
         
         },
         "person_1":{
+            "location":"kitchen",
             "ability":[">=", "0", "0", "0"]
         }
     },
@@ -344,6 +356,7 @@
             "location":"table"
         },
         "person_1":{
+            "location":"kitchen",
             "ability":[">=", "0", "0", "0"]
         }
     },

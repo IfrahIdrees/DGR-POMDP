@@ -21,6 +21,10 @@
  - kettle_1_heat_water
  - kettle_1_add_water
  - prepare_hot_water
+ - add_tea
+ - add_coffee
+ - mix_coffee_water
+ - mix_tea_water
 
 ##Object##
 ------
