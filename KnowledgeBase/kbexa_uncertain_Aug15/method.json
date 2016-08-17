@@ -77,7 +77,8 @@
     "precondition":[{
         "kettle_1":{
             "has_water":"yes",
-            "switch":"off"  
+            "switch":"off",
+            "water_hot":"no"  
         },
         "person_1":{
             "location":"kitchen",
@@ -114,7 +115,8 @@
         },
         "kettle_1":{
             "has_water":"no",
-            "switch":"off"
+            "switch":"off", 
+            "water_hot":"no"
         }
     }],
     "subtasks":[{
@@ -150,13 +152,16 @@
         },
         "kettle_1":{
             "has_water":"no",
-            "switch":"off"
+            "switch":"off",
+            "water_hot":"no"
         }
     },
     {
         "kettle_1":{
             "has_water":"yes",
-            "switch":"off"  
+            "switch":"off",
+            "water_hot":"no"
+              
         },
         "person_1":{
             "location":"kitchen",
@@ -179,12 +184,11 @@
             "dec":[]
         }
     }],
-    "parent":[],
+    "parent":["make_tea", "make_coffee"],
     "start_action":["turn_on_faucet_1", "switch_on_kettle_1"]
 }
 
-============================================================
-should begin from here. Add newly created method to the database. 
+
 {
     "type":"method",
     "m_name":"add_tea",
@@ -201,7 +205,7 @@ should begin from here. Add newly created method to the database.
             "location":"table",
             "has_tea":"no",
             "has_coffee":"no"
-        },
+        }
     }],
     "subtasks":[{
         "open_tea_box_1":{
@@ -239,7 +243,7 @@ should begin from here. Add newly created method to the database.
             "location":"table",
             "has_tea":"no",
             "has_coffee":"no"
-        },
+        }
     }],
     "subtasks":[{
         "open_coffee_box_1":{
@@ -276,11 +280,12 @@ should begin from here. Add newly created method to the database.
             "location":"cabinet",
             "has_tea":"no",
             "has_coffee":"no",
-            "has_water":"no", 
+            "has_water":"no"
         },
         "kettle_1":{
             "has_water":"yes",
-            "water_hot":"yes"
+            "water_hot":"yes",
+            "switch":"off"
         }
     }],
     "subtasks":[{
@@ -318,11 +323,12 @@ should begin from here. Add newly created method to the database.
             "location":"cabinet",
             "has_tea":"no",
             "has_coffee":"no",
-            "has_water":"no", 
+            "has_water":"no"
         },
         "kettle_1":{
             "has_water":"yes",
-            "water_hot":"yes"
+            "water_hot":"yes",
+            "switch":"off"
         }
     }],
     "subtasks":[{
@@ -344,13 +350,67 @@ should begin from here. Add newly created method to the database.
 }
 
 
-make tea:   prepare hot water
-            mix tea water
-            drink
-make coffe: prepare hot water
-            mix coffee water
-            drink
-            
-make drink  make tea
-            make coffee
+{
+    "type":"method",
+    "m_name":"make_tea",
+    "precondition":[{
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        },
+        "kettle_1":{
+            "switch":"off"
+        }
+    }],
+    "subtasks":[{
+        "prepare_hot_water":{
+            "pre":[],
+            "dec":["mix_tea_water"]
+        },
+        "mix_tea_water":{
+            "pre":["prepare_hot_water"],
+            "dec":["drink"]
+        },
+        "drink":{
+            "pre":["mix_tea_water"],
+            "dec":[]
+        }
+    }],
+    "parent":[],
+    "start_action":["turn_on_faucet_1", "switch_on_kettle_1"]
+}
+
+
+{
+    "type":"method",
+    "m_name":"make_coffee",
+    "precondition":[{
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        },
+        "kettle_1":{
+            "switch":"off"
+        }
+    }],
+    "subtasks":[{
+        "prepare_hot_water":{
+            "pre":[],
+            "dec":["mix_coffee_water"]
+        },
+        "mix_coffee_water":{
+            "pre":["prepare_hot_water"],
+            "dec":["drink"]
+        },
+        "drink":{
+            "pre":["mix_coffee_water"],
+            "dec":[]
+        }
+    }],
+    "parent":[],
+    "start_action":["turn_on_faucet_1", "switch_on_kettle_1"]
+}
+
+
+
 

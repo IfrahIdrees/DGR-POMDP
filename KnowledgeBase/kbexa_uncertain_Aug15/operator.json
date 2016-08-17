@@ -130,7 +130,7 @@
     "effect":{
         "kettle_1":{
             "switch":"on", 
-            "water_hot":"yes",  
+            "water_hot":"yes" 
         }
     },
     "parent":["kettle_1_heat_water"]
@@ -182,7 +182,7 @@
 
 
 
------------------------------------------
+
 
 
 {
@@ -292,16 +292,16 @@
         },
         "kettle_1":{
             "has_water":"yes",
-            "water_hot":"yes"
-        }　
-        
+            "water_hot":"yes",
+            "switch":"off"
+        }
     },
     "effect":{
         "cup_1":{
-            "has_water":"yes"  
+            "has_water":"yes"
         },
         "kettle_1":{
-            "has_water":"no", 
+            "has_water":"no",
             "water_hot":"no"
         }
         
@@ -378,5 +378,23 @@
         }
     },
     "parent":["mix_coffee_water"]
+}
+
+
+{
+    "type":"step",
+    "st_name":"drink",
+    "precondition":{
+        "cup_1":{
+            "has_water":"yes"
+        }
+    },
+    "effect":{
+        "cup_1":{
+            "has_water":"no", 
+            "has_coffee":"no",
+            "has_tea":"no"
+        }
+    }
 }
 
