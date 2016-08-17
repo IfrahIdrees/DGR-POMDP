@@ -119,6 +119,7 @@
     "precondition":{
         "kettle_1":{
             "has_water":"yes",
+            "water_hot":"no",
             "switch":"off"
         },
         "person_1":{
@@ -128,7 +129,8 @@
     },
     "effect":{
         "kettle_1":{
-            "switch":"on"  
+            "switch":"on", 
+            "water_hot":"yes",  
         }
     },
     "parent":["kettle_1_heat_water"]
@@ -141,6 +143,7 @@
     "precondition":{
         "kettle_1":{
             "switch":"on",
+            "water_hot":"yes"
         },
         "person_1":{
             "location":"kitchen",
@@ -161,7 +164,8 @@
     "precondition":{
         "kettle_1":{
             "has_water":"no",
-            "switch":"off"
+            "switch":"off",
+            "water_hot":"no"
         },
         "person_1":{
             "location":"kitchen",
@@ -286,13 +290,21 @@
             "location":"kitchen",
             "ability":[">=", "0", "0", "0"]
         },
-        ""　
+        "kettle_1":{
+            "has_water":"yes",
+            "water_hot":"yes"
+        }　
         
     },
     "effect":{
         "cup_1":{
             "has_water":"yes"  
+        },
+        "kettle_1":{
+            "has_water":"no", 
+            "water_hot":"no"
         }
+        
     },
     "parent":["mix_tea_water", "mix_coffee_water"]
 }

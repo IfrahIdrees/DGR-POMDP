@@ -278,7 +278,10 @@ should begin from here. Add newly created method to the database.
             "has_coffee":"no",
             "has_water":"no", 
         },
-        here need to add the state of kettle water
+        "kettle_1":{
+            "has_water":"yes",
+            "water_hot":"yes"
+        }
     }],
     "subtasks":[{
         "get_cup_1":{
@@ -317,7 +320,10 @@ should begin from here. Add newly created method to the database.
             "has_coffee":"no",
             "has_water":"no", 
         },
-        here need to add the state of kettle water
+        "kettle_1":{
+            "has_water":"yes",
+            "water_hot":"yes"
+        }
     }],
     "subtasks":[{
         "get_cup_1":{

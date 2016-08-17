@@ -69,6 +69,14 @@
 }
 
 {
+    "ob_name":"kettle_1",
+    "attri_name":"water_hot",
+    "value":["no", 2],
+    "reliability":0.99
+}
+
+
+{
     "ob_name":"cup_1", 
     "attri_name":"location", 
     "value":["cabinet", 2], 

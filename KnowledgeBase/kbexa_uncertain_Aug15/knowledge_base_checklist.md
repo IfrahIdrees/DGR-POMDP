@@ -46,6 +46,7 @@
  - person_1-location
  - kettle_1-has_water
  - kettle_1-switch
+ - kettle_1-water_hot
  - cup_1-location
  - cup_1-has_water
  - cup_1-has_tea
