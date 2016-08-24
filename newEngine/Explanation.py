@@ -8,6 +8,7 @@ from TaskNet import *
 from Node_data import *
 from database import *
 from helper import *
+from TaskHint import *
 
 db = DB_Object()
 
@@ -256,4 +257,57 @@ class Explanation(object):
             x[1]=self._prob*prior
         
         return pendingSet 
+
+
+#########################################################################################
+#########################################################################################
+###############generate task hint in levels #####################################
+#########################################################################################
+######################################################################################### 
+    def generate_task_hint(self):
+
+        #########step1--------------------------------------
+        ##get all node and their levels from this explanation's forest
+        ##all those node should share the same prob.
+        task_Name_Level = {}
+        if len(self._forest)==0:
+            task_Name_Level = {"nothing":[]}
+        else:
+            for taskNet in self._forest:
+                for taskNetPending in taskNet._pendingset:
+                    node_list = taskNetPending._tree.all_nodes()
+                    #taskNetPending._tree.show(line_type = "ascii")
+                    
+                    #only select nodes whose completeness is False, and readiness is True
+                    node_list = [x for x in node_list if x.data._completeness==False and x.data._ready==True]
+                    
+                    for node in node_list:
+                        level_num = taskNetPending._tree.depth(node)
+                        if node._tag in task_Name_Level.keys():
+                            level_list = task_Name_level.get(node._tag)
+                            level_list.append(level_num)
+                            new_dict = {node._tag:level_list}
+                            task_Name_Level.update(new_dict)
+                        else:
+                            level_list = []
+                            level_list.append(level_num)
+                            new_dict = {node._tag:level_list}
+                            task_Name_Level.update(new_dict)
+   
+        ###########Step2----------------------------------------------
+        ##add the task_Name_Level dict to the TaskHint 
+                               
+        taskhint = TaskHint()
+        for k,v in task_Name_Level.items():
+            #print "this key is", k
+            #print "this value is", v
+            #print "&&&&&&&&&&&&&&&&&&&&&&&&&&&77"
+            taskhint.add_task(task_tag=k, expla_prob=self._prob, level = v)
+                   
              
+            
+        
+        
+
+
+            

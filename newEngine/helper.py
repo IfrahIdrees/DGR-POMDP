@@ -56,6 +56,15 @@ def no_less_than(ab1, pre_ab2):
     #print "i want return true"
     return True 
 
-
-
+##############################################################
+#################return the average of a list###################
+def list_average(mylist):
+    length = len(mylist)
+    if length==0:
+        return -1
+    mysum = 0
+    for x in mylist:
+        mysum = mysum+x
+    ##the return value is an int now
+    return mysum/length
 

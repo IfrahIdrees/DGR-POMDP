@@ -5,6 +5,7 @@ from collections import deque
 from database import *
 from Explanation import *
 from helper import *
+from TaskHint import *
 
 db = DB_Object()
 
@@ -282,6 +283,19 @@ class explaSet(object):
 
 
 
+#########################################################################################
+#########################################################################################
+###############Calculate the probability of node in each explanation, and output the probabilities of tasks, and average level...........#####################################
+#########################################################################################
+######################################################################################### 
+    def task_prob_calculate(self):
+        taskhint = TaskHint()
+        taskhint.reset()
+        for expla in self.explaset:
+            expla.generate_task_hint()
+        taskhint = TaskHint()
+        taskhint.average_level()
+        taskhint.print_taskhint()    
 
 
             

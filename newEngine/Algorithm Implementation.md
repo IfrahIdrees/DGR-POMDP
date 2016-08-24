@@ -214,19 +214,12 @@ Other staff
 	 -  This part is easy, after the pending set updating, all incomplete node in the tree can be prompt in the next step. 
  - Step 3: for the generated list node, add / update in the dictionary. 
 
+##August 24##
 
-Calculate the probability for goals and inner nodes in the tree. Because the desired assistance is hierarchical, only provide the probability of goals is not enough. We also need to calculate the probability of inner nodes in the tree structure.  
-
-
-
-
-
-
-
-
-
-
-
+ - implement node probability calculation
+ - need to consider no actions have happened, in this case, nothing should be prompt. In this project, prompt is generated only when something has happened. 
+ - **Find a bug**, tree structure didn't decomposed as want.... (**bug fixed**)
+ - @@@@@@@@@@@@@@@@@@@[the reason of the bug: the expla_tree is the tree structure of the last step, newly added node does not exist in this tree structure, in this step, the decompose procedures and outcomes are completed and stored in the  _forest------>TaskNet---->_pendingSet--------->tree structure, so the prompt task name and their probabilities should be generated based on tree structure of pendingSet of TaskNet of _forest] 
 
 
 ##Pending things

@@ -57,7 +57,7 @@ class Tracking_Engine(object):
                 
                 exp.pendingset_generate()
 
-                
+                exp.task_prob_calculate()
                 
                 
                 
