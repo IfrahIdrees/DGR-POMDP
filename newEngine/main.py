@@ -27,9 +27,6 @@ if __name__ == '__main__':
     
     tracking_engine = Tracking_Engine(no_trigger = no_notif_trigger_prob, sleep_interval = interval, cond_satisfy=cond_satisfy, cond_notsatisfy = cond_notsatisfy, delete_trigger = delete_trigger)
     tracking_engine.start()
-    #tracking_engine.test()
-    #tracking_engine.stop()
-    #tracking_engine.__detest()
     
     print "I am good until now" 
     #tracking_engine = tracking_engine()

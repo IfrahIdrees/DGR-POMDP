@@ -194,20 +194,49 @@ G1 testing
 ##August 11##
 Other staff
 ##August 12##
-
+ - Rearrange the code in a clear manner
 
 
 ##August 15##
 
- - add new knowledge base action level
- - **Important modification:**: need to check precondition produce method, for ordered steps. p1Up2Up3 - P2you know jagdjalksd
- - need to consider the water has been heated, water cold/water hot
- - state 闭环检测（begin from what, should come back to what）
+ - add new knowledge base action level. Creating new knowledge base. Now the knowledge base is the complete graph as I present in the example.  
+ - **Important modification:**: need to check precondition produce method, for ordered steps. (checked)
+ - Time fly!!!!!!!!!!!!!!!!!!
+
+##August 23##
+
+ -  calculate the probability for node. (including inner nodes)
+ - The node can be steps or tasks. **The node must be a node that can be prompt in the next step**.
+ -  The probability of a node is the sum probability of explanations that contains the node. 
+ - My idea is to create a dictionary, the key is the task / step name, the value is the probability. Each time update the probability if the node already exist in the dictionary, add new element if the node is not in the dictionary. 
+ - Step 1: create a dictionary (key, [probability, [level list]])
+ - Step 2: for each explanation, get the list of node that satisfy: can be prompt in the next step
+	 -  This part is easy, after the pending set updating, all incomplete node in the tree can be prompt in the next step. 
+ - Step 3: for the generated list node, add / update in the dictionary. 
+
+
+Calculate the probability for goals and inner nodes in the tree. Because the desired assistance is hierarchical, only provide the probability of goals is not enough. We also need to calculate the probability of inner nodes in the tree structure.  
+
+
+
+
+
+
+
+
+
+
 
 
 
 ##Pending things
- - Calculate the probability for goals and inner nodes in the tree. Because the desired assistance is hierarchical, only provide the probability of goals is not enough. We also need to calculate the probability of inner nodes in the tree structure.   
- - Rearrange the code in a clear manner
- - Test the algorithm
- - creating new knowledge base  and test the algorithm. 
+
+ - need to consider the water has been heated, water cold/water hot
+ - how to consider intervals of steps, introducing transition state, like heating, heated...
+ - For safety consideration, some state should be attached with time property. If this state last for some time, should create alert. For example, heating should not be longer than 10 min. 
+ - The definition of p(s_t | s_t-1, a_t), currently it is 1.  how to define this???????? Need to think about this seriously. 
+ - state 闭环检测（begin from what, should come back to what）
+ 
+ 
+
+
