@@ -30,14 +30,14 @@ Notification Set
 
  - get_on_notif()
      - function: return the first notification set in the Queue (**do not delete it!**) if it has element
-	 - input: N/A
+	 - input: None
 	 - output: 
 		 - content: A notification set / None
 		 - type: list
  - delete_one_notif()
 	 - function: **delete** the first notification set in the Queue if there is element in the Queue
-	 - input: N/A
-	 - output: N/A
+	 - input: None
+	 - output: None
 
 
 Sensor Reading related
@@ -67,4 +67,4 @@ Sensor Reading related
  - get_sensor_reading(ob_name, attri_name)
 	 - function: return the specific sensor reading
 	 - input: "ob_name", "attri_name"
-	 - output: an "**sensor reading**" item if exists
+	 - output: an "**sensor reading**" item / None
