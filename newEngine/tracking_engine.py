@@ -12,11 +12,6 @@ class Tracking_Engine(object):
         self._cond_notsatisfy = cond_notsatisfy
         self._delete_trigger = delete_trigger
 
-    
-    
-    def test(self):
-        print "I am test here"
-        
             
     def start(self):
         print "the engine has been started"
