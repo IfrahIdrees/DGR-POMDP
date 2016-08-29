@@ -16,7 +16,7 @@ class explaSet(object):
     explaset = deque([])
     #the prior_label is used to guarantee that the priors 
     #of goals are calculated only once
-    prior_label = False
+    init_label = False
     
     def __init__(self, cond_satisfy = 1.0, cond_notsatisfy = 0.0, delete_trigger = 0.001):
         self._cond_satisfy = cond_satisfy
@@ -38,10 +38,10 @@ class explaSet(object):
     ##initialzie the explanation
     def explaInitialize(self):
         #if has been initialized, just return
-        if self.prior_label is True:
+        if self.init_label is True:
             return
         #If has not, firstly put it into true
-        self.prior_label=True
+        self.init_label=True
         
         goal = db.find_all_method()
         mypendingSet=[]
