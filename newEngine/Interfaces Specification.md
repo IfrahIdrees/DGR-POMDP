@@ -28,7 +28,7 @@ Notification Set
 
 **Notification Interface**
 
- - get_on_notif()
+ - get_one_notif()
      - function: return the first notification set in the Queue (**do not delete it!**) if it has element
 	 - input: None
 	 - output: 

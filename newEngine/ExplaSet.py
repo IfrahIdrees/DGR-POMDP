@@ -133,14 +133,16 @@ class explaSet(object):
     def realMyDFS(self, enum, va, title, beforeS):
         if len(va)==len(title):
             enum.append(list(va))
-            return enum
+            return ##enum
         key = title[len(va)]
         select_state = [x for x in beforeS if x["ob_name"]==key[0]]
         attr = select_state[0][key[1]]
         for x in attr:
-            va.append(x)
+            va.insert(len(va), x)
+            ##va.append(x)
             self.realMyDFS(enum, va, title, beforeS)
-            va.remove(x)
+            va.pop()
+            ##va.remove(x)
         
     ##impliment the bayesian network calculation for one possible state
     #op: the operator in knowlege base, prob: the prior of the action
@@ -159,6 +161,7 @@ class explaSet(object):
     #state_c: the notification        
     def bayesian_expand(self, before, after, op, title):
         #calculate p(s_t-1)
+   
         ps_before = 1
         for i, s in enumerate(before):
             thisp = db.get_attribute_prob(s, title[i][0], title[i][1])
@@ -289,11 +292,12 @@ class explaSet(object):
 #########################################################################################
 ######################################################################################### 
     def task_prob_calculate(self):
+        print "go into task prob _calculate"
         taskhint = TaskHint()
         taskhint.reset()
         for expla in self.explaset:
-            expla.generate_task_hint()
-        taskhint = TaskHint()
+            expla.generate_task_hint(taskhint)
+        ##taskhint = TaskHint()
         taskhint.average_level()
         taskhint.print_taskhint()    
 

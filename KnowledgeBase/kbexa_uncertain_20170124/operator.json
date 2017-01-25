@@ -1,0 +1,399 @@
+{
+    "type":"step",
+    "st_name":"use_soap",
+    "precondition":{
+        "hand_1":{
+            "soapy":"no",
+            "dirty":"yes"  
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "effect":{
+        "hand_1":{
+            "soapy":"yes"
+        }
+    },
+    "parent":["clean_hand"]
+}
+
+
+{
+    "type":"step",
+    "st_name":"rinse_hand",
+    "precondition":{
+        "hand_1":{
+            "soapy":"yes",
+            "dirty":"yes"  
+        },
+        "faucet_1":{
+            "state":"yes"
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "effect":{
+        "hand_1":{
+            "soapy":"no",
+            "dirty":"no",
+            "dry":"no"  
+        }
+    },
+    "parent":["clean_hand"]
+}
+
+{
+    "type":"step",
+    "st_name":"turn_on_faucet_1",
+    "precondition":{
+        "faucet_1":{
+            "state":"off",
+            "location":"kitchen"  
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "effect":{
+        "faucet_1":{
+            "state":"on"  
+        }
+    },
+    "parent":["wash_hand", "kettle_1_add_water"]
+}
+
+
+{
+    "type":"step",
+    "st_name":"turn_off_faucet_1",
+    "precondition":{
+        "faucet_1":{
+            "state":"on",
+            "location":"kitchen"  
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "effect":{
+        "faucet_1":{
+            "state":"off"  
+        }
+    },
+    "parent":["wash_hand", "kettle_1_add_water"]
+}
+
+
+{
+    "type":"step",
+    "st_name":"dry_hand",
+    "precondition":{
+        "hand_1":{
+            "dry":"no",
+            "clean":"yes"
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "effect":{
+        "hand_1":{
+            "dry":"yes"  
+        }
+    },
+    "parent":["wash_hand"]
+}
+
+
+{
+    "type":"step",
+    "st_name":"switch_on_kettle_1",
+    "precondition":{
+        "kettle_1":{
+            "has_water":"yes",
+            "water_hot":"no",
+            "switch":"off"
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "effect":{
+        "kettle_1":{
+            "switch":"on", 
+            "water_hot":"yes" 
+        }
+    },
+    "parent":["kettle_1_heat_water"]
+}
+
+
+{
+    "type":"step",
+    "st_name":"switch_off_kettle_1",
+    "precondition":{
+        "kettle_1":{
+            "switch":"on",
+            "water_hot":"yes"
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "effect":{
+        "kettle_1":{
+            "switch":"off"  
+        }
+    },
+    "parent":["kettle_1_heat_water"]
+}
+
+{
+    "type":"step",
+    "st_name":"add_water_kettle_1",
+    "precondition":{
+        "kettle_1":{
+            "has_water":"no",
+            "switch":"off",
+            "water_hot":"no"
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "effect":{
+        "kettle_1":{
+            "has_water":"yes"  
+        }
+    },
+    "parent":["kettle_1_add_water"]
+}
+
+
+
+
+
+
+{
+    "type":"step",
+    "st_name":"get_cup_1",
+    "precondition":{
+        "cup_1":{
+            "has_water":"no",
+            "location":"cabinet",
+            "has_tea":"no",
+            "has_coffee":"no"
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "effect":{
+        "cup_1":{
+            "location":"table"  
+        }
+    },
+    "parent":["mix_tea_water", "mix_coffee_water"]
+}
+
+
+{
+    "type":"step",
+    "st_name":"open_tea_box_1",
+    "precondition":{
+        "tea_box_1":{
+            "open":"no",
+            "location":"table"
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "effect":{
+        "tea_box_1":{
+            "open":"yes"  
+        }
+    },
+    "parent":["mix_tea_water"]
+}
+
+
+{
+    "type":"step",
+    "st_name":"add_tea_cup_1",
+    "precondition":{
+        "tea_box_1":{
+            "open":"yes",
+            "location":"table"
+        },
+        "cup_1":{
+            "location":"table",
+            "has_tea":"no",
+            "has_coffee":"no"
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "effect":{
+        "cup_1":{
+            "has_tea":"yes"  
+        }
+    },
+    "parent":["mix_tea_water"]
+}
+
+{
+    "type":"step",
+    "st_name":"close_tea_box_1",
+    "precondition":{
+        "tea_box_1":{
+            "open":"yes",
+            "location":"table"
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "effect":{
+        "tea_box_1":{
+            "open":"no"  
+        }
+    },
+    "parent":["mix_tea_water"]
+}
+
+{
+    "type":"step",
+    "st_name":"add_water_cup_1",
+    "precondition":{
+        "cup_1":{
+            "has_water":"no",
+            "location":"table"
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        },
+        "kettle_1":{
+            "has_water":"yes",
+            "water_hot":"yes",
+            "switch":"off"
+        }
+    },
+    "effect":{
+        "cup_1":{
+            "has_water":"yes"
+        },
+        "kettle_1":{
+            "has_water":"no",
+            "water_hot":"no"
+        }
+        
+    },
+    "parent":["mix_tea_water", "mix_coffee_water"]
+}
+
+
+{
+    "type":"step",
+    "st_name":"open_coffee_box_1",
+    "precondition":{
+        "coffee_box_1":{
+            "open":"no",
+            "location":"table"
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "effect":{
+        "coffee_box_1":{
+            "open":"yes"  
+        }
+    },
+    "parent":["mix_coffee_water"]
+}
+
+{
+    "type":"step",
+    "st_name":"add_coffee_cup_1",
+    "precondition":{
+        "coffee_box_1":{
+            "open":"yes",
+            "location":"table"
+        },
+        "cup_1":{
+            "location":"table",
+            "has_tea":"no", 
+            "has_coffee":"no"
+        
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "effect":{
+        "cup_1":{
+            "has_coffee":"yes"  
+        }
+    },
+    "parent":["mix_coffee_water"]
+}
+
+
+{
+    "type":"step",
+    "st_name":"close_coffee_box_1",
+    "precondition":{
+        "coffee_box_1":{
+            "open":"yes",
+            "location":"table"
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        }
+    },
+    "effect":{
+        "coffee_box_1":{
+            "open":"no"  
+        }
+    },
+    "parent":["mix_coffee_water"]
+}
+
+
+{
+    "type":"step",
+    "st_name":"drink",
+    "precondition":{
+        "cup_1":{
+            "has_water":"yes"
+        }
+    },
+    "effect":{
+        "cup_1":{
+            "has_water":"no", 
+            "has_coffee":"no",
+            "has_tea":"no"
+        }
+    }
+}
+

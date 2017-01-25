@@ -18,12 +18,9 @@ class TaskHint(object):
             key_value = self.prompt_task.get(task_tag)
             key_value[0] = key_value[0]+expla_prob
             key_value[1] = key_value[1]+level
-            #key_vlaue[1].append(task_level)
             new_dict = {task_tag: key_value}
             self.prompt_task.update(new_dict)
         else:
-            #task_level_list = []
-            #task_level_list.append(task_level)
             key_value = []
             key_value.append(expla_prob)
             key_value.append(level)
@@ -31,6 +28,7 @@ class TaskHint(object):
             self.prompt_task.update(new_dict)    
         #print "after add, now the length of task hint is", len(self.prompt_task)
     def average_level(self):
+        print "go into task hint average level"
         for k, v in self.prompt_task.items():
             ave = list_average(v[1])
             key_value = []
@@ -40,6 +38,7 @@ class TaskHint(object):
             self.prompt_task.update(new_dict)
     
     def print_taskhint(self):
+        print "go into task hint print"
         for k, v in self.prompt_task.items():
             print "task name:", k
             print "task prob:", v[0]

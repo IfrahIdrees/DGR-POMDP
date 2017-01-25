@@ -264,7 +264,7 @@ class Explanation(object):
 ###############generate task hint in levels #####################################
 #########################################################################################
 ######################################################################################### 
-    def generate_task_hint(self):
+    def generate_task_hint(self, taskhint):
 
         #########step1--------------------------------------
         ##get all node and their levels from this explanation's forest
@@ -297,12 +297,14 @@ class Explanation(object):
         ###########Step2----------------------------------------------
         ##add the task_Name_Level dict to the TaskHint 
                                
-        taskhint = TaskHint()
+        ##taskhint = TaskHint()
+        ##taskhint.reset()
         for k,v in task_Name_Level.items():
             #print "this key is", k
             #print "this value is", v
             #print "&&&&&&&&&&&&&&&&&&&&&&&&&&&77"
             taskhint.add_task(task_tag=k, expla_prob=self._prob, level = v)
+        ##taskhint.print_taskhint()
                    
              
             

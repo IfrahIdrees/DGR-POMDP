@@ -64,6 +64,10 @@ class Tracking_Engine(object):
                 '''
                 print "the exlalength is", len(exp.explaset)
                 exp.print_explaSet()
+                exp.task_prob_calculate()
+                print "go into the next loop"
+                print 
+                print 
                 '''
                 for x in exp.explaset:
                     print x._prob
@@ -74,7 +78,7 @@ class Tracking_Engine(object):
                 ##this kind of information is used for promp decision making. 
                 ##unlike the paper, my algorithm needs to calculate the probability of
                 ##each node. So as to realize hierarchical prompt.                
-            break                    
+            ##break                    
             
             
        
