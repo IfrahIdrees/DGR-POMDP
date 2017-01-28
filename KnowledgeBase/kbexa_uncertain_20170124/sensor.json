@@ -3,9 +3,7 @@
     "attri_name":"soapy",
     "value":["no", 2],
     "reliability":0.9
-  
 }   
-
 
 {
     "ob_name":"hand_1",
@@ -14,14 +12,12 @@
     "reliability":0.9
 }
 
-
 {
     "ob_name":"hand_1",
     "attri_name":"dry",
     "value":["yes", 2],
     "reliability":0.9
 }
-
 
 {
     "ob_name":"faucet_1",
