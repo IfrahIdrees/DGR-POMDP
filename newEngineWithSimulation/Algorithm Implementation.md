@@ -235,7 +235,11 @@ Other staff
  -**change knowledge base** operator: state changes in effect must exist in operator precondition, change "use_soap"
  -fix bug in ~/newengine/State.py, get_ps_actANDs, precondition and effect checking, need to firstly checking if the attribute exist in the list. 
  -fix bug in ~/newengine/Explanation.py, generate_task_hint, the second part, each time create a new taskhint instance, need to call reset() function to reset prompt_task. 
- -notification is not needed, but each time I need all the informatino of all sensors. 
+ -notification is not needed, but each time I need all the informatino of all sensors.
+ 
+##January 28
+ -python read .text file by lines. The result is string with "\n", need to remove it. 
+ -python can print unprintable strings by using repr 
  
 
 

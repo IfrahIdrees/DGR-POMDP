@@ -13,7 +13,7 @@ if __name__ == '__main__':
     #if there is no notification, the engine still should run 
     #the whole update process if the generated random is bigger than
     #no_notif_trigger_prob
-    no_notif_trigger_prob = 0
+    no_notif_trigger_prob = 0.5
  
     #the sleep interval at each time the engine should sleep.  
     interval = 1
