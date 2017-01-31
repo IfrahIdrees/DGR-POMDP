@@ -23,7 +23,7 @@ if __name__ == '__main__':
     cond_notsatisfy = 0.0
     
     #the threshhold that an explanation is no longer maintain
-    delete_trigger = 0.001
+    delete_trigger = 0.00001
     
     tracking_engine = Tracking_Engine(no_trigger = no_notif_trigger_prob, sleep_interval = interval, cond_satisfy=cond_satisfy, cond_notsatisfy = cond_notsatisfy, delete_trigger = delete_trigger)
     tracking_engine.start()

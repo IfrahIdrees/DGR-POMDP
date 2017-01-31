@@ -18,7 +18,7 @@ class State(object):
         for i, x in enumerate(title):
             att = db.get_object_attri(x[0], x[1])
             att = self.update_attri_status_belief(att, i, action_list, title)
-            ##db.update_state_belief(title[i][0], title[i][1], att)
+            db.update_state_belief(title[i][0], title[i][1], att)
         
     #get all the state that occur in the effect list
     #of actions in the pending set

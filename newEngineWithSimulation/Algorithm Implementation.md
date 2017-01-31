@@ -242,4 +242,8 @@ Other staff
  -python can print unprintable strings by using repr 
  
 
+##January 30
+ -finished simulator first version,running a simple example. 
+ -fix a bug. repeated explanation set initialization removed
+ -facing a new bug. circular dependency. Need to repair it. .........
 

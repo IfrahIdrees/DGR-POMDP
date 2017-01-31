@@ -66,10 +66,19 @@ class Explanation(object):
             for taskNetPending in taskNet._pendingset:
                 if act_expla[0] in taskNetPending._pending_actions:
                     find = True
-                    newTaskNet = taskNetPending.generate_new_taskNet(act_expla[0])
+                    
+                    #get a new taskNet start
+                    theTree = taskNetPending._tree
+                    action_node = theTree.get_node(act_expla[0])
+                    action_node.data._completeness = True
+                    #newTaskNet = taskNetPending.generate_new_taskNet(act_expla[0])
+                    newTaskNet = TaskNet(goalName = theTree.get_node(theTree.root).tag, tree = theTree, expandProb = taskNetPending._branch_factor)
+                    newTaskNet.update()
+                    #get a new taskNet end
+                    
                     newforest = list(self._forest)
                     newforest.remove(taskNet)
-                    prob = act_expla[1]*newTaskNet._expandProb*expla._prob
+                    prob = act_expla[1]*newTaskNet._expandProb*self._prob
                     
                         ##this goal has already been completed
                         ##remove it and add its start action into 

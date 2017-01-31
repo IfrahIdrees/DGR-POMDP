@@ -3,6 +3,7 @@ import time
 from notification import *
 from ExplaSet import *
 from State import *
+from Simulator import *
 
 
 
@@ -18,15 +19,13 @@ class Tracking_Engine(object):
     def start(self):
         print "the engine has been started"
         notif = notification()   ##check the current notification
+        exp = explaSet(cond_satisfy = self._cond_satisfy, cond_notsatisfy = self._cond_notsatisfy, delete_trigger = self._delete_trigger)
+        exp.explaInitialize()
+        
         while(notif._notif.qsize()>0):
             step = notif.get_one_notif()
-            print "the current happen step is", repr(step)
-            print "the length of step is", len(step)
-            print "the length of none is", len("none")
-            
-            print step is "none"
-
             notif.delete_one_notif()
+            
             #if no notification, and the random prob is less than no_notif_trigger_prob
     #sleep the engine
             
@@ -35,16 +34,11 @@ class Tracking_Engine(object):
                 
             #go through the engine logic to update    
             else:
-                print "some step happened, I will go through the algorihtm process"
-                
-                
-                '''
-                exp = explaSet(cond_satisfy = self._cond_satisfy, cond_notsatisfy = self._cond_notsatisfy, delete_trigger = self._delete_trigger)
-                exp.explaInitialize()
-                  
+                if step != "none":
+                    realStateANDSensorUpdate(step)
+                      
                 ##calcuate the posterior prob of each action in pending set
                 exp.action_posterior()
-                
                 
                 ##update the belief state
                 state = State()
@@ -70,10 +64,12 @@ class Tracking_Engine(object):
                 
                 
                 
-              
+                '''
                 print "the exlalength is", len(exp.explaset)
                 exp.print_explaSet()
+                
                 exp.task_prob_calculate()
+                '''
                 print "go into the next loop"
                 print 
                 print 
@@ -84,7 +80,7 @@ class Tracking_Engine(object):
                 ##unlike the paper, my algorithm needs to calculate the probability of
                 ##each node. So as to realize hierarchical prompt.                
             ##break   
-            '''  
+            
                           
             
             

@@ -4,6 +4,7 @@ sys.dont_write_bytecode = True
 
 from pymongo import MongoClient
 import pymongo
+import random
 
 
 
@@ -18,6 +19,7 @@ class DB_Object(object):
         self._operator = db.operator
         self._state = db.state
         self._sensor = db.sensor
+        self._Rstate = db.Rstate
     ########################method related#########################333
     #################################################################333    
     ## find all the method, and return as a list
@@ -107,7 +109,31 @@ class DB_Object(object):
         else:
             return (1-sensor["reliability"])/(sensor["value"][1]-1)
     
-    
+    def update_sensor_value(self, ob_name, attri_name, value):
+        sensor = list(self._sensor.find({"ob_name":ob_name, "attri_name":attri_name}))
+        if len(sensor)!=1:
+            print "inside udpate_sensor_value, the number of target ob_name is bad", len(objList)
+            sys.exit(0)
+        else:
+            sensor = sensor[0]
+            #print "before update the sensor is", sensor
+            randomN = random.random()
+            if(randomN<=sensor["reliability"]):
+                #print "before update the sensor is", sensor
+                valueNum = sensor["value"][1]
+                result = self._sensor.update_many(
+                    {"ob_name":ob_name, "attri_name":attri_name},
+                    {
+                        "$set":{
+                            "value":[value, valueNum]
+                        }
+                    
+                    }
+                )
+                
+                newsensor = list(self._sensor.find({"ob_name":ob_name, "attri_name":attri_name}))
+                #print "after update the sensor is:", newsensor[0]
+                
     
     ########################parent node search related#####################
     #######################################################################
@@ -128,11 +154,6 @@ class DB_Object(object):
         
         
         
-        
-    
-    
-    
-    
     ######################belief state update#############################
     ######################################################################
     ##update belief state            
@@ -146,7 +167,30 @@ class DB_Object(object):
             }
         )
         
-        print "then uber of changes is", result.matched_count
+        #print "then number of changes is", result.matched_count
       
 
 
+    #######################real state update related##########################
+    ##########################################################################
+    
+    ##get the object real state
+    def get_obj_Rstate(self, ob_name):
+        objList = list(self._Rstate.find({"ob_name":ob_name}))
+        if len(objList)!=1:
+            print "inside get_obj_Rstate, the number of target ob_name is bad", len(objList)
+            sys.exit(0)
+        else:
+            return objList[0]
+            
+    ##update the object real state given the ob_name, attri_name, and attri_value        
+    def update_obj_Rstate(self, ob_name, attri_name, attri_value):
+        result = self._Rstate.update_many(
+            {"ob_name":ob_name},
+            {
+                "$set":{
+                    attri_name:attri_value
+                }
+            }
+        )
+        #print "the number of changes is", result.matched_count

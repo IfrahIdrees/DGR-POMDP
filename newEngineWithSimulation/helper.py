@@ -2,6 +2,7 @@ import sys
 sys.dont_write_bytecode = True
 
 from database import *
+import json
 
 
 
@@ -28,6 +29,7 @@ def my_normalize_1(prob):
     mysum=0
     for x in prob:
         mysum=mysum+x
+    if mysum==0: return
     for i in range(len(prob)):
         prob[i] = float(prob[i]/mysum)
 ##to check if the precondition of a method is satisfied

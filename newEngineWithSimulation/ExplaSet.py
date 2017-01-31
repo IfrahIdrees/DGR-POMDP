@@ -13,15 +13,13 @@ db = DB_Object()
 
 
 class explaSet(object):
-    explaset = deque([])
-    #the prior_label is used to guarantee that the priors 
-    #of goals are calculated only once
-    init_label = False
+    #explaset = deque([])
     
     def __init__(self, cond_satisfy = 1.0, cond_notsatisfy = 0.0, delete_trigger = 0.001):
         self._cond_satisfy = cond_satisfy
         self._cond_notsatisfy = cond_notsatisfy
         self._delete_trigger = delete_trigger
+        self.explaset = deque([])
     
     
     def add_exp(self, e):
@@ -37,12 +35,6 @@ class explaSet(object):
     
     ##initialzie the explanation
     def explaInitialize(self):
-        #if has been initialized, just return
-        if self.init_label is True:
-            return
-        #If has not, firstly put it into true
-        self.init_label=True
-        
         goal = db.find_all_method()
         mypendingSet=[]
         mystart_action = []
@@ -91,7 +83,9 @@ class explaSet(object):
         else: ##the priors have already been considered
             for x in self.explaset:
                 my_sum = my_sum+x._prob
-        '''       
+        '''
+        if my_sum == 0.0:
+            return       
         for x in self.explaset:
             x._prob = x._prob/my_sum   
 ########################################################################################    
@@ -100,11 +94,18 @@ class explaSet(object):
 ########################################################################################
 #########################################################################################    
     def action_posterior(self):
+        print "inside action_posterior(), before update"
+        self.print_explaSet()
         for expla in self.explaset:
             for action in expla._pendingSet:
                 '''considered action priors here action[1]'''
-                action[1]=action[1]*self.cal_posterior(action)
-    
+                #action[1]=action[1]*self.cal_posterior(action)
+                print "the updated posterior prob is", action[0], action[1]
+                action[1]=self.cal_posterior(action)
+        
+        print "inside action_posterior(), after update"
+        self.print_explaSet()
+        
     def cal_posterior(self, action):
         op = db.get_operator(action[0])
         beforeS = []
@@ -119,7 +120,11 @@ class explaSet(object):
                     
         #enum: state enumeration       
         enum = self.myDFS(title, beforeS)
-        new_prob=self.variable_elim(enum, op, title) 
+        new_prob=self.variable_elim(enum, op, title)
+        '''
+        if(new_prob<self._delete_trigger):
+            return 0.0
+        '''     
         return new_prob
     
     ##dfs is used to generate the enumeration of all possible
@@ -263,7 +268,10 @@ class explaSet(object):
         some_happen = 1-nothing_happen
         act_expla.append(["nothing", nothing_happen])
         for x in pendingset:
-            act_expla.append([x[0], x[1]/prob_sum*some_happen])
+            if prob_sum==0.0 or some_happen==0.0:
+                act_expla.append([x[0], 0.0])
+            else:
+                act_expla.append([x[0], x[1]/prob_sum*some_happen])
         
         ##delete some action whose prob<delete_trigger and normalize
         act_expla = [x for x in act_expla if x[1]>=self._delete_trigger]
@@ -299,7 +307,7 @@ class explaSet(object):
             expla.generate_task_hint(taskhint)
         ##taskhint = TaskHint()
         taskhint.average_level()
-        taskhint.print_taskhint()    
+        #taskhint.print_taskhint()    
 
 
             
