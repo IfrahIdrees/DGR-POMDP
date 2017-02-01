@@ -185,7 +185,7 @@
         }
     }],
     "parent":["make_tea", "make_coffee"],
-    "start_action":["turn_on_faucet_1", "switch_on_kettle_1"]
+    "start_action":[]
 }
 
 
