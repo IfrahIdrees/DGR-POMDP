@@ -41,44 +41,39 @@ class Tracking_Engine(object):
                     realStateANDSensorUpdate(step)
                       
                 ##calcuate the posterior prob of each action in pending set
-                exp.action_posterior()
+                exp.action_posterior()          
                 
+                length = len(exp._explaset)
                 
-                ##update the belief state
+                ##update the explanation set, part 1. 
+                exp.explaSet_expand_part1(length)
+                
+                #udpate the state
                 state = State()
                 state.update_state_belief(exp)
                 
+                #update the explanation set, part 2
+                exp.explaSet_expand_part2(length)
                 
-                ##update the explanation         
-                ##for each existing explanation, includes three steps:
-                    ##step1: decide which actions has happended and its distribution
-                            ##(obtain the action level explanation for the current obs)
-                    ##step2: for each action level explanation, generate new explanation and
-                            ##update the corresponding tree structure, and calculate the
-                            ##probability of the explanation
-                    ##step3: calculate the probability of this explanation
-                    ##step4: update the pending set
-                            ##(including the prior probability of actions in the pending set)
-                exp.explaSet_expand()
-                
-                '''
-                
+                #generate pending set         
                 exp.pendingset_generate()
 
+                #calculate inner node prob, This would be used for hint
                 exp.task_prob_calculate()
                 
                 
                 
                 
-                print "the exlalength is", len(exp.explaset)
+                print "the exlalength is", len(exp._explaset)
                 exp.print_explaSet()
                 
-                exp.task_prob_calculate()
-                '''
-                #exp.print_explaSet()
+                
+                
+                
                 print "go into the next loop"
                 print 
-                print 
+                print
+                #break
                
          
                 ##calculate the probability of goals and innner nodes in the tree

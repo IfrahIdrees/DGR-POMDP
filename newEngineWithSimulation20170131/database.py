@@ -69,21 +69,26 @@ class DB_Object(object):
         ##print s
         return float(st[0][attri_name][s])
     
-    ##find and return the attribute balue belief from belief state
+    ##find and return the attribute value belief from belief state
     ##according to method/operator's precondition!!!!!!!!!!!!!
     ##The difference with get_attribute_prob is that here need to consider
     ##the "ability attribute"
     def get_attribute_prob_1(self, s, ob_name, attri_name):
+        #print "inside get_attribute_prob_1"
         #print s, " ", ob_name, " ", attri_name
         st = list(self._state.find({"ob_name":ob_name}))
+        #print "the returned state is", st
         if attri_name!="ability":
+            #print "the returned value is 1", float(st[0][attri_name][s])
             return float(st[0][attri_name][s])
         else:
             for x in st[0][attri_name]:
                 y=x.split(",")
                 if self.ability_check(s, y) == True:
+                    #print "the returned value is 2 ", st[0][attri_name][x]
                     return st[0][attri_name][x]
                 else:
+                    #print "the returned value is 3", 1-st[0][attri_name][x]
                     return 1-st[0][attri_name][x]
 
             

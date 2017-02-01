@@ -29,7 +29,7 @@
             "dirty":"yes"  
         },
         "faucet_1":{
-            "state":"yes"
+            "state":"on"
         },
         "person_1":{
             "location":"kitchen",
@@ -40,7 +40,7 @@
         "hand_1":{
             "soapy":"no",
             "dirty":"no",
-            "dry":"no"  
+            "dry":"no"
         }
     },
     "parent":["clean_hand"]

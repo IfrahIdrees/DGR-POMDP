@@ -245,5 +245,15 @@ Other staff
 ##January 30
  -finished simulator first version,running a simple example. 
  -fix a bug. repeated explanation set initialization removed
- -facing a new bug. circular dependency. Need to repair it. .........
+ -facing a new bug. resolved
+ 
+##January 31
+ -make big modification to the algorithm. change "start_action" into "start_task". In the pending set, only store actions related to the already started tasks. 
+
+##Feb. 1
+ -fix a bug in tree pending set update. When decompose, if a step has pre, then its readyness should initialized as **False**
+ -change the expla_set expand and belief state update sequence. It should be: (1)initialize new tree structure(2)update belief state(3)decompose existing tree structure and create new explanations
+ -
+ 
+ 
 

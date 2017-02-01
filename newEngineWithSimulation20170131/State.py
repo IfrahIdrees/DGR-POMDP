@@ -15,8 +15,8 @@ class State(object):
     
     def update_state_belief(self, exp):
         result = self.get_attr_in_effect(exp)
-        print "inside State.py, update_state_belief()---------------"
-        print result
+        #print "inside State.py, update_state_belief()---------------"
+        #print result
         action_list = result[0]
         title = result[1]
         for i, x in enumerate(title):
@@ -60,6 +60,10 @@ class State(object):
 
     #update the attribute status belief for a specific attribute
     def update_attri_status_belief(self, att, index, action_list, title):
+        print "the attribute name is==============", att
+        print "the action list is=================", action_list
+        print "the index is=======================", index
+        print "the title is=======================", title
         newp = att
         sump=0
         for x in newp:

@@ -1,6 +1,6 @@
 import sys
 sys.dont_write_bytecode = True
-
+from termcolor import colored
 import copy
 from treelib import Tree
 from treelib import Node
@@ -55,13 +55,69 @@ class Explanation(object):
 #########################################################################################    
     #use to udpate the current explanation according to the input action_explanation
     #act_expla is the explanation for this observation, expla is the current explanation
-    def generate_new_expla(self, act_expla):
-        print "Inside Explanation.py generate_new_expla", act_expla
+    ##"egenerate_new_expla_part1" is used to generate explanations that add a new tree structure, a bottom-up process
+    ##The bottom-up process depend on the previous state.     
+    def generate_new_expla_part1(self, act_expla):
         new_explas = []
         #print "go into this function -----------------------!!!!!!!!!!!!!!!11"
         #exp = explaSet()
         find = False
-        ##Case1 : continue on an on-going task
+        
+        ##Case1 : drop an on-going unfinished task, start a new one. 
+        tempstart_task = copy.deepcopy(self._start_task) 
+        for start_task in tempstart_task:
+            #print "check start_ task",start_task, act_expla[0]
+            if tempstart_task[start_task] == 0: #inside this explanation, "start_task" has not been started
+                target_method = db.find_method(start_task)
+                if act_expla[0] in target_method["start_action"]:
+                    #print "it is in start action"
+                    find = True
+                    #newstart_task = 
+                    #self._start_task[start_task] = 1
+                    newTaskNets = self.initialize_tree_structure(act_expla[0])
+                    #print "the length of tasknet is", len(newTaskNets)
+                    for g in newTaskNets:
+                        #print "this tasknet", g._expandProb
+                        #print "act prob", act_expla[1]
+                        #print "original expla prob", self._prob
+                        if tempstart_task[g._goalName] == 0:
+                            tempstart_task[g._goalName] = 1
+                            newstart_task = copy.deepcopy(self._start_task)
+                            prob = act_expla[1]*g._expandProb*self._prob
+                            if g._complete == True:
+                                #newstart_task = list(self._start_task)
+                                newstart_task[g._goalName] = 0
+                                newexp = Explanation(v=prob, forest = list(self._forest), start_task=newstart_task)
+                            else:
+                                newforest = list(self._forest)
+                                newforest.append(g)
+                                newstart_task[g._goalName] = 1
+                                #newstart_task = copy.deepcopy(self._start_task)
+                                newexp = Explanation(v=prob, forest = newforest, start_task=newstart_task)
+                            new_explas.append(newexp)
+         
+        if find==False:
+            print colored('dangerous action, cannot figure out what the person is doing now', 'red'), act_expla[0]
+            #print "dangerous action, cannot figure out what the person is doing now"
+            #sys.exit(0)
+            """
+            !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            """
+        return new_explas
+        
+    #use to udpate the current explanation according to the input action_explanation
+    #act_expla is the explanation for this observation, expla is the current explanation
+    ##"generate_new_expla_part2" is used to generate explanations by decomposing an existing tree structure. , a top-down process
+    ##The top=down process depends on the current state. (after adding the effect of just happened action)
+    def generate_new_expla_part2(self, act_expla):
+        #print "Inside Explanation.py generate_new_expla", act_expla
+        new_explas = []
+        #print "go into this function -----------------------!!!!!!!!!!!!!!!11"
+        #exp = explaSet()
+        find = False
+        ##Case2 : continue on an on-going task
             ##update existing tree structure, if the action exist in the 
             ##pending set of this tree structure
         for taskNet in self._forest:
@@ -69,6 +125,7 @@ class Explanation(object):
                 #print "Explanation.py, generate_new_expla(), the tasknetPending._pending_action:"
                 #print taskNetPending._pending_actions
                 if act_expla[0] in taskNetPending._pending_actions: 
+                    #print "action exist in pending set"
                     find = True
                     
                     #get a new taskNet start
@@ -100,63 +157,21 @@ class Explanation(object):
                         newstart_task = copy.deepcopy(self._start_task)
                         newexp = Explanation(v=prob, forest = newforest, start_task=newstart_task)
                     
-                    new_explas.append(newexp)    
-                    
-        ##Case2 : drop an on-going unfinished task, start a new one.  
-        for start_task in self._start_task:
-            if self._start_task[start_task] == 0: #inside this explanation, "start_task" has not been started
-                target_method = db.find_method(start_task)
-                if act_expla[0] in target_method["start_action"]:
-                    find = True
-                    self._start_task[start_task] = 1
-                    newTaskNets = self.initialize_tree_structure(act_expla[0])
-                    for g in newTaskNets:
-                        prob = act_expla[1]*g._expandProb*self._prob
-                        if g._complete == True:
-                            newstart_task = list(self._start_task)
-                            newstart_task[start_task] = 0
-                            newexp = Explanation(v=prob, forest = list(self._forest), start_task=newstart_task)
-                        else:
-                            newforest = list(self._forest)
-                            newforest.append(g)
-                            newstart_task = copy.deepcopy(self._start_task)
-                            newexp = Explanation(v=prob, forest = newforest, start_task=newstart_task)
-                        new_explas.append(newexp)
-        '''                
-        ##generate new tree structure if this action exist in the start action list
-        if act_expla[0] in self._start_action:
-            find = True
-            newTaskNets = self.initialize_tree_structure(act_expla[0])
-            
-            
-            for g in newTaskNets:
-                newforest = list(self._forest)
-                newstart_action = list(self._start_action)
-                prob = act_expla[1]*g._expandProb*self._prob
-                if g._complete==True:
-                    newexp = Explanation(v=prob, forest = list(self._forest), start_action=newstart_action)
-                else:
-                    #print "the new start action is", newstart_action
-                    #print "the action is", act_expla[0]
-                    newstart_action.remove(act_expla[0])
-                    newforest.append(g)
-                    newexp = Explanation(v=prob, forest = newforest, start_action=newstart_action)
-                
-                new_explas.append(newexp)
-                #self.add_exp(newexp)
-                
-         '''    
-        
-         
+                    new_explas.append(newexp)             
         if find==False:
-            print "dangerous action, cannot figure out what the person is doing now"
-            sys.exit(0)
+            print colored('dangerous action, cannot figure out what the person is doing now', 'red'), act_expla[0]
+            #sys.exit(0)
             """
             !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             """
         return new_explas
+        
+        
+        
+        
+        
         
     ##generate a tree structure for the action_explanation
     ##this function is called only when the _forest parameter is null
@@ -174,7 +189,8 @@ class Explanation(object):
         while temp_forest:
             length = len(temp_forest)
             for i in range(length):
-                thisTree = temp_forest.popleft()
+                thisTree = copy.deepcopy(temp_forest.popleft())
+                #print "the probability for branch factor is fsdfdsfs", thisTree[1]
                 tag = thisTree[0].get_node(thisTree[0].root).tag
                 parents = db.get_parent_list(tag)
                 if parents==False: print "error happend here please check"
@@ -183,6 +199,7 @@ class Explanation(object):
                         method = db.find_method(x)
                         decompose_choose = self.method_precond_check(method,tag)
                         for decompose in decompose_choose:
+                            #print "the decompose is", decompose[0]
                             decompose[0]=thisTree[1]*decompose[0]
                             temptree = copy.deepcopy(thisTree[0])
                             temp_forest.append(self.my_create_new_node(x, decompose, temptree))
@@ -277,9 +294,10 @@ class Explanation(object):
             for taskNetPending in taskNet._pendingset:
                 for action in taskNetPending._pending_actions:
                     pendingSet.add(action)
+        '''            
         for action in self._start_action:
             pendingSet.add(action)
-        
+        '''
         pendingSet1 = []
         prior = float(1)/len(pendingSet)
         for x in pendingSet:

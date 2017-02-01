@@ -23,7 +23,13 @@ class explaSet(object):
         #self._start_action = {} #format: {action1: 0, action2:1}, 0 stands has not been execute, 
     
     def add_exp(self, e):
-        self._explaset.append(e)
+        #print "inside add_exp((((((((((((((((((((((((((((((((((((((((((((((99"
+        #print e._prob
+        #print self._delete_trigger
+        if e._prob > self._delete_trigger:
+            self._explaset.append(e)
+        #print e._prob > self._delete_trigger
+        #self._explaset.append(e)
     
     def pop(self):
         #get an explanation and remove it
@@ -31,6 +37,8 @@ class explaSet(object):
     
     def length(self):
         return len(self._explaset)
+    def get(self, index):
+        return self._explaset[len(self._explaset) - index]    
     
     def explaInitialize(self):
         #initialzie the explanation. At very beginning, the explanation is "nothing happend"
@@ -72,8 +80,14 @@ class explaSet(object):
                     print actions._pending_actions
                 #print y._pendingset._pending_actions[0]
    
-   
+    #Functionality: remove explanations with prob smaller than delete_trigger
+    #Normalize the remaining explanations
     def normalize(self):
+        '''
+        for x in self._explaset:
+            if x._prob<=self._delete_trigger:
+                self._explaset.
+        '''
         leng = len(self._explaset)
         my_sum=0
         for x in self._explaset:
@@ -100,18 +114,27 @@ class explaSet(object):
     def action_posterior(self):
         self._action_posterior_prob = {}
         for expla in self._explaset:
+            #add actions in pending set
             for action in expla._pendingSet:
                 if action[0] in self._action_posterior_prob:
                     self._action_posterior_prob[action[0]] = self._action_posterior_prob[action[0]] + action[1]
                 else:
                     self._action_posterior_prob[action[0]] = action[1]
                 #self._action_level_expla[action[0]] = 1
+            
+                    
+                            
         for k in self._action_posterior_prob:
             self._action_posterior_prob[k] = self._action_posterior_prob[k] * self.cal_posterior(k)      
         print "inside action_posterior(), the _action_level_expla is updated", self._action_posterior_prob
         
     def cal_posterior(self, action):
+    
+        print "we want to calculate the posterior for --------------", action
         op = db.get_operator(action)
+        print "the operator is~~~~~~~~~~~~~~~~`"
+        print op
+        
         beforeS = []
         title = []
         for x in op["precondition"]:
@@ -156,6 +179,10 @@ class explaSet(object):
     ##impliment the bayesian network calculation for one possible state
     #op: the operator in knowlege base, prob: the prior of the action
     def variable_elim(self, enum, op, title):
+        print "the enum is========================"
+        print enum
+        print "the title is======================"
+        print title
         new_prob_1 = 0 #this action happened
         new_prob_2 = 0 #this action does not happend
         for before in enum:
@@ -163,30 +190,54 @@ class explaSet(object):
                 p = self.bayesian_expand(before, after, op, title)
                 new_prob_1 = new_prob_1 + p[0]
                 new_prob_2 = new_prob_2 + p[1]
+        print "new_prob_1", new_prob_1
+        print "new_prob_2", new_prob_2        
         return float(new_prob_1)/(new_prob_1+new_prob_2)
         
         
     #sv: an concrete state value, op: the operator in knowledge base
     #state_c: the notification        
     def bayesian_expand(self, before, after, op, title):
+        '''
+            if op["st_name"] == "rinse_hand":
+                print "this is for rinse hand========================"
+                print before
+                print after
+        ''' 
         #calculate p(s_t-1)
    
         ps_before = 1
         for i, s in enumerate(before):
             thisp = db.get_attribute_prob(s, title[i][0], title[i][1])
             ps_before = ps_before*float(thisp)
-        
+        '''
+        if op["st_name"] == "rinse_hand":    
+            print "now ps_before is===================", ps_before    
+        '''
         #calculate p(o_t|s_t)
         po_s = 1
         for i, s in enumerate(after):
             thisp = db.get_obs_prob(s, title[i][0], title[i][1])
             po_s = po_s *float(thisp)    
-        
+        '''
+        if op["st_name"] == "rinse_hand":
+            print "now po_s is=======================", po_s
+        '''
         #calculate p(s|s_t-1, a_t)
         ps_actANDs_1 = self.get_ps_actANDs_1(before, after, op, title)
         ps_actANDs_2 = self.get_ps_actANDs_2(before, after)
+        '''
+        if op["st_name"] == "rinse_hand":    
+            print "now ps_actANDs_1 is ==============", ps_actANDs_1
+            print "now ps_actANDs_2 is ===============", ps_actANDs_2
+        '''
         
         prob = []
+        #print "ps_before", ps_before
+        #print "po_s", po_s
+        #print "ps_actANDs_1", ps_actANDs_1
+        #print "ps_actANDs_2", ps_actANDs_2
+        
         prob.append(float(ps_before)*po_s*ps_actANDs_1)
         prob.append(float(ps_before)*po_s*ps_actANDs_2)
         
@@ -205,6 +256,7 @@ class explaSet(object):
                 if attri=="ability":
                     ability_list = bef[index].split(",")
                     if compare_ability(ability_list, precond[ob][attri]) is False:
+                        print "return not satisfy because of ability not enough "
                         return self._cond_notsatisfy
                 else:
                     if precond[ob][attri]!=bef[index]:
@@ -233,12 +285,15 @@ class explaSet(object):
 ###############expand the explanation Set, each explanation can be extended into multiple explanations. Based on which actions has happened###############################
 #########################################################################################
 #########################################################################################
+    '''
     def explaSet_expand(self):
-        print "inside explaSet_expand"
-        print self._action_posterior_prob
+        #print "inside explaSet_expand"
+        #print self._action_posterior_prob
         length = self.length()
+        #print "inside explaSet_expand, the length is", self.length()
         for i in range(length):
             x = self.pop()
+            
             for action in self._action_posterior_prob:
                 #case1: nothing happened: update the prob of the explanation, 
                 #do not need to update tree structure. 
@@ -251,13 +306,63 @@ class explaSet(object):
                     #print "this action is", action
                     #print "the prob of this action is", self._action_posterior_prob[action]                    
                     new_explas = x.generate_new_expla([action, self._action_posterior_prob[action]])
+                    #print "after generate new, the result is!!!!"
+                    #print new_explas
                     for expla in new_explas:
                         #print "the prob is", expla._prob
                         #print "the start task is", expla._start_task
                         self.add_exp(expla)
+     ''' 
+    ##"explaSet_expand_part1" is used to generate explanations that add a new tree structure, a bottom-up process
+    ##The bottom-up process depend on the previous state.     
+    def explaSet_expand_part1(self, length):
+        for i in range(length):
+            x =   self.get(i+1)
+            for action in self._action_posterior_prob:
+                #case1: nothing happened: update the prob of the explanation, 
+                #do not need to update tree structure. 
+                if action == "nothing":
+                    newstart_task = copy.deepcopy(x._start_task)
+                    newexpla = Explanation(v=x._prob*self._action_posterior_prob[action], forest = x._forest, pendingSet = x._pendingSet, start_task = newstart_task)
+                    self.add_exp(newexpla)
+                                 
+                else:
+                    #case2:something happend, need to update the tree structure
+                    #print "this action is", action
+                    #print "the prob of this action is", self._action_posterior_prob[action]                    
+                    new_explas = x.generate_new_expla_part1([action, self._action_posterior_prob[action]])
+                    #print "after generate new, the result is!!!!"
+                    #print new_explas
+                    for expla in new_explas:
+                        #print "the prob is", expla._prob
+                        #print "the start task is", expla._start_task
+                        #only those explanations with prob bigger than self._delete_trigger
+                        #can be added into the explanation queue
+                        self.add_exp(expla)
+                        
         
-        return                
-                      
+        return
+    ##"explaSet_expand_part2" is used to generate explanations by decomposing an existing tree structure. , a top-down process
+    ##The top=down process depends on the current state. (after adding the effect of just happened action)
+                        
+    def explaSet_expand_part2(self, length):
+        for i in range(length):
+            x =   self.pop()
+            for action in self._action_posterior_prob:
+                
+                #case2:something happend, need to update the tree structure
+                #print "this action is", action
+                #print "the prob of this action is", self._action_posterior_prob[action]                    
+                new_explas = x.generate_new_expla_part2([action, self._action_posterior_prob[action]])
+                #print "after generate new, the result is!!!!"
+                #print new_explas
+                for expla in new_explas:
+                    #print "the prob is", expla._prob
+                    #print "the start task is", expla._start_task
+                    self.add_exp(expla)          
+        return
+                
+    '''                  
     def explaSet_expand1(self):
         length = self.length() 
         for i in range(length):
@@ -278,7 +383,7 @@ class explaSet(object):
                 #generate_new_expla(y, x)
 
         return
-        
+        '''
 
 
     #calculate the prob of nothing happen, 

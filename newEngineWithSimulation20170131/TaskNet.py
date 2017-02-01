@@ -33,6 +33,8 @@ class TaskNet(object):
     #rootnode.data.print_property()
     
     def update(self):
+        #print
+        #print "update a new tree-------------------"
         rootnode = self._tree.get_node(self._tree.root)
         #update completeness
         
@@ -53,17 +55,24 @@ class TaskNet(object):
     #pendingset is a list, each element has the format of 
     #[tree, action, new_added branch prob compared with the initial tree]
     def pendingset_update(self, node, tree):
+        
+        
         expand_tree = []
         tree_queue = deque([])
-        tree_queue.append([tree, 1])
+        tree_queue.append([copy.deepcopy(tree), 1])
         while tree_queue:
             thisTree = tree_queue.popleft()
             leaves = thisTree[0].leaves()
+            #print "the leaves is"
+            
             finish = True #to check if the tree finished its decomposition process
             #for each node:
             #if it is a leaf node, check
                 #
             for leaf in leaves:
+                #print "this leaf is", leaf.tag
+                #print "the readiness is", leaf.data._ready
+                #print "the completeness is", leaf.data._completeness
                 if leaf.data._ready==True:
                     method = db.find_method(leaf.tag)
                     if method==None: 
@@ -80,6 +89,9 @@ class TaskNet(object):
                         break
                         
             if finish==True:
+                #print 
+                #print "udpate the tree again?????????????????"
+                self.readiness_update(self._tree.root, self._tree)
                 tree_pending=[x.tag for x in leaves if x.data._ready==True and x.data._completeness==False]
                 #print "the new pending set is ", tree_pending
                 thisTree.append(tree_pending)
@@ -117,10 +129,20 @@ class TaskNet(object):
         for x in branch:
             #print "this action is   ", x
             mydata=None
+            #print "this branch is", branch[x]["pre"]
             if len(branch[x]["pre"]) == 0:
+                
                 mydata=Node_data(ready=True, branch = False, pre=branch[x]["pre"], dec = branch[x]["dec"])
             else:
-                mydata=Node_data(ready=True, branch = False, pre=branch[x]["pre"], dec = branch[x]["dec"])
+                '''
+                checkReady = True
+                for x in branch[x]["pre"]:
+                    print x
+                    if tree.get_node(x)!=None and tree.get_node(x).data._completeness == False:
+                        checkReady = False
+                        break
+                '''
+                mydata=Node_data(ready=False, branch = False, pre=branch[x]["pre"], dec = branch[x]["dec"])
             
             tree.create_node(x, x, parent = node_id, data = mydata)
             #print "the length is", len(branch[x]["pre"])
@@ -174,8 +196,11 @@ class TaskNet(object):
             else:
                 cur_node.data._ready=True
                 pre_list = cur_node.data._pre
+                #print "the current node is", cur_node.tag
                 for x in pre_list:
+                    #print "thuis pre in pre_list is", tree.get_node(x).tag, tree.get_node(x).data._completeness
                     if tree.get_node(x).data._completeness == False:
+                        #print "the pre is not finished, change it to false"
                         cur_node.data._ready = False
                         break
             if cur_node.is_leaf() == False:
