@@ -39,6 +39,7 @@ class TaskNet(object):
         #update completeness
         
         self.complete_update(rootnode, self._tree)
+        
         if rootnode.data._completeness == True:
             self._complete=True
             return
@@ -152,22 +153,47 @@ class TaskNet(object):
     #mydata = Node_data(pre=decompose[1][x]["pre"], dec=decompose[1][x]["dec"])
             #    newTree.create_node(x, x, parent=newTree.root, data= mydata)
 
-        
+    '''    
     #update completeness
     def complete_update(self, node, tree):
-        
-            
+        print "inside complete_update=============="
+        print node.tag
+ 
         if node.is_leaf(): return node.data._completeness
         child = node._fpointer #get the id of childrens
+        print "the child of this node is", len(child)
         for x in child:
+            print tree.get_node(x).tag
             if self.complete_update(tree.get_node(x), tree): continue
             else:
+                print "go out from here"
                 node.data._completeness = False
                 return False
         
         node.data._completeness = True
         
         return True
+    '''
+    
+        
+    #update completeness------a new version
+    def complete_update(self, node, tree):
+        if node.is_leaf(): return
+        child = node._fpointer #get the id of childrens
+        
+        for x in child:
+            self.complete_update(tree.get_node(x), tree)
+        
+        completeness = True
+        for x in child:
+            thenode = tree.get_node(x)
+            if thenode.data._completeness == False:
+                completeness = False
+                break
+        
+        node.data._completeness = completeness
+        return
+        
     
     #update readiness
     #idea: from top to bottom, BFS
@@ -179,6 +205,7 @@ class TaskNet(object):
         for x in all_node:
             print x.tag, "   ", x.data._ready
         '''
+        
         node_queue = deque([])
         node_queue.append(root_id)
          
@@ -206,6 +233,7 @@ class TaskNet(object):
             if cur_node.is_leaf() == False:
                 child = cur_node._fpointer
                 node_queue.extend(child)        
+        
 
 
         

@@ -253,7 +253,10 @@ Other staff
 ##Feb. 1
  -fix a bug in tree pending set update. When decompose, if a step has pre, then its readyness should initialized as **False**
  -change the expla_set expand and belief state update sequence. It should be: (1)initialize new tree structure(2)update belief state(3)decompose existing tree structure and create new explanations
- -
+ -knowledgebase error, rinse hand precondition is faucet_1 "on", rather than "**yes**"
  
- 
+##Feb. 2
+ -There is a bug in tree node completeness udpate, bug fixed in the DFS process.  
+ -There is a mistake in knowledgebase operator.json "dry_hand", hand_1 has no attribute of clean. It only has "dirty", corrected
+ -When a tasks has finished, should remove if from explanation. if not, the pending set would have a length of 0
 

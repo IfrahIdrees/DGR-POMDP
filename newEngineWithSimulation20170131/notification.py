@@ -10,6 +10,8 @@ class notification(object):
         self._notif = Queue()
         
         step_input = open("Case1", "r")
+        #step_input = open("Case2", "r")
+        #step_input = open("Case3", "r")
         steps = step_input.readlines()
         step_input.close()
         

@@ -96,7 +96,7 @@
     "precondition":{
         "hand_1":{
             "dry":"no",
-            "clean":"yes"
+            "dirty":"no"
         },
         "person_1":{
             "location":"kitchen",

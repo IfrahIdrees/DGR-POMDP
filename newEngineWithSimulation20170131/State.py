@@ -60,10 +60,10 @@ class State(object):
 
     #update the attribute status belief for a specific attribute
     def update_attri_status_belief(self, att, index, action_list, title):
-        print "the attribute name is==============", att
-        print "the action list is=================", action_list
-        print "the index is=======================", index
-        print "the title is=======================", title
+        #print "the attribute name is==============", att
+        #print "the action list is=================", action_list
+        #print "the index is=======================", index
+        #print "the title is=======================", title
         newp = att
         sump=0
         for x in newp:

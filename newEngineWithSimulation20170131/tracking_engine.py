@@ -18,11 +18,14 @@ class Tracking_Engine(object):
 
             
     def start(self):
-        print "the engine has been started"
+        print
+        print "the engine has been started..."
+        print
+        
         notif = notification()   ##check the current notification
         exp = explaSet(cond_satisfy = self._cond_satisfy, cond_notsatisfy = self._cond_notsatisfy, delete_trigger = self._delete_trigger, non_happen = self._non_happen)
         exp.explaInitialize()
-        exp.print_explaSet()
+        #exp.print_explaSet()
         
         
         while(notif._notif.qsize()>0):
@@ -41,7 +44,7 @@ class Tracking_Engine(object):
                     realStateANDSensorUpdate(step)
                       
                 ##calcuate the posterior prob of each action in pending set
-                exp.action_posterior()          
+                exp.action_posterior()
                 
                 length = len(exp._explaset)
                 
@@ -54,6 +57,7 @@ class Tracking_Engine(object):
                 
                 #update the explanation set, part 2
                 exp.explaSet_expand_part2(length)
+              
                 
                 #generate pending set         
                 exp.pendingset_generate()
@@ -64,7 +68,7 @@ class Tracking_Engine(object):
                 
                 
                 
-                print "the exlalength is", len(exp._explaset)
+                print "Explanation Number:  ", len(exp._explaset)
                 exp.print_explaSet()
                 
                 

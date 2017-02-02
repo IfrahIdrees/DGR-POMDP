@@ -97,7 +97,9 @@ class Explanation(object):
                             new_explas.append(newexp)
          
         if find==False:
+            '''
             print colored('dangerous action, cannot figure out what the person is doing now', 'red'), act_expla[0]
+            '''
             #print "dangerous action, cannot figure out what the person is doing now"
             #sys.exit(0)
             """
@@ -159,8 +161,10 @@ class Explanation(object):
                     
                     new_explas.append(newexp)             
         if find==False:
+            '''
             print colored('dangerous action, cannot figure out what the person is doing now', 'red'), act_expla[0]
             #sys.exit(0)
+            '''
             """
             !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -294,6 +298,16 @@ class Explanation(object):
             for taskNetPending in taskNet._pendingset:
                 for action in taskNetPending._pending_actions:
                     pendingSet.add(action)
+        
+        #if currently the pending set has no action, need to initialize from start tasks
+        if len(pendingSet)==0:
+            for start_task in self._start_task:
+                if self._start_task[start_task] == 0:
+                    theMethod = db.find_method(start_task)
+                    for y in theMethod["start_action"]:
+                        pendingSet.add(y)
+        
+            
         '''            
         for action in self._start_action:
             pendingSet.add(action)

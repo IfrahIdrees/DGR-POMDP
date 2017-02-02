@@ -28,7 +28,7 @@ class TaskHint(object):
             self.prompt_task.update(new_dict)    
         #print "after add, now the length of task hint is", len(self.prompt_task)
     def average_level(self):
-        print "go into task hint average level"
+        #print "go into task hint average level"
         for k, v in self.prompt_task.items():
             ave = list_average(v[1])
             key_value = []

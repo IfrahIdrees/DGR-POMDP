@@ -67,19 +67,21 @@ class explaSet(object):
         
     def print_explaSet(self):
         
-        for x in self._explaset:
-            print "--------------------------------"
-            print "the explanation probability is:::: ", x._prob
-            #print x._forest
-            print "the current pending set is::", x._pendingSet
-            print "the possible tasks are", x._start_task
-            print "~~~~~~~the tree structures are:"
+        for index in range(len(self._explaset)):
+            x = self._explaset[index]
+            print
+            print "--------------Explanation ",(index+1), "------------------"
+            print "The probability:                         ", x._prob
+            print "The current pending set is:              ", x._pendingSet
+            print "The tasks ongoing are:                   ", x._start_task
+            #print "The toppest task level explanation is:   "
             for y in x._forest:
-                print "the goal name is:::", y._goalName
+                print
+                print "Goal Name:                           ", y._goalName
                 for actions in y._pendingset:
-                    print actions._pending_actions
+                    print "The pendingSet for this Goal:    ", actions._pending_actions
                 #print y._pendingset._pending_actions[0]
-   
+        print
     #Functionality: remove explanations with prob smaller than delete_trigger
     #Normalize the remaining explanations
     def normalize(self):
@@ -126,14 +128,15 @@ class explaSet(object):
                             
         for k in self._action_posterior_prob:
             self._action_posterior_prob[k] = self._action_posterior_prob[k] * self.cal_posterior(k)      
-        print "inside action_posterior(), the _action_level_expla is updated", self._action_posterior_prob
+        #print "inside action_posterior(), the _action_level_expla is updated==================="
+        #print self._action_posterior_prob
         
     def cal_posterior(self, action):
     
-        print "we want to calculate the posterior for --------------", action
+        #print "we want to calculate the posterior for --------------", action
         op = db.get_operator(action)
-        print "the operator is~~~~~~~~~~~~~~~~`"
-        print op
+        #print "the operator is~~~~~~~~~~~~~~~~`"
+        #print op
         
         beforeS = []
         title = []
@@ -179,10 +182,10 @@ class explaSet(object):
     ##impliment the bayesian network calculation for one possible state
     #op: the operator in knowlege base, prob: the prior of the action
     def variable_elim(self, enum, op, title):
-        print "the enum is========================"
-        print enum
-        print "the title is======================"
-        print title
+        #print "the enum is========================"
+        #print enum
+        #print "the title is======================"
+        #print title
         new_prob_1 = 0 #this action happened
         new_prob_2 = 0 #this action does not happend
         for before in enum:
@@ -190,8 +193,8 @@ class explaSet(object):
                 p = self.bayesian_expand(before, after, op, title)
                 new_prob_1 = new_prob_1 + p[0]
                 new_prob_2 = new_prob_2 + p[1]
-        print "new_prob_1", new_prob_1
-        print "new_prob_2", new_prob_2        
+        #print "new_prob_1", new_prob_1
+        #print "new_prob_2", new_prob_2        
         return float(new_prob_1)/(new_prob_1+new_prob_2)
         
         
@@ -349,6 +352,8 @@ class explaSet(object):
         for i in range(length):
             x =   self.pop()
             for action in self._action_posterior_prob:
+                if action == "nothing":
+                    continue
                 
                 #case2:something happend, need to update the tree structure
                 #print "this action is", action
@@ -435,7 +440,7 @@ class explaSet(object):
 #########################################################################################
 ######################################################################################### 
     def task_prob_calculate(self):
-        print "go into task prob _calculate"
+        #print "go into task prob _calculate"
         taskhint = TaskHint()
         taskhint.reset()
         for expla in self._explaset:
