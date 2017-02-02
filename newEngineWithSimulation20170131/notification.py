@@ -18,14 +18,6 @@ class notification(object):
         for step in steps:
             step = ''.join(step.split("\n"))
             self._notif.put(step)
-        '''
-        self._notif.put([{
-            "ob_name":"faucet_1",
-            "reliability":"0.9",
-            "attribute": "state",
-            "previous": "off",
-            "current": "on"}])
-        '''
         
     ##without deleting
     def get_one_notif(self):
