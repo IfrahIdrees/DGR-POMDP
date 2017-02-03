@@ -125,8 +125,9 @@ class explaSet(object):
                 #self._action_level_expla[action[0]] = 1
             
                     
-                            
+        print "Now the action_posterior_prob is", self._action_posterior_prob                    
         for k in self._action_posterior_prob:
+            print "This k is        ", k
             self._action_posterior_prob[k] = self._action_posterior_prob[k] * self.cal_posterior(k)      
         #print "inside action_posterior(), the _action_level_expla is updated==================="
         #print self._action_posterior_prob
@@ -136,7 +137,7 @@ class explaSet(object):
         #print "we want to calculate the posterior for --------------", action
         op = db.get_operator(action)
         #print "the operator is~~~~~~~~~~~~~~~~`"
-        #print op
+        #print op   
         
         beforeS = []
         title = []
@@ -156,6 +157,10 @@ class explaSet(object):
             return 0.0
         '''     
         return new_prob
+    
+    
+                
+    
     
     ##dfs is used to generate the enumeration of all possible
     ##state combinations    
@@ -182,7 +187,8 @@ class explaSet(object):
     ##impliment the bayesian network calculation for one possible state
     #op: the operator in knowlege base, prob: the prior of the action
     def variable_elim(self, enum, op, title):
-        #print "the enum is========================"
+        print "the length for title is=======================", len(title)
+        print "the length for enum is========================", len(enum)
         #print enum
         #print "the title is======================"
         #print title

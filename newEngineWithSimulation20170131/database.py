@@ -107,6 +107,9 @@ class DB_Object(object):
     ########################################################################    
     ##find and return the prob for p(obs|s)
     def get_obs_prob(self, s, ob_name, attri_name):
+        #print "Inside database.py, get_obs_prob"
+        #print "the ob_name                      ", ob_name
+        #print "the attri_name                   ", attri_name
         sensor = list(self._sensor.find({"ob_name":ob_name, "attri_name":attri_name}))
         sensor = sensor[0]
         if sensor["value"][0]==s:
