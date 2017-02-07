@@ -354,7 +354,7 @@ class Explanation(object):
                     for node in node_list:
                         level_num = taskNetPending._tree.depth(node)
                         if node._tag in task_Name_Level.keys():
-                            level_list = task_Name_level.get(node._tag)
+                            level_list = task_Name_Level.get(node._tag)
                             level_list.append(level_num)
                             new_dict = {node._tag:level_list}
                             task_Name_Level.update(new_dict)

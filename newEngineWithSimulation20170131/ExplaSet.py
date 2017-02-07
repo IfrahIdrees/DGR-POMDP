@@ -7,6 +7,10 @@ from Explanation import *
 from helper import *
 from TaskHint import *
 
+#from __future__ import print_function  # Only needed for Python 2
+
+
+
 db = DB_Object()
 
 
@@ -65,10 +69,11 @@ class explaSet(object):
         #exp = Explanation(v=1, pendingSet=mypendingSet, start_action=mystart_action)
         self._explaset.append(exp)
         
-    def print_explaSet(self):
-        
+    def print_explaSet1(self):
         for index in range(len(self._explaset)):
             x = self._explaset[index]
+            
+            
             print
             print "--------------Explanation ",(index+1), "------------------"
             print "The probability:                         ", x._prob
@@ -82,6 +87,50 @@ class explaSet(object):
                     print "The pendingSet for this Goal:    ", actions._pending_actions
                 #print y._pendingset._pending_actions[0]
         print
+        
+    def print_explaSet(self):
+        with open('result.txt', 'a') as f:
+            f.write("Explanation Number:  ")
+            f.write(repr(len(self._explaset)))
+            f.write("\n")
+        
+            for index in range(len(self._explaset)):
+                x = self._explaset[index]
+                
+                f.write("\n")
+                f.write("--------------Explanation ")
+                f.write(repr(index+1))
+                f.write("------------------\n")
+                
+                f.write("The probability:                         ")
+                f.write(repr(x._prob))
+                f.write("\n")
+                
+                f.write("The current pending set is:              ")
+                f.write(repr(x._pendingSet))
+                f.write("\n")
+                
+                f.write("The tasks ongoing are:                   ")
+                f.write(repr(x._start_task))
+                f.write("\n")
+                
+                #print "The toppest task level explanation is:   "
+                for y in x._forest:
+                    f.write("\n")
+                    
+                    f.write("Goal Name:                           ")
+                    f.write(repr(y._goalName))
+                    f.write("\n")
+                    
+                    for actions in y._pendingset:
+                        f.write("The pendingSet for this Goal:    ")
+                        f.write(repr(actions._pending_actions))
+                        f.write("\n")
+            f.write("\n")
+           
+
+
+        
     #Functionality: remove explanations with prob smaller than delete_trigger
     #Normalize the remaining explanations
     def normalize(self):
@@ -127,7 +176,7 @@ class explaSet(object):
                     
         print "Now the action_posterior_prob is", self._action_posterior_prob                    
         for k in self._action_posterior_prob:
-            print "This k is        ", k
+            #print "This k is        ", k
             self._action_posterior_prob[k] = self._action_posterior_prob[k] * self.cal_posterior(k)      
         #print "inside action_posterior(), the _action_level_expla is updated==================="
         #print self._action_posterior_prob
@@ -187,8 +236,8 @@ class explaSet(object):
     ##impliment the bayesian network calculation for one possible state
     #op: the operator in knowlege base, prob: the prior of the action
     def variable_elim(self, enum, op, title):
-        print "the length for title is=======================", len(title)
-        print "the length for enum is========================", len(enum)
+        #print "the length for title is=======================", len(title)
+        #print "the length for enum is========================", len(enum)
         #print enum
         #print "the title is======================"
         #print title

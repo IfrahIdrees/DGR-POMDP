@@ -9,9 +9,18 @@ db = DB_Object()
 
 ##given the happened step, update the realState in database
 def realStateANDSensorUpdate(step_name):
-    print
-    print
-    print "Simulate step happen:     ",step_name
+    with open('result.txt', 'a') as f:
+        f.write("\n\n")
+        f.write("Simulate step happen:     ")
+        f.write(repr(step_name))
+        f.write("\n")
+        f.close()
+        
+        
+    
+    #print
+    #print
+    #print "Simulate step happen:     ",step_name
     op = db.get_operator(step_name)
     effect = op["effect"]
     for obj in effect:
