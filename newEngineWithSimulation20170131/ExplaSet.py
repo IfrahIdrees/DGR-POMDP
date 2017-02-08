@@ -87,7 +87,7 @@ class explaSet(object):
                     print "The pendingSet for this Goal:    ", actions._pending_actions
                 #print y._pendingset._pending_actions[0]
         print
-        
+    #print the result in a file    
     def print_explaSet(self):
         with open('result.txt', 'a') as f:
             f.write("Explanation Number:  ")
@@ -164,6 +164,7 @@ class explaSet(object):
 #########################################################################################    
     def action_posterior(self):
         self._action_posterior_prob = {}
+        posteriorSum = 0
         for expla in self._explaset:
             #add actions in pending set
             for action in expla._pendingSet:
@@ -177,9 +178,19 @@ class explaSet(object):
         print "Now the action_posterior_prob is", self._action_posterior_prob                    
         for k in self._action_posterior_prob:
             #print "This k is        ", k
-            self._action_posterior_prob[k] = self._action_posterior_prob[k] * self.cal_posterior(k)      
+            posteriorK = self.cal_posterior(k)
+            posteriorSum = posteriorK+posteriorSum
+            self._action_posterior_prob[k] = self._action_posterior_prob[k] * posteriorK
+            #self._action_posterior_prob[k] = self._action_posterior_prob[k] * self.cal_posterior(k)      
+        
+        print "the posterior sum is========", posteriorSum
+        #print "after calculate posterior, the action_posterior_prob is================"
+        #print 
         #print "inside action_posterior(), the _action_level_expla is updated==================="
         #print self._action_posterior_prob
+        print 
+        
+        
         
     def cal_posterior(self, action):
     
@@ -374,6 +385,7 @@ class explaSet(object):
     ##"explaSet_expand_part1" is used to generate explanations that add a new tree structure, a bottom-up process
     ##The bottom-up process depend on the previous state.     
     def explaSet_expand_part1(self, length):
+        print "inside expand, the posterior is", self._action_posterior_prob
         for i in range(length):
             x =   self.get(i+1)
             for action in self._action_posterior_prob:

@@ -259,4 +259,10 @@ Other staff
  -There is a bug in tree node completeness udpate, bug fixed in the DFS process.  
  -There is a mistake in knowledgebase operator.json "dry_hand", hand_1 has no attribute of clean. It only has "dirty", corrected
  -When a tasks has finished, should remove if from explanation. if not, the pending set would have a length of 0
+ 
+##Feb. 3-7
+ -running experiment on sensor reliability changes
+##Feb. 8
+ -fix a bug in "state.py", "update_attri_status_belief", the newp = att, should be newp = copy.deepcopy(att)
+ 
 

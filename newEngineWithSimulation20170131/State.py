@@ -23,6 +23,11 @@ class State(object):
             att = db.get_object_attri(x[0], x[1])
             
             att = self.update_attri_status_belief(att, i, action_list, title)
+            #print "Inside update state belief==================="
+            #print title[i][0]
+            #print title[i][1]
+            #print att
+            #print "before update the state is", db.get_object_attri(title[i][0], title[i][1])
             db.update_state_belief(title[i][0], title[i][1], att)
         
     #get all the state that occur in the effect list
@@ -64,14 +69,17 @@ class State(object):
         #print "the action list is=================", action_list
         #print "the index is=======================", index
         #print "the title is=======================", title
-        newp = att
+        #print att["yes"], att["no"]
+        newp = copy.deepcopy(att)
         sump=0
         for x in newp:
-            #print "this attribute value is ", x
+            
             p = 0
             for y in att:
                 
                 for k, v in action_list.items():
+                    #print "this attribute value is after is", x, att[x]
+                    #print "this attribute before is", y, att[y]
                     ##p(a)
                     pa = float(v)
                     #print "pa is", pa
@@ -86,7 +94,7 @@ class State(object):
                     #calculate p(s|s_t-1, a_t) happen
                     ps_actANDs = self.get_ps_actANDs(x, y, [k, v], index, title)
                     #print "ps_actANDs", ps_actANDs
-                    #print pa * ps_1 * po_s * ps_actANDs
+                    #print "multiply result, ", pa * ps_1 * po_s * ps_actANDs
                     p = p+pa * ps_1 * po_s * ps_actANDs
                      
             #print "the final result is ", p    
