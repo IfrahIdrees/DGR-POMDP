@@ -69,6 +69,12 @@ class explaSet(object):
         #exp = Explanation(v=1, pendingSet=mypendingSet, start_action=mystart_action)
         self._explaset.append(exp)
         
+    def printSensorDieNotification():
+        print colored('Some sensor might not work now, the possible sensor should related to following step: ', 'red')
+        for step in self._action_posterior_prob:
+            print step
+        
+        
     def print_explaSet1(self):
         for index in range(len(self._explaset)):
             x = self._explaset[index]
@@ -164,7 +170,7 @@ class explaSet(object):
 #########################################################################################    
     def action_posterior(self):
         self._action_posterior_prob = {}
-        posteriorSum = 0
+        otherHappen = 1
         for expla in self._explaset:
             #add actions in pending set
             for action in expla._pendingSet:
@@ -173,22 +179,18 @@ class explaSet(object):
                 else:
                     self._action_posterior_prob[action[0]] = action[1]
                 #self._action_level_expla[action[0]] = 1
-            
-                    
-        print "Now the action_posterior_prob is", self._action_posterior_prob                    
+                          
         for k in self._action_posterior_prob:
-            #print "This k is        ", k
             posteriorK = self.cal_posterior(k)
-            posteriorSum = posteriorK+posteriorSum
+            otherHappen = otherHappen*(1-posteriorK)
             self._action_posterior_prob[k] = self._action_posterior_prob[k] * posteriorK
             #self._action_posterior_prob[k] = self._action_posterior_prob[k] * self.cal_posterior(k)      
         
-        print "the posterior sum is========", posteriorSum
-        #print "after calculate posterior, the action_posterior_prob is================"
-        #print 
-        #print "inside action_posterior(), the _action_level_expla is updated==================="
-        #print self._action_posterior_prob
-        print 
+        print "the prob of otherHappen is========", otherHappen
+        if otherHappen > 0.5:
+            self.printSensorDieNotification()
+        print
+        return 
         
         
         
