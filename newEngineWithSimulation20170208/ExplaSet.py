@@ -179,7 +179,16 @@ class explaSet(object):
                 else:
                     self._action_posterior_prob[action[0]] = action[1]
                 #self._action_level_expla[action[0]] = 1
-                          
+            for start_task in expla._start_task:
+                if expla._start_task[start_task] == 0:
+                    target_method = db.find_method(start_task)
+                    initialize_prob = expla._prob / (len(expla._pendingSet) + len(target_method["start_action"]))
+                    for start_action in target_method["start_action"]:
+                        if start_action in self._action_posterior_prob:
+                            self._action_posterior_prob[start_action] = self._action_posterior_prob[start_action]+initialize_prob
+                        else:
+                            self._action_posterior_prob[start_action] = initialize_prob
+                                       
         for k in self._action_posterior_prob:
             posteriorK = self.cal_posterior(k)
             otherHappen = otherHappen*(1-posteriorK)
