@@ -9,8 +9,8 @@ class notification(object):
     def __init__(self):
         self._notif = Queue()
         
-        #step_input = open("Case1", "r")
-        step_input = open("Case2", "r")
+        step_input = open("Case1", "r")
+        #step_input = open("Case2", "r")
         #step_input = open("Case3", "r")
         #step_input = open("Case4", "r")
         #step_input = open("Case5", "r")
