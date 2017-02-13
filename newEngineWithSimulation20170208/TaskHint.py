@@ -36,12 +36,39 @@ class TaskHint(object):
             key_value.append(ave)
             new_dict = {k:key_value}
             self.prompt_task.update(new_dict)
-    
-    def print_taskhint(self):
-        print "go into task hint print"
-        for k, v in self.prompt_task.items():
-            print "task name:", k
-            print "task prob:", v[0]
-            print "task leve:", v[1]
-            print "~~~~~~~~~~~~~~~~~~~~~~~"
             
+    def get_key(self, item):
+        return item[1]
+        
+    def print_taskhint(self):
+        hint_in_level_format = {}
+        for k, v in self.prompt_task.items():
+            if v[1] in hint_in_level_format:
+                hint_in_level_format[v[1]].append([k, v[0]])
+            else:
+                level_task_list = []
+                level_task_list.append([k, v[0]])
+                hint_in_level_format[v[1]] = level_task_list
+            
+        for key in hint_in_level_format:
+            hint_in_level_format[key] = sorted(hint_in_level_format[key], key = self.get_key, reverse = True)
+        
+        with open('result.txt', 'a') as f:
+            f.write("Hint Output In Level Sequence: \n")
+            for key in hint_in_level_format:
+                line_new = "------------Level  " + str(key) + "-------------------\n"
+                f.write(line_new)
+                for task in hint_in_level_format[key]:
+                    line_new = '{:>8}  {:<20}  {:>20}  {:>12}'.format("task name: ", task[0], "with probability of: ", task[1])
+                    f.write(line_new)
+                    f.write("\n")
+                f.write("\n")
+            f.write("\n")    
+   
+
+    
+        
+        
+        
+        
+                    

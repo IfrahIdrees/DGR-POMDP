@@ -23,7 +23,8 @@ if __name__ == '__main__':
     cond_notsatisfy = 0.0
     
     #the threshhold that an explanation is no longer maintain
-    delete_trigger = 0.00001
+    #delete_trigger = 0.00001
+    delete_trigger = 0.01
     
     ##if there is a notification, the probability that nothing happend
     nothing_happen = 0.01

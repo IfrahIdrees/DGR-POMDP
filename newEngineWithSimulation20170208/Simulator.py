@@ -11,10 +11,9 @@ db = DB_Object()
 def realStateANDSensorUpdate(step_name):
     with open('result.txt', 'a') as f:
         f.write("\n\n")
-        f.write("Simulate step happen:     ")
-        f.write(repr(step_name))
-        f.write("\n")
-        f.close()
+        f.write("======================================================================================\n")
+        new_line = "Simulate step happen:     " + step_name + "\n"
+        f.write(new_line)
         
         
     

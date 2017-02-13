@@ -265,6 +265,8 @@ Other staff
 ##Feb. 8
  -fix a bug in "state.py", "update_attri_status_belief", the newp = att, should be newp = copy.deepcopy(att)
  -working on sensor die, create a new engine version: "newEngineWithSimulation20170208"
- 
+##Feb. 13
+ -format the output for level hint
+ - 
  
 

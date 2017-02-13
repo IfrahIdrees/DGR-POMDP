@@ -93,44 +93,41 @@ class explaSet(object):
                     print "The pendingSet for this Goal:    ", actions._pending_actions
                 #print y._pendingset._pending_actions[0]
         print
+        
     #print the result in a file    
     def print_explaSet(self):
         with open('result.txt', 'a') as f:
-            f.write("Explanation Number:  ")
-            f.write(repr(len(self._explaset)))
-            f.write("\n")
+            new_line = "Explanation Number:  " + str(len(self._explaset)) + "\n"
+            f.write(new_line)
         
             for index in range(len(self._explaset)):
                 x = self._explaset[index]
+                new_line = "\n" + "--------------Explanation " + str(index+1) + "------------------\n"
+                f.write(new_line)
                 
-                f.write("\n")
-                f.write("--------------Explanation ")
-                f.write(repr(index+1))
-                f.write("------------------\n")
-                
-                f.write("The probability:                         ")
-                f.write(repr(x._prob))
+                new_line = '{:>30} {:>12}'.format("The probability: ", x._prob)
+                f.write(new_line)
                 f.write("\n")
                 
-                f.write("The current pending set is:              ")
-                f.write(repr(x._pendingSet))
+                
+                new_line = '{:>30} {:>12}'.format("The current pending set is: ", x._pendingSet)
+                f.write(new_line)
                 f.write("\n")
                 
-                f.write("The tasks ongoing are:                   ")
-                f.write(repr(x._start_task))
-                f.write("\n")
                 
-                #print "The toppest task level explanation is:   "
+                new_line = '{:>30} {:>12}'.format("The tasks ongoing are: ", x._start_task)
+                f.write(new_line)
+                f.write("\n")
+
                 for y in x._forest:
                     f.write("\n")
-                    
-                    f.write("Goal Name:                           ")
-                    f.write(repr(y._goalName))
+                    new_line = '{:>30} {:<12}'.format("Goal Name: ", y._goalName)
+                    f.write(new_line)
                     f.write("\n")
                     
                     for actions in y._pendingset:
-                        f.write("The pendingSet for this Goal:    ")
-                        f.write(repr(actions._pending_actions))
+                        new_line = '{:>30} {:>12}'.format("The pendingSet for this Goal: ", actions._pending_actions)
+                        f.write(new_line)
                         f.write("\n")
             f.write("\n")
            
@@ -529,7 +526,7 @@ class explaSet(object):
             expla.generate_task_hint(taskhint)
         ##taskhint = TaskHint()
         taskhint.average_level()
-        #taskhint.print_taskhint()    
+        taskhint.print_taskhint()    
 
 
             
