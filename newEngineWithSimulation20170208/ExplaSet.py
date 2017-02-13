@@ -109,11 +109,9 @@ class explaSet(object):
                 f.write(new_line)
                 f.write("\n")
                 
-                
                 new_line = '{:>30} {:>12}'.format("The current pending set is: ", x._pendingSet)
                 f.write(new_line)
                 f.write("\n")
-                
                 
                 new_line = '{:>30} {:>12}'.format("The tasks ongoing are: ", x._start_task)
                 f.write(new_line)
@@ -176,7 +174,7 @@ class explaSet(object):
                 else:
                     self._action_posterior_prob[action[0]] = action[1]
                 #self._action_level_expla[action[0]] = 1
-            '''    
+                
             for start_task in expla._start_task:
                 if expla._start_task[start_task] == 0:
                     target_method = db.find_method(start_task)
@@ -186,14 +184,20 @@ class explaSet(object):
                             self._action_posterior_prob[start_action] = self._action_posterior_prob[start_action]+initialize_prob
                         else:
                             self._action_posterior_prob[start_action] = initialize_prob
-            '''                           
+                                       
         for k in self._action_posterior_prob:
             posteriorK = self.cal_posterior(k)
             otherHappen = otherHappen*(1-posteriorK)
             self._action_posterior_prob[k] = self._action_posterior_prob[k] * posteriorK
             #self._action_posterior_prob[k] = self._action_posterior_prob[k] * self.cal_posterior(k)      
         
-        print "the prob of otherHappen is========", otherHappen
+        
+        with open('result.txt', 'a') as f:
+            f.write("\n")
+            new_line = "the prob of otherHappen is========" + str(otherHappen) + "\n"
+            f.write(new_line)
+            f.write("\n")
+        #print "the prob of otherHappen is========", otherHappen
         if otherHappen > 0.5:
             self.printSensorDieNotification()
         print
