@@ -1,0 +1,36 @@
+
+
+#################################################################################################
+#####           This file contains functions that manually check                            #####
+#####           if a sensor is working or not.                                              #####
+#####           Those functions are simulations of real sensor checking process             #####
+#################################################################################################
+
+
+import sys
+sys.dont_write_bytecode = True
+from database import *
+
+db = DB_Object()
+
+# To check if all the sensors related to the operator's effect are working well
+# To simulate the physical sensor checking, the sensor is defined as working if 
+# the sensor reliability if bigger than 0.8
+# How to set the threshhold matters a lot.
+# Output: {"bad_sensor": [], "sensor_cause": True / False}
+def operator_sensor_check(op):
+    bad_sensor = []
+    for obj in op["effect"]:
+        for att in op["effect"][obj]:
+            reliability = db.get_sensor_reliability(obj, att)
+            if reliability < 0.8:
+                new_bad_sensor = {}
+                new_bad_sensor["object"] = obj
+                new_bad_sensor["attribute"] = att
+                bad_sensor.append(new_bad_sensor)
+                
+    
+    sensor_cause = {}
+    sensor_cause["bad_sensor"] = bad_sensor
+    sensor_cause["sensor_cause"] = len(bad_sensor)>0 ? True : False
+    return sensor_cause
