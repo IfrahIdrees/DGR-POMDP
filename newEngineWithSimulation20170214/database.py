@@ -5,7 +5,7 @@ sys.dont_write_bytecode = True
 from pymongo import MongoClient
 import pymongo
 import random
-from helper import *
+#from helper import *
 
 client = MongoClient()
 db = client.smart_home
@@ -48,19 +48,25 @@ class DB_Object(object):
     def get_operator(self, op_name): 
         op = list(self._operator.find({"st_name":op_name}))
         return op[0]
+    '''
+    # The effect is store in json format like this
+    # {"object_name": {"attribute_name": {"value": v, "step_name": sn}}, 
+    #   }
         
-    def operator_effect_match(self, op_name, sensor_notification):
+    def get_operator_effect(self, op_name):
         op = self.get_operator(op_name)
-        if len(sensor_notification) == get_effect_length(op):
-            for notif in sensor_notification:
-                if  notif["object"] in op["effect"] and \
-                    notif["attribute"] in op["effect"][notif["object"]] and \
-                    notif["obj_att_value"] == op["effect"][notif["object"]][notif["obj_att_value"]]:
-                    continue
-                else:
-                    return False
-            return True
-        return False
+        effect_summary = {}
+        for obj in op["effect"]:
+            for att in op["effect"][obj]:
+                new_item_att = {}
+                new_item = {}
+                new_item["value"] = op["effect"][obj][att]
+                new_item["step_name"] = op_name
+                new_item_att[att] = new_item
+                effect_summary[obj] = new_item_att
+        return effect_summary 
+     '''   
+        
     ####################################################################################
     ####                 Belief state related functions                             ####
     ####################################################################################
@@ -198,8 +204,20 @@ class DB_Object(object):
         print "after state update, the distribution is", thestate[0]
         '''
         #print "then number of changes is", result.matched_count
-      
-
+    def get_attri_distribution(self, ob_name, attri_name):
+        object_state = list(self._state.find({"ob_name": ob_name}))
+        object_state = object_state[0]
+        return object_state[attri_name]
+    
+    def update_state_belief_for_exception(self, ob_name, attri_name, attri_value):
+        reliability = self.get_sensor_reliability(ob_name, attri_name)
+        old_distribution = self.get_attri_distribution
+        for value in old_distribution:
+            if value == attri_value:
+                old_distribution[value] = reliability
+            else:
+                old_distribution[value] = 1 - reliability      
+        self.update_state_belief(ob_name, attri_name, old_distribution)
     ####################################################################################
     ####                 Real state update related functions                        ####
     ####################################################################################

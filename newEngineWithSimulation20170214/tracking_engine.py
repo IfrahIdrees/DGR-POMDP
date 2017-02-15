@@ -48,7 +48,8 @@ class Tracking_Engine(object):
                 
                 
                 # Go into the exception happen procedure
-                if otherHappen > 0.1:
+                if otherHappen > 0.5:
+                    print "come into handle exception because of otherHappen", otherHappen
                     exp.handle_exception()
                     
                 # Go into the normal update procedure
@@ -64,19 +65,14 @@ class Tracking_Engine(object):
                     
                     #update the explanation set, part 2
                     exp.explaSet_expand_part2(length)
-                  
-                    
+
                     #generate pending set         
                     exp.pendingset_generate()
-
-                    #calculate inner node prob, This would be used for hint
-                    exp.task_prob_calculate()
-                    
-                    
-                    
-                    
-                    #print "Explanation Number:  ", len(exp._explaset)
-                    exp.print_explaSet()
+                
+                #calculate inner node prob, This would be used for hint
+                exp.task_prob_calculate()
+                #print "Explanation Number:  ", len(exp._explaset)
+                exp.print_explaSet()
                 
                 
                 
@@ -84,14 +80,7 @@ class Tracking_Engine(object):
                 print "go into the next loop"
                 print 
                 print
-                #break
-               
-         
-                ##calculate the probability of goals and innner nodes in the tree
-                ##this kind of information is used for promp decision making. 
-                ##unlike the paper, my algorithm needs to calculate the probability of
-                ##each node. So as to realize hierarchical prompt.                
-            ##break   
+                
             
                           
             

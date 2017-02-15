@@ -13,12 +13,13 @@ from Node_data import *
 
 db = DB_Object()
 class TaskNet(object):
-    def __init__(self, goalName="", tree=Tree(), expandProb = 1, pendingset=TaskNetPendingSet(), complete = False):
+    def __init__(self, goalName="", tree=Tree(), expandProb = 1, pendingset=TaskNetPendingSet(), complete = False, execute_sequence = None):
         self._goalName=goalName ##this is the goal name of the tree, it is a string;
         self._tree = tree
         self._expandProb=expandProb
         self._pendingset = pendingset #[tree, action, new_added branch prob compared with the self._tree]
         self._complete = complete
+        self._execute_sequence = execute_sequence # 
     
     
     
@@ -243,42 +244,57 @@ class TaskNet(object):
     ##############################################################################################################
     
     
-    def repair_taskNet_structure(step_name, sensor_notification):
-        for taskNetPending in self._pendingset:
-            if step_name in taskNetPending.__pending_actions:
-                self.repair_taskNet_tree_structure(step_name, sensor_notification)
-                
-                
-                
-               
-    def repair_taskNet_tree_structure(self, step_name, sensor_notification):
-        # Step 1: Change the readiness of step_name
-        step_name_node = self._tree.get_node(step_name)
-        if step_name_node != None:
-            step_name_node.data._ready = False
-            step_name_node.data._completeness = False
-               
-        # Step 2: Get all the leaf node with completeness == true
-        leaves = self._tree.leaves()
-        leaves = [x for x in leaves if x.data._completeness == True]
+    
+    
+    def repair_taskNet(self, sensor_notification):
+        print 
+        print "Inside TaskNet.py, function: repair_taskNet"
+        print "The execute_sequence is: ", 
+        print self._execute_sequence
+        affect_steps = []
+        for notif in sensor_notification:
+            the_key = notif["object"] + "/" + notif["attribute"]
+            if (the_key in self._execute_sequence._effect_summary) and \
+                self._execute_sequence._effect_summary[the_key]["value"] != notif["obj_att_value"]:
+                affect_steps.append(self._execute_sequence._effect_summary[the_key]["step_name"])
         
-        for leaf in leaves:
-            tag = leaf.tag
-            leaf_happen = db.operator_effect_match(tag, sensor_notification)
-            if leaf_happen is True:
-                self.repair_tree_structure_basedon_wrong_happen(leaf_happen.tag)
+        # For all the affected steps in affect_steps, modify the completeness as False
+        for step in affect_steps:
+            step_node = self._tree.get_node(step)
+            step_node.data._completeness = False
+        
+        if len(affect_steps) > 0:  #violate the hard constraints
+            # Update this taskNet, update node completeness, readiness, and pendingSet
+            self.update()
             
-    def repair_tree_structure_baseon_wrong_happen(step_name):
+            # Update the _execute_sequence according to the updated tree structure
+            new_execute_sequence = ExecuteSequence()    
+            for step in self._execute_sequence._sequence:
+                step_node = self._tree.get_node(step)
+                if (step_node != None) and (step_node.data._completeness == True):
+                    new_execute_sequence.add_action(step)
+            self._execute_sequence = copy.deepcopy(new_execute_sequence)
+            return True
+        else:
+            return False
+        
+    
+        
                 
         
-        # find the happened one 
-        # update the tree complete and readiness information 
-        # based on the recognized one
+        
+        
+    
+    
+       
+    
+    
+   
                 
                 
                 
-                
-                
+               
+   
                 
                 
                 

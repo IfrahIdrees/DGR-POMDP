@@ -426,9 +426,9 @@ class explaSet(object):
         for step in self._action_posterior_prob:
             operator = db.get_operator(step)
             effect_length = get_effect_length(operator)
-            if effect_length>=len(self._sensor_notification):
+            if effect_length >= len(self._sensor_notification):
                 this_sensor_cause = operator_sensor_check(operator)
-                sensor_cause["bad_sensor"].extend(this_sensor_cause)
+                sensor_cause["bad_sensor"].extend(this_sensor_cause["bad_sensor"])
         
         # bad sensor cause the exception, call the caregiver to repair the sensors
         if len(sensor_cause["bad_sensor"]) > 0:
@@ -436,15 +436,48 @@ class explaSet(object):
             call_for_caregiver_sensor_cause(sensor_cause["bad_sensor"])
         
         # wrong step cause the exception
+        
         self.handle_wrong_step_exception()
         
-        
+    ####----------------------------------------------------------------------------------------#######    
+    # the wrong step might violate soft_constraint or hard_constraint
+    # 1. soft_constraint:   the wrong step does not impact on objects related to already happened steps' effects. 
+    #                       In this case, the wrong step violate soft_constraint (logically wrong, e.g. rinse hand before use soap)
+    #                       Do not update the current explanation, give the previous hint, do not update state belief,
+    # 2. hard_constraint:   the wrong step does impact on objects related to already happened steps' effects
+    #                       In this case, the wrong step violate hard_constraint (destroy the required preconditions for later steps)
+    #                       Need to backtrack to the step that create the precondtions and start from that point. 
+    #                       Need to update tree structure and the new pendingSet. Need to update belief state
+    # 3. state_update:      Finally weather update the state depends the sum probability of update and no-update   
     def handle_wrong_step_exception(self):
+        print "inside handle_wrong_step_exception"
+        state_update_prob = 0 #record to what degree the belief state should be updated
+        for expla in self._explaset:
+            state_update_prob = state_update_prob + expla.repair_expla(self._sensor_notification)
+        
+        print
+        print "Inside handle_wrong_step_exception, the state_udpate_prob is", state_update_prob
+        #if some explanation is updated, then need to update the current pending set
+        if state_update_prob > 0.01:
+            self.pendingset_generate()
+        
+        ##update state here, If the state_update_prob is big enough, need to update belief state 
+        if state_update_prob > 0.7:
+            print 
+            print "exception belief state update"
+            for notif in self._sensor_notification:
+                db.update_state_belief_for_exception(notif["object"], notif["attribute"], notif["obj_att_value"])
+            
+        
+        
+        '''
         pending_set_all = []
         for step in self._action_posterior_prob:
             new_item = {}
             new_item[step] = False
             pending_set_all.append(new_item)
+        
+        
         # check if actions' precondition in pending_set_all is violated   
         self.check_precondition_violate_from_wrong_step(pending_set_all)
         
@@ -489,7 +522,7 @@ class explaSet(object):
             print step
              
         
-        
+   '''     
         
         
         

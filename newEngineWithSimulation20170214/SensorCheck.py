@@ -29,8 +29,10 @@ def operator_sensor_check(op):
                 new_bad_sensor["attribute"] = att
                 bad_sensor.append(new_bad_sensor)
                 
-    
     sensor_cause = {}
     sensor_cause["bad_sensor"] = bad_sensor
-    sensor_cause["sensor_cause"] = len(bad_sensor)>0 ? True : False
+    if len(bad_sensor) > 0:
+        sensor_cause["sensor_cause"] = True
+    else:
+        sensor_cause["sensor_cause"] = False
     return sensor_cause

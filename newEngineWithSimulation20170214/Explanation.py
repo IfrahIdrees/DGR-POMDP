@@ -9,6 +9,7 @@ from Node_data import *
 from database import *
 from helper import *
 from TaskHint import *
+from ExecuteSequence import *
 
 db = DB_Object()
 
@@ -137,8 +138,11 @@ class Explanation(object):
                     theTree = copy.deepcopy(taskNetPending._tree)
                     action_node = theTree.get_node(act_expla[0])
                     action_node.data._completeness = True
+                    executed_sequence = ExecuteSequence(sequence = copy.deepcopy(taskNet._execute_sequence._sequence), effect_summary = copy.deepcopy(taskNet._execute_sequence._effect_summary))
+                    executed_sequence.add_action(act_expla[0])
+                    
                     #newTaskNet = taskNetPending.generate_new_taskNet(act_expla[0])
-                    newTaskNet = TaskNet(goalName = theTree.get_node(theTree.root).tag, tree = theTree, expandProb = taskNetPending._branch_factor)
+                    newTaskNet = TaskNet(goalName = theTree.get_node(theTree.root).tag, tree = theTree, expandProb = taskNetPending._branch_factor, execute_sequence = executed_sequence)
                     newTaskNet.update()
                     #get a new taskNet end
                     
@@ -212,9 +216,9 @@ class Explanation(object):
                             temp_forest.append(self.my_create_new_node(x, decompose, temptree))
         
                 elif len(parents)==0: #this tree already reached goal node
-                    #print "this child", tag, "has no parent"
-                    #print "the probability for branch factor is", thisTree[1]
-                    my_goal = TaskNet(goalName=tag, tree=thisTree[0], expandProb=thisTree[1])
+                    executed_sequence = ExecuteSequence(sequence = [], effect_summary = {})
+                    executed_sequence.add_action(action)
+                    my_goal = TaskNet(goalName=tag, tree=thisTree[0], expandProb=thisTree[1], execute_sequence = executed_sequence)
                     my_goal.update()
                     task_net.append(my_goal)
         
@@ -383,17 +387,22 @@ class Explanation(object):
     ##################################################################################################
     ###         exception handling
     ##################################################################################################
-    def exist_in_pendingSet_checking(self, step_name):
-        for step in self._pendingSet:
-            if step[0] == step_name:
-                return True
-        return False             
-            
-    def repair_expla_tree_structure(self, step_name, sensor_notification):
+
+    def repair_expla(self, sensor_notification):
+        print 
+        print "inside Explanation.py function: repair_expla"
+        update_belief_state = False
+        print "the length of forest is: ", len(self._forest)
         for taskNet in self._forest:
-            taskNet.repair_taskNet_structure(step_name, sensor_notification)
-            
-            
+            label = taskNet.repair_taskNet(sensor_notification)
+            if label == True:
+                update_belief_state = True    
+        
+        if update_belief_state is True:
+            return self._prob
+        else:
+            return 0.0
+       
             
         
              
