@@ -62,6 +62,9 @@ class Explanation(object):
     ##"egenerate_new_expla_part1" is used to generate explanations that add a new tree structure, a bottom-up process
     ##The bottom-up process depend on the previous state.     
     def generate_new_expla_part1(self, act_expla):
+        #print 
+        #print "Inside Explanation.py, function generate_new_expla_part1, the act_expla the act_expla is: "
+        #print act_expla
         new_explas = []
         #print "go into this function -----------------------!!!!!!!!!!!!!!!11"
         #exp = explaSet()
@@ -74,7 +77,7 @@ class Explanation(object):
             if tempstart_task[start_task] == 0: #inside this explanation, "start_task" has not been started
                 target_method = db.find_method(start_task)
                 if act_expla[0] in target_method["start_action"]:
-                    #print "it is in start action"
+                    print "it is in start action"
                     find = True
                     #newstart_task = 
                     #self._start_task[start_task] = 1
@@ -131,7 +134,7 @@ class Explanation(object):
                 #print "Explanation.py, generate_new_expla(), the tasknetPending._pending_action:"
                 #print taskNetPending._pending_actions
                 if act_expla[0] in taskNetPending._pending_actions: 
-                    #print "action exist in pending set"
+                    print "action exist in pending set"
                     find = True
                     
                     #get a new taskNet start

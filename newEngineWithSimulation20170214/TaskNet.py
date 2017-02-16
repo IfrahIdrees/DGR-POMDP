@@ -9,6 +9,7 @@ from TaskNetPendingSet import *
 from database import *
 from helper import *
 from Node_data import *
+from ExecuteSequence import *
 
 
 db = DB_Object()
@@ -98,7 +99,7 @@ class TaskNet(object):
                 #print "udpate the tree again?????????????????"
                 self.readiness_update(self._tree.root, self._tree)
                 tree_pending=[x.tag for x in leaves if x.data._ready==True and x.data._completeness==False]
-                #print "the new pending set is ", tree_pending
+                print "the new pending set is ", tree_pending
                 thisTree.append(tree_pending)
                 
                 mytasknetpending = TaskNetPendingSet(tree = thisTree[0], branch_factor = thisTree[1], pending_actions = thisTree[2])
@@ -229,8 +230,11 @@ class TaskNet(object):
                 pre_list = cur_node.data._pre
                 #print "the current node is", cur_node.tag
                 for x in pre_list:
+                    precondition_node = tree.get_node(x)
+                    if precondition_node.data._ready == False:
+                        precondition_node.data._completeness = False
                     #print "thuis pre in pre_list is", tree.get_node(x).tag, tree.get_node(x).data._completeness
-                    if tree.get_node(x).data._completeness == False:
+                    if precondition_node.data._completeness == False:
                         #print "the pre is not finished, change it to false"
                         cur_node.data._ready = False
                         break
@@ -238,7 +242,13 @@ class TaskNet(object):
                 child = cur_node._fpointer
                 node_queue.extend(child)        
         
-
+        '''
+        tree.show(line_type = "ascii")
+        all_node = tree.all_nodes()
+        print "after update the ready ones is--------------------------------"
+        for x in all_node:
+            print x.tag, "   ", x.data._ready
+        '''
     ##############################################################################################################
     ####                    handle exception
     ##############################################################################################################
@@ -249,8 +259,9 @@ class TaskNet(object):
     def repair_taskNet(self, sensor_notification):
         print 
         print "Inside TaskNet.py, function: repair_taskNet"
-        print "The execute_sequence is: ", 
-        print self._execute_sequence
+        print "The execute_sequence is: ", self._execute_sequence._sequence
+        print "The execute effect summary is", self._execute_sequence._effect_summary
+        print "the sensor notification is: ", sensor_notification
         affect_steps = []
         for notif in sensor_notification:
             the_key = notif["object"] + "/" + notif["attribute"]
@@ -258,20 +269,34 @@ class TaskNet(object):
                 self._execute_sequence._effect_summary[the_key]["value"] != notif["obj_att_value"]:
                 affect_steps.append(self._execute_sequence._effect_summary[the_key]["step_name"])
         
+        print "the affect_steps length is: ", len(affect_steps)
         # For all the affected steps in affect_steps, modify the completeness as False
         for step in affect_steps:
             step_node = self._tree.get_node(step)
+            print "the affected step name is: ", step
             step_node.data._completeness = False
+            ################################################################################
+            ###             Add function here change the completeness                   ####
+            ###             And readiness, and remove some tree structure               ####
+            ################################################################################
+            
+            
+            
         
         if len(affect_steps) > 0:  #violate the hard constraints
             # Update this taskNet, update node completeness, readiness, and pendingSet
+            print "inside repair_taskNet update"
+           
             self.update()
+            print "inside repair_taskNet update finished"
+            
             
             # Update the _execute_sequence according to the updated tree structure
-            new_execute_sequence = ExecuteSequence()    
+            new_execute_sequence = ExecuteSequence(sequence = [], effect_summary = {})    
             for step in self._execute_sequence._sequence:
                 step_node = self._tree.get_node(step)
                 if (step_node != None) and (step_node.data._completeness == True):
+                    print "add step into execute sequence: ", step
                     new_execute_sequence.add_action(step)
             self._execute_sequence = copy.deepcopy(new_execute_sequence)
             return True

@@ -211,7 +211,7 @@ class DB_Object(object):
     
     def update_state_belief_for_exception(self, ob_name, attri_name, attri_value):
         reliability = self.get_sensor_reliability(ob_name, attri_name)
-        old_distribution = self.get_attri_distribution
+        old_distribution = self.get_attri_distribution(ob_name, attri_name)
         for value in old_distribution:
             if value == attri_value:
                 old_distribution[value] = reliability

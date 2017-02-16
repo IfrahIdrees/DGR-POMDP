@@ -160,8 +160,13 @@ class explaSet(object):
                             self._action_posterior_prob[start_action] = initialize_prob
              '''                          
         for k in self._action_posterior_prob:
+            print "This step is, ", k
+            
             posteriorK = self.cal_posterior(k)
-            otherHappen = otherHappen*(1-posteriorK)
+            print "It's posterior is: ", posteriorK
+            print "It's prior is: ", self._action_posterior_prob[k]
+            otherHappen = otherHappen - posteriorK * self._action_posterior_prob[k]
+            #otherHappen = otherHappen*(1-posteriorK)
             self._action_posterior_prob[k] = self._action_posterior_prob[k] * posteriorK
             #self._action_posterior_prob[k] = self._action_posterior_prob[k] * self.cal_posterior(k)      
         
@@ -297,7 +302,7 @@ class explaSet(object):
     ##"explaSet_expand_part1" is used to generate explanations that add a new tree structure, a bottom-up process
     ##The bottom-up process depend on the previous state.     
     def explaSet_expand_part1(self, length):
-        #print "inside expand, the posterior is", self._action_posterior_prob
+        print "inside expand, the posterior is", self._action_posterior_prob
         for i in range(length):
             x =   self.get(i+1)
             for action in self._action_posterior_prob:
