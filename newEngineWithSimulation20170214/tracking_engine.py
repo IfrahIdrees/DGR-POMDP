@@ -71,6 +71,7 @@ class Tracking_Engine(object):
                 
                 #calculate inner node prob, This would be used for hint
                 exp.task_prob_calculate()
+                
                 #print "Explanation Number:  ", len(exp._explaset)
                 exp.print_explaSet()
                 

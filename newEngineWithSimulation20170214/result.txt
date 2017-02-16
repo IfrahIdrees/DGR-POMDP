@@ -28,6 +28,718 @@ Explanation Number:  3
 --------------Explanation 1------------------
              The probability:  0.357374684457
   The current pending set is:  [[u'use_soap', 0.3573746844572665]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 0, u'make_coffee': 0}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 2------------------
+             The probability:  0.321312657771
+  The current pending set is:  [[u'add_water_kettle_1', 0.32131265777136675]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 0}
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+--------------Explanation 3------------------
+             The probability:  0.321312657771
+  The current pending set is:  [[u'add_water_kettle_1', 0.32131265777136675]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 0, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+
+
+======================================================================================
+Simulate step happen:     use_soap
+
+the prob of otherHappen is========0.615178945283
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:   0.73789545712
+task name:   make_tea              with probability of:   0.13105227144
+task name:   make_coffee           with probability of:   0.13105227144
+
+------------Level  1-------------------
+task name:   clean_hand            with probability of:   0.73789545712
+task name:   prepare_hot_water     with probability of:   0.26210454288
+
+------------Level  2-------------------
+task name:   rinse_hand            with probability of:   0.73789545712
+task name:   kettle_1_add_water    with probability of:   0.26210454288
+
+------------Level  3-------------------
+task name:   turn_off_faucet_1     with probability of:   0.26210454288
+
+
+Explanation Number:  3
+
+--------------Explanation 1------------------
+             The probability:  0.73789545712
+  The current pending set is:  [[u'rinse_hand', 0.7378954571199843]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 0, u'make_coffee': 0}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+--------------Explanation 2------------------
+             The probability:  0.13105227144
+  The current pending set is:  [[u'turn_off_faucet_1', 0.1310522714400079]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 0}
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+--------------Explanation 3------------------
+             The probability:  0.13105227144
+  The current pending set is:  [[u'turn_off_faucet_1', 0.1310522714400079]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 0, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+
+
+======================================================================================
+Simulate step happen:     turn_off_faucet_1
+
+the prob of otherHappen is========0.763101113665
+
+
+
+======================================================================================
+Simulate step happen:     turn_on_faucet_1
+
+the prob of otherHappen is========0.553979712879
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:   0.357374684457
+task name:   make_coffee           with probability of:   0.321312657771
+task name:   make_tea              with probability of:   0.321312657771
+
+------------Level  1-------------------
+task name:   prepare_hot_water     with probability of:   0.642625315543
+task name:   clean_hand            with probability of:   0.357374684457
+
+------------Level  2-------------------
+task name:   kettle_1_add_water    with probability of:   0.642625315543
+task name:   use_soap              with probability of:   0.357374684457
+
+------------Level  3-------------------
+task name:   add_water_kettle_1    with probability of:   0.642625315543
+
+
+Explanation Number:  3
+
+--------------Explanation 1------------------
+             The probability:  0.357374684457
+  The current pending set is:  [[u'use_soap', 0.3573746844572665]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 0, u'make_coffee': 0}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 2------------------
+             The probability:  0.321312657771
+  The current pending set is:  [[u'add_water_kettle_1', 0.32131265777136675]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 0}
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+--------------Explanation 3------------------
+             The probability:  0.321312657771
+  The current pending set is:  [[u'add_water_kettle_1', 0.32131265777136675]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 0, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+
+
+======================================================================================
+Simulate step happen:     use_soap
+
+the prob of otherHappen is========0.900792741001
+
+
+
+======================================================================================
+Simulate step happen:     turn_on_faucet_1
+
+the prob of otherHappen is========0.553979712879
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:   0.357374684457
+task name:   make_coffee           with probability of:   0.321312657771
+task name:   make_tea              with probability of:   0.321312657771
+
+------------Level  1-------------------
+task name:   prepare_hot_water     with probability of:   0.642625315543
+task name:   clean_hand            with probability of:   0.357374684457
+
+------------Level  2-------------------
+task name:   kettle_1_add_water    with probability of:   0.642625315543
+task name:   use_soap              with probability of:   0.357374684457
+
+------------Level  3-------------------
+task name:   add_water_kettle_1    with probability of:   0.642625315543
+
+
+Explanation Number:  3
+
+--------------Explanation 1------------------
+             The probability:  0.357374684457
+  The current pending set is:  [[u'use_soap', 0.3573746844572665]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_coffee': 0, u'make_tea': 0}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 2------------------
+             The probability:  0.321312657771
+  The current pending set is:  [[u'add_water_kettle_1', 0.32131265777136675]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_coffee': 0, u'make_tea': 1}
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+--------------Explanation 3------------------
+             The probability:  0.321312657771
+  The current pending set is:  [[u'add_water_kettle_1', 0.32131265777136675]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_coffee': 1, u'make_tea': 0}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+
+
+======================================================================================
+Simulate step happen:     use_soap
+
+the prob of otherHappen is========0.615178945283
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:   0.73789545712
+task name:   make_tea              with probability of:   0.13105227144
+task name:   make_coffee           with probability of:   0.13105227144
+
+------------Level  1-------------------
+task name:   clean_hand            with probability of:   0.73789545712
+task name:   prepare_hot_water     with probability of:   0.26210454288
+
+------------Level  2-------------------
+task name:   rinse_hand            with probability of:   0.73789545712
+task name:   kettle_1_add_water    with probability of:   0.26210454288
+
+------------Level  3-------------------
+task name:   turn_off_faucet_1     with probability of:   0.26210454288
+
+
+Explanation Number:  3
+
+--------------Explanation 1------------------
+             The probability:  0.73789545712
+  The current pending set is:  [[u'rinse_hand', 0.7378954571199843]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_coffee': 0, u'make_tea': 0}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+--------------Explanation 2------------------
+             The probability:  0.13105227144
+  The current pending set is:  [[u'turn_off_faucet_1', 0.1310522714400079]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_coffee': 0, u'make_tea': 1}
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+--------------Explanation 3------------------
+             The probability:  0.13105227144
+  The current pending set is:  [[u'turn_off_faucet_1', 0.1310522714400079]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_coffee': 1, u'make_tea': 0}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+
+
+======================================================================================
+Simulate step happen:     turn_off_faucet_1
+
+the prob of otherHappen is========0.763101113665
+
+
+
+======================================================================================
+Simulate step happen:     turn_on_faucet_1
+
+the prob of otherHappen is========0.553979712879
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:   0.357374684457
+task name:   make_coffee           with probability of:   0.321312657771
+task name:   make_tea              with probability of:   0.321312657771
+
+------------Level  1-------------------
+task name:   prepare_hot_water     with probability of:   0.642625315543
+task name:   clean_hand            with probability of:   0.357374684457
+
+------------Level  2-------------------
+task name:   kettle_1_add_water    with probability of:   0.642625315543
+task name:   use_soap              with probability of:   0.357374684457
+
+------------Level  3-------------------
+task name:   add_water_kettle_1    with probability of:   0.642625315543
+
+
+Explanation Number:  3
+
+--------------Explanation 1------------------
+             The probability:  0.357374684457
+  The current pending set is:  [[u'use_soap', 0.3573746844572665]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_coffee': 0, u'make_tea': 0}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 2------------------
+             The probability:  0.321312657771
+  The current pending set is:  [[u'add_water_kettle_1', 0.32131265777136675]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_coffee': 0, u'make_tea': 1}
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+--------------Explanation 3------------------
+             The probability:  0.321312657771
+  The current pending set is:  [[u'add_water_kettle_1', 0.32131265777136675]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_coffee': 1, u'make_tea': 0}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+
+
+======================================================================================
+Simulate step happen:     use_soap
+
+the prob of otherHappen is========0.615178945283
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:   0.73789545712
+task name:   make_tea              with probability of:   0.13105227144
+task name:   make_coffee           with probability of:   0.13105227144
+
+------------Level  1-------------------
+task name:   clean_hand            with probability of:   0.73789545712
+task name:   prepare_hot_water     with probability of:   0.26210454288
+
+------------Level  2-------------------
+task name:   rinse_hand            with probability of:   0.73789545712
+task name:   kettle_1_add_water    with probability of:   0.26210454288
+
+------------Level  3-------------------
+task name:   turn_off_faucet_1     with probability of:   0.26210454288
+
+
+Explanation Number:  3
+
+--------------Explanation 1------------------
+             The probability:  0.73789545712
+  The current pending set is:  [[u'rinse_hand', 0.7378954571199843]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_coffee': 0, u'make_tea': 0}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+--------------Explanation 2------------------
+             The probability:  0.13105227144
+  The current pending set is:  [[u'turn_off_faucet_1', 0.1310522714400079]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_coffee': 0, u'make_tea': 1}
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+--------------Explanation 3------------------
+             The probability:  0.13105227144
+  The current pending set is:  [[u'turn_off_faucet_1', 0.1310522714400079]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_coffee': 1, u'make_tea': 0}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+
+
+======================================================================================
+Simulate step happen:     turn_off_faucet_1
+
+the prob of otherHappen is========0.763101113665
+
+
+
+======================================================================================
+Simulate step happen:     turn_on_faucet_1
+
+the prob of otherHappen is========0.553979712879
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:   0.357374684457
+task name:   make_coffee           with probability of:   0.321312657771
+task name:   make_tea              with probability of:   0.321312657771
+
+------------Level  1-------------------
+task name:   prepare_hot_water     with probability of:   0.642625315543
+task name:   clean_hand            with probability of:   0.357374684457
+
+------------Level  2-------------------
+task name:   kettle_1_add_water    with probability of:   0.642625315543
+task name:   use_soap              with probability of:   0.357374684457
+
+------------Level  3-------------------
+task name:   add_water_kettle_1    with probability of:   0.642625315543
+
+
+Explanation Number:  3
+
+--------------Explanation 1------------------
+             The probability:  0.357374684457
+  The current pending set is:  [[u'use_soap', 0.3573746844572665]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 0, u'make_coffee': 0}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 2------------------
+             The probability:  0.321312657771
+  The current pending set is:  [[u'add_water_kettle_1', 0.32131265777136675]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 0}
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+--------------Explanation 3------------------
+             The probability:  0.321312657771
+  The current pending set is:  [[u'add_water_kettle_1', 0.32131265777136675]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 0, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+
+
+======================================================================================
+Simulate step happen:     use_soap
+
+the prob of otherHappen is========0.615178945283
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:   0.73789545712
+task name:   make_tea              with probability of:   0.13105227144
+task name:   make_coffee           with probability of:   0.13105227144
+
+------------Level  1-------------------
+task name:   clean_hand            with probability of:   0.73789545712
+task name:   prepare_hot_water     with probability of:   0.26210454288
+
+------------Level  2-------------------
+task name:   rinse_hand            with probability of:   0.73789545712
+task name:   kettle_1_add_water    with probability of:   0.26210454288
+
+------------Level  3-------------------
+task name:   turn_off_faucet_1     with probability of:   0.26210454288
+
+
+Explanation Number:  3
+
+--------------Explanation 1------------------
+             The probability:  0.73789545712
+  The current pending set is:  [[u'rinse_hand', 0.7378954571199843]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 0, u'make_coffee': 0}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+--------------Explanation 2------------------
+             The probability:  0.13105227144
+  The current pending set is:  [[u'turn_off_faucet_1', 0.1310522714400079]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 0}
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+--------------Explanation 3------------------
+             The probability:  0.13105227144
+  The current pending set is:  [[u'turn_off_faucet_1', 0.1310522714400079]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 0, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+
+
+======================================================================================
+Simulate step happen:     turn_off_faucet_1
+
+the prob of otherHappen is========0.763101113665
+
+
+
+======================================================================================
+Simulate step happen:     turn_on_faucet_1
+
+the prob of otherHappen is========0.553979712879
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:   0.357374684457
+task name:   make_coffee           with probability of:   0.321312657771
+task name:   make_tea              with probability of:   0.321312657771
+
+------------Level  1-------------------
+task name:   prepare_hot_water     with probability of:   0.642625315543
+task name:   clean_hand            with probability of:   0.357374684457
+
+------------Level  2-------------------
+task name:   kettle_1_add_water    with probability of:   0.642625315543
+task name:   use_soap              with probability of:   0.357374684457
+
+------------Level  3-------------------
+task name:   add_water_kettle_1    with probability of:   0.642625315543
+
+
+Explanation Number:  3
+
+--------------Explanation 1------------------
+             The probability:  0.357374684457
+  The current pending set is:  [[u'use_soap', 0.3573746844572665]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 0, u'make_coffee': 0}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 2------------------
+             The probability:  0.321312657771
+  The current pending set is:  [[u'add_water_kettle_1', 0.32131265777136675]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 0}
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+--------------Explanation 3------------------
+             The probability:  0.321312657771
+  The current pending set is:  [[u'add_water_kettle_1', 0.32131265777136675]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 0, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+
+
+======================================================================================
+Simulate step happen:     use_soap
+
+the prob of otherHappen is========0.615178945283
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:   0.73789545712
+task name:   make_tea              with probability of:   0.13105227144
+task name:   make_coffee           with probability of:   0.13105227144
+
+------------Level  1-------------------
+task name:   clean_hand            with probability of:   0.73789545712
+task name:   prepare_hot_water     with probability of:   0.26210454288
+
+------------Level  2-------------------
+task name:   rinse_hand            with probability of:   0.73789545712
+task name:   kettle_1_add_water    with probability of:   0.26210454288
+
+------------Level  3-------------------
+task name:   turn_off_faucet_1     with probability of:   0.26210454288
+
+
+Explanation Number:  3
+
+--------------Explanation 1------------------
+             The probability:  0.73789545712
+  The current pending set is:  [[u'rinse_hand', 0.7378954571199843]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 0, u'make_coffee': 0}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+--------------Explanation 2------------------
+             The probability:  0.13105227144
+  The current pending set is:  [[u'turn_off_faucet_1', 0.1310522714400079]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 0}
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+--------------Explanation 3------------------
+             The probability:  0.13105227144
+  The current pending set is:  [[u'turn_off_faucet_1', 0.1310522714400079]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 0, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+
+
+======================================================================================
+Simulate step happen:     turn_off_faucet_1
+
+the prob of otherHappen is========0.763101113665
+
+
+
+======================================================================================
+Simulate step happen:     turn_on_faucet_1
+
+the prob of otherHappen is========0.553979712879
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:   0.357374684457
+task name:   make_coffee           with probability of:   0.321312657771
+task name:   make_tea              with probability of:   0.321312657771
+
+------------Level  1-------------------
+task name:   prepare_hot_water     with probability of:   0.642625315543
+task name:   clean_hand            with probability of:   0.357374684457
+
+------------Level  2-------------------
+task name:   kettle_1_add_water    with probability of:   0.642625315543
+task name:   use_soap              with probability of:   0.357374684457
+
+------------Level  3-------------------
+task name:   add_water_kettle_1    with probability of:   0.642625315543
+
+
+Explanation Number:  3
+
+--------------Explanation 1------------------
+             The probability:  0.357374684457
+  The current pending set is:  [[u'use_soap', 0.3573746844572665]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_coffee': 0, u'make_tea': 0}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 2------------------
+             The probability:  0.321312657771
+  The current pending set is:  [[u'add_water_kettle_1', 0.32131265777136675]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_coffee': 0, u'make_tea': 1}
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+--------------Explanation 3------------------
+             The probability:  0.321312657771
+  The current pending set is:  [[u'add_water_kettle_1', 0.32131265777136675]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_coffee': 1, u'make_tea': 0}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+
+
+======================================================================================
+Simulate step happen:     use_soap
+
+the prob of otherHappen is========0.615178945283
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:   0.73789545712
+task name:   make_tea              with probability of:   0.13105227144
+task name:   make_coffee           with probability of:   0.13105227144
+
+------------Level  1-------------------
+task name:   clean_hand            with probability of:   0.73789545712
+task name:   prepare_hot_water     with probability of:   0.26210454288
+
+------------Level  2-------------------
+task name:   rinse_hand            with probability of:   0.73789545712
+task name:   kettle_1_add_water    with probability of:   0.26210454288
+
+------------Level  3-------------------
+task name:   turn_off_faucet_1     with probability of:   0.26210454288
+
+
+Explanation Number:  3
+
+--------------Explanation 1------------------
+             The probability:  0.73789545712
+  The current pending set is:  [[u'rinse_hand', 0.7378954571199843]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_coffee': 0, u'make_tea': 0}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+--------------Explanation 2------------------
+             The probability:  0.13105227144
+  The current pending set is:  [[u'turn_off_faucet_1', 0.1310522714400079]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_coffee': 0, u'make_tea': 1}
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+--------------Explanation 3------------------
+             The probability:  0.13105227144
+  The current pending set is:  [[u'turn_off_faucet_1', 0.1310522714400079]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_coffee': 1, u'make_tea': 0}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+
+
+======================================================================================
+Simulate step happen:     turn_off_faucet_1
+
+the prob of otherHappen is========0.763101113665
+
+
+
+======================================================================================
+Simulate step happen:     turn_on_faucet_1
+
+the prob of otherHappen is========0.553979712879
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:   0.357374684457
+task name:   make_coffee           with probability of:   0.321312657771
+task name:   make_tea              with probability of:   0.321312657771
+
+------------Level  1-------------------
+task name:   prepare_hot_water     with probability of:   0.642625315543
+task name:   clean_hand            with probability of:   0.357374684457
+
+------------Level  2-------------------
+task name:   kettle_1_add_water    with probability of:   0.642625315543
+task name:   use_soap              with probability of:   0.357374684457
+
+------------Level  3-------------------
+task name:   add_water_kettle_1    with probability of:   0.642625315543
+
+
+Explanation Number:  3
+
+--------------Explanation 1------------------
+             The probability:  0.357374684457
+  The current pending set is:  [[u'use_soap', 0.3573746844572665]]
        The tasks ongoing are:  {u'wash_hand': 1, u'make_coffee': 0, u'make_tea': 0}
 
                    Goal Name:  wash_hand   
@@ -120,15 +832,12 @@ task name:   prepare_hot_water     with probability of:   0.26210454288
 task name:   turn_on_faucet_1      with probability of:            1.0
 task name:   kettle_1_add_water    with probability of:   0.26210454288
 
-------------Level  3-------------------
-task name:   turn_off_faucet_1     with probability of:   0.26210454288
-
 
 Explanation Number:  3
 
 --------------Explanation 1------------------
              The probability:  0.73789545712
-  The current pending set is:  [[u'rinse_hand', 0.7378954571199843]]
+  The current pending set is:  [[u'turn_on_faucet_1', 0.7378954571199843]]
        The tasks ongoing are:  {u'wash_hand': 1, u'make_coffee': 0, u'make_tea': 0}
 
                    Goal Name:  wash_hand   
@@ -136,26 +845,26 @@ The pendingSet for this Goal:  [u'turn_on_faucet_1']
 
 --------------Explanation 2------------------
              The probability:  0.13105227144
-  The current pending set is:  [[u'turn_off_faucet_1', 0.1310522714400079]]
+  The current pending set is:  [[u'turn_on_faucet_1', 0.1310522714400079]]
        The tasks ongoing are:  {u'wash_hand': 0, u'make_coffee': 0, u'make_tea': 1}
 
                    Goal Name:  make_tea    
-The pendingSet for this Goal:  [u'turn_on_faucet_1', u'turn_off_faucet_1']
+The pendingSet for this Goal:  [u'turn_on_faucet_1']
 
 --------------Explanation 3------------------
              The probability:  0.13105227144
-  The current pending set is:  [[u'turn_off_faucet_1', 0.1310522714400079]]
+  The current pending set is:  [[u'turn_on_faucet_1', 0.1310522714400079]]
        The tasks ongoing are:  {u'wash_hand': 0, u'make_coffee': 1, u'make_tea': 0}
 
                    Goal Name:  make_coffee 
-The pendingSet for this Goal:  [u'turn_on_faucet_1', u'turn_off_faucet_1']
+The pendingSet for this Goal:  [u'turn_on_faucet_1']
 
 
 
 ======================================================================================
 Simulate step happen:     turn_on_faucet_1
 
-the prob of otherHappen is========0.985700106745
+the prob of otherHappen is========0.999980366439
 
 Hint Output In Level Sequence: 
 ------------Level  0-------------------
@@ -170,15 +879,12 @@ task name:   prepare_hot_water     with probability of:   0.26210454288
 task name:   turn_on_faucet_1      with probability of:            1.0
 task name:   kettle_1_add_water    with probability of:   0.26210454288
 
-------------Level  3-------------------
-task name:   turn_off_faucet_1     with probability of:   0.26210454288
-
 
 Explanation Number:  3
 
 --------------Explanation 1------------------
              The probability:  0.73789545712
-  The current pending set is:  [[u'rinse_hand', 0.7378954571199843]]
+  The current pending set is:  [[u'turn_on_faucet_1', 0.7378954571199843]]
        The tasks ongoing are:  {u'wash_hand': 1, u'make_coffee': 0, u'make_tea': 0}
 
                    Goal Name:  wash_hand   
@@ -186,55 +892,109 @@ The pendingSet for this Goal:  [u'turn_on_faucet_1']
 
 --------------Explanation 2------------------
              The probability:  0.13105227144
-  The current pending set is:  [[u'turn_off_faucet_1', 0.1310522714400079]]
+  The current pending set is:  [[u'turn_on_faucet_1', 0.1310522714400079]]
        The tasks ongoing are:  {u'wash_hand': 0, u'make_coffee': 0, u'make_tea': 1}
 
                    Goal Name:  make_tea    
-The pendingSet for this Goal:  [u'turn_on_faucet_1', u'turn_off_faucet_1']
+The pendingSet for this Goal:  [u'turn_on_faucet_1']
 
 --------------Explanation 3------------------
              The probability:  0.13105227144
-  The current pending set is:  [[u'turn_off_faucet_1', 0.1310522714400079]]
+  The current pending set is:  [[u'turn_on_faucet_1', 0.1310522714400079]]
        The tasks ongoing are:  {u'wash_hand': 0, u'make_coffee': 1, u'make_tea': 0}
 
                    Goal Name:  make_coffee 
-The pendingSet for this Goal:  [u'turn_on_faucet_1', u'turn_off_faucet_1']
+The pendingSet for this Goal:  [u'turn_on_faucet_1']
+
+
+
+======================================================================================
+Simulate step happen:     use_soap
+
+the prob of otherHappen is========0.999980366439
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:   0.73789545712
+task name:   make_tea              with probability of:   0.13105227144
+task name:   make_coffee           with probability of:   0.13105227144
+
+------------Level  1-------------------
+task name:   prepare_hot_water     with probability of:   0.26210454288
+
+------------Level  2-------------------
+task name:   turn_on_faucet_1      with probability of:            1.0
+task name:   kettle_1_add_water    with probability of:   0.26210454288
+
+
+Explanation Number:  3
+
+--------------Explanation 1------------------
+             The probability:  0.73789545712
+  The current pending set is:  [[u'turn_on_faucet_1', 0.7378954571199843]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_coffee': 0, u'make_tea': 0}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'turn_on_faucet_1']
+
+--------------Explanation 2------------------
+             The probability:  0.13105227144
+  The current pending set is:  [[u'turn_on_faucet_1', 0.1310522714400079]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_coffee': 0, u'make_tea': 1}
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_on_faucet_1']
+
+--------------Explanation 3------------------
+             The probability:  0.13105227144
+  The current pending set is:  [[u'turn_on_faucet_1', 0.1310522714400079]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_coffee': 1, u'make_tea': 0}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'turn_on_faucet_1']
 
 
 
 ======================================================================================
 Simulate step happen:     rinse_hand
 
-the prob of otherHappen is========0.250767006127
+the prob of otherHappen is========0.999980366439
 
 Hint Output In Level Sequence: 
 ------------Level  0-------------------
-task name:   make_tea              with probability of:            0.5
-task name:   make_coffee           with probability of:            0.5
+task name:   wash_hand             with probability of:   0.73789545712
+task name:   make_tea              with probability of:   0.13105227144
+task name:   make_coffee           with probability of:   0.13105227144
 
 ------------Level  1-------------------
-task name:   prepare_hot_water     with probability of:            1.0
+task name:   prepare_hot_water     with probability of:   0.26210454288
 
 ------------Level  2-------------------
-task name:   kettle_1_add_water    with probability of:            1.0
-
-------------Level  3-------------------
 task name:   turn_on_faucet_1      with probability of:            1.0
+task name:   kettle_1_add_water    with probability of:   0.26210454288
 
 
-Explanation Number:  2
+Explanation Number:  3
 
 --------------Explanation 1------------------
-             The probability:           0.5
-  The current pending set is:  [[u'turn_on_faucet_1', 0.5]]
+             The probability:  0.73789545712
+  The current pending set is:  [[u'turn_on_faucet_1', 0.7378954571199843]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_coffee': 0, u'make_tea': 0}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'turn_on_faucet_1']
+
+--------------Explanation 2------------------
+             The probability:  0.13105227144
+  The current pending set is:  [[u'turn_on_faucet_1', 0.1310522714400079]]
        The tasks ongoing are:  {u'wash_hand': 0, u'make_coffee': 0, u'make_tea': 1}
 
                    Goal Name:  make_tea    
 The pendingSet for this Goal:  [u'turn_on_faucet_1']
 
---------------Explanation 2------------------
-             The probability:           0.5
-  The current pending set is:  [[u'turn_on_faucet_1', 0.5]]
+--------------Explanation 3------------------
+             The probability:  0.13105227144
+  The current pending set is:  [[u'turn_on_faucet_1', 0.1310522714400079]]
        The tasks ongoing are:  {u'wash_hand': 0, u'make_coffee': 1, u'make_tea': 0}
 
                    Goal Name:  make_coffee 
@@ -245,36 +1005,43 @@ The pendingSet for this Goal:  [u'turn_on_faucet_1']
 ======================================================================================
 Simulate step happen:     turn_off_faucet_1
 
-the prob of otherHappen is========0.909073717325
+the prob of otherHappen is========0.999980369865
 
 Hint Output In Level Sequence: 
 ------------Level  0-------------------
-task name:   make_tea              with probability of:            0.5
-task name:   make_coffee           with probability of:            0.5
+task name:   wash_hand             with probability of:   0.73789545712
+task name:   make_tea              with probability of:   0.13105227144
+task name:   make_coffee           with probability of:   0.13105227144
 
 ------------Level  1-------------------
-task name:   prepare_hot_water     with probability of:            1.0
+task name:   prepare_hot_water     with probability of:   0.26210454288
 
 ------------Level  2-------------------
-task name:   kettle_1_add_water    with probability of:            1.0
-
-------------Level  3-------------------
 task name:   turn_on_faucet_1      with probability of:            1.0
+task name:   kettle_1_add_water    with probability of:   0.26210454288
 
 
-Explanation Number:  2
+Explanation Number:  3
 
 --------------Explanation 1------------------
-             The probability:           0.5
-  The current pending set is:  [[u'turn_on_faucet_1', 0.5]]
+             The probability:  0.73789545712
+  The current pending set is:  [[u'turn_on_faucet_1', 0.7378954571199843]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_coffee': 0, u'make_tea': 0}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'turn_on_faucet_1']
+
+--------------Explanation 2------------------
+             The probability:  0.13105227144
+  The current pending set is:  [[u'turn_on_faucet_1', 0.1310522714400079]]
        The tasks ongoing are:  {u'wash_hand': 0, u'make_coffee': 0, u'make_tea': 1}
 
                    Goal Name:  make_tea    
 The pendingSet for this Goal:  [u'turn_on_faucet_1']
 
---------------Explanation 2------------------
-             The probability:           0.5
-  The current pending set is:  [[u'turn_on_faucet_1', 0.5]]
+--------------Explanation 3------------------
+             The probability:  0.13105227144
+  The current pending set is:  [[u'turn_on_faucet_1', 0.1310522714400079]]
        The tasks ongoing are:  {u'wash_hand': 0, u'make_coffee': 1, u'make_tea': 0}
 
                    Goal Name:  make_coffee 
@@ -285,36 +1052,43 @@ The pendingSet for this Goal:  [u'turn_on_faucet_1']
 ======================================================================================
 Simulate step happen:     dry_hand
 
-the prob of otherHappen is========0.909073717325
+the prob of otherHappen is========0.999980369865
 
 Hint Output In Level Sequence: 
 ------------Level  0-------------------
-task name:   make_tea              with probability of:            0.5
-task name:   make_coffee           with probability of:            0.5
+task name:   wash_hand             with probability of:   0.73789545712
+task name:   make_tea              with probability of:   0.13105227144
+task name:   make_coffee           with probability of:   0.13105227144
 
 ------------Level  1-------------------
-task name:   prepare_hot_water     with probability of:            1.0
+task name:   prepare_hot_water     with probability of:   0.26210454288
 
 ------------Level  2-------------------
-task name:   kettle_1_add_water    with probability of:            1.0
-
-------------Level  3-------------------
 task name:   turn_on_faucet_1      with probability of:            1.0
+task name:   kettle_1_add_water    with probability of:   0.26210454288
 
 
-Explanation Number:  2
+Explanation Number:  3
 
 --------------Explanation 1------------------
-             The probability:           0.5
-  The current pending set is:  [[u'turn_on_faucet_1', 0.5]]
+             The probability:  0.73789545712
+  The current pending set is:  [[u'turn_on_faucet_1', 0.7378954571199843]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_coffee': 0, u'make_tea': 0}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'turn_on_faucet_1']
+
+--------------Explanation 2------------------
+             The probability:  0.13105227144
+  The current pending set is:  [[u'turn_on_faucet_1', 0.1310522714400079]]
        The tasks ongoing are:  {u'wash_hand': 0, u'make_coffee': 0, u'make_tea': 1}
 
                    Goal Name:  make_tea    
 The pendingSet for this Goal:  [u'turn_on_faucet_1']
 
---------------Explanation 2------------------
-             The probability:           0.5
-  The current pending set is:  [[u'turn_on_faucet_1', 0.5]]
+--------------Explanation 3------------------
+             The probability:  0.13105227144
+  The current pending set is:  [[u'turn_on_faucet_1', 0.1310522714400079]]
        The tasks ongoing are:  {u'wash_hand': 0, u'make_coffee': 1, u'make_tea': 0}
 
                    Goal Name:  make_coffee 

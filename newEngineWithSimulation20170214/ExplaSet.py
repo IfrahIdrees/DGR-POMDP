@@ -148,17 +148,20 @@ class explaSet(object):
                 else:
                     self._action_posterior_prob[action[0]] = action[1]
                 #self._action_level_expla[action[0]] = 1
-            '''    
-            for start_task in expla._start_task:
-                if expla._start_task[start_task] == 0:
-                    target_method = db.find_method(start_task)
-                    initialize_prob = expla._prob / (len(expla._pendingSet) + len(target_method["start_action"]))
-                    for start_action in target_method["start_action"]:
-                        if start_action in self._action_posterior_prob:
-                            self._action_posterior_prob[start_action] = self._action_posterior_prob[start_action]+initialize_prob
-                        else:
-                            self._action_posterior_prob[start_action] = initialize_prob
-             '''                          
+        
+        print "Now the posterior is%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%:"
+        print self._action_posterior_prob
+        '''    
+        for start_task in expla._start_task:
+            if expla._start_task[start_task] == 0:
+                target_method = db.find_method(start_task)
+                initialize_prob = expla._prob / (len(expla._pendingSet) + len(target_method["start_action"]))
+                for start_action in target_method["start_action"]:
+                    if start_action in self._action_posterior_prob:
+                        self._action_posterior_prob[start_action] = self._action_posterior_prob[start_action]+initialize_prob
+                    else:
+                        self._action_posterior_prob[start_action] = initialize_prob
+         '''                          
         for k in self._action_posterior_prob:
             print "This step is, ", k
             
@@ -302,7 +305,7 @@ class explaSet(object):
     ##"explaSet_expand_part1" is used to generate explanations that add a new tree structure, a bottom-up process
     ##The bottom-up process depend on the previous state.     
     def explaSet_expand_part1(self, length):
-        print "inside expand, the posterior is", self._action_posterior_prob
+        #print "inside expand, the posterior is", self._action_posterior_prob
         for i in range(length):
             x =   self.get(i+1)
             for action in self._action_posterior_prob:
@@ -456,24 +459,46 @@ class explaSet(object):
     # 3. state_update:      Finally weather update the state depends the sum probability of update and no-update   
     def handle_wrong_step_exception(self):
         print "inside handle_wrong_step_exception"
-        state_update_prob = 0 #record to what degree the belief state should be updated
-        for expla in self._explaset:
-            state_update_prob = state_update_prob + expla.repair_expla(self._sensor_notification)
+        belief_state_repair_summary = {} #record to what degree the belief state should be updated
         
-        print
-        print "Inside handle_wrong_step_exception, the state_udpate_prob is", state_update_prob
+        for expla in self._explaset:
+            expla_repair_result = expla.repair_expla(self._sensor_notification)
+            if expla_repair_result[0] != 0.0:
+                self.belief_state_repair_summary_extend(belief_state_repair_summary, expla_repair_result)
+        
+        self.belief_state_repair_execute(belief_state_repair_summary)
+        
+        
+        #print
+        #print "Inside handle_wrong_step_exception, the state_udpate_prob is", state_update_prob
         #if some explanation is updated, then need to update the current pending set
-        if state_update_prob > 0.01:
-            self.pendingset_generate()
+        #if state_update_prob > 0.01:
+        #    self.pendingset_generate()
         
         ##update state here, If the state_update_prob is big enough, need to update belief state 
-        if state_update_prob > 0.7:
-            print 
-            print "exception belief state update"
-            for notif in self._sensor_notification:
-                db.update_state_belief_for_exception(notif["object"], notif["attribute"], notif["obj_att_value"])
-            
+        #if state_update_prob > 0.7:
+        #    print 
+        #    print "exception belief state update"
+        #    for notif in self._sensor_notification:
+        #        db.update_state_belief_for_exception(notif["object"], notif["attribute"], notif["obj_att_value"])
         
+    # add the expla_repair_result into belief_state_repair_summary
+    # expla_repair_result [prob, {key:value}]        
+    def belief_state_repair_summary_extend(self, belief_state_repair_summary, expla_repair_result):
+        for x in expla_repair_result[1]:
+            newkey = x + "/" + expla_repair_result[1][x]
+            if newkey in belief_state_repair_summary:
+                belief_state_repair_summary[newkey] = belief_state_repair_summary[newkey] + expla_repair_result[0]
+            else:
+                belief_state_repair_summary[newkey] = expla_repair_result[0]
+
+    def belief_state_repair_execute(self, belief_state_repair_summary):
+        return
+        ############################################################################
+        ####                Need to continue this function here                 ####
+        ############################################################################
+        
+
         
         '''
         pending_set_all = []

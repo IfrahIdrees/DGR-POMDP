@@ -61,8 +61,13 @@ class TaskNet(object):
     #pendingset is a list, each element has the format of 
     #[tree, action, new_added branch prob compared with the initial tree]
     def pendingset_update(self, node, tree):
-        
-        
+        '''
+        tree.show(line_type = "ascii")
+        all_node = tree.all_nodes()
+        print "Inside pendingSet update--------------------------------"
+        for x in all_node:
+            print x.tag, "   ", x.data._ready
+        '''
         expand_tree = []
         tree_queue = deque([])
         tree_queue.append([copy.deepcopy(tree), 1])
@@ -99,7 +104,7 @@ class TaskNet(object):
                 #print "udpate the tree again?????????????????"
                 self.readiness_update(self._tree.root, self._tree)
                 tree_pending=[x.tag for x in leaves if x.data._ready==True and x.data._completeness==False]
-                print "the new pending set is ", tree_pending
+                #print "the new pending set is ", tree_pending
                 thisTree.append(tree_pending)
                 
                 mytasknetpending = TaskNetPendingSet(tree = thisTree[0], branch_factor = thisTree[1], pending_actions = thisTree[2])
@@ -230,6 +235,7 @@ class TaskNet(object):
                 pre_list = cur_node.data._pre
                 #print "the current node is", cur_node.tag
                 for x in pre_list:
+                    #print "this precondition is: ", x
                     precondition_node = tree.get_node(x)
                     if precondition_node.data._ready == False:
                         precondition_node.data._completeness = False
@@ -257,40 +263,34 @@ class TaskNet(object):
     
     
     def repair_taskNet(self, sensor_notification):
-        print 
-        print "Inside TaskNet.py, function: repair_taskNet"
-        print "The execute_sequence is: ", self._execute_sequence._sequence
-        print "The execute effect summary is", self._execute_sequence._effect_summary
-        print "the sensor notification is: ", sensor_notification
-        affect_steps = []
+        #print 
+        #print "Inside TaskNet.py, function: repair_taskNet"
+        #print "The execute_sequence is: ", self._execute_sequence._sequence
+        #print "The execute effect summary is", self._execute_sequence._effect_summary
+        #print "the sensor notification is: ", sensor_notification
+        affect_steps = [False] * len(self._execute_sequence._sequence) #False: not affected, True: affected
+        affect_num = 0
         for notif in sensor_notification:
             the_key = notif["object"] + "/" + notif["attribute"]
             if (the_key in self._execute_sequence._effect_summary) and \
                 self._execute_sequence._effect_summary[the_key]["value"] != notif["obj_att_value"]:
-                affect_steps.append(self._execute_sequence._effect_summary[the_key]["step_name"])
+                the_index = self._execute_sequence._sequence.index(self._execute_sequence._effect_summary[the_key]["step_name"])
+                affect_steps[the_index] = True
+                affect_num = affect_num + 1
+                #affect_steps.append(self._execute_sequence._effect_summary[the_key]["step_name"])
         
-        print "the affect_steps length is: ", len(affect_steps)
+        print "the affect_steps length is: ", affect_num
         # For all the affected steps in affect_steps, modify the completeness as False
-        for step in affect_steps:
-            step_node = self._tree.get_node(step)
-            print "the affected step name is: ", step
-            step_node.data._completeness = False
-            ################################################################################
-            ###             Add function here change the completeness                   ####
-            ###             And readiness, and remove some tree structure               ####
-            ################################################################################
-            
-            
-            
-        
-        if len(affect_steps) > 0:  #violate the hard constraints
-            # Update this taskNet, update node completeness, readiness, and pendingSet
-            print "inside repair_taskNet update"
-           
-            self.update()
-            print "inside repair_taskNet update finished"
-            
-            
+        for index in range(0, len(affect_steps)):
+            if affect_steps[index] == True:
+                step_node = self._tree.get_node(self._execute_sequence._sequence[index])
+                if step_node != None and step_node.data._completeness == True:
+                    step_node.data._completeness = False
+                    self.repair_taskNet_completeness_readiness(step_node)
+    
+        if affect_num > 0:  #violate the hard constraints
+            self._pendingset = copy.deepcopy(self.pendingset_update(self._tree.root, self._tree))
+
             # Update the _execute_sequence according to the updated tree structure
             new_execute_sequence = ExecuteSequence(sequence = [], effect_summary = {})    
             for step in self._execute_sequence._sequence:
@@ -298,16 +298,42 @@ class TaskNet(object):
                 if (step_node != None) and (step_node.data._completeness == True):
                     print "add step into execute sequence: ", step
                     new_execute_sequence.add_action(step)
+            
+            # update the belief state
+            new_effect_summary = copy.deepcopy(new_execute_sequence._effect_summary)
+            old_effect_summary = copy.deepcopy(self._execute_sequence._effect_summary)
+            #self.repair_belief_state(new_effect_summary, old_effect_summary)
             self._execute_sequence = copy.deepcopy(new_execute_sequence)
-            return True
+            return [True, new_effect_summary, old_effect_summary]
         else:
-            return False
+            return [False, None, None]
         
     
         
-                
-        
-        
+    # The completeness of this node changed from True to False            
+    def repair_taskNet_completeness_readiness(self, node):
+        affected_node = tree_queue = deque([])
+        affected_node.append(node)
+        while len(affected_node) > 0:
+            current_node = affected_node.popleft()
+            for x in current_node.data._dec:
+                new_node = self._tree.get_node(x)
+                if new_node != None:
+                    new_node.data._ready = False
+                    new_node.data._completeness = False
+                    
+                    # if the new_node is not leaf, then since it's readiness is False now
+                    # delete it's child node
+                    if new_node.is_leaf() == False:
+                        child = copy.deepcopy(new_node._fpointer)
+                        #print "the length of child is: ", len(child)
+                        for x in range(0, len(child)):
+                            print child
+                            #print "the removed node is: +++++++++++++++++++++++++++++++++, ", child[x]
+                            self._tree.remove_node(child[x])
+                    
+                    # append the new_node into affected not
+                    affected_node.append(new_node)
         
     
     

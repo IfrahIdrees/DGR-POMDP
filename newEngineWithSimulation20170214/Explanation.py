@@ -290,14 +290,18 @@ class Explanation(object):
 ###############based on the current tree structure #####################################
 #########################################################################################
 #########################################################################################
-
+    '''
+    def create_pendingSet(self):
+        self.real_create_pendingSet()
+    '''
+    
     def create_pendingSet(self):      
         if len(self._pendingSet)==0:
             self.set_pendingSet(self.real_create_pendingSet())
         else:
             self.set_pendingSet(self.normalize_pendingSet_prior())
         
-
+    
 
 
                 
@@ -307,6 +311,7 @@ class Explanation(object):
         for taskNet in self._forest:
             for taskNetPending in taskNet._pendingset:
                 for action in taskNetPending._pending_actions:
+                    #print "For this tasknet pending ,hte action is: ", action
                     pendingSet.add(action)
         
         #if currently the pending set has no action, need to initialize from start tasks
@@ -396,18 +401,33 @@ class Explanation(object):
         print "inside Explanation.py function: repair_expla"
         update_belief_state = False
         print "the length of forest is: ", len(self._forest)
+        belief_state_repair_summary = {}
+        old_effect_summary = {}
         for taskNet in self._forest:
-            label = taskNet.repair_taskNet(sensor_notification)
-            if label == True:
+            repair_result = taskNet.repair_taskNet(sensor_notification)
+            if repair_result[0] == True:
+                new_effect_summary = copy.deepcopy(repair_result[1])
+                old_effect_summary = copy.deepcopy(repair_result[2])
+                self.belief_state_repair(belief_state_repair_summary, new_effect_summary, old_effect_summary)
+                self.set_pendingSet(self.real_create_pendingSet())
+                #print ""
                 update_belief_state = True    
         
         if update_belief_state is True:
-            return self._prob
+            return [self._prob, belief_state_repair_summary]
         else:
-            return 0.0
+            return [0.0, None]
        
             
-        
+    def belief_state_repair(self, belief_state_repair_summary, new_effect_summary, old_effect_summary):
+        for key in old_effect_summary:
+            if key in new_effect_summary:
+                belief_state_repair_summary[key] = new_effect_summary[key]["value"]
+            else:
+                key_term = key.split("/")
+                belief_state_repair_summary[key] = db.get_reverse_attribute_value(key_term[0], key_term[1], old_effect_summary[key]["value"])
+                 
+                       
              
         
 

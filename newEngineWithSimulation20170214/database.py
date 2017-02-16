@@ -102,6 +102,14 @@ class DB_Object(object):
                 else:
                     return 1-st[0][attri_name][x]
 
+    # get reverse value of a attribute
+    def get_reverse_attribute_value(self, ob_name, attri_name, attri_value):
+        ob = self.get_object_status(ob_name)
+        for att_value in ob[attri_name]:
+            if att_value != attri_value:
+                return att_value
+
+
     #can only check >= scenario!!!!!!!!!
     def ability_check(self, precond, state):
         for i, x in enumerate(state):
@@ -132,7 +140,7 @@ class DB_Object(object):
         sensor = sensor[0]
         return sensor["reliability"]
     
-    
+
     # Update sensor value according to the desired update and the sensor reliability
     # the returned "label" tells if the sensor state is updated. 
     # "False": No, "True": Yes
