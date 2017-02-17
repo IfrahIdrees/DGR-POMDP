@@ -62,44 +62,30 @@ class Explanation(object):
     ##"egenerate_new_expla_part1" is used to generate explanations that add a new tree structure, a bottom-up process
     ##The bottom-up process depend on the previous state.     
     def generate_new_expla_part1(self, act_expla):
-        #print 
-        #print "Inside Explanation.py, function generate_new_expla_part1, the act_expla the act_expla is: "
-        #print act_expla
         new_explas = []
-        #print "go into this function -----------------------!!!!!!!!!!!!!!!11"
-        #exp = explaSet()
         find = False
         
         ##Case1 : drop an on-going unfinished task, start a new one. 
         tempstart_task = copy.deepcopy(self._start_task) 
         for start_task in tempstart_task:
-            #print "check start_ task",start_task, act_expla[0]
             if tempstart_task[start_task] == 0: #inside this explanation, "start_task" has not been started
                 target_method = db.find_method(start_task)
                 if act_expla[0] in target_method["start_action"]:
                     print "it is in start action"
                     find = True
-                    #newstart_task = 
-                    #self._start_task[start_task] = 1
                     newTaskNets = self.initialize_tree_structure(act_expla[0])
-                    #print "the length of tasknet is", len(newTaskNets)
                     for g in newTaskNets:
-                        #print "this tasknet", g._expandProb
-                        #print "act prob", act_expla[1]
-                        #print "original expla prob", self._prob
                         if tempstart_task[g._goalName] == 0:
                             tempstart_task[g._goalName] = 1
                             newstart_task = copy.deepcopy(self._start_task)
                             prob = act_expla[1]*g._expandProb*self._prob
                             if g._complete == True:
-                                #newstart_task = list(self._start_task)
                                 newstart_task[g._goalName] = 0
                                 newexp = Explanation(v=prob, forest = list(self._forest), start_task=newstart_task)
                             else:
                                 newforest = list(self._forest)
                                 newforest.append(g)
                                 newstart_task[g._goalName] = 1
-                                #newstart_task = copy.deepcopy(self._start_task)
                                 newexp = Explanation(v=prob, forest = newforest, start_task=newstart_task)
                             new_explas.append(newexp)
          
@@ -121,20 +107,14 @@ class Explanation(object):
     ##"generate_new_expla_part2" is used to generate explanations by decomposing an existing tree structure. , a top-down process
     ##The top=down process depends on the current state. (after adding the effect of just happened action)
     def generate_new_expla_part2(self, act_expla):
-        #print "Inside Explanation.py generate_new_expla", act_expla
         new_explas = []
-        #print "go into this function -----------------------!!!!!!!!!!!!!!!11"
-        #exp = explaSet()
         find = False
         ##Case2 : continue on an on-going task
             ##update existing tree structure, if the action exist in the 
             ##pending set of this tree structure
         for taskNet in self._forest:
             for taskNetPending in taskNet._pendingset:
-                #print "Explanation.py, generate_new_expla(), the tasknetPending._pending_action:"
-                #print taskNetPending._pending_actions
                 if act_expla[0] in taskNetPending._pending_actions: 
-                    print "action exist in pending set"
                     find = True
                     
                     #get a new taskNet start
@@ -204,7 +184,6 @@ class Explanation(object):
             length = len(temp_forest)
             for i in range(length):
                 thisTree = copy.deepcopy(temp_forest.popleft())
-                #print "the probability for branch factor is fsdfdsfs", thisTree[1]
                 tag = thisTree[0].get_node(thisTree[0].root).tag
                 parents = db.get_parent_list(tag)
                 if parents==False: print "error happend here please check"
@@ -213,7 +192,6 @@ class Explanation(object):
                         method = db.find_method(x)
                         decompose_choose = self.method_precond_check(method,tag)
                         for decompose in decompose_choose:
-                            #print "the decompose is", decompose[0]
                             decompose[0]=thisTree[1]*decompose[0]
                             temptree = copy.deepcopy(thisTree[0])
                             temp_forest.append(self.my_create_new_node(x, decompose, temptree))
@@ -264,11 +242,7 @@ class Explanation(object):
         newTree.create_node(parent, parent, data=parent_data)
         
         known_child = childTree.get_node(childTree.root)
-        #print "the know child is", known_child
-        #print decompose[1]
         for x in decompose[1]:
-            #print x
-            
             if x==known_child.tag:
                 known_child.data._pre = decompose[1][x]["pre"]
                 known_child.data._dec = decompose[1][x]["dec"]
@@ -276,9 +250,6 @@ class Explanation(object):
             else:
                 mydata = Node_data(pre=decompose[1][x]["pre"], dec=decompose[1][x]["dec"])
                 newTree.create_node(x, x, parent=newTree.root, data= mydata)
-        
-        #newTree.show(line_type = "ascii")
-        #print "the probability for this decompose is", decompose[0]
         return [newTree, decompose[0]]   
 
 
@@ -290,28 +261,18 @@ class Explanation(object):
 ###############based on the current tree structure #####################################
 #########################################################################################
 #########################################################################################
-    '''
-    def create_pendingSet(self):
-        self.real_create_pendingSet()
-    '''
-    
+
     def create_pendingSet(self):      
         if len(self._pendingSet)==0:
             self.set_pendingSet(self.real_create_pendingSet())
         else:
             self.set_pendingSet(self.normalize_pendingSet_prior())
-        
-    
-
-
-                
+                 
     def real_create_pendingSet(self):
-        #print expla._prob
         pendingSet = set()
         for taskNet in self._forest:
             for taskNetPending in taskNet._pendingset:
                 for action in taskNetPending._pending_actions:
-                    #print "For this tasknet pending ,hte action is: ", action
                     pendingSet.add(action)
         
         #if currently the pending set has no action, need to initialize from start tasks
@@ -381,15 +342,8 @@ class Explanation(object):
    
         ###########Step2----------------------------------------------
         ##add the task_Name_Level dict to the TaskHint 
-                               
-        ##taskhint = TaskHint()
-        ##taskhint.reset()
         for k,v in task_Name_Level.items():
-            #print "this key is", k
-            #print "this value is", v
-            #print "&&&&&&&&&&&&&&&&&&&&&&&&&&&77"
             taskhint.add_task(task_tag=k, expla_prob=self._prob, level = v)
-        ##taskhint.print_taskhint()
                    
     
     ##################################################################################################
@@ -410,7 +364,6 @@ class Explanation(object):
                 old_effect_summary = copy.deepcopy(repair_result[2])
                 self.belief_state_repair(belief_state_repair_summary, new_effect_summary, old_effect_summary)
                 self.set_pendingSet(self.real_create_pendingSet())
-                #print ""
                 update_belief_state = True    
         
         if update_belief_state is True:

@@ -147,10 +147,6 @@ class explaSet(object):
                     self._action_posterior_prob[action[0]] = self._action_posterior_prob[action[0]] + action[1]
                 else:
                     self._action_posterior_prob[action[0]] = action[1]
-                #self._action_level_expla[action[0]] = 1
-        
-        print "Now the posterior is%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%:"
-        print self._action_posterior_prob
         '''    
         for start_task in expla._start_task:
             if expla._start_task[start_task] == 0:
@@ -162,16 +158,11 @@ class explaSet(object):
                     else:
                         self._action_posterior_prob[start_action] = initialize_prob
          '''                          
-        for k in self._action_posterior_prob:
-            print "This step is, ", k
-            
+        for k in self._action_posterior_prob: 
             posteriorK = self.cal_posterior(k)
-            print "It's posterior is: ", posteriorK
-            print "It's prior is: ", self._action_posterior_prob[k]
             otherHappen = otherHappen - posteriorK * self._action_posterior_prob[k]
             #otherHappen = otherHappen*(1-posteriorK)
             self._action_posterior_prob[k] = self._action_posterior_prob[k] * posteriorK
-            #self._action_posterior_prob[k] = self._action_posterior_prob[k] * self.cal_posterior(k)      
         
         
         with open('result.txt', 'a') as f:
@@ -458,6 +449,11 @@ class explaSet(object):
     #                       Need to update tree structure and the new pendingSet. Need to update belief state
     # 3. state_update:      Finally weather update the state depends the sum probability of update and no-update   
     def handle_wrong_step_exception(self):
+        with open('result.txt', 'a') as f:
+            f.write("This is a wrong step, the tracking agent will repair from the wrong step\n\n")
+            #f.write("\n\n")
+            
+    
         print "inside handle_wrong_step_exception"
         belief_state_repair_summary = {} #record to what degree the belief state should be updated
         
@@ -467,20 +463,6 @@ class explaSet(object):
                 self.belief_state_repair_summary_extend(belief_state_repair_summary, expla_repair_result)
         
         self.belief_state_repair_execute(belief_state_repair_summary)
-        
-        
-        #print
-        #print "Inside handle_wrong_step_exception, the state_udpate_prob is", state_update_prob
-        #if some explanation is updated, then need to update the current pending set
-        #if state_update_prob > 0.01:
-        #    self.pendingset_generate()
-        
-        ##update state here, If the state_update_prob is big enough, need to update belief state 
-        #if state_update_prob > 0.7:
-        #    print 
-        #    print "exception belief state update"
-        #    for notif in self._sensor_notification:
-        #        db.update_state_belief_for_exception(notif["object"], notif["attribute"], notif["obj_att_value"])
         
     # add the expla_repair_result into belief_state_repair_summary
     # expla_repair_result [prob, {key:value}]        
@@ -493,6 +475,15 @@ class explaSet(object):
                 belief_state_repair_summary[newkey] = expla_repair_result[0]
 
     def belief_state_repair_execute(self, belief_state_repair_summary):
+        for effect in belief_state_repair_summary:
+            belief_state = effect.split("/")
+            opposite_attri_value = db.get_reverse_attribute_value(belief_state[0], belief_state[1], belief_state[2])
+            new_att_distribution = {}
+            new_att_distribution[belief_state[2]] = belief_state_repair_summary[effect]
+            new_att_distribution[opposite_attri_value] = 1 - belief_state_repair_summary[effect]
+            db.update_state_belief(belief_state[0], belief_state[1], new_att_distribution)
+    
+    
         return
         ############################################################################
         ####                Need to continue this function here                 ####

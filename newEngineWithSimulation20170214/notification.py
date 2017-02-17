@@ -16,7 +16,10 @@ class notification(object):
         #step_input = open("Case5", "r")    #wash_hand || make_tea, correct step, sequential tasks
         #step_input = open("Case6", "r")    #wash_hand || make_tea, correct step, interleaved steps, without shared step among tasks
         #step_input = open("Case7", "r")    #wash_hand || make_tea, correct step, interleaved steps, without shared step among tasks
-        step_input = open("Case8", "r")    #wash_hand, wrong step, hard constraint violate
+        #step_input = open("Case8", "r")    #wash_hand, wrong step, hard constraint violate
+        #step_input = open("Case9", "r")    #wash_hand, wrong step, soft Constraint violate
+        #step_input = open("Case10", "r")   #wash_hand, wrong step, soft constraint and hard constraint violate
+        step_input = open("Case11", "r")   
         steps = step_input.readlines()
         step_input.close()
         

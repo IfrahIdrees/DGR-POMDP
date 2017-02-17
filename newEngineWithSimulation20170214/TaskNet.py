@@ -263,11 +263,6 @@ class TaskNet(object):
     
     
     def repair_taskNet(self, sensor_notification):
-        #print 
-        #print "Inside TaskNet.py, function: repair_taskNet"
-        #print "The execute_sequence is: ", self._execute_sequence._sequence
-        #print "The execute effect summary is", self._execute_sequence._effect_summary
-        #print "the sensor notification is: ", sensor_notification
         affect_steps = [False] * len(self._execute_sequence._sequence) #False: not affected, True: affected
         affect_num = 0
         for notif in sensor_notification:
@@ -277,9 +272,7 @@ class TaskNet(object):
                 the_index = self._execute_sequence._sequence.index(self._execute_sequence._effect_summary[the_key]["step_name"])
                 affect_steps[the_index] = True
                 affect_num = affect_num + 1
-                #affect_steps.append(self._execute_sequence._effect_summary[the_key]["step_name"])
         
-        print "the affect_steps length is: ", affect_num
         # For all the affected steps in affect_steps, modify the completeness as False
         for index in range(0, len(affect_steps)):
             if affect_steps[index] == True:
@@ -296,13 +289,11 @@ class TaskNet(object):
             for step in self._execute_sequence._sequence:
                 step_node = self._tree.get_node(step)
                 if (step_node != None) and (step_node.data._completeness == True):
-                    print "add step into execute sequence: ", step
                     new_execute_sequence.add_action(step)
             
             # update the belief state
             new_effect_summary = copy.deepcopy(new_execute_sequence._effect_summary)
             old_effect_summary = copy.deepcopy(self._execute_sequence._effect_summary)
-            #self.repair_belief_state(new_effect_summary, old_effect_summary)
             self._execute_sequence = copy.deepcopy(new_execute_sequence)
             return [True, new_effect_summary, old_effect_summary]
         else:
@@ -316,6 +307,18 @@ class TaskNet(object):
         affected_node.append(node)
         while len(affected_node) > 0:
             current_node = affected_node.popleft()
+            # change parent completeness state
+            current_node_hold = current_node
+            while (current_node_hold.bpointer != None):
+                parent_node = self._tree.get_node(current_node_hold.bpointer)
+                if parent_node.data._completeness == True:
+                    parent_node.data._completeness = False
+                    affected_node.append(parent_node)
+                    current_node_hold = parent_node
+                else:
+                    break
+                
+            # change the decendent step readiness state and completeness state
             for x in current_node.data._dec:
                 new_node = self._tree.get_node(x)
                 if new_node != None:
@@ -326,10 +329,8 @@ class TaskNet(object):
                     # delete it's child node
                     if new_node.is_leaf() == False:
                         child = copy.deepcopy(new_node._fpointer)
-                        #print "the length of child is: ", len(child)
+                        
                         for x in range(0, len(child)):
-                            print child
-                            #print "the removed node is: +++++++++++++++++++++++++++++++++, ", child[x]
                             self._tree.remove_node(child[x])
                     
                     # append the new_node into affected not
