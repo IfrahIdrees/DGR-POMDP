@@ -451,10 +451,9 @@ class explaSet(object):
     def handle_wrong_step_exception(self):
         with open('result.txt', 'a') as f:
             f.write("This is a wrong step, the tracking agent will repair from the wrong step\n\n")
-            #f.write("\n\n")
             
     
-        print "inside handle_wrong_step_exception"
+        #print "inside handle_wrong_step_exception"
         belief_state_repair_summary = {} #record to what degree the belief state should be updated
         
         for expla in self._explaset:

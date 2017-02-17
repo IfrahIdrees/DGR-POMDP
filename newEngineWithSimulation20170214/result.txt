@@ -454,7 +454,7 @@ The pendingSet for this Goal:  [u'rinse_hand']
 ======================================================================================
 Simulate step happen:     rinse_hand
 
-the prob of otherHappen is========0.0013698630137
+the prob of otherHappen is========0.1
 
 Hint Output In Level Sequence: 
 ------------Level  0-------------------
@@ -504,25 +504,17 @@ The pendingSet for this Goal:  [u'dry_hand']
 ======================================================================================
 Simulate step happen:     dry_hand
 
-the prob of otherHappen is========0.900000022222
-
-This is a wrong step, the tracking agent will repair from the wrong step
+the prob of otherHappen is========0.100072905943
 
 Hint Output In Level Sequence: 
-------------Level  0-------------------
-task name:   wash_hand             with probability of:            1.0
-
-------------Level  1-------------------
-task name:   dry_hand              with probability of:            1.0
+------------Level  -1-------------------
+task name:   nothing               with probability of:            1.0
 
 
 Explanation Number:  1
 
 --------------Explanation 1------------------
              The probability:           1.0
-  The current pending set is:  [[u'dry_hand', 1.0]]
-       The tasks ongoing are:  {u'wash_hand': 1, u'make_coffee': 0, u'make_tea': 0}
-
-                   Goal Name:  wash_hand   
-The pendingSet for this Goal:  [u'dry_hand']
+  The current pending set is:  [[u'switch_on_kettle_1', 0.5], [u'turn_on_faucet_1', 0.5]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_coffee': 0, u'make_tea': 0}
 

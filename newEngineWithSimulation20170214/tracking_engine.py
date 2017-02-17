@@ -45,11 +45,11 @@ class Tracking_Engine(object):
                     exp.setSensorNotification(sensor_notification)  
                 # Calcuate the posterior prob of each action in pending set
                 otherHappen = exp.action_posterior()
+                #print "probability of other happend is: ", otherHappen
                 
-                print "probability of other happend is: ", otherHappen
                 # Go into the exception happen procedure
                 if otherHappen > 0.75:
-                    print "come into handle exception because of otherHappen", otherHappen
+                    #print "come into handle exception because of otherHappen", otherHappen
                     exp.handle_exception()
                     
                 # Go into the normal update procedure

@@ -71,7 +71,6 @@ class Explanation(object):
             if tempstart_task[start_task] == 0: #inside this explanation, "start_task" has not been started
                 target_method = db.find_method(start_task)
                 if act_expla[0] in target_method["start_action"]:
-                    print "it is in start action"
                     find = True
                     newTaskNets = self.initialize_tree_structure(act_expla[0])
                     for g in newTaskNets:
@@ -351,10 +350,7 @@ class Explanation(object):
     ##################################################################################################
 
     def repair_expla(self, sensor_notification):
-        print 
-        print "inside Explanation.py function: repair_expla"
         update_belief_state = False
-        print "the length of forest is: ", len(self._forest)
         belief_state_repair_summary = {}
         old_effect_summary = {}
         for taskNet in self._forest:
