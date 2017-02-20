@@ -59,7 +59,7 @@ class TaskHint(object):
                 line_new = "------------Level  " + str(key) + "-------------------\n"
                 f.write(line_new)
                 for task in hint_in_level_format[key]:
-                    line_new = '{:>8}  {:<20}  {:>20}  {:>12}'.format("task name: ", task[0], "with probability of: ", round(task[1], 4))
+                    line_new = '{:>8}  {:<20}  {:>20}  {:>12}'.format("task name: ", task[0], "with probability of: ", task[1])
                     f.write(line_new)
                     f.write("\n")
                 f.write("\n")

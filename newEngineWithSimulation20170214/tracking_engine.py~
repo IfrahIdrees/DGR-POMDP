@@ -49,7 +49,7 @@ class Tracking_Engine(object):
                 #print "probability of other happend is: ", otherHappen
                 
                 # Go into the exception happen procedure
-                if otherHappen > self._other_happen:
+                if otherHappen > exp._otherHappen:
                     #print "come into handle exception because of otherHappen", otherHappen
                     exp.handle_exception()
                     
