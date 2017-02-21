@@ -1,0 +1,12 @@
+turn_on_faucet_1
+use_soap
+use_soap
+turn_off_faucet_1
+turn_on_faucet_1
+use_soap
+rinse_hand
+rinse_hand
+dry_hand
+rinse_hand
+turn_off_faucet_1
+dry_hand

@@ -84,11 +84,6 @@ class DB_Object(object):
     # Find and return the attribute value belief from belief state
     def get_attribute_prob(self, s, ob_name, attri_name):
         st = list(self._state.find({"ob_name":ob_name}))
-        if len(st) <= 0:
-            print "the target object is, ", ob_name
-            print "the input s is, ", s
-            print "the attri_name is, ", attri_name
-            exit(0)
         return float(st[0][attri_name][s])
     
     ##Find and return the attribute value belief from belief state

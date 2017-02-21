@@ -19,7 +19,7 @@ db = DB_Object()
 
 
 class explaSet(object):
-    def __init__(self, cond_satisfy = 1.0, cond_notsatisfy = 0.0, delete_trigger = 0.001, non_happen = 0.0001):
+    def __init__(self, cond_satisfy = 1.0, cond_notsatisfy = 0.0, delete_trigger = 0.001, non_happen = 0.0001, output_file_name = "Case4.txt"):
         self._cond_satisfy = cond_satisfy
         self._cond_notsatisfy = cond_notsatisfy
         self._delete_trigger = delete_trigger
@@ -27,6 +27,7 @@ class explaSet(object):
         self._action_posterior_prob = {} #this is the action level reasoning result from observation
         self._non_happen = non_happen
         self._sensor_notification = []
+        self._output_file_name = output_file_name
         #self._start_action = {} #format: {action1: 0, action2:1}, 0 stands has not been execute, 
     
     ##################################################################################################    
@@ -65,7 +66,8 @@ class explaSet(object):
     
     # write the explanation into a .txt file
     def print_explaSet(self):
-        with open('result.txt', 'a') as f:
+    
+        with open(self._output_file_name, 'a') as f:
             new_line = "Explanation Number:  " + str(len(self._explaset)) + "\n"
             f.write(new_line)
         
@@ -167,7 +169,7 @@ class explaSet(object):
             self._action_posterior_prob[k] = self._action_posterior_prob[k] * posteriorK
         
         
-        with open('result.txt', 'a') as f:
+        with open(self._output_file_name, 'a') as f:
             f.write("\n")
             new_line = "the prob of otherHappen is========" + str(round(otherHappen, 4)) + "\n"
             f.write(new_line)
@@ -451,7 +453,7 @@ class explaSet(object):
     #                       Need to update tree structure and the new pendingSet. Need to update belief state
     # 3. state_update:      Finally weather update the state depends the sum probability of update and no-update   
     def handle_wrong_step_exception(self):
-        with open('result.txt', 'a') as f:
+        with open(self._output_file_name, 'a') as f:
             f.write("This is a wrong step, the tracking agent will repair from the wrong step\n\n")
             
     
