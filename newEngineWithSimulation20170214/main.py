@@ -30,7 +30,7 @@ if __name__ == '__main__':
     nothing_happen = 0.01
     
     ##the otherHappen triggering threshhold
-    other_happen = 1.2
+    other_happen = 0.75
     
     tracking_engine = Tracking_Engine(no_trigger = no_notif_trigger_prob, sleep_interval = interval, cond_satisfy=cond_satisfy, cond_notsatisfy = cond_notsatisfy, delete_trigger = delete_trigger, otherHappen = other_happen)
     tracking_engine.start()

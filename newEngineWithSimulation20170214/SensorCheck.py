@@ -23,7 +23,7 @@ def operator_sensor_check(op):
     for obj in op["effect"]:
         for att in op["effect"][obj]:
             reliability = db.get_sensor_reliability(obj, att)
-            if reliability < 0.8:
+            if reliability < 0.5:
                 new_bad_sensor = {}
                 new_bad_sensor["object"] = obj
                 new_bad_sensor["attribute"] = att
@@ -35,4 +35,4 @@ def operator_sensor_check(op):
         sensor_cause["sensor_cause"] = True
     else:
         sensor_cause["sensor_cause"] = False
-    return sensor_cause
+    return sensor_cause 
