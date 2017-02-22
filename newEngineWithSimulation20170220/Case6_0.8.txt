@@ -1,0 +1,2246 @@
+
+
+======================================================================================
+Simulate step happen:     turn_on_faucet_1
+
+the prob of otherHappen is========0.6024
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:         0.3574
+task name:   make_coffee           with probability of:         0.3213
+task name:   make_tea              with probability of:         0.3213
+
+------------Level  1-------------------
+task name:   prepare_hot_water     with probability of:         0.6426
+task name:   clean_hand            with probability of:         0.3574
+
+------------Level  2-------------------
+task name:   kettle_1_add_water    with probability of:         0.6426
+task name:   use_soap              with probability of:         0.3574
+
+------------Level  3-------------------
+task name:   add_water_kettle_1    with probability of:         0.6426
+
+
+Explanation Number:  3
+
+--------------Explanation 1------------------
+             The probability:        0.3574
+  The current pending set is:  [[u'use_soap', 0.3573746844572665]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 0, u'make_coffee': 0}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 2------------------
+             The probability:        0.3213
+  The current pending set is:  [[u'add_water_kettle_1', 0.32131265777136675]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 0}
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+--------------Explanation 3------------------
+             The probability:        0.3213
+  The current pending set is:  [[u'add_water_kettle_1', 0.32131265777136675]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 0, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+
+
+======================================================================================
+Simulate step happen:     use_soap
+
+the prob of otherHappen is========0.8024
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   make_tea              with probability of:         0.3794
+task name:   make_coffee           with probability of:         0.3794
+task name:   wash_hand             with probability of:         0.2412
+
+------------Level  1-------------------
+task name:   prepare_hot_water     with probability of:         0.7588
+task name:   clean_hand            with probability of:         0.2412
+
+------------Level  2-------------------
+task name:   kettle_1_add_water    with probability of:         0.7588
+task name:   rinse_hand            with probability of:         0.2412
+
+------------Level  3-------------------
+task name:   turn_off_faucet_1     with probability of:         0.7588
+
+
+Explanation Number:  3
+
+--------------Explanation 1------------------
+             The probability:        0.2412
+  The current pending set is:  [[u'rinse_hand', 0.24119343692696685]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 0, u'make_coffee': 0}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+--------------Explanation 2------------------
+             The probability:        0.3794
+  The current pending set is:  [[u'turn_off_faucet_1', 0.37940328153651665]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 0}
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+--------------Explanation 3------------------
+             The probability:        0.3794
+  The current pending set is:  [[u'turn_off_faucet_1', 0.37940328153651665]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 0, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+
+
+======================================================================================
+Simulate step happen:     rinse_hand
+
+the prob of otherHappen is========0.8165
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   make_tea              with probability of:         0.4714
+task name:   make_coffee           with probability of:         0.4714
+task name:   wash_hand             with probability of:         0.0572
+
+------------Level  1-------------------
+task name:   prepare_hot_water     with probability of:         0.9428
+task name:   turn_off_faucet_1     with probability of:         0.0572
+
+------------Level  2-------------------
+task name:   kettle_1_heat_water   with probability of:         0.9428
+
+------------Level  3-------------------
+task name:   switch_on_kettle_1    with probability of:         0.9428
+
+
+Explanation Number:  3
+
+--------------Explanation 1------------------
+             The probability:        0.0572
+  The current pending set is:  [[u'turn_off_faucet_1', 0.057212436277942084]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 0, u'make_coffee': 0}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+--------------Explanation 2------------------
+             The probability:        0.4714
+  The current pending set is:  [[u'switch_on_kettle_1', 0.4713937818610289]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 0}
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 3------------------
+             The probability:        0.4714
+  The current pending set is:  [[u'switch_on_kettle_1', 0.4713937818610289]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 0, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+
+
+======================================================================================
+Simulate step happen:     turn_off_faucet_1
+
+the prob of otherHappen is========0.8272
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   make_coffee           with probability of:         0.8199
+task name:   wash_hand             with probability of:         0.5037
+task name:   make_tea              with probability of:         0.4232
+
+------------Level  1-------------------
+task name:   prepare_hot_water     with probability of:         0.9539
+task name:   clean_hand            with probability of:         0.4576
+task name:   dry_hand              with probability of:         0.0461
+
+------------Level  2-------------------
+task name:   kettle_1_heat_water   with probability of:         0.9539
+task name:   use_soap              with probability of:         0.4576
+task name:   kettle_1_add_water    with probability of:         0.2891
+
+------------Level  3-------------------
+task name:   switch_on_kettle_1    with probability of:         0.6859
+task name:   add_water_kettle_1    with probability of:         0.2765
+task name:   switch_off_kettle_1   with probability of:         0.2681
+task name:   turn_on_faucet_1      with probability of:         0.0126
+
+
+Explanation Number:  8
+
+--------------Explanation 1------------------
+             The probability:        0.0126
+  The current pending set is:  [[u'switch_on_kettle_1', 0.006295465493191256], [u'turn_on_faucet_1', 0.006295465493191256]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_on_faucet_1']
+
+--------------Explanation 2------------------
+             The probability:        0.3967
+  The current pending set is:  [[u'switch_on_kettle_1', 0.19836477103571606], [u'use_soap', 0.19836477103571606]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 0, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 3------------------
+             The probability:        0.2156
+  The current pending set is:  [[u'switch_on_kettle_1', 0.10781296473160441], [u'add_water_kettle_1', 0.10781296473160441]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+--------------Explanation 4------------------
+             The probability:        0.0305
+  The current pending set is:  [[u'switch_on_kettle_1', 0.010150764145513524], [u'use_soap', 0.010150764145513524], [u'add_water_kettle_1', 0.010150764145513524]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+--------------Explanation 5------------------
+             The probability:        0.0305
+  The current pending set is:  [[u'switch_on_kettle_1', 0.010150764145513524], [u'use_soap', 0.010150764145513524], [u'add_water_kettle_1', 0.010150764145513524]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+--------------Explanation 6------------------
+             The probability:        0.0461
+  The current pending set is:  [[u'dry_hand', 0.04606256752791689]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 0, u'make_coffee': 0}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'dry_hand']
+
+--------------Explanation 7------------------
+             The probability:         0.134
+  The current pending set is:  [[u'switch_off_kettle_1', 0.1340432225389893]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 0}
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+--------------Explanation 8------------------
+             The probability:         0.134
+  The current pending set is:  [[u'switch_off_kettle_1', 0.1340432225389893]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 0, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+
+
+======================================================================================
+Simulate step happen:     turn_on_faucet_1
+
+the prob of otherHappen is========0.7904
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   make_coffee           with probability of:            1.0
+task name:   wash_hand             with probability of:         0.6116
+task name:   make_tea              with probability of:         0.5747
+
+------------Level  1-------------------
+task name:   prepare_hot_water     with probability of:            1.0
+task name:   clean_hand            with probability of:         0.6116
+
+------------Level  2-------------------
+task name:   kettle_1_heat_water   with probability of:            1.0
+task name:   kettle_1_add_water    with probability of:         0.5747
+task name:   use_soap              with probability of:           0.39
+task name:   rinse_hand            with probability of:         0.2216
+
+------------Level  3-------------------
+task name:   switch_on_kettle_1    with probability of:         0.5484
+task name:   switch_off_kettle_1   with probability of:         0.4516
+task name:   add_water_kettle_1    with probability of:         0.3288
+task name:   turn_off_faucet_1     with probability of:         0.2459
+
+
+Explanation Number:  18
+
+--------------Explanation 1------------------
+             The probability:        0.1803
+  The current pending set is:  [[u'switch_off_kettle_1', 0.09013652669077978], [u'use_soap', 0.09013652669077978]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 0, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 2------------------
+             The probability:        0.0871
+  The current pending set is:  [[u'switch_off_kettle_1', 0.04353237088662607], [u'add_water_kettle_1', 0.04353237088662607]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+--------------Explanation 3------------------
+             The probability:        0.0147
+  The current pending set is:  [[u'switch_off_kettle_1', 0.004888185682936525], [u'use_soap', 0.004888185682936525], [u'add_water_kettle_1', 0.004888185682936525]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+--------------Explanation 4------------------
+             The probability:        0.0147
+  The current pending set is:  [[u'switch_off_kettle_1', 0.004888185682936525], [u'use_soap', 0.004888185682936525], [u'add_water_kettle_1', 0.004888185682936525]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+--------------Explanation 5------------------
+             The probability:        0.0147
+  The current pending set is:  [[u'switch_off_kettle_1', 0.004888185682936525], [u'use_soap', 0.004888185682936525], [u'add_water_kettle_1', 0.004888185682936525]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+--------------Explanation 6------------------
+             The probability:        0.0147
+  The current pending set is:  [[u'switch_off_kettle_1', 0.004888185682936525], [u'use_soap', 0.004888185682936525], [u'add_water_kettle_1', 0.004888185682936525]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+--------------Explanation 7------------------
+             The probability:        0.0147
+  The current pending set is:  [[u'switch_off_kettle_1', 0.004888185682936525], [u'use_soap', 0.004888185682936525], [u'add_water_kettle_1', 0.004888185682936525]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+--------------Explanation 8------------------
+             The probability:        0.0147
+  The current pending set is:  [[u'switch_off_kettle_1', 0.004888185682936525], [u'use_soap', 0.004888185682936525], [u'add_water_kettle_1', 0.004888185682936525]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+--------------Explanation 9------------------
+             The probability:        0.0147
+  The current pending set is:  [[u'switch_off_kettle_1', 0.004888185682936525], [u'use_soap', 0.004888185682936525], [u'add_water_kettle_1', 0.004888185682936525]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+--------------Explanation 10------------------
+             The probability:        0.0808
+  The current pending set is:  [[u'switch_on_kettle_1', 0.04040303419221821], [u'add_water_kettle_1', 0.04040303419221821]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+--------------Explanation 11------------------
+             The probability:        0.0529
+  The current pending set is:  [[u'switch_off_kettle_1', 0.026448649294317225], [u'use_soap', 0.026448649294317225]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 0, u'make_coffee': 1}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+--------------Explanation 12------------------
+             The probability:        0.1921
+  The current pending set is:  [[u'switch_on_kettle_1', 0.09606322423006027], [u'rinse_hand', 0.09606322423006027]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 0, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+--------------Explanation 13------------------
+             The probability:        0.0288
+  The current pending set is:  [[u'switch_off_kettle_1', 0.014375069114733966], [u'add_water_kettle_1', 0.014375069114733966]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+--------------Explanation 14------------------
+             The probability:        0.1918
+  The current pending set is:  [[u'switch_on_kettle_1', 0.09588475955852867], [u'turn_off_faucet_1', 0.09588475955852867]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+--------------Explanation 15------------------
+             The probability:        0.0147
+  The current pending set is:  [[u'switch_on_kettle_1', 0.004915767689623426], [u'rinse_hand', 0.004915767689623426], [u'add_water_kettle_1', 0.004915767689623426]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+--------------Explanation 16------------------
+             The probability:        0.0271
+  The current pending set is:  [[u'switch_on_kettle_1', 0.009027704431010631], [u'use_soap', 0.009027704431010631], [u'turn_off_faucet_1', 0.009027704431010631]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+--------------Explanation 17------------------
+             The probability:        0.0147
+  The current pending set is:  [[u'switch_on_kettle_1', 0.004915767689623426], [u'rinse_hand', 0.004915767689623426], [u'add_water_kettle_1', 0.004915767689623426]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+--------------Explanation 18------------------
+             The probability:        0.0271
+  The current pending set is:  [[u'switch_on_kettle_1', 0.009027704431010631], [u'use_soap', 0.009027704431010631], [u'turn_off_faucet_1', 0.009027704431010631]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+
+
+======================================================================================
+Simulate step happen:     dry_hand
+
+the prob of otherHappen is========0.9283
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   make_coffee           with probability of:            1.0
+task name:   make_tea              with probability of:         0.8768
+task name:   wash_hand             with probability of:         0.5252
+
+------------Level  1-------------------
+task name:   prepare_hot_water     with probability of:            1.0
+task name:   clean_hand            with probability of:         0.5192
+
+------------Level  2-------------------
+task name:   kettle_1_heat_water   with probability of:            1.0
+task name:   kettle_1_add_water    with probability of:         0.6106
+task name:   turn_off_faucet_1     with probability of:         0.5681
+task name:   use_soap              with probability of:          0.289
+task name:   rinse_hand            with probability of:         0.2302
+
+------------Level  3-------------------
+task name:   switch_on_kettle_1    with probability of:         0.5381
+task name:   switch_off_kettle_1   with probability of:         0.4619
+task name:   add_water_kettle_1    with probability of:         0.0484
+
+
+Explanation Number:  43
+
+--------------Explanation 1------------------
+             The probability:        0.0068
+  The current pending set is:  [[u'switch_on_kettle_1', 0.002254278453176427], [u'use_soap', 0.002254278453176427], [u'turn_off_faucet_1', 0.002254278453176427]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 2------------------
+             The probability:        0.0068
+  The current pending set is:  [[u'switch_on_kettle_1', 0.002254278453176427], [u'use_soap', 0.002254278453176427], [u'turn_off_faucet_1', 0.002254278453176427]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 3------------------
+             The probability:        0.0068
+  The current pending set is:  [[u'switch_on_kettle_1', 0.002254278453176427], [u'use_soap', 0.002254278453176427], [u'turn_off_faucet_1', 0.002254278453176427]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 4------------------
+             The probability:        0.0068
+  The current pending set is:  [[u'switch_on_kettle_1', 0.002254278453176427], [u'use_soap', 0.002254278453176427], [u'turn_off_faucet_1', 0.002254278453176427]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 5------------------
+             The probability:        0.0068
+  The current pending set is:  [[u'switch_on_kettle_1', 0.002254278453176427], [u'use_soap', 0.002254278453176427], [u'turn_off_faucet_1', 0.002254278453176427]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 6------------------
+             The probability:        0.0068
+  The current pending set is:  [[u'switch_on_kettle_1', 0.002254278453176427], [u'use_soap', 0.002254278453176427], [u'turn_off_faucet_1', 0.002254278453176427]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 7------------------
+             The probability:        0.0068
+  The current pending set is:  [[u'switch_on_kettle_1', 0.002254278453176427], [u'use_soap', 0.002254278453176427], [u'turn_off_faucet_1', 0.002254278453176427]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 8------------------
+             The probability:        0.0068
+  The current pending set is:  [[u'switch_on_kettle_1', 0.002254278453176427], [u'use_soap', 0.002254278453176427], [u'turn_off_faucet_1', 0.002254278453176427]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 9------------------
+             The probability:        0.0068
+  The current pending set is:  [[u'switch_on_kettle_1', 0.002254278453176427], [u'use_soap', 0.002254278453176427], [u'turn_off_faucet_1', 0.002254278453176427]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 10------------------
+             The probability:        0.0068
+  The current pending set is:  [[u'switch_on_kettle_1', 0.002254278453176427], [u'use_soap', 0.002254278453176427], [u'turn_off_faucet_1', 0.002254278453176427]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 11------------------
+             The probability:        0.0068
+  The current pending set is:  [[u'switch_on_kettle_1', 0.002254278453176427], [u'use_soap', 0.002254278453176427], [u'turn_off_faucet_1', 0.002254278453176427]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 12------------------
+             The probability:        0.0068
+  The current pending set is:  [[u'switch_on_kettle_1', 0.002254278453176427], [u'use_soap', 0.002254278453176427], [u'turn_off_faucet_1', 0.002254278453176427]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 13------------------
+             The probability:        0.0068
+  The current pending set is:  [[u'switch_on_kettle_1', 0.002254278453176427], [u'use_soap', 0.002254278453176427], [u'turn_off_faucet_1', 0.002254278453176427]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 14------------------
+             The probability:        0.0068
+  The current pending set is:  [[u'switch_on_kettle_1', 0.002254278453176427], [u'use_soap', 0.002254278453176427], [u'turn_off_faucet_1', 0.002254278453176427]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 15------------------
+             The probability:         0.085
+  The current pending set is:  [[u'switch_off_kettle_1', 0.04249907594005962], [u'rinse_hand', 0.04249907594005962]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 0, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+--------------Explanation 16------------------
+             The probability:        0.1151
+  The current pending set is:  [[u'switch_off_kettle_1', 0.05754550940737193], [u'turn_off_faucet_1', 0.05754550940737193]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+--------------Explanation 17------------------
+             The probability:        0.0069
+  The current pending set is:  [[u'rinse_hand', 0.0023047634757539645], [u'switch_off_kettle_1', 0.0023047634757539645], [u'add_water_kettle_1', 0.0023047634757539645]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+--------------Explanation 18------------------
+             The probability:        0.0194
+  The current pending set is:  [[u'switch_off_kettle_1', 0.006461700327211512], [u'use_soap', 0.006461700327211512], [u'turn_off_faucet_1', 0.006461700327211512]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+--------------Explanation 19------------------
+             The probability:        0.0069
+  The current pending set is:  [[u'rinse_hand', 0.0023047634757539645], [u'switch_off_kettle_1', 0.0023047634757539645], [u'add_water_kettle_1', 0.0023047634757539645]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+--------------Explanation 20------------------
+             The probability:        0.0194
+  The current pending set is:  [[u'switch_off_kettle_1', 0.006461700327211512], [u'use_soap', 0.006461700327211512], [u'turn_off_faucet_1', 0.006461700327211512]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+--------------Explanation 21------------------
+             The probability:        0.0069
+  The current pending set is:  [[u'rinse_hand', 0.0023047634757539645], [u'switch_off_kettle_1', 0.0023047634757539645], [u'add_water_kettle_1', 0.0023047634757539645]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+--------------Explanation 22------------------
+             The probability:        0.0194
+  The current pending set is:  [[u'switch_off_kettle_1', 0.006461700327211512], [u'use_soap', 0.006461700327211512], [u'turn_off_faucet_1', 0.006461700327211512]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+--------------Explanation 23------------------
+             The probability:        0.0069
+  The current pending set is:  [[u'rinse_hand', 0.0023047634757539645], [u'switch_off_kettle_1', 0.0023047634757539645], [u'add_water_kettle_1', 0.0023047634757539645]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+--------------Explanation 24------------------
+             The probability:        0.0194
+  The current pending set is:  [[u'switch_off_kettle_1', 0.006461700327211512], [u'use_soap', 0.006461700327211512], [u'turn_off_faucet_1', 0.006461700327211512]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+--------------Explanation 25------------------
+             The probability:        0.0069
+  The current pending set is:  [[u'rinse_hand', 0.0023047634757539645], [u'switch_off_kettle_1', 0.0023047634757539645], [u'add_water_kettle_1', 0.0023047634757539645]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+--------------Explanation 26------------------
+             The probability:        0.0194
+  The current pending set is:  [[u'switch_off_kettle_1', 0.006461700327211512], [u'use_soap', 0.006461700327211512], [u'turn_off_faucet_1', 0.006461700327211512]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+--------------Explanation 27------------------
+             The probability:        0.0069
+  The current pending set is:  [[u'rinse_hand', 0.0023047634757539645], [u'switch_off_kettle_1', 0.0023047634757539645], [u'add_water_kettle_1', 0.0023047634757539645]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+--------------Explanation 28------------------
+             The probability:        0.0194
+  The current pending set is:  [[u'switch_off_kettle_1', 0.006461700327211512], [u'use_soap', 0.006461700327211512], [u'turn_off_faucet_1', 0.006461700327211512]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+--------------Explanation 29------------------
+             The probability:        0.0069
+  The current pending set is:  [[u'rinse_hand', 0.0023047634757539645], [u'switch_off_kettle_1', 0.0023047634757539645], [u'add_water_kettle_1', 0.0023047634757539645]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'add_water_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+--------------Explanation 30------------------
+             The probability:        0.0194
+  The current pending set is:  [[u'switch_off_kettle_1', 0.006461700327211512], [u'use_soap', 0.006461700327211512], [u'turn_off_faucet_1', 0.006461700327211512]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+--------------Explanation 31------------------
+             The probability:        0.1068
+  The current pending set is:  [[u'switch_on_kettle_1', 0.05340883431894468], [u'turn_off_faucet_1', 0.05340883431894468]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+--------------Explanation 32------------------
+             The probability:        0.0249
+  The current pending set is:  [[u'switch_off_kettle_1', 0.01247045117155787], [u'rinse_hand', 0.01247045117155787]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 0, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+--------------Explanation 33------------------
+             The probability:        0.0074
+  The current pending set is:  [[u'switch_off_kettle_1', 0.0036894683024373547], [u'rinse_hand', 0.0036894683024373547]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 0, u'make_coffee': 1}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+--------------Explanation 34------------------
+             The probability:        0.0059
+  The current pending set is:  [[u'switch_on_kettle_1', 0.0029631040119772944], [u'turn_off_faucet_1', 0.0029631040119772944]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 0, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+--------------Explanation 35------------------
+             The probability:         0.038
+  The current pending set is:  [[u'switch_off_kettle_1', 0.01900242642717358], [u'turn_off_faucet_1', 0.01900242642717358]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+--------------Explanation 36------------------
+             The probability:        0.0074
+  The current pending set is:  [[u'switch_off_kettle_1', 0.0036826140691550756], [u'turn_off_faucet_1', 0.0036826140691550756]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+--------------Explanation 37------------------
+             The probability:        0.2075
+  The current pending set is:  [[u'switch_on_kettle_1', 0.20754994879445168]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 38------------------
+             The probability:        0.0195
+  The current pending set is:  [[u'switch_on_kettle_1', 0.006498161025146135], [u'turn_off_faucet_1', 0.006498161025146135], [u'rinse_hand', 0.006498161025146135]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+--------------Explanation 39------------------
+             The probability:        0.0128
+  The current pending set is:  [[u'switch_on_kettle_1', 0.004256532953551002], [u'rinse_hand', 0.004256532953551002], [u'turn_off_faucet_1', 0.004256532953551002]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+--------------Explanation 40------------------
+             The probability:        0.0293
+  The current pending set is:  [[u'switch_on_kettle_1', 0.014655871285081416], [u'use_soap', 0.014655871285081416]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 41------------------
+             The probability:        0.0195
+  The current pending set is:  [[u'switch_on_kettle_1', 0.006498161025146135], [u'turn_off_faucet_1', 0.006498161025146135], [u'rinse_hand', 0.006498161025146135]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+--------------Explanation 42------------------
+             The probability:        0.0128
+  The current pending set is:  [[u'switch_on_kettle_1', 0.004256532953551002], [u'rinse_hand', 0.004256532953551002], [u'turn_off_faucet_1', 0.004256532953551002]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+--------------Explanation 43------------------
+             The probability:        0.0293
+  The current pending set is:  [[u'switch_on_kettle_1', 0.014655871285081416], [u'use_soap', 0.014655871285081416]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+
+
+======================================================================================
+Simulate step happen:     add_water_kettle_1
+
+the prob of otherHappen is========0.902
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   make_coffee           with probability of:            1.0
+task name:   make_tea              with probability of:         0.9951
+task name:   wash_hand             with probability of:         0.6825
+
+------------Level  1-------------------
+task name:   prepare_hot_water     with probability of:            1.0
+task name:   clean_hand            with probability of:         0.6776
+task name:   dry_hand              with probability of:         0.0049
+
+------------Level  2-------------------
+task name:   kettle_1_heat_water   with probability of:            1.0
+task name:   use_soap              with probability of:         0.6121
+task name:   rinse_hand            with probability of:         0.0655
+task name:   kettle_1_add_water    with probability of:         0.0312
+
+------------Level  3-------------------
+task name:   switch_on_kettle_1    with probability of:         0.9688
+task name:   switch_off_kettle_1   with probability of:         0.3746
+task name:   turn_off_faucet_1     with probability of:         0.0312
+
+
+Explanation Number:  78
+
+--------------Explanation 1------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 2------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 3------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 4------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 5------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 6------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 7------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 8------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 9------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 10------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 11------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 12------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 13------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 14------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 15------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 16------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 17------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 18------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 19------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 20------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 21------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 22------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 23------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 24------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 25------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 26------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 27------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 28------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 29------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 30------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 31------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 32------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 33------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 34------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 35------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 36------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 37------------------
+             The probability:        0.0108
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005391927866945264], [u'use_soap', 0.005391927866945264]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+--------------Explanation 38------------------
+             The probability:        0.0056
+  The current pending set is:  [[u'switch_on_kettle_1', 0.0028147296410977168], [u'use_soap', 0.0028147296410977168]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 39------------------
+             The probability:        0.0056
+  The current pending set is:  [[u'switch_on_kettle_1', 0.0028147296410977168], [u'use_soap', 0.0028147296410977168]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 40------------------
+             The probability:        0.0056
+  The current pending set is:  [[u'switch_on_kettle_1', 0.0028147296410977168], [u'use_soap', 0.0028147296410977168]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 41------------------
+             The probability:        0.0056
+  The current pending set is:  [[u'switch_on_kettle_1', 0.0028147296410977168], [u'use_soap', 0.0028147296410977168]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 42------------------
+             The probability:        0.0056
+  The current pending set is:  [[u'switch_on_kettle_1', 0.0028147296410977168], [u'use_soap', 0.0028147296410977168]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 43------------------
+             The probability:        0.0056
+  The current pending set is:  [[u'switch_on_kettle_1', 0.0028147296410977168], [u'use_soap', 0.0028147296410977168]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 44------------------
+             The probability:        0.0056
+  The current pending set is:  [[u'switch_on_kettle_1', 0.0028147296410977168], [u'use_soap', 0.0028147296410977168]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 45------------------
+             The probability:        0.0056
+  The current pending set is:  [[u'switch_on_kettle_1', 0.0028147296410977168], [u'use_soap', 0.0028147296410977168]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 46------------------
+             The probability:        0.0056
+  The current pending set is:  [[u'switch_on_kettle_1', 0.0028147296410977168], [u'use_soap', 0.0028147296410977168]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 47------------------
+             The probability:        0.0056
+  The current pending set is:  [[u'switch_on_kettle_1', 0.0028147296410977168], [u'use_soap', 0.0028147296410977168]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 48------------------
+             The probability:        0.0056
+  The current pending set is:  [[u'switch_on_kettle_1', 0.0028147296410977168], [u'use_soap', 0.0028147296410977168]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 49------------------
+             The probability:        0.0056
+  The current pending set is:  [[u'switch_on_kettle_1', 0.0028147296410977168], [u'use_soap', 0.0028147296410977168]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 50------------------
+             The probability:        0.0056
+  The current pending set is:  [[u'switch_on_kettle_1', 0.0028147296410977168], [u'use_soap', 0.0028147296410977168]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 51------------------
+             The probability:        0.0056
+  The current pending set is:  [[u'switch_on_kettle_1', 0.0028147296410977168], [u'use_soap', 0.0028147296410977168]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 52------------------
+             The probability:        0.0958
+  The current pending set is:  [[u'switch_on_kettle_1', 0.04790152130874034], [u'switch_off_kettle_1', 0.04790152130874034]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 53------------------
+             The probability:        0.0161
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005378791135958988], [u'switch_off_kettle_1', 0.005378791135958988], [u'use_soap', 0.005378791135958988]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 54------------------
+             The probability:        0.0161
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005378791135958988], [u'switch_off_kettle_1', 0.005378791135958988], [u'use_soap', 0.005378791135958988]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 55------------------
+             The probability:        0.0161
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005378791135958988], [u'switch_off_kettle_1', 0.005378791135958988], [u'use_soap', 0.005378791135958988]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 56------------------
+             The probability:        0.0161
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005378791135958988], [u'switch_off_kettle_1', 0.005378791135958988], [u'use_soap', 0.005378791135958988]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 57------------------
+             The probability:        0.0161
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005378791135958988], [u'switch_off_kettle_1', 0.005378791135958988], [u'use_soap', 0.005378791135958988]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 58------------------
+             The probability:        0.0161
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005378791135958988], [u'switch_off_kettle_1', 0.005378791135958988], [u'use_soap', 0.005378791135958988]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 59------------------
+             The probability:        0.0161
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005378791135958988], [u'switch_off_kettle_1', 0.005378791135958988], [u'use_soap', 0.005378791135958988]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 60------------------
+             The probability:        0.0194
+  The current pending set is:  [[u'switch_off_kettle_1', 0.009722336006496544], [u'turn_off_faucet_1', 0.009722336006496544]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+--------------Explanation 61------------------
+             The probability:        0.0889
+  The current pending set is:  [[u'switch_on_kettle_1', 0.08891621402090391]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 62------------------
+             The probability:        0.0049
+  The current pending set is:  [[u'switch_on_kettle_1', 0.002466520696948793], [u'dry_hand', 0.002466520696948793]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 0, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'dry_hand']
+
+--------------Explanation 63------------------
+             The probability:        0.0316
+  The current pending set is:  [[u'switch_on_kettle_1', 0.015817830857578923], [u'switch_off_kettle_1', 0.015817830857578923]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 64------------------
+             The probability:        0.0061
+  The current pending set is:  [[u'switch_on_kettle_1', 0.0030654488616430695], [u'switch_off_kettle_1', 0.0030654488616430695]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 65------------------
+             The probability:        0.0378
+  The current pending set is:  [[u'switch_on_kettle_1', 0.018890791814146105], [u'switch_off_kettle_1', 0.018890791814146105]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+--------------Explanation 66------------------
+             The probability:        0.0378
+  The current pending set is:  [[u'switch_on_kettle_1', 0.018890791814146105], [u'switch_off_kettle_1', 0.018890791814146105]]
+       The tasks ongoing are:  {u'wash_hand': 0, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+--------------Explanation 67------------------
+             The probability:        0.0035
+  The current pending set is:  [[u'switch_off_kettle_1', 0.0011828999025425481], [u'turn_off_faucet_1', 0.0011828999025425481], [u'rinse_hand', 0.0011828999025425481]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+--------------Explanation 68------------------
+             The probability:        0.0162
+  The current pending set is:  [[u'switch_on_kettle_1', 0.008113712138947226], [u'rinse_hand', 0.008113712138947226]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 69------------------
+             The probability:        0.0023
+  The current pending set is:  [[u'switch_off_kettle_1', 0.0007748426664775352], [u'rinse_hand', 0.0007748426664775352], [u'turn_off_faucet_1', 0.0007748426664775352]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+--------------Explanation 70------------------
+             The probability:        0.0106
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005314777975093188], [u'rinse_hand', 0.005314777975093188]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 71------------------
+             The probability:        0.0053
+  The current pending set is:  [[u'switch_on_kettle_1', 0.001778598452465923], [u'switch_off_kettle_1', 0.001778598452465923], [u'use_soap', 0.001778598452465923]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+--------------Explanation 72------------------
+             The probability:        0.0053
+  The current pending set is:  [[u'switch_on_kettle_1', 0.001778598452465923], [u'switch_off_kettle_1', 0.001778598452465923], [u'use_soap', 0.001778598452465923]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+--------------Explanation 73------------------
+             The probability:        0.0035
+  The current pending set is:  [[u'switch_off_kettle_1', 0.0011828999025425481], [u'turn_off_faucet_1', 0.0011828999025425481], [u'rinse_hand', 0.0011828999025425481]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+--------------Explanation 74------------------
+             The probability:        0.0162
+  The current pending set is:  [[u'switch_on_kettle_1', 0.008113712138947226], [u'rinse_hand', 0.008113712138947226]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 75------------------
+             The probability:        0.0023
+  The current pending set is:  [[u'switch_off_kettle_1', 0.0007748426664775352], [u'rinse_hand', 0.0007748426664775352], [u'turn_off_faucet_1', 0.0007748426664775352]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'turn_off_faucet_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+--------------Explanation 76------------------
+             The probability:        0.0106
+  The current pending set is:  [[u'switch_on_kettle_1', 0.005314777975093188], [u'rinse_hand', 0.005314777975093188]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'rinse_hand']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+--------------Explanation 77------------------
+             The probability:        0.0053
+  The current pending set is:  [[u'switch_on_kettle_1', 0.001778598452465923], [u'switch_off_kettle_1', 0.001778598452465923], [u'use_soap', 0.001778598452465923]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+--------------Explanation 78------------------
+             The probability:        0.0053
+  The current pending set is:  [[u'switch_on_kettle_1', 0.001778598452465923], [u'switch_off_kettle_1', 0.001778598452465923], [u'use_soap', 0.001778598452465923]]
+       The tasks ongoing are:  {u'wash_hand': 1, u'make_tea': 1, u'make_coffee': 1}
+
+                   Goal Name:  make_coffee 
+The pendingSet for this Goal:  [u'switch_on_kettle_1']
+
+                   Goal Name:  wash_hand   
+The pendingSet for this Goal:  [u'use_soap']
+
+                   Goal Name:  make_tea    
+The pendingSet for this Goal:  [u'switch_off_kettle_1']
+
+
+
+======================================================================================
+Simulate step happen:     turn_off_faucet_1
+
+the prob of otherHappen is========0.9488
+

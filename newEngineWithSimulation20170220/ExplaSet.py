@@ -405,7 +405,7 @@ class explaSet(object):
 
     def task_prob_calculate(self):
         #print "go into task prob _calculate"
-        taskhint = TaskHint()
+        taskhint = TaskHint(self._output_file_name)
         taskhint.reset()
         for expla in self._explaset:
             expla.generate_task_hint(taskhint)

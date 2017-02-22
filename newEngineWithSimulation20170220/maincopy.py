@@ -45,9 +45,9 @@ if __name__ == '__main__':
             output_file_name = "Case" + str(file_num) + "_" + str(x) + ".txt"
             ##the input file name
             input_file_name = "Case" + str(file_num)
-            print "This is for ", input_file_name, "The output file is ", output_file_name
+            #print "This is for ", input_file_name, "The output file is ", output_file_name
             
-            '''
+            
             #print output_file_name
             ##refresh the database
             db.method.drop()
@@ -77,7 +77,7 @@ if __name__ == '__main__':
             
             print "I am good until now" 
             ##tracking_engine = tracking_engine()
-            '''
+            
 
 
 else:

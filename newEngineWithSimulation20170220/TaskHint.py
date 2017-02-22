@@ -4,7 +4,9 @@ from helper import *
 
 
 class TaskHint(object):
-    prompt_task = {}
+    def __init__(self, output_file_name = "Case4.txt"):
+        self._output_file_name = output_file_name
+        self.prompt_task = {}
     
     #reset the prompt_task
     def reset(self):
@@ -53,7 +55,7 @@ class TaskHint(object):
         for key in hint_in_level_format:
             hint_in_level_format[key] = sorted(hint_in_level_format[key], key = self.get_key, reverse = True)
         
-        with open('result.txt', 'a') as f:
+        with open(self._output_file_name, 'a') as f:
             f.write("Hint Output In Level Sequence: \n")
             for key in hint_in_level_format:
                 line_new = "------------Level  " + str(key) + "-------------------\n"
