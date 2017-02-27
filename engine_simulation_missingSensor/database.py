@@ -128,9 +128,9 @@ class DB_Object(object):
     def get_obs_prob(self, s, ob_name, attri_name):
         sensor = list(self._sensor.find({"ob_name":ob_name, "attri_name":attri_name}))
         sensor = sensor[0]
-        if sensor["reliability"] == -1:   #this means the sensor is missing
+        if sensor["reliability"] == -1.0:   #this means the sensor is missing
             return 0.5
-        else if sensor["value"][0]==s:
+        elif sensor["value"][0]==s:
             return sensor["reliability"]
         else:
             return (1-sensor["reliability"])/(sensor["value"][1]-1)
@@ -140,7 +140,10 @@ class DB_Object(object):
     def get_sensor_reliability(self, ob_name, attri_name):
         sensor = list(self._sensor.find({"ob_name":ob_name, "attri_name":attri_name}))
         sensor = sensor[0]
-        return sensor["reliability"]
+        if sensor["reliability"] == -1.0:
+            return 0.5
+        else:
+            return sensor["reliability"]
     
 
     # Update sensor value according to the desired update and the sensor reliability
@@ -153,7 +156,7 @@ class DB_Object(object):
             print "inside udpate_sensor_value, the number of target ob_name is bad", len(objList)
             sys.exit(0)
         
-        else if sensor["reliability"] == -1: ##in this case the sensor is missing just return False
+        elif sensor[0]["reliability"] == -1.0: ##in this case the sensor is missing just return False
             print "This is an missing sensor"
             return label
         else:
@@ -172,7 +175,7 @@ class DB_Object(object):
                     }
                 )
                 
-                newsensor = list(self._sensor.find({"ob_name":ob_name, "attri_name":attri_name}))
+                #newsensor = list(self._sensor.find({"ob_name":ob_name, "attri_name":attri_name}))
                 
         return label 
     ####################################################################################

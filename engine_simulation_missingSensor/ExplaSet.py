@@ -150,7 +150,7 @@ class explaSet(object):
                 else:
                     self._action_posterior_prob[action[0]] = action[1]
         #---------------------------------
-        #'''    
+        '''    
             for start_task in expla._start_task:
                 if expla._start_task[start_task] == 0:
                     target_method = db.find_method(start_task)
@@ -160,8 +160,9 @@ class explaSet(object):
                             self._action_posterior_prob[start_action] = self._action_posterior_prob[start_action]+initialize_prob
                         else:
                             self._action_posterior_prob[start_action] = initialize_prob
-        #'''
-        #---------------------------------                           
+        '''
+        #---------------------------------
+                                   
         for k in self._action_posterior_prob: 
             posteriorK = self.cal_posterior(k)
             otherHappen = otherHappen - posteriorK * self._action_posterior_prob[k]
@@ -173,13 +174,16 @@ class explaSet(object):
             f.write("\n")
             new_line = "the prob of otherHappen is========" + str(round(otherHappen, 4)) + "\n"
             f.write(new_line)
+            new_line = "Now the action posterior is===========\n"
+            f.write(new_line)
+            f.write(repr(self._action_posterior_prob))
             f.write("\n")
         
         return otherHappen
        
         
     def cal_posterior(self, action):
-        op = db.get_operator(action)
+        op = db.get_operator(action)    
         beforeS = []
         title = []
         for x in op["precondition"]:
