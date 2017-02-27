@@ -45,8 +45,8 @@ class Tracking_Engine(object):
             else:
                 if step != "none":
                     sensor_notification = copy.deepcopy(realStateANDSensorUpdate(step, self._output_file_name))
-                    print "the sensor notification is:---------- "
-                    print sensor_notification
+                    #print "the sensor notification is:---------- "
+                    #print sensor_notification
                     
                     exp.setSensorNotification(sensor_notification)  
                 # Calcuate the posterior prob of each action in pending set
