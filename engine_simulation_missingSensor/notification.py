@@ -21,7 +21,11 @@ class notification(object):
         #step_input = open("Case8", "r")    #wash_hand, wrong step, hard constraint violate
         #step_input = open("Case9", "r")    #wash_hand, wrong step, soft Constraint violate
         #step_input = open("Case10", "r")   #wash_hand, wrong step, soft constraint and hard constraint violate
-        #step_input = open("Case11", "r")   
+        #step_input = open("Case11", "r")   #wash_hand, wrong step, soft constraint and hard constraint violate more complicate
+        #step_input = open("Case12", "r")   #make_tea, wrong step, soft constraint, and hard constraint violate more complcate
+        #step_input = open("Case13", "r")   #make_tea, wrong step, hard constraint violate with non-orderred step noisy
+        #step_input = open("Case14", "r")   #make_coffee & wash_hand, multi_task, wrong step, soft and hard constraint violate with non-ordered step noisy
+        #step_input = open("Case15", "r")   #make_coffee & wash_hand, multi_task, wrong step, soft and hard constraint violate
         steps = step_input.readlines()
         step_input.close()
         
