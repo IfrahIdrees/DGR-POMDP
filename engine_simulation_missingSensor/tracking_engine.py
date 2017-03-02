@@ -34,59 +34,62 @@ class Tracking_Engine(object):
         while(notif._notif.qsize()>0):
             step = notif.get_one_notif()
             notif.delete_one_notif()
-            
+            sensor_notification = []
             #if no notification, and the random prob is less than no_notif_trigger_prob
     #sleep the engine
             
             if step == "none" and random.random()<self._no_trigger:
                 time.sleep(self._sleep_interval)
-                
+            elif step!= "none":
+                sensor_notification = copy.deepcopy(realStateANDSensorUpdate(step, self._output_file_name))
+                if len(sensor_notification) == 0:
+                    time.sleep(self._sleep_interval)
             #go through the engine logic to update    
-            else:
-                if step != "none":
-                    sensor_notification = copy.deepcopy(realStateANDSensorUpdate(step, self._output_file_name))
-                    #print "the sensor notification is:---------- "
-                    #print sensor_notification
-                    
-                    exp.setSensorNotification(sensor_notification)  
-                # Calcuate the posterior prob of each action in pending set
-                otherHappen = exp.action_posterior()
-                #print "probability of other happend is: ", otherHappen
-                
-                # Go into the exception happen procedure
-                if otherHappen > self._other_happen:
-                    #print "come into handle exception because of otherHappen", otherHappen
-                    exp.handle_exception()
-                    
-                # Go into the normal update procedure
                 else:
-                    length = len(exp._explaset)
+                    '''
+                    if step != "none":
+                        sensor_notification = copy.deepcopy(realStateANDSensorUpdate(step, self._output_file_name))
+                        #print "the sensor notification is:---------- "
+                        #print sensor_notification
+                    '''    
+                    exp.setSensorNotification(sensor_notification)  
+                    # Calcuate the posterior prob of each action in pending set
+                    otherHappen = exp.action_posterior()
+                    #print "probability of other happend is: ", otherHappen
                     
-                    ##update the explanation set, part 1. 
-                    exp.explaSet_expand_part1(length)
-                    
-                    #udpate the state
-                    state = State()
-                    state.update_state_belief(exp)
-                    
-                    #update the explanation set, part 2
-                    exp.explaSet_expand_part2(length)
+                    # Go into the exception happen procedure
+                    if otherHappen > self._other_happen:
+                        exp.handle_exception()
+                        
+                    # Go into the normal update procedure
+                    else:
+                        length = len(exp._explaset)
+                        
+                        ##update the explanation set, part 1. 
+                        exp.explaSet_expand_part1(length)
+                        
+                        #udpate the state
+                        state = State()
+                        state.update_state_belief(exp)
+                        
+                        #update the explanation set, part 2
+                        exp.explaSet_expand_part2(length)
 
-                #generate pending set         
-                exp.pendingset_generate()
-                
-                #calculate inner node prob, This would be used for hint
-                exp.task_prob_calculate()
-                
-                #print "Explanation Number:  ", len(exp._explaset)
-                exp.print_explaSet()
-                
-                
-                
-                
-                print "go into the next loop"
-                print 
-                print
+                    #generate pending set         
+                    exp.pendingset_generate()
+                    
+                    #calculate inner node prob, This would be used for hint
+                    exp.task_prob_calculate()
+                    
+                    #print "Explanation Number:  ", len(exp._explaset)
+                    exp.print_explaSet()
+                    
+                    
+                    
+                    
+                    print "go into the next loop"
+                    print 
+                    print
                 
             
                           

@@ -3,8 +3,8 @@
 ################################################################################################
 
 #exit the agent tracking process due to sensor die
-def call_for_caregiver_sensor_cause(bad_sensor):
-    with open('result.txt', 'a') as f:
+def call_for_caregiver_sensor_cause(bad_sensor, output_file_name):
+    with open(output_file_name, 'a') as f:
         f.write("\n")
         f.write("The following sensor are not working: \n")
         for sensor in bad_sensor:
@@ -19,7 +19,6 @@ def call_for_caregiver_sensor_cause(bad_sensor):
     
     
     '''
-    
     print "Some sensor is not working well now. Please fix them"
     print "The non-working sensors are : "
     for sensor in bad_sensor:

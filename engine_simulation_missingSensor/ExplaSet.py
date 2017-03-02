@@ -66,7 +66,7 @@ class explaSet(object):
     
     # write the explanation into a .txt file
     def print_explaSet(self):
-    
+        '''
         with open(self._output_file_name, 'a') as f:
             new_line = "Explanation Number:  " + str(len(self._explaset)) + "\n"
             f.write(new_line)
@@ -99,7 +99,7 @@ class explaSet(object):
                         f.write(new_line)
                         f.write("\n")
             f.write("\n")
-    
+        '''        
     
     ##################################################################################################    
     ####                                        Part II                                          #####
@@ -150,7 +150,7 @@ class explaSet(object):
                 else:
                     self._action_posterior_prob[action[0]] = action[1]
         #---------------------------------
-        '''    
+            
             for start_task in expla._start_task:
                 if expla._start_task[start_task] == 0:
                     target_method = db.find_method(start_task)
@@ -160,7 +160,7 @@ class explaSet(object):
                             self._action_posterior_prob[start_action] = self._action_posterior_prob[start_action]+initialize_prob
                         else:
                             self._action_posterior_prob[start_action] = initialize_prob
-        '''
+        
         #---------------------------------
                                    
         for k in self._action_posterior_prob: 
@@ -439,8 +439,9 @@ class explaSet(object):
         
         # bad sensor cause the exception, call the caregiver to repair the sensors
         if len(sensor_cause["bad_sensor"]) > 0:
+            print "bad sensor cause sensor exception"
             sensor_cause["sensor_cause"] = True
-            call_for_caregiver_sensor_cause(sensor_cause["bad_sensor"])
+            call_for_caregiver_sensor_cause(sensor_cause["bad_sensor"], self._output_file_name)
         
         # wrong step cause the exception
         

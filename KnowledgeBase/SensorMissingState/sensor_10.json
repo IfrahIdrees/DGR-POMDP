@@ -54,7 +54,7 @@
     "ob_name":"kettle_1",
     "attri_name":"has_water",
     "value":["no", 2],
-    "reliability":-1.0
+    "reliability":0.90
 }
 
 {
@@ -68,7 +68,7 @@
     "ob_name":"kettle_1",
     "attri_name":"water_hot",
     "value":["no", 2],
-    "reliability":-1.0
+    "reliability":0.90
 }
 
 
@@ -76,14 +76,14 @@
     "ob_name":"cup_1", 
     "attri_name":"location", 
     "value":["cabinet", 2], 
-    "reliability":-1.0
+    "reliability":1.0
 }
 
 {
     "ob_name":"cup_1",
     "attri_name":"has_water",
     "value":["no", 2], 
-    "reliability":-1.0
+    "reliability":0.90
 }
 
 
@@ -113,7 +113,7 @@
     "ob_name":"tea_box_1",
     "attri_name":"open",
     "value":["no", 2],
-    "reliability":-1.0
+    "reliability":0.90
 }
 
 {
@@ -127,7 +127,7 @@
     "ob_name":"coffee_box_1",
     "attri_name":"open",
     "value":["no", 2],
-    "reliability":-1.0
+    "reliability":0.90
 }
 
 

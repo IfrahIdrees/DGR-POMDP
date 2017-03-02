@@ -10,7 +10,7 @@ for x in number_sheet:
         this_case = []
         for y in range(1, x+1): 
             print "this y is", y
-            this_case.append(randint(1, 16))
+            this_case.append(randint(1, 19))
         return_value.append(this_case)
 
 
