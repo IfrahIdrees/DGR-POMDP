@@ -86,12 +86,12 @@ class Tracking_Engine(object):
                 print 
                 print
                 
+                
         
         
         
         
-        
-        '''
+        ''' 
         while(notif._notif.qsize()>0):
             step = notif.get_one_notif()
             notif.delete_one_notif()
@@ -107,12 +107,12 @@ class Tracking_Engine(object):
                     time.sleep(self._sleep_interval)
             #go through the engine logic to update    
                 else:
-                    '''
+                    
                     if step != "none":
                         sensor_notification = copy.deepcopy(realStateANDSensorUpdate(step, self._output_file_name))
                         #print "the sensor notification is:---------- "
                         #print sensor_notification
-                    '''    
+                       
                     exp.setSensorNotification(sensor_notification)  
                     # Calcuate the posterior prob of each action in pending set
                     otherHappen = exp.action_posterior()
@@ -152,8 +152,8 @@ class Tracking_Engine(object):
                     print 
                     print
                 
-            
-        '''                          
+        '''            
+                                          
             
             
        
