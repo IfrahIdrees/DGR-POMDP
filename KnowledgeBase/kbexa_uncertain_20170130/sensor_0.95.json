@@ -68,7 +68,7 @@
     "ob_name":"kettle_1",
     "attri_name":"water_hot",
     "value":["no", 2],
-    "reliability":0.90
+    "reliability":0.95
 }
 
 
@@ -91,7 +91,7 @@
     "ob_name":"cup_1",
     "attri_name":"has_tea",
     "value":["no", 2], 
-    "reliability":0.90
+    "reliability":0.95
 }
 
 {

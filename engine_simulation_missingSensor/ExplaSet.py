@@ -143,14 +143,18 @@ class explaSet(object):
         self._action_posterior_prob = {}
         otherHappen = 1
         for expla in self._explaset:
+            #print expla._pendingSet
             #add actions in pending set
             for action in expla._pendingSet:
                 if action[0] in self._action_posterior_prob:
+                    #print "the add value is", action[1]
+                    #print "bofore add the value is", self._action_posterior_prob[action[0]]
                     self._action_posterior_prob[action[0]] = self._action_posterior_prob[action[0]] + action[1]
+                    #print "after add the value is", self._action_posterior_prob[action[0]]
                 else:
                     self._action_posterior_prob[action[0]] = action[1]
         #---------------------------------
-           
+        '''   
             for start_task in expla._start_task:
                 if expla._start_task[start_task] == 0:
                     target_method = db.find_method(start_task)
@@ -160,7 +164,7 @@ class explaSet(object):
                             self._action_posterior_prob[start_action] = self._action_posterior_prob[start_action]+initialize_prob
                         else:
                             self._action_posterior_prob[start_action] = initialize_prob
-        
+        '''
         #---------------------------------
         
         with open(self._output_file_name, 'a') as f:
@@ -190,6 +194,8 @@ class explaSet(object):
         
         return otherHappen
        
+    
+    
         
     def cal_posterior(self, action):
         op = db.get_operator(action)    
