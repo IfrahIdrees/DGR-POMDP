@@ -162,6 +162,15 @@ class explaSet(object):
                             self._action_posterior_prob[start_action] = initialize_prob
         
         #---------------------------------
+        
+        with open(self._output_file_name, 'a') as f:
+            f.write("\n")
+            new_line = "before the action prior is===========\n"
+            f.write(new_line)
+            f.write(repr(self._action_posterior_prob))
+            f.write("\n")
+        
+        
                                    
         for k in self._action_posterior_prob: 
             posteriorK = self.cal_posterior(k)
