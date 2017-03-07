@@ -1,0 +1,591 @@
+
+
+======================================================================================
+Simulate step happen:     turn_on_faucet_1
+
+the prob of otherHappen is========0.554
+Now the action posterior is===========
+{u'switch_on_kettle_1': 7.434117520970598e-05, u'turn_on_faucet_1': 0.44594594594594594}
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:         0.3574
+task name:   make_coffee           with probability of:         0.3213
+task name:   make_tea              with probability of:         0.3213
+
+------------Level  1-------------------
+task name:   prepare_hot_water     with probability of:         0.6426
+task name:   clean_hand            with probability of:         0.3574
+
+------------Level  2-------------------
+task name:   kettle_1_add_water    with probability of:         0.6426
+task name:   use_soap              with probability of:         0.3574
+
+------------Level  3-------------------
+task name:   add_water_kettle_1    with probability of:         0.6426
+
+
+Explanation Number:  3
+
+
+======================================================================================
+Simulate step happen:     use_soap
+
+the prob of otherHappen is========0.6151
+Now the action posterior is===========
+{u'switch_on_kettle_1': 6.801611837704378e-05, u'turn_on_faucet_1': 1.5191878001182801e-05, u'use_soap': 0.32134411054988843, u'add_water_kettle_1': 0.06347694416729481}
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:         0.7379
+task name:   make_tea              with probability of:         0.1311
+task name:   make_coffee           with probability of:         0.1311
+
+------------Level  1-------------------
+task name:   clean_hand            with probability of:         0.7379
+task name:   prepare_hot_water     with probability of:         0.2621
+
+------------Level  2-------------------
+task name:   rinse_hand            with probability of:         0.7379
+task name:   kettle_1_add_water    with probability of:         0.2621
+
+------------Level  3-------------------
+task name:   turn_off_faucet_1     with probability of:         0.2621
+
+
+Explanation Number:  3
+
+
+======================================================================================
+Simulate step happen:     rinse_hand
+
+the prob of otherHappen is========0.2371
+Now the action posterior is===========
+{u'switch_on_kettle_1': 2.713802604833474e-05, u'turn_on_faucet_1': 1.5496650513975347e-06, u'turn_off_faucet_1': 0.026210448570049675, u'rinse_hand': 0.7366644222084642}
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:         0.9875
+task name:   make_tea              with probability of:         0.0062
+task name:   make_coffee           with probability of:         0.0062
+
+------------Level  1-------------------
+task name:   turn_off_faucet_1     with probability of:         0.9875
+task name:   prepare_hot_water     with probability of:         0.0125
+
+------------Level  2-------------------
+task name:   kettle_1_heat_water   with probability of:         0.0125
+
+------------Level  3-------------------
+task name:   switch_on_kettle_1    with probability of:         0.0125
+
+
+Explanation Number:  3
+
+
+======================================================================================
+Simulate step happen:     rinse_hand
+
+the prob of otherHappen is========0.8986
+Now the action posterior is===========
+{u'switch_on_kettle_1': 3.1625113170297416e-05, u'turn_on_faucet_1': 0.002632246380063704, u'turn_off_faucet_1': 0.09871293025090792}
+This is a wrong step, the tracking agent will repair from the wrong step
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:         0.9875
+task name:   make_tea              with probability of:         0.0062
+task name:   make_coffee           with probability of:         0.0062
+
+------------Level  1-------------------
+task name:   turn_off_faucet_1     with probability of:         0.9875
+task name:   prepare_hot_water     with probability of:         0.0125
+
+------------Level  2-------------------
+task name:   kettle_1_heat_water   with probability of:         0.0125
+
+------------Level  3-------------------
+task name:   switch_on_kettle_1    with probability of:         0.0125
+
+
+Explanation Number:  3
+
+
+======================================================================================
+Simulate step happen:     turn_off_faucet_1
+
+the prob of otherHappen is========0.8986
+Now the action posterior is===========
+{u'switch_on_kettle_1': 3.1625113170297416e-05, u'turn_on_faucet_1': 0.002632246380063704, u'turn_off_faucet_1': 0.09871293025090792}
+This is a wrong step, the tracking agent will repair from the wrong step
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:         0.9875
+task name:   make_tea              with probability of:         0.0062
+task name:   make_coffee           with probability of:         0.0062
+
+------------Level  1-------------------
+task name:   turn_off_faucet_1     with probability of:         0.9875
+task name:   prepare_hot_water     with probability of:         0.0125
+
+------------Level  2-------------------
+task name:   kettle_1_heat_water   with probability of:         0.0125
+
+------------Level  3-------------------
+task name:   switch_on_kettle_1    with probability of:         0.0125
+
+
+Explanation Number:  3
+
+
+======================================================================================
+Simulate step happen:     turn_on_faucet_1
+
+the prob of otherHappen is========0.8986
+Now the action posterior is===========
+{u'switch_on_kettle_1': 3.1625113170297416e-05, u'turn_on_faucet_1': 0.002632246380063704, u'turn_off_faucet_1': 0.09871293025090792}
+This is a wrong step, the tracking agent will repair from the wrong step
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:         0.9875
+task name:   make_tea              with probability of:         0.0062
+task name:   make_coffee           with probability of:         0.0062
+
+------------Level  1-------------------
+task name:   prepare_hot_water     with probability of:         0.0125
+
+------------Level  2-------------------
+task name:   turn_off_faucet_1     with probability of:            1.0
+task name:   kettle_1_add_water    with probability of:         0.0125
+
+
+Explanation Number:  3
+
+
+======================================================================================
+Simulate step happen:     dry_hand
+
+the prob of otherHappen is========0.3937
+Now the action posterior is===========
+{u'switch_on_kettle_1': 1.1468909242760785e-05, u'turn_on_faucet_1': 0.5951031495822315, u'turn_off_faucet_1': 0.011220154897744585}
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:         0.8779
+task name:   make_coffee           with probability of:         0.3912
+task name:   make_tea              with probability of:         0.2675
+
+------------Level  1-------------------
+task name:   dry_hand              with probability of:         0.6088
+task name:   prepare_hot_water     with probability of:         0.3912
+task name:   clean_hand            with probability of:         0.2691
+
+------------Level  2-------------------
+task name:   kettle_1_add_water    with probability of:         0.3912
+task name:   use_soap              with probability of:         0.2691
+
+------------Level  3-------------------
+task name:   turn_off_faucet_1     with probability of:         0.3912
+task name:   add_water_kettle_1    with probability of:         0.2675
+
+
+Explanation Number:  5
+
+
+======================================================================================
+Simulate step happen:     add_water_kettle_1
+
+the prob of otherHappen is========0.3389
+Now the action posterior is===========
+{u'turn_on_faucet_1': 1.4204270062059763e-05, u'dry_hand': 0.5459149793458571, u'add_water_kettle_1': 0.09747245377162211, u'switch_on_kettle_1': 0.0005499944038144192, u'turn_off_faucet_1': 0.017138984832191305, u'use_soap': 5.386411681812075e-06}
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   make_coffee           with probability of:         0.0898
+task name:   make_tea              with probability of:          0.084
+task name:   wash_hand             with probability of:         0.0514
+
+------------Level  1-------------------
+task name:   prepare_hot_water     with probability of:         0.0898
+task name:   clean_hand            with probability of:         0.0514
+
+------------Level  2-------------------
+task name:   kettle_1_add_water    with probability of:          0.084
+task name:   use_soap              with probability of:         0.0514
+task name:   kettle_1_heat_water   with probability of:         0.0184
+
+------------Level  3-------------------
+task name:   turn_off_faucet_1     with probability of:         0.0714
+task name:   switch_on_kettle_1    with probability of:         0.0184
+task name:   add_water_kettle_1    with probability of:         0.0126
+
+------------Level  -1-------------------
+task name:   nothing               with probability of:         0.9102
+
+
+Explanation Number:  8
+
+
+======================================================================================
+Simulate step happen:     turn_off_faucet_1
+
+the prob of otherHappen is========0.9374
+Now the action posterior is===========
+{u'switch_on_kettle_1': 0.01052415247932714, u'turn_on_faucet_1': 0.0035462443693886434, u'add_water_kettle_1': 0.0018486637454293694, u'use_soap': 1.2008485210503133e-06, u'turn_off_faucet_1': 0.046689326595951}
+This is a wrong step, the tracking agent will repair from the wrong step
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   make_coffee           with probability of:         0.0898
+task name:   make_tea              with probability of:          0.084
+task name:   wash_hand             with probability of:         0.0514
+
+------------Level  1-------------------
+task name:   prepare_hot_water     with probability of:         0.0898
+
+------------Level  2-------------------
+task name:   turn_on_faucet_1      with probability of:         0.0898
+task name:   kettle_1_add_water    with probability of:          0.084
+task name:   kettle_1_heat_water   with probability of:         0.0184
+
+------------Level  3-------------------
+task name:   switch_on_kettle_1    with probability of:         0.0184
+
+------------Level  -1-------------------
+task name:   nothing               with probability of:         0.9102
+
+
+Explanation Number:  8
+
+
+======================================================================================
+Simulate step happen:     switch_on_kettle_1
+
+the prob of otherHappen is========0.0252
+Now the action posterior is===========
+{u'switch_on_kettle_1': 0.909504348529298, u'turn_on_faucet_1': 0.06524587303121927}
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:         0.8187
+task name:   make_coffee           with probability of:         0.1918
+task name:   make_tea              with probability of:         0.1694
+
+------------Level  1-------------------
+task name:   clean_hand            with probability of:         0.7484
+task name:   prepare_hot_water     with probability of:         0.2623
+
+------------Level  2-------------------
+task name:   use_soap              with probability of:         0.7484
+task name:   turn_on_faucet_1      with probability of:         0.2623
+task name:   kettle_1_add_water    with probability of:         0.2399
+task name:   kettle_1_heat_water   with probability of:         0.0709
+
+------------Level  3-------------------
+task name:   switch_off_kettle_1   with probability of:         0.0709
+task name:   add_water_kettle_1    with probability of:         0.0396
+
+
+Explanation Number:  21
+
+
+======================================================================================
+Simulate step happen:     switch_off_kettle_1
+
+the prob of otherHappen is========0.8937
+Now the action posterior is===========
+{u'switch_on_kettle_1': 3.197813318011381e-05, u'turn_on_faucet_1': 0.0745462618117757, u'switch_off_kettle_1': 0.03169675066929876, u'use_soap': 3.629444908539345e-05, u'add_water_kettle_1': 8.943125497459609e-08}
+This is a wrong step, the tracking agent will repair from the wrong step
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:         0.8187
+task name:   make_coffee           with probability of:         0.1918
+task name:   make_tea              with probability of:         0.1694
+
+------------Level  1-------------------
+task name:   clean_hand            with probability of:         0.7484
+task name:   prepare_hot_water     with probability of:         0.2623
+
+------------Level  2-------------------
+task name:   use_soap              with probability of:         0.7484
+task name:   turn_on_faucet_1      with probability of:         0.2623
+task name:   kettle_1_add_water    with probability of:         0.2399
+task name:   kettle_1_heat_water   with probability of:         0.0709
+
+------------Level  3-------------------
+task name:   switch_on_kettle_1    with probability of:         0.0709
+task name:   add_water_kettle_1    with probability of:         0.0396
+
+
+Explanation Number:  21
+
+
+======================================================================================
+Simulate step happen:     get_cup_1
+
+the prob of otherHappen is========0.9573
+Now the action posterior is===========
+{u'switch_on_kettle_1': 0.004811682090000718, u'turn_on_faucet_1': 0.03594025783013146, u'use_soap': 3.6294449085393433e-05, u'add_water_kettle_1': 0.0019545300593933113}
+This is a wrong step, the tracking agent will repair from the wrong step
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:         0.8187
+task name:   make_coffee           with probability of:         0.1918
+task name:   make_tea              with probability of:         0.1694
+
+------------Level  1-------------------
+task name:   clean_hand            with probability of:         0.7484
+task name:   prepare_hot_water     with probability of:         0.2623
+
+------------Level  2-------------------
+task name:   use_soap              with probability of:         0.7484
+task name:   turn_on_faucet_1      with probability of:         0.2623
+task name:   kettle_1_add_water    with probability of:         0.2399
+task name:   kettle_1_heat_water   with probability of:         0.0709
+
+------------Level  3-------------------
+task name:   switch_on_kettle_1    with probability of:         0.0709
+task name:   add_water_kettle_1    with probability of:         0.0396
+
+
+Explanation Number:  21
+
+
+======================================================================================
+Simulate step happen:     open_coffee_box_1
+
+the prob of otherHappen is========0.9573
+Now the action posterior is===========
+{u'switch_on_kettle_1': 0.004811682090000719, u'turn_on_faucet_1': 0.03594025783013147, u'use_soap': 3.629444908539344e-05, u'add_water_kettle_1': 0.0019545300593933118}
+This is a wrong step, the tracking agent will repair from the wrong step
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:         0.8187
+task name:   make_coffee           with probability of:         0.1918
+task name:   make_tea              with probability of:         0.1694
+
+------------Level  1-------------------
+task name:   clean_hand            with probability of:         0.7484
+task name:   prepare_hot_water     with probability of:         0.2623
+
+------------Level  2-------------------
+task name:   use_soap              with probability of:         0.7484
+task name:   turn_on_faucet_1      with probability of:         0.2623
+task name:   kettle_1_add_water    with probability of:         0.2399
+task name:   kettle_1_heat_water   with probability of:         0.0709
+
+------------Level  3-------------------
+task name:   switch_on_kettle_1    with probability of:         0.0709
+task name:   add_water_kettle_1    with probability of:         0.0396
+
+
+Explanation Number:  21
+
+
+======================================================================================
+Simulate step happen:     add_water_cup_1
+
+the prob of otherHappen is========0.963
+Now the action posterior is===========
+{u'switch_on_kettle_1': 3.0167192129450337e-05, u'turn_on_faucet_1': 0.03594025783013147, u'use_soap': 3.629444908539345e-05, u'add_water_kettle_1': 0.001035129391005424}
+This is a wrong step, the tracking agent will repair from the wrong step
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:         0.8187
+task name:   make_coffee           with probability of:         0.1918
+task name:   make_tea              with probability of:         0.1694
+
+------------Level  1-------------------
+task name:   clean_hand            with probability of:         0.7484
+task name:   prepare_hot_water     with probability of:         0.2623
+
+------------Level  2-------------------
+task name:   use_soap              with probability of:         0.7484
+task name:   turn_on_faucet_1      with probability of:         0.2623
+task name:   kettle_1_add_water    with probability of:         0.2623
+
+------------Level  3-------------------
+task name:   add_water_kettle_1    with probability of:         0.1105
+
+
+Explanation Number:  21
+
+
+======================================================================================
+Simulate step happen:     close_coffee_box_1
+
+the prob of otherHappen is========0.9144
+Now the action posterior is===========
+{u'switch_on_kettle_1': 0.0019877509013656778, u'turn_on_faucet_1': 0.082373432387281, u'use_soap': 3.6294449085393433e-05, u'add_water_kettle_1': 0.0012250877762881452}
+This is a wrong step, the tracking agent will repair from the wrong step
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:         0.8187
+task name:   make_coffee           with probability of:         0.1918
+task name:   make_tea              with probability of:         0.1694
+
+------------Level  1-------------------
+task name:   clean_hand            with probability of:         0.7484
+task name:   prepare_hot_water     with probability of:         0.2623
+
+------------Level  2-------------------
+task name:   use_soap              with probability of:         0.7484
+task name:   turn_on_faucet_1      with probability of:         0.2623
+task name:   kettle_1_add_water    with probability of:         0.2623
+
+------------Level  3-------------------
+task name:   add_water_kettle_1    with probability of:         0.1105
+
+
+Explanation Number:  21
+
+
+======================================================================================
+Simulate step happen:     open_coffee_box_1
+
+the prob of otherHappen is========0.9144
+Now the action posterior is===========
+{u'switch_on_kettle_1': 0.001987750901365678, u'turn_on_faucet_1': 0.082373432387281, u'use_soap': 3.629444908539344e-05, u'add_water_kettle_1': 0.0012250877762881454}
+This is a wrong step, the tracking agent will repair from the wrong step
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:         0.8187
+task name:   make_coffee           with probability of:         0.1918
+task name:   make_tea              with probability of:         0.1694
+
+------------Level  1-------------------
+task name:   clean_hand            with probability of:         0.7484
+task name:   prepare_hot_water     with probability of:         0.2623
+
+------------Level  2-------------------
+task name:   use_soap              with probability of:         0.7484
+task name:   turn_on_faucet_1      with probability of:         0.2623
+task name:   kettle_1_add_water    with probability of:         0.2623
+
+------------Level  3-------------------
+task name:   add_water_kettle_1    with probability of:         0.1105
+
+
+Explanation Number:  21
+
+
+======================================================================================
+Simulate step happen:     add_coffee_cup_1
+
+the prob of otherHappen is========0.9144
+Now the action posterior is===========
+{u'switch_on_kettle_1': 0.001987750901365678, u'turn_on_faucet_1': 0.082373432387281, u'use_soap': 3.629444908539345e-05, u'add_water_kettle_1': 0.0012250877762881457}
+This is a wrong step, the tracking agent will repair from the wrong step
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:         0.8187
+task name:   make_coffee           with probability of:         0.1918
+task name:   make_tea              with probability of:         0.1694
+
+------------Level  1-------------------
+task name:   clean_hand            with probability of:         0.7484
+task name:   prepare_hot_water     with probability of:         0.2623
+
+------------Level  2-------------------
+task name:   use_soap              with probability of:         0.7484
+task name:   turn_on_faucet_1      with probability of:         0.2623
+task name:   kettle_1_add_water    with probability of:         0.2623
+
+------------Level  3-------------------
+task name:   add_water_kettle_1    with probability of:         0.1105
+
+
+Explanation Number:  21
+
+
+======================================================================================
+Simulate step happen:     close_coffee_box_1
+
+the prob of otherHappen is========0.9144
+Now the action posterior is===========
+{u'switch_on_kettle_1': 0.0019877509013656778, u'turn_on_faucet_1': 0.082373432387281, u'use_soap': 3.6294449085393433e-05, u'add_water_kettle_1': 0.0012250877762881454}
+This is a wrong step, the tracking agent will repair from the wrong step
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:         0.8187
+task name:   make_coffee           with probability of:         0.1918
+task name:   make_tea              with probability of:         0.1694
+
+------------Level  1-------------------
+task name:   clean_hand            with probability of:         0.7484
+task name:   prepare_hot_water     with probability of:         0.2623
+
+------------Level  2-------------------
+task name:   use_soap              with probability of:         0.7484
+task name:   turn_on_faucet_1      with probability of:         0.2623
+task name:   kettle_1_add_water    with probability of:         0.2623
+
+------------Level  3-------------------
+task name:   add_water_kettle_1    with probability of:         0.1105
+
+
+Explanation Number:  21
+
+
+======================================================================================
+Simulate step happen:     add_water_cup_1
+
+the prob of otherHappen is========0.9144
+Now the action posterior is===========
+{u'switch_on_kettle_1': 0.001987750901365678, u'turn_on_faucet_1': 0.082373432387281, u'use_soap': 3.629444908539344e-05, u'add_water_kettle_1': 0.0012250877762881457}
+This is a wrong step, the tracking agent will repair from the wrong step
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:         0.8187
+task name:   make_coffee           with probability of:         0.1918
+task name:   make_tea              with probability of:         0.1694
+
+------------Level  1-------------------
+task name:   clean_hand            with probability of:         0.7484
+task name:   prepare_hot_water     with probability of:         0.2623
+
+------------Level  2-------------------
+task name:   use_soap              with probability of:         0.7484
+task name:   turn_on_faucet_1      with probability of:         0.2623
+task name:   kettle_1_add_water    with probability of:         0.2623
+
+------------Level  3-------------------
+task name:   add_water_kettle_1    with probability of:         0.1105
+
+
+Explanation Number:  21
+
+
+======================================================================================
+Simulate step happen:     drink
+
+the prob of otherHappen is========0.9144
+Now the action posterior is===========
+{u'switch_on_kettle_1': 0.001987750901365678, u'turn_on_faucet_1': 0.082373432387281, u'use_soap': 3.629444908539345e-05, u'add_water_kettle_1': 0.0012250877762881457}
+This is a wrong step, the tracking agent will repair from the wrong step
+
+Hint Output In Level Sequence: 
+------------Level  0-------------------
+task name:   wash_hand             with probability of:         0.8187
+task name:   make_coffee           with probability of:         0.1918
+task name:   make_tea              with probability of:         0.1694
+
+------------Level  1-------------------
+task name:   clean_hand            with probability of:         0.7484
+task name:   prepare_hot_water     with probability of:         0.2623
+
+------------Level  2-------------------
+task name:   use_soap              with probability of:         0.7484
+task name:   turn_on_faucet_1      with probability of:         0.2623
+task name:   kettle_1_add_water    with probability of:         0.2623
+
+------------Level  3-------------------
+task name:   add_water_kettle_1    with probability of:         0.1105
+
+
+Explanation Number:  21

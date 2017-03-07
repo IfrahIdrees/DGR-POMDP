@@ -66,11 +66,11 @@ class explaSet(object):
     
     # write the explanation into a .txt file
     def print_explaSet(self):
-        '''
+        
         with open(self._output_file_name, 'a') as f:
             new_line = "Explanation Number:  " + str(len(self._explaset)) + "\n"
             f.write(new_line)
-        
+        '''
             for index in range(len(self._explaset)):
                 x = self._explaset[index]
                 new_line = "\n" + "--------------Explanation " + str(index+1) + "------------------\n"
