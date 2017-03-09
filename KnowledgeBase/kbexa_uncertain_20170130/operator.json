@@ -394,6 +394,8 @@
             "has_coffee":"no",
             "has_tea":"no"
         }
-    }
+    },
+    "parent":["make_coffee", "make_tea"]
+    
 }
 
