@@ -7,6 +7,5 @@ use_soap
 rinse_hand
 rinse_hand
 dry_hand
-rinse_hand
 turn_off_faucet_1
-dry_hand
+

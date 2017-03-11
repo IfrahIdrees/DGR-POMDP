@@ -46,7 +46,7 @@ class DB_Object(object):
     
     ## Find and return the specific action  
     def get_operator(self, op_name):
-        #print "inside databae", op_name 
+        print "inside databae", op_name 
         op = list(self._operator.find({"st_name":op_name}))
         return op[0]
     '''

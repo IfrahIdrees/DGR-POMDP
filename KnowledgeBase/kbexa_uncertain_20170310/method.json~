@@ -1,0 +1,416 @@
+
+{
+    "type":"method",
+    "m_name":"clean_hand",
+    "precondition":[{
+        "hand_1":{
+            "dirty":"yes",
+            "soapy":"no"  
+        },
+        "faucet_1":{
+            "state":"on"
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        }
+    }],
+    "subtasks":[{
+        "use_soap":{
+            "pre":[],
+            "dec":["rinse_hand"]
+        },
+        "rinse_hand":{
+            "pre":["use_soap"],
+            "dec":[]
+        }
+    }],
+    "parent":["wash_hand"],
+    "start_action":[]
+}
+
+
+{
+    "type":"method",
+    "m_name":"wash_hand",
+    "precondition":[{
+        "hand_1":{
+            "dirty":"yes",
+            "soapy":"no"  
+        },
+        "faucet_1":{
+            "state":"off"
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        }
+    }],
+    "subtasks":[{
+        "turn_on_faucet_1":{
+            "pre":[],
+            "dec":["clean_hand"]
+        },
+        "clean_hand":{
+            "pre":["turn_on_faucet_1"],
+            "dec":["turn_off_faucet_1"]
+        },
+        "turn_off_faucet_1":{
+            "pre":["clean_hand"],
+            "dec":["dry_hand"]
+        },
+        "dry_hand":{
+            "pre":["turn_off_faucet_1"],
+            "dec":[]
+        }}],
+    "parent":[],    
+    "start_action":["turn_on_faucet_1"]
+}
+
+
+
+
+
+{
+    "type":"method",
+    "m_name":"kettle_1_heat_water",
+    "precondition":[{
+        "kettle_1":{
+            "has_water":"yes",
+            "switch":"off",
+            "water_hot":"no"  
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        }
+    }],
+    "subtasks":[{
+        "switch_on_kettle_1":{
+            "pre":[],
+            "dec":["switch_off_kettle_1"]
+        },
+        "switch_off_kettle_1":{
+            "pre":["switch_on_kettle_1"],
+            "dec":[]
+        }}],
+    "parent":["prepare_hot_water"],
+    "start_action":[]
+     
+        
+}
+
+
+{
+    "type":"method",
+    "m_name":"kettle_1_add_water",
+    "precondition":[{
+        "faucet_1":{
+            "state":"off",
+            "location":"kitchen"  
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        },
+        "kettle_1":{
+            "has_water":"no",
+            "switch":"off", 
+            "water_hot":"no"
+        }
+    }],
+    "subtasks":[{
+        "turn_on_faucet_1":{
+            "pre":[],
+            "dec":["add_water_kettle_1"]
+        },
+        "add_water_kettle_1":{
+            "pre":["turn_on_faucet_1"],
+            "dec":["turn_off_faucet_1"]
+        },
+        "turn_off_faucet_1":{
+            "pre":["add_water_kettle_1"],
+            "dec":[]
+        }}],
+    "parent":["prepare_hot_water"],
+    "start_action":[]
+}
+
+
+
+{
+    "type":"method",
+    "m_name":"prepare_hot_water",
+    "precondition":[{
+        "faucet_1":{
+            "state":"off",
+            "location":"kitchen"  
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        },
+        "kettle_1":{
+            "has_water":"no",
+            "switch":"off",
+            "water_hot":"no"
+        }
+    },
+    {
+        "kettle_1":{
+            "has_water":"yes",
+            "switch":"off",
+            "water_hot":"no"
+              
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        }
+    }],
+    "subtasks":[{
+        "kettle_1_add_water":{
+            "pre":[],
+            "dec":["kettle_1_heat_water"]
+        },
+        "kettle_1_heat_water":{
+            "pre":["kettle_1_add_water"],
+            "dec":[]
+        }
+    },
+    {
+        "kettle_1_heat_water":{
+            "pre":[],
+            "dec":[]
+        }
+    }],
+    "parent":["make_tea", "make_coffee"],
+    "start_action":[]
+}
+
+
+{
+    "type":"method",
+    "m_name":"add_tea",
+    "precondition":[{
+        "tea_box_1":{
+            "open":"no",
+            "location":"table"
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        },
+        "cup_1":{
+            "location":"table",
+            "has_tea":"no",
+            "has_coffee":"no"
+        }
+    }],
+    "subtasks":[{
+        "open_tea_box_1":{
+            "pre":[],
+            "dec":["add_tea_cup_1"]
+        },
+        "add_tea_cup_1":{
+            "pre":["open_tea_box_1"],
+            "dec":["close_tea_box_1"]
+        },
+        "close_tea_box_1":{
+            "pre":["add_tea_cup_1"],
+            "dec":[]
+        }
+    }],
+    "parent":["mix_tea_water"],
+    "start_action":[]
+}
+
+
+
+{
+    "type":"method",
+    "m_name":"add_coffee",
+    "precondition":[{
+        "coffee_box_1":{
+            "open":"no",
+            "location":"table"
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        },
+        "cup_1":{
+            "location":"table",
+            "has_tea":"no",
+            "has_coffee":"no"
+        }
+    }],
+    "subtasks":[{
+        "open_coffee_box_1":{
+            "pre":[],
+            "dec":["add_coffee_cup_1"]
+        },
+        "add_coffee_cup_1":{
+            "pre":["open_coffee_box_1"],
+            "dec":["close_coffee_box_1"]
+        },
+        "close_coffee_box_1":{
+            "pre":["add_coffee_cup_1"],
+            "dec":[]
+        }
+    }],
+    "parent":["mix_coffee_water"],
+    "start_action":[]
+}
+
+
+{
+    "type":"method",
+    "m_name":"mix_tea_water",
+    "precondition":[{
+        "tea_box_1":{
+            "open":"no",
+            "location":"table"
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        },
+        "cup_1":{
+            "location":"cabinet",
+            "has_tea":"no",
+            "has_coffee":"no",
+            "has_water":"no"
+        },
+        "kettle_1":{
+            "has_water":"yes",
+            "water_hot":"yes",
+            "switch":"off"
+        }
+    }],
+    "subtasks":[{
+        "get_cup_1":{
+            "pre":[],
+            "dec":["add_tea", "add_water_cup_1"]
+        },
+        "add_tea":{
+            "pre":["get_cup_1"],
+            "dec":[]
+        },
+        "add_water_cup_1":{
+            "pre":["get_cup_1"],
+            "dec":[]
+        }
+    }],
+    "parent":["make_tea"],
+    "start_action":[]
+}
+
+
+{
+    "type":"method",
+    "m_name":"mix_coffee_water",
+    "precondition":[{
+        "coffee_box_1":{
+            "open":"no",
+            "location":"table"
+        },
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        },
+        "cup_1":{
+            "location":"cabinet",
+            "has_tea":"no",
+            "has_coffee":"no",
+            "has_water":"no"
+        },
+        "kettle_1":{
+            "has_water":"yes",
+            "water_hot":"yes",
+            "switch":"off"
+        }
+    }],
+    "subtasks":[{
+        "get_cup_1":{
+            "pre":[],
+            "dec":["add_coffee", "add_water_cup_1"]
+        },
+        "add_coffee":{
+            "pre":["get_cup_1"],
+            "dec":[]
+        },
+        "add_water_cup_1":{
+            "pre":["get_cup_1"],
+            "dec":[]
+        }
+    }],
+    "parent":["make_coffee"],
+    "start_action":[]
+}
+
+
+{
+    "type":"method",
+    "m_name":"make_tea",
+    "precondition":[{
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        },
+        "kettle_1":{
+            "switch":"off"
+        }
+    }],
+    "subtasks":[{
+        "prepare_hot_water":{
+            "pre":[],
+            "dec":["mix_tea_water"]
+        },
+        "mix_tea_water":{
+            "pre":["prepare_hot_water"],
+            "dec":["drink"]
+        },
+        "drink":{
+            "pre":["mix_tea_water"],
+            "dec":[]
+        }
+    }],
+    "parent":[],
+    "start_action":["turn_on_faucet_1", "switch_on_kettle_1"]
+}
+
+
+{
+    "type":"method",
+    "m_name":"make_coffee",
+    "precondition":[{
+        "person_1":{
+            "location":"kitchen",
+            "ability":[">=", "0", "0", "0"]
+        },
+        "kettle_1":{
+            "switch":"off"
+        }
+    }],
+    "subtasks":[{
+        "prepare_hot_water":{
+            "pre":[],
+            "dec":["mix_coffee_water"]
+        },
+        "mix_coffee_water":{
+            "pre":["prepare_hot_water"],
+            "dec":["drink"]
+        },
+        "drink":{
+            "pre":["mix_coffee_water"],
+            "dec":[]
+        }
+    }],
+    "parent":[],
+    "start_action":["turn_on_faucet_1", "switch_on_kettle_1"]
+}
+
+
+
+

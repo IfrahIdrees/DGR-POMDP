@@ -1,0 +1,62 @@
+{
+    "ob_name":"hand_1",
+    "ob_type":"hand",
+    "soapy":"no",
+    "dirty":"yes",
+    "dry":"yes"
+}   
+
+
+{
+    "ob_name":"faucet_1",
+    "ob_type":"faucet", 
+    "state":"off",
+    "location":"kitchen"
+}
+
+
+{
+    "ob_name":"person_1",
+    "ob_type":"person", 
+    "location":"kitchen",
+    "ability":">=, 0.4, 0.4, 0.4"
+}
+
+
+{
+    "ob_name":"kettle_1",
+    "ob_type":"kettle",
+    "has_water":"no", 
+    "switch":"off", 
+    "water_hot":"no"
+}
+
+{
+    "ob_name":"cup_1",
+    "ob_type":"cup",
+    "location":"cabinet",
+    "has_water":"no",
+    "has_tea":"no",
+    "has_coffee":"no"
+}
+
+{
+    "ob_name":"tea_box_1",
+    "ob_type":"tea_box",
+    "location":"table",
+    "open":"no"
+}
+
+
+{
+    "ob_name":"coffee_box_1",
+    "ob_type":"coffee_box",
+    "location":"table",
+    "open":"no"
+}
+
+
+
+
+
+
