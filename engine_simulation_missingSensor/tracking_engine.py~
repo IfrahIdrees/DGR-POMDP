@@ -31,7 +31,7 @@ class Tracking_Engine(object):
         #exp.print_explaSet()
         
         
-        '''
+        
         while(notif._notif.qsize()>0):
             step = notif.get_one_notif()
             notif.delete_one_notif()
@@ -87,11 +87,11 @@ class Tracking_Engine(object):
                 print
                 
                 
-        '''
         
         
         
-         
+        
+        ''' 
         while(notif._notif.qsize()>0):
             step = notif.get_one_notif()
             notif.delete_one_notif()
@@ -152,7 +152,7 @@ class Tracking_Engine(object):
                     print 
                     print
                 
-                    
+        '''            
                                           
             
             

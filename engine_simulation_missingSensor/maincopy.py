@@ -35,7 +35,7 @@ if __name__ == '__main__':
     nothing_happen = 0.01
     
     ##the otherHappen triggering threshhold
-    other_happen = 0.76
+    other_happen = 0.75
     
     file_num = 4
     #sensor_reliability = [None, 0.9, 0.8]
