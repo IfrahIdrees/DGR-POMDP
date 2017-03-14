@@ -7,6 +7,9 @@ class TaskHint(object):
     def __init__(self, output_file_name = "Case4.txt"):
         self._output_file_name = output_file_name
         self.prompt_task = {}
+        self.step_dict = set(['use_soap', 'rinse_hand', 'turn_on_faucet_1', 'turn_off_faucet_1', 'dry_hand', 'switch_on_kettle_1', 'switch_off_kettle_1', 'add_water_kettle_1', 'get_cup_1', 'open_tea_box_1', 'add_tea_cup_1', 'close_tea_box_1', 'add_water_cup_1', 'open_coffee_box_1', 'add_coffee_cup_1', 'close_coffee_box_1', 'drink'])
+        
+        
     
     #reset the prompt_task
     def reset(self):
@@ -32,7 +35,7 @@ class TaskHint(object):
     def average_level(self):
         #print "go into task hint average level"
         for k, v in self.prompt_task.items():
-            ave = list_average(v[1])
+            ave = list_average(v[1])    #ave is average level
             key_value = []
             key_value.append(v[0])
             key_value.append(ave)
@@ -41,6 +44,28 @@ class TaskHint(object):
             
     def get_key(self, item):
         return item[1]
+    
+    def print_taskhintInTable(self):
+        step_level_hint = {}
+        for k, v in self.prompt_task.items():
+            if k in self.step_dict:
+                step_level_hint[k] = round(v[0], 4)
+                
+        wash_hand = 0.0
+        make_tea = 0.0
+        make_coffee = 0.0
+        
+        if 'wash_hand' in self.prompt_task:
+            wash_hand = round(self.prompt_task['wash_hand'][0], 4)
+        if 'make_tea' in self.prompt_task:
+            make_tea = round(self.prompt_task['make_tea'][0], 4)
+        if 'make_coffee' in self.prompt_task:
+            make_coffee = round(self.prompt_task['make_coffee'][0], 4)
+            
+        with open(self._output_file_name, 'a') as f:
+            f.write('{:>12}{:>12}{:>12}{:>100}'.format(wash_hand, make_tea, make_coffee, str(step_level_hint)))
+        
+    
         
     def print_taskhint(self):
         hint_in_level_format = {}

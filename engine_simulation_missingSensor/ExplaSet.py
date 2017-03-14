@@ -64,8 +64,14 @@ class explaSet(object):
         for x in self._explaset:
             x._prob = x._prob/my_sum   
     
-    # write the explanation into a .txt file
+    
     def print_explaSet(self):
+        with open(self._output_file_name, 'a') as f:
+            f.write('{:>12}'.format(str(len(self._explaset))))
+            f.write('\n')
+    
+    # write the explanation into a .txt file
+    def print_explaSet1(self):
         
         with open(self._output_file_name, 'a') as f:
             new_line = "Explanation Number:  " + str(len(self._explaset)) + "\n"
@@ -166,14 +172,14 @@ class explaSet(object):
                             self._action_posterior_prob[start_action] = initialize_prob
         '''
         #---------------------------------
-        
+        '''
         with open(self._output_file_name, 'a') as f:
             f.write("\n")
             new_line = "before the action prior is===========\n"
             f.write(new_line)
             f.write(repr(self._action_posterior_prob))
             f.write("\n")
-        
+        '''
         
                                    
         for k in self._action_posterior_prob: 
@@ -184,6 +190,12 @@ class explaSet(object):
         
         
         with open(self._output_file_name, 'a') as f:
+            #new version from March 14, generate a table
+            f.write('{:>12}'.format(str(round(otherHappen, 4))))
+            
+            
+            #previous version
+            '''
             f.write("\n")
             new_line = "the prob of otherHappen is========" + str(round(otherHappen, 4)) + "\n"
             f.write(new_line)
@@ -191,15 +203,56 @@ class explaSet(object):
             f.write(new_line)
             f.write(repr(self._action_posterior_prob))
             f.write("\n")
-        
+            '''
         return otherHappen
        
     
-    
+    #version begin from March 14, 2017
+    def cal_posterior(self, action):
+        op = db.get_operator(action)
         
+        objAttSet = set()
+        for obj in op["precondition"]:
+            for att in op["precondition"][obj]:
+                objAttSet.add(obj+"-"+att) 
+        for obj in op["effect"]:
+            for att in op["effect"][obj]:
+                objAttSet.add(obj + "-" + att)
+                
+        title = []
+        for item in objAttSet:
+            title.append(item.split("-"))
+        #attribute is the corresponding attribute distribution in title
+        attribute = []
+        for item in title:
+            attribute.append(db.get_object_attri(item[0], item[1]))
+
+        enum = self.myDFS(title, attribute)
+        new_prob=self.variable_elim(enum, op, title)    
+        return new_prob 
+    ##dfs is used to generate the enumeration of all possible
+    ##state combinations    
+    def myDFS(self, attribute):
+        enum = []
+        va = []
+        self.realMyDFS(enum, va, attribute)
+        return enum
+    
+    def realMyDFS(self, enum, va, attribute):
+        if len(va) == len(attribute):
+            enum.append(list(va))
+            return
+        index = len(va)
+        for x in attribute[index]:
+            va.insert(index, x)
+            self.realMyDFS(enum, va, attribute)
+            va.pop()    
+            
+    '''        
+    #version before March 14, 2017      
     def cal_posterior(self, action):
         op = db.get_operator(action)    
-        beforeS = []
+        beforeS = []    
         title = []
         for x in op["precondition"]:
             beforeS.append(db.get_object_status(x))
@@ -215,13 +268,14 @@ class explaSet(object):
         return new_prob
     
     ##dfs is used to generate the enumeration of all possible
-    ##state combinations    
+    ##state combinations
+    #version before March 14, 2017    
     def myDFS(self, title, beforeS):
         enum = []
         va = []
         self.realMyDFS(enum, va, title, beforeS)
         return enum
-    
+    #version before March 14, 2017
     def realMyDFS(self, enum, va, title, beforeS):
         if len(va)==len(title):
             enum.append(list(va))
@@ -233,7 +287,7 @@ class explaSet(object):
             va.insert(len(va), x)
             self.realMyDFS(enum, va, title, beforeS)
             va.pop()
-        
+    '''        
     ##implement the bayesian network calculation for one possible state
     ##op: the operator in knowlege base, prob: the prior of the action
     def variable_elim(self, enum, op, title):
@@ -430,7 +484,8 @@ class explaSet(object):
             expla.generate_task_hint(taskhint)
         ##taskhint = TaskHint()
         taskhint.average_level()
-        taskhint.print_taskhint()    
+        #taskhint.print_taskhint()
+        taskhint.print_taskhintInTable()    
 
     ##################################################################################################    
     ####                                        Part VII                                         #####
@@ -473,8 +528,8 @@ class explaSet(object):
     #                       Need to update tree structure and the new pendingSet. Need to update belief state
     # 3. state_update:      Finally weather update the state depends the sum probability of update and no-update   
     def handle_wrong_step_exception(self):
-        with open(self._output_file_name, 'a') as f:
-            f.write("This is a wrong step, the tracking agent will repair from the wrong step\n\n")
+        #with open(self._output_file_name, 'a') as f:
+            #f.write("This is a wrong step, the tracking agent will repair from the wrong step\n\n")
             
     
         #print "inside handle_wrong_step_exception"
