@@ -24,8 +24,8 @@ if __name__ == '__main__':
     interval = 1
     
     #the conditional probability of p(s|s_t-1, a_t)
-    cond_satisfy = 1.0
-    cond_notsatisfy = 0.0
+    cond_satisfy = 0.999
+    cond_notsatisfy = 0.001
     
     #the threshhold that an explanation is no longer maintain
     #delete_trigger = 0.00001
@@ -45,7 +45,7 @@ if __name__ == '__main__':
     #files = [1, 2, 3]
     #sensor_reliability = [-1, 0.5, -2]
     #for file_num in range(4, 8):
-    for file_num in range(2, 3):
+    for file_num in range(5, 6):
         for x in sensor_reliability:
             ##the output file name
             output_file_name = "Case" + str(file_num) + "_" + str(x) + ".txt"

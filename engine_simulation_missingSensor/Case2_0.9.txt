@@ -1,30 +1,13 @@
+
 ========================
-        turn_on_faucet_1       0.554      0.3574      0.3213      0.3213                                                {u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}           3
-      add_water_kettle_1      0.4386      0.0364      0.4818      0.4818                                               {u'turn_off_faucet_1': 0.9636, u'rinse_hand': 0.0364}           3
-       turn_off_faucet_1      0.1328         0.0         0.5         0.5                                                                        {u'switch_on_kettle_1': 1.0}           2
-      switch_on_kettle_1      0.0136         0.0      0.5036      0.5036        {u'switch_on_kettle_1': 0.0073, u'turn_on_faucet_1': 0.0073, u'switch_off_kettle_1': 0.9927}           4
-     switch_off_kettle_1      0.1062         0.0         0.5         0.5                                                                                 {u'get_cup_1': 1.0}           2
-               get_cup_1         0.1         0.0         0.5         0.5                        {u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}           2
-          open_tea_box_1========================
-        turn_on_faucet_1       0.554      0.3574      0.3213      0.3213                                                {u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}           3
-      add_water_kettle_1      0.4386      0.0364      0.4818      0.4818                                               {u'turn_off_faucet_1': 0.9636, u'rinse_hand': 0.0364}           3
-       turn_off_faucet_1      0.1328         0.0         0.5         0.5                                                                        {u'switch_on_kettle_1': 1.0}           2
-      switch_on_kettle_1      0.0136         0.0      0.5036      0.5036        {u'switch_on_kettle_1': 0.0073, u'turn_on_faucet_1': 0.0073, u'switch_off_kettle_1': 0.9927}           4
-     switch_off_kettle_1      0.1062         0.0         0.5         0.5                                                                                 {u'get_cup_1': 1.0}           2
-               get_cup_1         0.1         0.0         0.5         0.5                        {u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}           2
-          open_tea_box_1========================
-        turn_on_faucet_1       0.554      0.3574      0.3213      0.3213                                                {u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}           3
-      add_water_kettle_1      0.4386      0.0364      0.4818      0.4818                                               {u'turn_off_faucet_1': 0.9636, u'rinse_hand': 0.0364}           3
-       turn_off_faucet_1      0.1328         0.0         0.5         0.5                                                                        {u'switch_on_kettle_1': 1.0}           2
-      switch_on_kettle_1      0.0136         0.0      0.5036      0.5036        {u'switch_on_kettle_1': 0.0073, u'turn_on_faucet_1': 0.0073, u'switch_off_kettle_1': 0.9927}           4
-     switch_off_kettle_1      0.1062         0.0         0.5         0.5                                                                                 {u'get_cup_1': 1.0}           2
-               get_cup_1         0.1         0.0         0.5         0.5                        {u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}           2
-          open_tea_box_1
-========================
-        turn_on_faucet_1       0.554      0.3574      0.3213      0.3213                                                {u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}           3
-      add_water_kettle_1      0.4386      0.0364      0.4818      0.4818                                               {u'turn_off_faucet_1': 0.9636, u'rinse_hand': 0.0364}           3
-       turn_off_faucet_1      0.1328         0.0         0.5         0.5                                                                        {u'switch_on_kettle_1': 1.0}           2
-      switch_on_kettle_1      0.5008         0.0      0.5019      0.5019        {u'switch_on_kettle_1': 0.0037, u'turn_on_faucet_1': 0.0037, u'switch_off_kettle_1': 0.9963}           4
-     switch_off_kettle_1      0.1032         0.0         0.5         0.5                                                                                 {u'get_cup_1': 1.0}           2
-               get_cup_1         0.1         0.0         0.5         0.5                        {u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}           2
-          open_tea_box_1
+        turn_on_faucet_1      0.5539      0.3574      0.3213      0.3213                                                {u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}           3
+      add_water_kettle_1      0.4386      0.0365      0.4818      0.4818                                               {u'turn_off_faucet_1': 0.9635, u'rinse_hand': 0.0365}           3
+       turn_off_faucet_1      0.1329         0.0         0.5         0.5                                                                        {u'switch_on_kettle_1': 1.0}           2
+      switch_on_kettle_1      0.0137         0.0      0.5036      0.5036        {u'switch_on_kettle_1': 0.0073, u'turn_on_faucet_1': 0.0073, u'switch_off_kettle_1': 0.9927}           4
+     switch_off_kettle_1      0.1063         0.0         0.5         0.5                                                                                 {u'get_cup_1': 1.0}           2
+               get_cup_1      0.1001         0.0         0.5         0.5                        {u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}           2
+          open_tea_box_1      0.7494         0.0      0.8974      0.1026{u'open_coffee_box_1': 0.003, u'add_coffee_cup_1': 0.0995, u'add_water_cup_1': 0.9939, u'add_tea_cup_1': 0.8944, u'open_tea_box_1': 0.003}           4
+           add_tea_cup_1      0.5968         0.0         1.0         0.0                  {u'close_tea_box_1': 0.9981, u'add_water_cup_1': 0.9981, u'add_tea_cup_1': 0.0019}           2
+         close_tea_box_1      0.5507         0.0         1.0         0.0                                            {u'close_tea_box_1': 0.0017, u'add_water_cup_1': 0.9983}           2
+         add_water_cup_1      0.0032         0.0         1.0         0.0                                                                                     {u'drink': 1.0}           1
+                   drink         0.5         0.0         0.0         0.0                                                                                                  {}           1

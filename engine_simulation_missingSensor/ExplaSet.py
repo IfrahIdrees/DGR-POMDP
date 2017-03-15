@@ -143,6 +143,7 @@ class explaSet(object):
     ##################################################################################################    
     ####                                        Part III                                         #####
     ####                Calculate posterior probability of actions in the pendingSet             #####
+    ####                Calculate the probability of              #####
     ##################################################################################################
             
     def action_posterior(self):
@@ -160,7 +161,7 @@ class explaSet(object):
                 else:
                     self._action_posterior_prob[action[0]] = action[1]
         #---------------------------------
-        '''   
+           
             for start_task in expla._start_task:
                 if expla._start_task[start_task] == 0:
                     target_method = db.find_method(start_task)
@@ -170,7 +171,7 @@ class explaSet(object):
                             self._action_posterior_prob[start_action] = self._action_posterior_prob[start_action]+initialize_prob
                         else:
                             self._action_posterior_prob[start_action] = initialize_prob
-        '''
+        
         #---------------------------------
         '''
         with open(self._output_file_name, 'a') as f:
@@ -181,9 +182,10 @@ class explaSet(object):
             f.write("\n")
         '''
         
-                                   
+        #print self._action_posterior_prob                           
         for k in self._action_posterior_prob: 
             posteriorK = self.cal_posterior(k)
+            print "the posterior for ", k, "is: ", posteriorK
             otherHappen = otherHappen - posteriorK * self._action_posterior_prob[k]
             #otherHappen = otherHappen*(1-posteriorK)
             self._action_posterior_prob[k] = self._action_posterior_prob[k] * posteriorK
@@ -224,11 +226,20 @@ class explaSet(object):
             title.append(item.split("-"))
         #attribute is the corresponding attribute distribution in title
         attribute = []
+        observe_prob = []
         for item in title:
-            attribute.append(db.get_object_attri(item[0], item[1]))
-
-        enum = self.myDFS(title, attribute)
-        new_prob=self.variable_elim(enum, op, title)    
+            attri_distribute = db.get_object_attri(item[0], item[1])
+            attribute.append(attri_distribute)
+            observe_distribute = {}
+            for value in attri_distribute:
+                observe_distribute[value] = db.get_obs_prob(value, item[0], item[1])
+            observe_prob.append(observe_distribute)
+            
+            #attribute.append(db.get_object_attri(item[0], item[1]))
+        
+        
+        enum = self.myDFS(attribute)
+        new_prob=self.variable_elim(enum, op, title, attribute, observe_prob)    
         return new_prob 
     ##dfs is used to generate the enumeration of all possible
     ##state combinations    
@@ -247,7 +258,82 @@ class explaSet(object):
             va.insert(index, x)
             self.realMyDFS(enum, va, attribute)
             va.pop()    
+    ##implement the bayesian network calculation for one possible state
+    ##op: the operator in knowlege base, prob: the prior of the action
+    def variable_elim(self, enum, op, title, attribute, observe_prob):
+        new_prob_1 = 0 #this action happened
+        new_prob_2 = 0 #this action does not happend
+        for before in enum:
+            for after in enum:
+                p = self.bayesian_expand(before, after, op, title, attribute, observe_prob)
+                new_prob_1 = new_prob_1 + p[0]
+                new_prob_2 = new_prob_2 + p[1]       
+        return float(new_prob_1)/(new_prob_1+new_prob_2)
+        
+        
+    #sv: an concrete state value, op: the operator in knowledge base
+    #state_c: the notification        
+    def bayesian_expand(self, before, after, op, title, attribute, observe_prob): 
+        #calculate p(s_t-1)
+        ps_before = 1
+        for i, s in enumerate(before):
+            ps_before = ps_before * attribute[i][s]
+            #thisp = db.get_attribute_prob(s, title[i][0], title[i][1])
+            #ps_before = ps_before*float(thisp)
             
+        #calculate p(o_t|s_t)
+        po_s = 1
+        for i, s in enumerate(after):
+            po_s = po_s * observe_prob[i][s]
+            #thisp = db.get_obs_prob(s, title[i][0], title[i][1])
+            #po_s = po_s *float(thisp)
+                
+        #calculate p(s|s_t-1, a_t)
+        ps_actANDs_1 = self.get_ps_actANDs_1(before, after, op, title)
+        ps_actANDs_2 = self.get_ps_actANDs_2(before, after)
+        #print "not happen" = 
+        
+        prob = []
+        prob.append(float(ps_before)*po_s*ps_actANDs_1)
+        prob.append(float(ps_before)*po_s*ps_actANDs_2)
+        
+        return prob
+
+    #calculate p(s|s_t-1, a_t) happen    
+    def get_ps_actANDs_1(self, before, after, op, title):   
+        bef = list(before)
+        af = list(after)
+        #check precondition
+        prob = 1
+        precond = op["precondition"]
+        for ob in precond:
+            for attri in precond[ob]:
+                index = title.index([ob, attri])
+                if attri=="ability":
+                    ability_list = bef[index].split(",")
+                    if compare_ability(ability_list, precond[ob][attri]) is False:
+                        print "return not satisfy because of ability not enough "
+                        return self._cond_notsatisfy
+                else:
+                    if precond[ob][attri]!=bef[index]:
+                        return self._cond_notsatisfy
+      
+        ##check effect
+        effect = op["effect"]
+        for ob in effect:
+            for attri in effect[ob]:
+                index=title.index([ob, attri])
+                bef[index]=effect[ob][attri]
+        if bef!=af:  
+            return self._cond_notsatisfy
+            
+        return self._cond_satisfy
+
+
+    #calculate p(s|s_t-1, a_t) not happen
+    def get_ps_actANDs_2(self, before, after):
+        if before==after: return self._cond_satisfy
+        else: return self._cond_notsatisfy        
     '''        
     #version before March 14, 2017      
     def cal_posterior(self, action):
@@ -287,7 +373,7 @@ class explaSet(object):
             va.insert(len(va), x)
             self.realMyDFS(enum, va, title, beforeS)
             va.pop()
-    '''        
+            
     ##implement the bayesian network calculation for one possible state
     ##op: the operator in knowlege base, prob: the prior of the action
     def variable_elim(self, enum, op, title):
@@ -362,7 +448,7 @@ class explaSet(object):
         if before==after: return self._cond_satisfy
         else: return self._cond_notsatisfy
 
-
+    '''
     ##################################################################################################    
     ####                                        Part IV                                          #####
     ####            Expand the explanation Set                                                   #####
