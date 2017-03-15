@@ -67,8 +67,9 @@ class explaSet(object):
     
     def print_explaSet(self):
         with open(self._output_file_name, 'a') as f:
-            f.write('{:>12}'.format(str(len(self._explaset))))
-            f.write('\n')
+            f.write(str(len(self._explaset)) + "\n")
+            #f.write('{:>12}'.format(str(len(self._explaset))))
+            #f.write('\n')
     
     # write the explanation into a .txt file
     def print_explaSet1(self):
@@ -161,7 +162,7 @@ class explaSet(object):
                 else:
                     self._action_posterior_prob[action[0]] = action[1]
         #---------------------------------
-           
+        '''   
             for start_task in expla._start_task:
                 if expla._start_task[start_task] == 0:
                     target_method = db.find_method(start_task)
@@ -171,7 +172,7 @@ class explaSet(object):
                             self._action_posterior_prob[start_action] = self._action_posterior_prob[start_action]+initialize_prob
                         else:
                             self._action_posterior_prob[start_action] = initialize_prob
-        
+        '''
         #---------------------------------
         '''
         with open(self._output_file_name, 'a') as f:
@@ -185,7 +186,7 @@ class explaSet(object):
         #print self._action_posterior_prob                           
         for k in self._action_posterior_prob: 
             posteriorK = self.cal_posterior(k)
-            print "the posterior for ", k, "is: ", posteriorK
+            #print "the posterior for ", k, "is: ", posteriorK
             otherHappen = otherHappen - posteriorK * self._action_posterior_prob[k]
             #otherHappen = otherHappen*(1-posteriorK)
             self._action_posterior_prob[k] = self._action_posterior_prob[k] * posteriorK
@@ -193,7 +194,8 @@ class explaSet(object):
         
         with open(self._output_file_name, 'a') as f:
             #new version from March 14, generate a table
-            f.write('{:>12}'.format(str(round(otherHappen, 4))))
+            f.write(str(round(otherHappen, 4)) + "\t")
+            #f.write('{:>12}'.format(str(round(otherHappen, 4))))
             
             
             #previous version

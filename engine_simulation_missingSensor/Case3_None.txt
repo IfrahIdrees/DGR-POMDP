@@ -1,0 +1,260 @@
+
+========================
+turn_on_faucet_1@0.5054@0.3574@0.3213@0.3213@{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}@3
+add_water_kettle_1@0.422@0.0@0.5@0.5@{u'turn_off_faucet_1': 1.0}@2
+turn_off_faucet_1@0.002@0.0@0.5@0.5@{u'switch_on_kettle_1': 1.0}@2
+switch_on_kettle_1@0.001@0.0@0.5@0.5@{u'switch_off_kettle_1': 1.0}@2
+switch_off_kettle_1@0.002@0.0@0.5@0.5@{u'get_cup_1': 1.0}@2
+get_cup_1@0.1008@0.0@0.5@0.5@{u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}@2
+open_coffee_box_1@0.7497@0.0@0.002@0.998@{u'open_coffee_box_1': 0.002, u'add_coffee_cup_1': 0.996, u'add_water_cup_1': 0.996, u'open_tea_box_1': 0.002}@3
+add_coffee_cup_1@0.503@0.0@0.0@1.0@{u'add_coffee_cup_1': 0.001, u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.999}@2
+close_coffee_box_1@0.5007@0.0@0.0@1.0@{u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.001}@2
+add_water_cup_1@0.002@0.0@0.0@1.0@{u'drink': 1.0}@1
+drink@0.001@0.0@0.0@0.0@{}@1
+
+========================
+turn_on_faucet_1@0.5054@0.3574@0.3213@0.3213@{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}@3
+add_water_kettle_1@0.422@0.0@0.5@0.5@{u'turn_off_faucet_1': 1.0}@2
+turn_off_faucet_1@0.002@0.0@0.5@0.5@{u'switch_on_kettle_1': 1.0}@2
+switch_on_kettle_1@0.001@0.0@0.5@0.5@{u'switch_off_kettle_1': 1.0}@2
+switch_off_kettle_1@0.002@0.0@0.5@0.5@{u'get_cup_1': 1.0}@2
+get_cup_1@0.1008@0.0@0.5@0.5@{u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}@2
+open_coffee_box_1@0.7497@0.0@0.002@0.998@{u'open_coffee_box_1': 0.002, u'add_coffee_cup_1': 0.996, u'add_water_cup_1': 0.996, u'open_tea_box_1': 0.002}@3
+add_coffee_cup_1@0.503@0.0@0.0@1.0@{u'add_coffee_cup_1': 0.001, u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.999}@2
+close_coffee_box_1@0.5007@0.0@0.0@1.0@{u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.001}@2
+add_water_cup_1@0.002@0.0@0.0@1.0@{u'drink': 1.0}@1
+drink@0.001@0.0@0.0@0.0@{}@1
+
+========================
+turn_on_faucet_1@0.5054@0.3574@0.3213@0.3213@{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}@3
+add_water_kettle_1@0.422@0.0@0.5@0.5@{u'turn_off_faucet_1': 1.0}@2
+turn_off_faucet_1@0.002@0.0@0.5@0.5@{u'switch_on_kettle_1': 1.0}@2
+switch_on_kettle_1@0.001@0.0@0.5@0.5@{u'switch_off_kettle_1': 1.0}@2
+switch_off_kettle_1@0.002@0.0@0.5@0.5@{u'get_cup_1': 1.0}@2
+get_cup_1@0.1008@0.0@0.5@0.5@{u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}@2
+open_coffee_box_1@0.7497@0.0@0.002@0.998@{u'open_coffee_box_1': 0.002, u'add_coffee_cup_1': 0.996, u'add_water_cup_1': 0.996, u'open_tea_box_1': 0.002}@3
+add_coffee_cup_1@0.503@0.0@0.0@1.0@{u'add_coffee_cup_1': 0.001, u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.999}@2
+close_coffee_box_1@0.5007@0.0@0.0@1.0@{u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.001}@2
+add_water_cup_1@0.002@0.0@0.0@1.0@{u'drink': 1.0}@1
+drink@0.001@0.0@0.0@0.0@{}@1
+
+========================
+turn_on_faucet_1@0.5054@0.3574@0.3213@0.3213@{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}@3
+add_water_kettle_1@0.422@0.0@0.5@0.5@{u'turn_off_faucet_1': 1.0}@2
+turn_off_faucet_1@0.002@0.0@0.5@0.5@{u'switch_on_kettle_1': 1.0}@2
+switch_on_kettle_1@0.001@0.0@0.5@0.5@{u'switch_off_kettle_1': 1.0}@2
+switch_off_kettle_1@0.002@0.0@0.5@0.5@{u'get_cup_1': 1.0}@2
+get_cup_1@0.1008@0.0@0.5@0.5@{u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}@2
+open_coffee_box_1@0.7497@0.0@0.002@0.998@{u'open_coffee_box_1': 0.002, u'add_coffee_cup_1': 0.996, u'add_water_cup_1': 0.996, u'open_tea_box_1': 0.002}@3
+add_coffee_cup_1@0.503@0.0@0.0@1.0@{u'add_coffee_cup_1': 0.001, u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.999}@2
+close_coffee_box_1@0.5007@0.0@0.0@1.0@{u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.001}@2
+add_water_cup_1@0.002@0.0@0.0@1.0@{u'drink': 1.0}@1
+drink@0.001@0.0@0.0@0.0@{}@1
+
+========================
+turn_on_faucet_1@0.5054@0.3574@0.3213@0.3213@{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}@3
+add_water_kettle_1@0.422@0.0@0.5@0.5@{u'turn_off_faucet_1': 1.0}@2
+turn_off_faucet_1@0.002@0.0@0.5@0.5@{u'switch_on_kettle_1': 1.0}@2
+switch_on_kettle_1@0.001@0.0@0.5@0.5@{u'switch_off_kettle_1': 1.0}@2
+switch_off_kettle_1@0.002@0.0@0.5@0.5@{u'get_cup_1': 1.0}@2
+get_cup_1@0.1008@0.0@0.5@0.5@{u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}@2
+open_coffee_box_1@0.7497@0.0@0.002@0.998@{u'open_coffee_box_1': 0.002, u'add_coffee_cup_1': 0.996, u'add_water_cup_1': 0.996, u'open_tea_box_1': 0.002}@3
+add_coffee_cup_1@0.503@0.0@0.0@1.0@{u'add_coffee_cup_1': 0.001, u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.999}@2
+close_coffee_box_1@0.5007@0.0@0.0@1.0@{u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.001}@2
+add_water_cup_1@0.002@0.0@0.0@1.0@{u'drink': 1.0}@1
+drink@0.001@0.0@0.0@0.0@{}@1
+
+========================
+turn_on_faucet_1@0.5054@0.3574@0.3213@0.3213@{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}@3
+add_water_kettle_1@0.422@0.0@0.5@0.5@{u'turn_off_faucet_1': 1.0}@2
+turn_off_faucet_1@0.002@0.0@0.5@0.5@{u'switch_on_kettle_1': 1.0}@2
+switch_on_kettle_1@0.001@0.0@0.5@0.5@{u'switch_off_kettle_1': 1.0}@2
+switch_off_kettle_1@0.002@0.0@0.5@0.5@{u'get_cup_1': 1.0}@2
+get_cup_1@0.1008@0.0@0.5@0.5@{u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}@2
+open_coffee_box_1@0.7497@0.0@0.002@0.998@{u'open_coffee_box_1': 0.002, u'add_coffee_cup_1': 0.996, u'add_water_cup_1': 0.996, u'open_tea_box_1': 0.002}@3
+add_coffee_cup_1@0.503@0.0@0.0@1.0@{u'add_coffee_cup_1': 0.001, u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.999}@2
+close_coffee_box_1@0.5007@0.0@0.0@1.0@{u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.001}@2
+add_water_cup_1@0.002@0.0@0.0@1.0@{u'drink': 1.0}@1
+drink@0.001@0.0@0.0@0.0@{}@1
+
+========================
+turn_on_faucet_1@0.5054@0.3574@0.3213@0.3213@{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}@3
+add_water_kettle_1@0.422@0.0@0.5@0.5@{u'turn_off_faucet_1': 1.0}@2
+turn_off_faucet_1@0.002@0.0@0.5@0.5@{u'switch_on_kettle_1': 1.0}@2
+switch_on_kettle_1@0.001@0.0@0.5@0.5@{u'switch_off_kettle_1': 1.0}@2
+switch_off_kettle_1@0.002@0.0@0.5@0.5@{u'get_cup_1': 1.0}@2
+get_cup_1@0.1008@0.0@0.5@0.5@{u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}@2
+open_coffee_box_1@0.7497@0.0@0.002@0.998@{u'open_coffee_box_1': 0.002, u'add_coffee_cup_1': 0.996, u'add_water_cup_1': 0.996, u'open_tea_box_1': 0.002}@3
+add_coffee_cup_1@0.503@0.0@0.0@1.0@{u'add_coffee_cup_1': 0.001, u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.999}@2
+close_coffee_box_1@0.5007@0.0@0.0@1.0@{u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.001}@2
+add_water_cup_1@0.002@0.0@0.0@1.0@{u'drink': 1.0}@1
+drink@0.001@0.0@0.0@0.0@{}@1
+
+========================
+turn_on_faucet_1@0.5054@0.3574@0.3213@0.3213@{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}@3
+add_water_kettle_1@0.422@0.0@0.5@0.5@{u'turn_off_faucet_1': 1.0}@2
+turn_off_faucet_1@0.002@0.0@0.5@0.5@{u'switch_on_kettle_1': 1.0}@2
+switch_on_kettle_1@0.001@0.0@0.5@0.5@{u'switch_off_kettle_1': 1.0}@2
+switch_off_kettle_1@0.002@0.0@0.5@0.5@{u'get_cup_1': 1.0}@2
+get_cup_1@0.1008@0.0@0.5@0.5@{u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}@2
+open_coffee_box_1@0.7497@0.0@0.002@0.998@{u'open_coffee_box_1': 0.002, u'add_coffee_cup_1': 0.996, u'add_water_cup_1': 0.996, u'open_tea_box_1': 0.002}@3
+add_coffee_cup_1@0.503@0.0@0.0@1.0@{u'add_coffee_cup_1': 0.001, u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.999}@2
+close_coffee_box_1@0.5007@0.0@0.0@1.0@{u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.001}@2
+add_water_cup_1@0.002@0.0@0.0@1.0@{u'drink': 1.0}@1
+drink@0.001@0.0@0.0@0.0@{}@1
+
+========================
+turn_on_faucet_1@0.5054@0.3574@0.3213@0.3213@{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}@3
+add_water_kettle_1@0.422@0.0@0.5@0.5@{u'turn_off_faucet_1': 1.0}@2
+turn_off_faucet_1@0.002@0.0@0.5@0.5@{u'switch_on_kettle_1': 1.0}@2
+switch_on_kettle_1@0.001@0.0@0.5@0.5@{u'switch_off_kettle_1': 1.0}@2
+switch_off_kettle_1@0.002@0.0@0.5@0.5@{u'get_cup_1': 1.0}@2
+get_cup_1@0.1008@0.0@0.5@0.5@{u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}@2
+open_coffee_box_1@0.7497@0.0@0.002@0.998@{u'open_coffee_box_1': 0.002, u'add_coffee_cup_1': 0.996, u'add_water_cup_1': 0.996, u'open_tea_box_1': 0.002}@3
+add_coffee_cup_1@0.503@0.0@0.0@1.0@{u'add_coffee_cup_1': 0.001, u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.999}@2
+close_coffee_box_1@0.5007@0.0@0.0@1.0@{u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.001}@2
+add_water_cup_1@0.002@0.0@0.0@1.0@{u'drink': 1.0}@1
+drink@0.001@0.0@0.0@0.0@{}@1
+
+========================
+turn_on_faucet_1@0.5054@0.3574@0.3213@0.3213@{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}@3
+add_water_kettle_1@0.422@0.0@0.5@0.5@{u'turn_off_faucet_1': 1.0}@2
+turn_off_faucet_1@0.002@0.0@0.5@0.5@{u'switch_on_kettle_1': 1.0}@2
+switch_on_kettle_1@0.001@0.0@0.5@0.5@{u'switch_off_kettle_1': 1.0}@2
+switch_off_kettle_1@0.002@0.0@0.5@0.5@{u'get_cup_1': 1.0}@2
+get_cup_1@0.1008@0.0@0.5@0.5@{u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}@2
+open_coffee_box_1@0.7497@0.0@0.002@0.998@{u'open_coffee_box_1': 0.002, u'add_coffee_cup_1': 0.996, u'add_water_cup_1': 0.996, u'open_tea_box_1': 0.002}@3
+add_coffee_cup_1@0.503@0.0@0.0@1.0@{u'add_coffee_cup_1': 0.001, u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.999}@2
+close_coffee_box_1@0.5007@0.0@0.0@1.0@{u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.001}@2
+add_water_cup_1@0.002@0.0@0.0@1.0@{u'drink': 1.0}@1
+drink@0.001@0.0@0.0@0.0@{}@1
+
+========================
+turn_on_faucet_1@0.5054@0.3574@0.3213@0.3213@{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}@3
+add_water_kettle_1@0.422@0.0@0.5@0.5@{u'turn_off_faucet_1': 1.0}@2
+turn_off_faucet_1@0.002@0.0@0.5@0.5@{u'switch_on_kettle_1': 1.0}@2
+switch_on_kettle_1@0.001@0.0@0.5@0.5@{u'switch_off_kettle_1': 1.0}@2
+switch_off_kettle_1@0.002@0.0@0.5@0.5@{u'get_cup_1': 1.0}@2
+get_cup_1@0.1008@0.0@0.5@0.5@{u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}@2
+open_coffee_box_1@0.7497@0.0@0.002@0.998@{u'open_coffee_box_1': 0.002, u'add_coffee_cup_1': 0.996, u'add_water_cup_1': 0.996, u'open_tea_box_1': 0.002}@3
+add_coffee_cup_1@0.503@0.0@0.0@1.0@{u'add_coffee_cup_1': 0.001, u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.999}@2
+close_coffee_box_1@0.5007@0.0@0.0@1.0@{u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.001}@2
+add_water_cup_1@0.002@0.0@0.0@1.0@{u'drink': 1.0}@1
+drink@0.001@0.0@0.0@0.0@{}@1
+
+========================
+turn_on_faucet_1@0.5054@0.3574@0.3213@0.3213@{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}@3
+add_water_kettle_1@0.422@0.0@0.5@0.5@{u'turn_off_faucet_1': 1.0}@2
+turn_off_faucet_1@0.002@0.0@0.5@0.5@{u'switch_on_kettle_1': 1.0}@2
+switch_on_kettle_1@0.001@0.0@0.5@0.5@{u'switch_off_kettle_1': 1.0}@2
+switch_off_kettle_1@0.002@0.0@0.5@0.5@{u'get_cup_1': 1.0}@2
+get_cup_1@0.1008@0.0@0.5@0.5@{u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}@2
+open_coffee_box_1@0.7497@0.0@0.002@0.998@{u'open_coffee_box_1': 0.002, u'add_coffee_cup_1': 0.996, u'add_water_cup_1': 0.996, u'open_tea_box_1': 0.002}@3
+add_coffee_cup_1@0.503@0.0@0.0@1.0@{u'add_coffee_cup_1': 0.001, u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.999}@2
+close_coffee_box_1@0.5007@0.0@0.0@1.0@{u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.001}@2
+add_water_cup_1@0.002@0.0@0.0@1.0@{u'drink': 1.0}@1
+drink@0.001@0.0@0.0@0.0@{}@1
+
+========================
+turn_on_faucet_1@0.5054@0.3574@0.3213@0.3213@{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}@3
+add_water_kettle_1@0.422@0.0@0.5@0.5@{u'turn_off_faucet_1': 1.0}@2
+turn_off_faucet_1@0.002@0.0@0.5@0.5@{u'switch_on_kettle_1': 1.0}@2
+switch_on_kettle_1@0.001@0.0@0.5@0.5@{u'switch_off_kettle_1': 1.0}@2
+switch_off_kettle_1@0.002@0.0@0.5@0.5@{u'get_cup_1': 1.0}@2
+get_cup_1@0.1008@0.0@0.5@0.5@{u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}@2
+open_coffee_box_1@0.7497@0.0@0.002@0.998@{u'open_coffee_box_1': 0.002, u'add_coffee_cup_1': 0.996, u'add_water_cup_1': 0.996, u'open_tea_box_1': 0.002}@3
+add_coffee_cup_1@0.503@0.0@0.0@1.0@{u'add_coffee_cup_1': 0.001, u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.999}@2
+close_coffee_box_1@0.5007@0.0@0.0@1.0@{u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.001}@2
+add_water_cup_1@0.002@0.0@0.0@1.0@{u'drink': 1.0}@1
+drink@0.001@0.0@0.0@0.0@{}@1
+
+========================
+turn_on_faucet_1@0.5054@0.3574@0.3213@0.3213@{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}@3
+add_water_kettle_1@0.422@0.0@0.5@0.5@{u'turn_off_faucet_1': 1.0}@2
+turn_off_faucet_1@0.002@0.0@0.5@0.5@{u'switch_on_kettle_1': 1.0}@2
+switch_on_kettle_1@0.001@0.0@0.5@0.5@{u'switch_off_kettle_1': 1.0}@2
+switch_off_kettle_1@0.002@0.0@0.5@0.5@{u'get_cup_1': 1.0}@2
+get_cup_1@0.1008@0.0@0.5@0.5@{u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}@2
+open_coffee_box_1@0.7497@0.0@0.002@0.998@{u'open_coffee_box_1': 0.002, u'add_coffee_cup_1': 0.996, u'add_water_cup_1': 0.996, u'open_tea_box_1': 0.002}@3
+add_coffee_cup_1@0.503@0.0@0.0@1.0@{u'add_coffee_cup_1': 0.001, u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.999}@2
+close_coffee_box_1@0.5007@0.0@0.0@1.0@{u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.001}@2
+add_water_cup_1@0.002@0.0@0.0@1.0@{u'drink': 1.0}@1
+drink@0.001@0.0@0.0@0.0@{}@1
+
+========================
+turn_on_faucet_1@0.5054@0.3574@0.3213@0.3213@{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}@3
+add_water_kettle_1@0.422@0.0@0.5@0.5@{u'turn_off_faucet_1': 1.0}@2
+turn_off_faucet_1@0.002@0.0@0.5@0.5@{u'switch_on_kettle_1': 1.0}@2
+switch_on_kettle_1@0.001@0.0@0.5@0.5@{u'switch_off_kettle_1': 1.0}@2
+switch_off_kettle_1@0.002@0.0@0.5@0.5@{u'get_cup_1': 1.0}@2
+get_cup_1@0.1008@0.0@0.5@0.5@{u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}@2
+open_coffee_box_1@0.7497@0.0@0.002@0.998@{u'open_coffee_box_1': 0.002, u'add_coffee_cup_1': 0.996, u'add_water_cup_1': 0.996, u'open_tea_box_1': 0.002}@3
+add_coffee_cup_1@0.503@0.0@0.0@1.0@{u'add_coffee_cup_1': 0.001, u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.999}@2
+close_coffee_box_1@0.5007@0.0@0.0@1.0@{u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.001}@2
+add_water_cup_1@0.002@0.0@0.0@1.0@{u'drink': 1.0}@1
+drink@0.001@0.0@0.0@0.0@{}@1
+
+========================
+turn_on_faucet_1@0.5054@0.3574@0.3213@0.3213@{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}@3
+add_water_kettle_1@0.422@0.0@0.5@0.5@{u'turn_off_faucet_1': 1.0}@2
+turn_off_faucet_1@0.002@0.0@0.5@0.5@{u'switch_on_kettle_1': 1.0}@2
+switch_on_kettle_1@0.001@0.0@0.5@0.5@{u'switch_off_kettle_1': 1.0}@2
+switch_off_kettle_1@0.002@0.0@0.5@0.5@{u'get_cup_1': 1.0}@2
+get_cup_1@0.1008@0.0@0.5@0.5@{u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}@2
+open_coffee_box_1@0.7497@0.0@0.002@0.998@{u'open_coffee_box_1': 0.002, u'add_coffee_cup_1': 0.996, u'add_water_cup_1': 0.996, u'open_tea_box_1': 0.002}@3
+add_coffee_cup_1@0.503@0.0@0.0@1.0@{u'add_coffee_cup_1': 0.001, u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.999}@2
+close_coffee_box_1@0.5007@0.0@0.0@1.0@{u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.001}@2
+add_water_cup_1@0.002@0.0@0.0@1.0@{u'drink': 1.0}@1
+drink@0.001@0.0@0.0@0.0@{}@1
+
+========================
+turn_on_faucet_1@0.5054@0.3574@0.3213@0.3213@{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}@3
+add_water_kettle_1@0.422@0.0@0.5@0.5@{u'turn_off_faucet_1': 1.0}@2
+turn_off_faucet_1@0.002@0.0@0.5@0.5@{u'switch_on_kettle_1': 1.0}@2
+switch_on_kettle_1@0.001@0.0@0.5@0.5@{u'switch_off_kettle_1': 1.0}@2
+switch_off_kettle_1@0.002@0.0@0.5@0.5@{u'get_cup_1': 1.0}@2
+get_cup_1@0.1008@0.0@0.5@0.5@{u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}@2
+open_coffee_box_1@0.7497@0.0@0.002@0.998@{u'open_coffee_box_1': 0.002, u'add_coffee_cup_1': 0.996, u'add_water_cup_1': 0.996, u'open_tea_box_1': 0.002}@3
+add_coffee_cup_1@0.503@0.0@0.0@1.0@{u'add_coffee_cup_1': 0.001, u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.999}@2
+close_coffee_box_1@0.5007@0.0@0.0@1.0@{u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.001}@2
+add_water_cup_1@0.002@0.0@0.0@1.0@{u'drink': 1.0}@1
+drink@0.001@0.0@0.0@0.0@{}@1
+
+========================
+turn_on_faucet_1@0.5054@0.3574@0.3213@0.3213@{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}@3
+add_water_kettle_1@0.422@0.0@0.5@0.5@{u'turn_off_faucet_1': 1.0}@2
+turn_off_faucet_1@0.002@0.0@0.5@0.5@{u'switch_on_kettle_1': 1.0}@2
+switch_on_kettle_1@0.001@0.0@0.5@0.5@{u'switch_off_kettle_1': 1.0}@2
+switch_off_kettle_1@0.002@0.0@0.5@0.5@{u'get_cup_1': 1.0}@2
+get_cup_1@0.1008@0.0@0.5@0.5@{u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}@2
+open_coffee_box_1@0.7497@0.0@0.002@0.998@{u'open_coffee_box_1': 0.002, u'add_coffee_cup_1': 0.996, u'add_water_cup_1': 0.996, u'open_tea_box_1': 0.002}@3
+add_coffee_cup_1@0.503@0.0@0.0@1.0@{u'add_coffee_cup_1': 0.001, u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.999}@2
+close_coffee_box_1@0.5007@0.0@0.0@1.0@{u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.001}@2
+add_water_cup_1@0.002@0.0@0.0@1.0@{u'drink': 1.0}@1
+drink@0.001@0.0@0.0@0.0@{}@1
+
+========================
+turn_on_faucet_1@0.5054@0.3574@0.3213@0.3213@{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}@3
+add_water_kettle_1@0.422@0.0@0.5@0.5@{u'turn_off_faucet_1': 1.0}@2
+turn_off_faucet_1@0.002@0.0@0.5@0.5@{u'switch_on_kettle_1': 1.0}@2
+switch_on_kettle_1@0.001@0.0@0.5@0.5@{u'switch_off_kettle_1': 1.0}@2
+switch_off_kettle_1@0.002@0.0@0.5@0.5@{u'get_cup_1': 1.0}@2
+get_cup_1@0.1008@0.0@0.5@0.5@{u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}@2
+open_coffee_box_1@0.7497@0.0@0.002@0.998@{u'open_coffee_box_1': 0.002, u'add_coffee_cup_1': 0.996, u'add_water_cup_1': 0.996, u'open_tea_box_1': 0.002}@3
+add_coffee_cup_1@0.503@0.0@0.0@1.0@{u'add_coffee_cup_1': 0.001, u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.999}@2
+close_coffee_box_1@0.5007@0.0@0.0@1.0@{u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.001}@2
+add_water_cup_1@0.002@0.0@0.0@1.0@{u'drink': 1.0}@1
+drink@0.001@0.0@0.0@0.0@{}@1
+
+========================
+turn_on_faucet_1@0.5054@0.3574@0.3213@0.3213@{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}@3
+add_water_kettle_1@0.422@0.0@0.5@0.5@{u'turn_off_faucet_1': 1.0}@2
+turn_off_faucet_1@0.002@0.0@0.5@0.5@{u'switch_on_kettle_1': 1.0}@2
+switch_on_kettle_1@0.001@0.0@0.5@0.5@{u'switch_off_kettle_1': 1.0}@2
+switch_off_kettle_1@0.002@0.0@0.5@0.5@{u'get_cup_1': 1.0}@2
+get_cup_1@0.1008@0.0@0.5@0.5@{u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}@2
+open_coffee_box_1@0.7497@0.0@0.002@0.998@{u'open_coffee_box_1': 0.002, u'add_coffee_cup_1': 0.996, u'add_water_cup_1': 0.996, u'open_tea_box_1': 0.002}@3
+add_coffee_cup_1@0.503@0.0@0.0@1.0@{u'add_coffee_cup_1': 0.001, u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.999}@2
+close_coffee_box_1@0.5007@0.0@0.0@1.0@{u'add_water_cup_1': 0.999, u'close_coffee_box_1': 0.001}@2
+add_water_cup_1@0.002@0.0@0.0@1.0@{u'drink': 1.0}@1
+drink@0.001@0.0@0.0@0.0@{}@1

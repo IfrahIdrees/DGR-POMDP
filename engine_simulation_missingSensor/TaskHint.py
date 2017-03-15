@@ -63,7 +63,8 @@ class TaskHint(object):
             make_coffee = round(self.prompt_task['make_coffee'][0], 4)
             
         with open(self._output_file_name, 'a') as f:
-            f.write('{:>12}{:>12}{:>12}{:>100}'.format(wash_hand, make_tea, make_coffee, str(step_level_hint)))
+            f.write(str(wash_hand) + "\t" + str(make_tea) + "\t" + str(make_coffee) + "\t" + str(step_level_hint) + "\t")
+            #f.write('{:>12}{:>12}{:>12}{:>100}'.format(wash_hand, make_tea, make_coffee, str(step_level_hint)))
         
     
         
