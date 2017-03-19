@@ -9,7 +9,7 @@ db = DB_Object()
 
 ##given the happened step, update the realState in database
 def realStateANDSensorUpdate(step_name, output_file_name):
-    #print "Simulate step: ", step_name
+    print "Simulate step: ", step_name
     with open(output_file_name, 'a') as f:
         #version changed in March 14, generate a table
         f.write(step_name + "\t")

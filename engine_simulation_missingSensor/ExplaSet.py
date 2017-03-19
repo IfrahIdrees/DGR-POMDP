@@ -239,7 +239,12 @@ class explaSet(object):
             
             #attribute.append(db.get_object_attri(item[0], item[1]))
         
-        
+        if action == "turn_off_faucet_1":
+            print title
+            print "the attribute is: "
+            print attribute
+            print "the observe_prob is: "
+            print observe_prob
         enum = self.myDFS(attribute)
         new_prob=self.variable_elim(enum, op, title, attribute, observe_prob)    
         return new_prob 
