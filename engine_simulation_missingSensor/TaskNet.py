@@ -267,12 +267,16 @@ class TaskNet(object):
         affect_num = 0
         for notif in sensor_notification:
             the_key = notif["object"] + "/" + notif["attribute"]
+            
             if (the_key in self._execute_sequence._effect_summary) and \
                 self._execute_sequence._effect_summary[the_key]["value"] != notif["obj_att_value"]:
                 the_index = self._execute_sequence._sequence.index(self._execute_sequence._effect_summary[the_key]["step_name"])
                 affect_steps[the_index] = True
                 affect_num = affect_num + 1
-        
+        #if affect_num > 0:
+         #   print "violate the hard constraints"
+          #  print self._execute_sequence._effect_summary
+           # print self._execute_sequence._sequence
         # For all the affected steps in affect_steps, modify the completeness as False
         for index in range(0, len(affect_steps)):
             if affect_steps[index] == True:

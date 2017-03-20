@@ -21,7 +21,13 @@ class ExecuteSequence(object):
         
         
     def add_action(self, step_name):
+        #if step_name == 'rinse_hand':
+         #   print self._sequence
+        #print self._sequence
         self._sequence.append(step_name)
+        #if step_name == 'rinse_hand':
+         #   print "after, ", self._sequence
+        #print "after, ", self._sequence
         op = db.get_operator(step_name)
         for obj in op["effect"]:
             for att in op["effect"][obj]:

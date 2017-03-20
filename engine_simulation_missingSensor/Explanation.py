@@ -99,6 +99,14 @@ class Explanation(object):
             !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             """
+        '''
+        if act_expla[0] == 'rinse_hand':
+            print "===================="
+            for newexpla1 in new_explas:
+                for thetaskNet in newexpla1._forest:
+                    print thetaskNet._execute_sequence._sequence
+            print "!!!!!!!!!!!!!!!!!!!!"
+        '''
         return new_explas
         
     #use to udpate the current explanation according to the input action_explanation
@@ -124,7 +132,7 @@ class Explanation(object):
                     executed_sequence.add_action(act_expla[0])
                     
                     #newTaskNet = taskNetPending.generate_new_taskNet(act_expla[0])
-                    newTaskNet = TaskNet(goalName = theTree.get_node(theTree.root).tag, tree = theTree, expandProb = taskNetPending._branch_factor, execute_sequence = executed_sequence)
+                    newTaskNet = TaskNet(goalName = theTree.get_node(theTree.root).tag, tree = theTree, expandProb = taskNetPending._branch_factor, execute_sequence = copy.deepcopy(executed_sequence))
                     newTaskNet.update()
                     #get a new taskNet end
                     
@@ -159,6 +167,14 @@ class Explanation(object):
             !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             """
+        '''
+        if act_expla[0] == 'rinse_hand':
+            print "===================="
+            for newexpla1 in new_explas:
+                for thetaskNet in newexpla1._forest:
+                    print thetaskNet._execute_sequence._sequence
+            print "!!!!!!!!!!!!!!!!!!!!"
+        '''
         return new_explas
         
         
@@ -198,7 +214,7 @@ class Explanation(object):
                 elif len(parents)==0: #this tree already reached goal node
                     executed_sequence = ExecuteSequence(sequence = [], effect_summary = {})
                     executed_sequence.add_action(action)
-                    my_goal = TaskNet(goalName=tag, tree=thisTree[0], expandProb=thisTree[1], execute_sequence = executed_sequence)
+                    my_goal = TaskNet(goalName=tag, tree=thisTree[0], expandProb=thisTree[1], execute_sequence = copy.deepcopy(executed_sequence))
                     my_goal.update()
                     task_net.append(my_goal)
         
@@ -353,7 +369,11 @@ class Explanation(object):
         update_belief_state = False
         belief_state_repair_summary = {}
         old_effect_summary = {}
+        #print "repair this explanation ????????", self._prob
         for taskNet in self._forest:
+            #print "================="
+            #print taskNet._execute_sequence._sequence
+            #print "!!!!!!!!!!!!!!!!!"
             repair_result = taskNet.repair_taskNet(sensor_notification)
             if repair_result[0] == True:
                 new_effect_summary = copy.deepcopy(repair_result[1])

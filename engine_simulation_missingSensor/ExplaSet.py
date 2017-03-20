@@ -239,14 +239,21 @@ class explaSet(object):
             
             #attribute.append(db.get_object_attri(item[0], item[1]))
         
-        if action == "turn_off_faucet_1":
-            print title
-            print "the attribute is: "
-            print attribute
-            print "the observe_prob is: "
-            print observe_prob
+        #if action == "turn_off_faucet_1":
+        '''
+        print action
+        print title
+        print "the attribute is: "
+        print attribute
+        print "the observe_prob is: "
+        print observe_prob
+        '''
         enum = self.myDFS(attribute)
-        new_prob=self.variable_elim(enum, op, title, attribute, observe_prob)    
+        new_prob=self.variable_elim(enum, op, title, attribute, observe_prob)
+        '''
+        print new_prob
+        print
+        '''    
         return new_prob 
     ##dfs is used to generate the enumeration of all possible
     ##state combinations    
@@ -588,6 +595,7 @@ class explaSet(object):
     ##################################################################################################
     
     def handle_exception(self):
+        print "into handle exception"
         sensor_cause = {}
         sensor_cause["bad_sensor"] = []
         sensor_cause["sensor_cause"] = False
@@ -625,14 +633,14 @@ class explaSet(object):
             #f.write("This is a wrong step, the tracking agent will repair from the wrong step\n\n")
             
     
-        #print "inside handle_wrong_step_exception"
+        #print "inside handle_wrong_step_exception, ", self._sensor_notification
         belief_state_repair_summary = {} #record to what degree the belief state should be updated
         
         for expla in self._explaset:
             expla_repair_result = expla.repair_expla(self._sensor_notification)
             if expla_repair_result[0] != 0.0:
                 self.belief_state_repair_summary_extend(belief_state_repair_summary, expla_repair_result)
-        
+        #print "the summary is, ", belief_state_repair_summary
         self.belief_state_repair_execute(belief_state_repair_summary)
         
     # add the expla_repair_result into belief_state_repair_summary
@@ -646,13 +654,16 @@ class explaSet(object):
                 belief_state_repair_summary[newkey] = expla_repair_result[0]
 
     def belief_state_repair_execute(self, belief_state_repair_summary):
+        print belief_state_repair_summary
         for effect in belief_state_repair_summary:
-            belief_state = effect.split("/")
-            opposite_attri_value = db.get_reverse_attribute_value(belief_state[0], belief_state[1], belief_state[2])
-            new_att_distribution = {}
-            new_att_distribution[belief_state[2]] = belief_state_repair_summary[effect]
-            new_att_distribution[opposite_attri_value] = 1 - belief_state_repair_summary[effect]
-            db.update_state_belief(belief_state[0], belief_state[1], new_att_distribution)
+            if belief_state_repair_summary[effect] > 0.7:
+                belief_state = effect.split("/")
+                opposite_attri_value = db.get_reverse_attribute_value(belief_state[0], belief_state[1], belief_state[2])
+                new_att_distribution = {}
+                new_att_distribution[belief_state[2]] = belief_state_repair_summary[effect]
+                new_att_distribution[opposite_attri_value] = 1 - belief_state_repair_summary[effect]
+                #print "the new distribution is, ", new_att_distribution
+                db.update_state_belief(belief_state[0], belief_state[1], new_att_distribution)
     
     
         return

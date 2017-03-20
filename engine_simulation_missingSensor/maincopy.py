@@ -52,7 +52,7 @@ if __name__ == '__main__':
             ##the input file name
             input_file_name = "Case" + str(file_num)
             #print "This is for ", input_file_name, "The output file is ", output_file_name
-            for repeat in range(1, 2):
+            for repeat in range(1, 21):
 
                 #print output_file_name
                 ##refresh the database
