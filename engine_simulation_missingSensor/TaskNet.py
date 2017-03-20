@@ -287,7 +287,7 @@ class TaskNet(object):
     
         if affect_num > 0:  #violate the hard constraints
             self._pendingset = copy.deepcopy(self.pendingset_update(self._tree.root, self._tree))
-
+          
             # Update the _execute_sequence according to the updated tree structure
             new_execute_sequence = ExecuteSequence(sequence = [], effect_summary = {})    
             for step in self._execute_sequence._sequence:
@@ -299,6 +299,8 @@ class TaskNet(object):
             new_effect_summary = copy.deepcopy(new_execute_sequence._effect_summary)
             old_effect_summary = copy.deepcopy(self._execute_sequence._effect_summary)
             self._execute_sequence = copy.deepcopy(new_execute_sequence)
+                      
+                
             return [True, new_effect_summary, old_effect_summary]
         else:
             return [False, None, None]

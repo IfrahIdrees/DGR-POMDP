@@ -64,6 +64,8 @@ class Tracking_Engine(object):
                     
                     ##update the explanation set, part 1. 
                     exp.explaSet_expand_part1(length)
+                    print "after part 1"
+                    print len(exp._explaset)
                     
                     #udpate the state
                     state = State()
@@ -71,7 +73,8 @@ class Tracking_Engine(object):
                     
                     #update the explanation set, part 2
                     exp.explaSet_expand_part2(length)
-                    
+                    print "after part 2"
+                    print len(exp._explaset)
 
                 #generate pending set         
                 exp.pendingset_generate()

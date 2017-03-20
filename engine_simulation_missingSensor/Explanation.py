@@ -73,10 +73,12 @@ class Explanation(object):
                 if act_expla[0] in target_method["start_action"]:
                     find = True
                     newTaskNets = self.initialize_tree_structure(act_expla[0])
+                    print "the initialized newTaskNets, ", len(newTaskNets)
                     for g in newTaskNets:
                         if tempstart_task[g._goalName] == 0:
                             tempstart_task[g._goalName] = 1
                             newstart_task = copy.deepcopy(self._start_task)
+                            #newstart_task = copy.deepcopy(tempstart_task)
                             prob = act_expla[1]*g._expandProb*self._prob
                             if g._complete == True:
                                 newstart_task[g._goalName] = 0
@@ -84,6 +86,11 @@ class Explanation(object):
                             else:
                                 newforest = list(self._forest)
                                 newforest.append(g)
+                                print "the forest length is, ", len(newforest)
+                                for tasknet in newforest:
+                                    print "the execute sequence, ",tasknet._execute_sequence._sequence
+                                    for tasknetpending in tasknet._pendingset:
+                                        print tasknetpending._pending_actions
                                 newstart_task[g._goalName] = 1
                                 newexp = Explanation(v=prob, forest = newforest, start_task=newstart_task)
                             new_explas.append(newexp)
