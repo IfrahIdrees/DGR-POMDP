@@ -64,16 +64,15 @@ class Explanation(object):
     def generate_new_expla_part1(self, act_expla):
         new_explas = []
         find = False
-        
+       
         ##Case1 : drop an on-going unfinished task, start a new one. 
-        tempstart_task = copy.deepcopy(self._start_task) 
+        tempstart_task = copy.deepcopy(self._start_task)
         for start_task in tempstart_task:
             if tempstart_task[start_task] == 0: #inside this explanation, "start_task" has not been started
                 target_method = db.find_method(start_task)
                 if act_expla[0] in target_method["start_action"]:
                     find = True
                     newTaskNets = self.initialize_tree_structure(act_expla[0])
-                    print "the initialized newTaskNets, ", len(newTaskNets)
                     for g in newTaskNets:
                         if tempstart_task[g._goalName] == 0:
                             tempstart_task[g._goalName] = 1
@@ -85,13 +84,15 @@ class Explanation(object):
                                 newexp = Explanation(v=prob, forest = list(self._forest), start_task=newstart_task)
                             else:
                                 newforest = list(self._forest)
-                                newforest.append(g)
-                                print "the forest length is, ", len(newforest)
+                                ##here means it will start a new goal. 
+                                ##However, if the already started goal do not have any execute sequence, remove
                                 for tasknet in newforest:
-                                    print "the execute sequence, ",tasknet._execute_sequence._sequence
-                                    for tasknetpending in tasknet._pendingset:
-                                        print tasknetpending._pending_actions
+                                    if len(tasknet._execute_sequence._sequence) == 0:
+                                        newstart_task[tasknet._goalName] = 0
+                                        newforest.remove(tasknet)
+                                newforest.append(g)
                                 newstart_task[g._goalName] = 1
+                                #print newstart_task
                                 newexp = Explanation(v=prob, forest = newforest, start_task=newstart_task)
                             new_explas.append(newexp)
          

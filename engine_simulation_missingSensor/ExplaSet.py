@@ -162,7 +162,7 @@ class explaSet(object):
                 else:
                     self._action_posterior_prob[action[0]] = action[1]
         #---------------------------------
-        '''   
+        #'''   
             for start_task in expla._start_task:
                 if expla._start_task[start_task] == 0:
                     target_method = db.find_method(start_task)
@@ -172,7 +172,7 @@ class explaSet(object):
                             self._action_posterior_prob[start_action] = self._action_posterior_prob[start_action]+initialize_prob
                         else:
                             self._action_posterior_prob[start_action] = initialize_prob
-        '''
+        #'''
         #---------------------------------
         '''
         with open(self._output_file_name, 'a') as f:
@@ -633,7 +633,7 @@ class explaSet(object):
             #f.write("This is a wrong step, the tracking agent will repair from the wrong step\n\n")
             
         
-        print "inside handle_wrong_step_exception, ", self._sensor_notification
+        #print "inside handle_wrong_step_exception, ", self._sensor_notification
         belief_state_repair_summary = {} #record to what degree the belief state should be updated
         
         for expla in self._explaset:
@@ -654,7 +654,7 @@ class explaSet(object):
                 belief_state_repair_summary[newkey] = expla_repair_result[0]
 
     def belief_state_repair_execute(self, belief_state_repair_summary):
-        print belief_state_repair_summary
+        #print belief_state_repair_summary
         for effect in belief_state_repair_summary:
             if belief_state_repair_summary[effect] > 0.7:
                 belief_state = effect.split("/")
