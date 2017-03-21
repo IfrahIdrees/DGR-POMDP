@@ -35,17 +35,18 @@ if __name__ == '__main__':
     nothing_happen = 0.01
     
     ##the otherHappen triggering threshhold
-    other_happen = 0.80
+    other_happen = 1.2
     
     file_num = 4
-    sensor_reliability = [None, 0.9, 0.95, 0.8]
-    #sensor_reliability = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-    #sensor_reliability = [0.9, 0.8]
-    #sensor_reliability = [None]
+    #sensor_reliability = [None, 0.9, 0.95, 0.8]
+    sensor_reliability = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    #sensor_reliability = [None, 0.95, 0.9]
+    sensor_reliability = [9, 10, 11, 12]
+    sensor_reliability = [9]
     #files = [1, 2, 3]
     #sensor_reliability = [-1, 0.5, -2]
     #for file_num in range(4, 8):
-    for file_num in range(11, 12):
+    for file_num in range(5, 6):
         for x in sensor_reliability:
             ##the output file name
             output_file_name = "Case" + str(file_num) + "_" + str(x) + ".txt"
