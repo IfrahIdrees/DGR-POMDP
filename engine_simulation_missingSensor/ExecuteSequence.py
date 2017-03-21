@@ -33,10 +33,13 @@ class ExecuteSequence(object):
             for att in op["effect"][obj]:
                 new_key = obj + "/" + att
                 if (new_key in self._effect_summary) and (self._effect_summary[new_key]["value"] == op["effect"][obj][att]):
+                    continue
+                    '''
                     print colored('There is two actions has the same result effect', 'red')
                     print "action first", self._effect_summary[new_key]["step_name"]
                     print "action second", step_name
                     exit(0)
+                    '''
                 else:
                     new_item = {}
                     new_item["value"] = op["effect"][obj][att]

@@ -86,12 +86,12 @@ class Explanation(object):
                                 newforest = list(self._forest)
                                 ##here means it will start a new goal. 
                                 ##However, if the already started goal do not have any execute sequence, remove
-                                '''
+                                
                                 for tasknet in newforest:
                                     if len(tasknet._execute_sequence._sequence) == 0:
                                         newstart_task[tasknet._goalName] = 0
                                         newforest.remove(tasknet)
-                                '''
+                                
                                 newforest.append(g)
                                 newstart_task[g._goalName] = 1
                                 #print newstart_task
