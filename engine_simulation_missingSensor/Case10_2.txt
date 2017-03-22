@@ -1,0 +1,360 @@
+
+========================
+turn_on_faucet_1	0.554	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+turn_off_faucet_1	0.9008	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+turn_on_faucet_1	0.1	0.5478	0.5119	0.3112	{u'use_soap': 0.5478, u'add_water_kettle_1': 0.7375}	9
+add_water_kettle_1	0.473	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'turn_off_faucet_1': 0.9855, u'use_soap': 0.3416, u'add_water_kettle_1': 0.205}	9
+turn_off_faucet_1	0.341	0.3466	0.726	0.482	{u'switch_on_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_on_kettle_1	0.2697	0.3466	0.726	0.482	{u'switch_off_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_off_kettle_1	0.3339	0.3466	0.726	0.482	{u'get_cup_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+get_cup_1	0.3323	0.3466	0.726	0.482	{u'open_coffee_box_1': 0.378, u'add_water_cup_1': 1.0, u'use_soap': 0.3466, u'open_tea_box_1': 0.622, u'add_water_kettle_1': 0.208}	8
+open_tea_box_1	0.7432	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'add_tea_cup_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+open_tea_box_1	0.9478	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'add_tea_cup_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+close_tea_box_1	0.9516	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'open_tea_box_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+open_tea_box_1	0.9479	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'open_tea_box_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+add_tea_cup_1	0.9479	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'open_tea_box_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+close_tea_box_1	0.9479	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'open_tea_box_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+add_water_cup_1	0.6085	0.3692	0.9747	0.1963	{u'add_water_cup_1': 0.1001, u'add_coffee_cup_1': 0.0349, u'use_soap': 0.3692, u'add_water_kettle_1': 0.171, u'add_tea_cup_1': 0.1001, u'open_tea_box_1': 0.865}	13
+drink	0.9109	0.3692	0.9747	0.1963	{u'add_water_cup_1': 1.0, u'add_coffee_cup_1': 0.0349, u'use_soap': 0.3692, u'add_water_kettle_1': 0.171, u'add_tea_cup_1': 0.1001, u'open_tea_box_1': 0.865}	13
+
+========================
+turn_on_faucet_1	0.554	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+turn_off_faucet_1	0.9008	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+turn_on_faucet_1	0.1	0.5478	0.5119	0.3112	{u'use_soap': 0.5478, u'add_water_kettle_1': 0.7375}	9
+add_water_kettle_1	0.473	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'turn_off_faucet_1': 0.9855, u'use_soap': 0.3416, u'add_water_kettle_1': 0.205}	9
+turn_off_faucet_1	0.341	0.3466	0.726	0.482	{u'switch_on_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_on_kettle_1	0.2697	0.3466	0.726	0.482	{u'switch_off_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_off_kettle_1	0.3339	0.3466	0.726	0.482	{u'get_cup_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+get_cup_1	0.3323	0.3466	0.726	0.482	{u'open_coffee_box_1': 0.378, u'add_water_cup_1': 1.0, u'use_soap': 0.3466, u'open_tea_box_1': 0.622, u'add_water_kettle_1': 0.208}	8
+open_tea_box_1	0.7432	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'add_tea_cup_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+open_tea_box_1	0.9478	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'add_tea_cup_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+close_tea_box_1	0.9516	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'open_tea_box_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+open_tea_box_1	0.6447	0.3716	1.0	0.1672	{u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_tea_cup_1': 1.0, u'add_water_kettle_1': 0.1672}	5
+add_tea_cup_1	0.6182	0.3716	1.0	0.1672	{u'close_tea_box_1': 1.0, u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_water_kettle_1': 0.1672}	5
+close_tea_box_1	0.6193	0.3716	1.0	0.1672	{u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_water_kettle_1': 0.1672}	5
+add_water_cup_1	0.3244	0.3716	1.0	0.1672	{u'drink': 1.0, u'use_soap': 0.3716, u'add_water_kettle_1': 0.1672}	5
+drink	0.1991	0.3664	0.014	0.1788	{u'turn_off_faucet_1': 0.014, u'drink': 0.014, u'use_soap': 0.3664, u'add_water_kettle_1': 0.1649}	6
+
+========================
+turn_on_faucet_1	0.554	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+turn_off_faucet_1	0.9008	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+turn_on_faucet_1	0.1	0.5478	0.5119	0.3112	{u'use_soap': 0.5478, u'add_water_kettle_1': 0.7375}	9
+add_water_kettle_1	0.473	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'turn_off_faucet_1': 0.9855, u'use_soap': 0.3416, u'add_water_kettle_1': 0.205}	9
+turn_off_faucet_1	0.341	0.3466	0.726	0.482	{u'switch_on_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_on_kettle_1	0.2697	0.3466	0.726	0.482	{u'switch_off_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_off_kettle_1	0.3339	0.3466	0.726	0.482	{u'get_cup_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+get_cup_1	0.3323	0.3466	0.726	0.482	{u'open_coffee_box_1': 0.378, u'add_water_cup_1': 1.0, u'use_soap': 0.3466, u'open_tea_box_1': 0.622, u'add_water_kettle_1': 0.208}	8
+open_tea_box_1	0.7432	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'add_tea_cup_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+open_tea_box_1	0.9478	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'add_tea_cup_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+close_tea_box_1	0.9516	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'open_tea_box_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+open_tea_box_1	0.6447	0.3716	1.0	0.1672	{u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_tea_cup_1': 1.0, u'add_water_kettle_1': 0.1672}	5
+add_tea_cup_1	0.9461	0.3716	1.0	0.1672	{u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_tea_cup_1': 1.0, u'add_water_kettle_1': 0.1672}	5
+close_tea_box_1	0.9474	0.3716	1.0	0.1672	{u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'open_tea_box_1': 1.0, u'add_water_kettle_1': 0.1672}	5
+add_water_cup_1	0.537	0.3716	1.0	0.1672	{u'open_tea_box_1': 0.909, u'add_water_cup_1': 0.091, u'use_soap': 0.3716, u'add_tea_cup_1': 0.091, u'add_water_kettle_1': 0.1672}	10
+drink	0.9076	0.3716	1.0	0.1672	{u'open_tea_box_1': 0.909, u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_tea_cup_1': 0.091, u'add_water_kettle_1': 0.1672}	10
+
+========================
+turn_on_faucet_1	0.554	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+turn_off_faucet_1	0.9008	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+turn_on_faucet_1	0.1	0.5478	0.5119	0.3112	{u'use_soap': 0.5478, u'add_water_kettle_1': 0.7375}	9
+add_water_kettle_1	0.473	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'turn_off_faucet_1': 0.9855, u'use_soap': 0.3416, u'add_water_kettle_1': 0.205}	9
+turn_off_faucet_1	0.341	0.3466	0.726	0.482	{u'switch_on_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_on_kettle_1	0.6217	0.3466	0.726	0.482	{u'switch_off_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_off_kettle_1	0.5228	0.3466	0.726	0.482	{u'get_cup_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+get_cup_1	0.3323	0.3466	0.726	0.482	{u'open_coffee_box_1': 0.378, u'add_water_cup_1': 1.0, u'use_soap': 0.3466, u'open_tea_box_1': 0.622, u'add_water_kettle_1': 0.208}	8
+open_tea_box_1	0.7348	0.3677	0.9578	0.2157	{u'add_water_cup_1': 0.9427, u'open_coffee_box_1': 0.0217, u'add_coffee_cup_1': 0.0366, u'use_soap': 0.3677, u'add_water_kettle_1': 0.1735, u'add_tea_cup_1': 0.9061, u'open_tea_box_1': 0.0356}	16
+open_tea_box_1	0.947	0.3677	0.9578	0.2157	{u'add_water_cup_1': 0.9427, u'open_coffee_box_1': 0.0217, u'add_coffee_cup_1': 0.0366, u'use_soap': 0.3677, u'add_water_kettle_1': 0.1735, u'add_tea_cup_1': 0.9061, u'open_tea_box_1': 0.0356}	16
+close_tea_box_1	0.9516	0.3677	0.9578	0.2157	{u'add_water_cup_1': 0.9427, u'open_coffee_box_1': 0.0217, u'add_coffee_cup_1': 0.0366, u'use_soap': 0.3677, u'add_water_kettle_1': 0.1735, u'open_tea_box_1': 0.9418}	16
+open_tea_box_1	0.6351	0.3711	1.0	0.1683	{u'add_water_cup_1': 0.9075, u'use_soap': 0.3711, u'add_water_kettle_1': 0.167, u'turn_off_faucet_1': 0.0013, u'add_tea_cup_1': 0.9418, u'open_tea_box_1': 0.0582}	16
+add_tea_cup_1	0.6251	0.3716	1.0	0.1672	{u'close_tea_box_1': 0.9924, u'add_water_cup_1': 0.9549, u'use_soap': 0.3716, u'add_tea_cup_1': 0.0076, u'add_water_kettle_1': 0.1672}	15
+close_tea_box_1	0.6101	0.3716	1.0	0.1672	{u'add_water_cup_1': 0.9622, u'use_soap': 0.3716, u'drink': 0.0378, u'add_water_kettle_1': 0.1672}	10
+add_water_cup_1	0.7008	0.3716	1.0	0.1672	{u'drink': 1.0, u'use_soap': 0.3716, u'add_water_kettle_1': 0.1672}	5
+drink	0.6081	0.3701	0.0038	0.1703	{u'turn_off_faucet_1': 0.0038, u'drink': 0.0038, u'use_soap': 0.3701, u'add_water_kettle_1': 0.1666}	6
+
+========================
+turn_on_faucet_1	0.554	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+turn_off_faucet_1	0.9008	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+turn_on_faucet_1	0.1	0.5478	0.5119	0.3112	{u'use_soap': 0.5478, u'add_water_kettle_1': 0.7375}	9
+add_water_kettle_1	0.473	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'turn_off_faucet_1': 0.9855, u'use_soap': 0.3416, u'add_water_kettle_1': 0.205}	9
+turn_off_faucet_1	0.341	0.3466	0.726	0.482	{u'switch_on_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_on_kettle_1	0.2697	0.3466	0.726	0.482	{u'switch_off_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_off_kettle_1	0.3339	0.3466	0.726	0.482	{u'get_cup_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+get_cup_1	0.3323	0.3466	0.726	0.482	{u'open_coffee_box_1': 0.378, u'add_water_cup_1': 1.0, u'use_soap': 0.3466, u'open_tea_box_1': 0.622, u'add_water_kettle_1': 0.208}	8
+open_tea_box_1	0.7432	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'add_tea_cup_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+open_tea_box_1	0.9478	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'add_tea_cup_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+close_tea_box_1	0.9516	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'open_tea_box_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+open_tea_box_1	0.6447	0.3716	1.0	0.1672	{u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_tea_cup_1': 1.0, u'add_water_kettle_1': 0.1672}	5
+add_tea_cup_1	0.6182	0.3716	1.0	0.1672	{u'close_tea_box_1': 1.0, u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_water_kettle_1': 0.1672}	5
+close_tea_box_1	0.6193	0.3716	1.0	0.1672	{u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_water_kettle_1': 0.1672}	5
+add_water_cup_1	0.3244	0.3716	1.0	0.1672	{u'drink': 1.0, u'use_soap': 0.3716, u'add_water_kettle_1': 0.1672}	5
+drink	0.5606	0.3613	0.0276	0.1902	{u'turn_off_faucet_1': 0.0276, u'drink': 0.0276, u'use_soap': 0.3613, u'add_water_kettle_1': 0.1626}	6
+
+========================
+turn_on_faucet_1	0.554	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+turn_off_faucet_1	0.9008	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+turn_on_faucet_1	0.9008	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+add_water_kettle_1	0.4386	0.0364	0.4818	0.4818	{u'turn_off_faucet_1': 0.9636, u'rinse_hand': 0.0364}	3
+turn_off_faucet_1	0.1327	0.0	0.5	0.5	{u'switch_on_kettle_1': 1.0}	2
+switch_on_kettle_1	0.0136	0.0	0.5036	0.5036	{u'switch_on_kettle_1': 0.0073, u'turn_on_faucet_1': 0.0073, u'switch_off_kettle_1': 0.9927}	4
+switch_off_kettle_1	0.1062	0.0	0.5	0.5	{u'get_cup_1': 1.0}	2
+get_cup_1	0.1	0.0	0.5	0.5	{u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}	2
+open_tea_box_1	0.7495	0.0	0.8977	0.1023	{u'open_coffee_box_1': 0.0027, u'add_coffee_cup_1': 0.0995, u'add_water_cup_1': 0.9946, u'add_tea_cup_1': 0.895, u'open_tea_box_1': 0.0027}	4
+open_tea_box_1	0.9543	0.0	0.8977	0.1023	{u'open_coffee_box_1': 0.0027, u'add_coffee_cup_1': 0.0995, u'add_water_cup_1': 0.9946, u'add_tea_cup_1': 0.895, u'open_tea_box_1': 0.0027}	4
+close_tea_box_1	0.9584	0.0	0.8977	0.1023	{u'open_coffee_box_1': 0.0027, u'add_coffee_cup_1': 0.0995, u'add_water_cup_1': 0.9946, u'open_tea_box_1': 0.8977}	4
+open_tea_box_1	0.9546	0.0	0.8977	0.1023	{u'open_coffee_box_1': 0.0027, u'add_coffee_cup_1': 0.0995, u'add_water_cup_1': 0.9946, u'open_tea_box_1': 0.8977}	4
+add_tea_cup_1	0.9546	0.0	0.8977	0.1023	{u'open_coffee_box_1': 0.0027, u'add_coffee_cup_1': 0.0995, u'add_water_cup_1': 0.9946, u'open_tea_box_1': 0.8977}	4
+close_tea_box_1	0.9546	0.0	0.8977	0.1023	{u'open_coffee_box_1': 0.0027, u'add_coffee_cup_1': 0.0995, u'add_water_cup_1': 0.9946, u'open_tea_box_1': 0.8977}	4
+add_water_cup_1	0.6182	0.0	0.9106	0.0894	{u'add_coffee_cup_1': 0.0894, u'add_water_cup_1': 0.1062, u'add_tea_cup_1': 0.1062, u'open_tea_box_1': 0.8043}	3
+drink	0.9198	0.0	0.9106	0.0894	{u'add_coffee_cup_1': 0.0894, u'add_water_cup_1': 1.0, u'add_tea_cup_1': 0.1062, u'open_tea_box_1': 0.8043}	3
+
+========================
+turn_on_faucet_1	0.554	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+turn_off_faucet_1	0.9008	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+turn_on_faucet_1	0.1	0.5478	0.5119	0.3112	{u'use_soap': 0.5478, u'add_water_kettle_1': 0.7375}	9
+add_water_kettle_1	0.473	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'turn_off_faucet_1': 0.9855, u'use_soap': 0.3416, u'add_water_kettle_1': 0.205}	9
+turn_off_faucet_1	0.341	0.3466	0.726	0.482	{u'switch_on_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_on_kettle_1	0.2697	0.3466	0.726	0.482	{u'switch_off_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_off_kettle_1	0.3339	0.3466	0.726	0.482	{u'get_cup_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+get_cup_1	0.3323	0.3466	0.726	0.482	{u'open_coffee_box_1': 0.378, u'add_water_cup_1': 1.0, u'use_soap': 0.3466, u'open_tea_box_1': 0.622, u'add_water_kettle_1': 0.208}	8
+open_tea_box_1	0.7432	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'add_tea_cup_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+open_tea_box_1	0.9478	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'add_tea_cup_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+close_tea_box_1	0.9516	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'open_tea_box_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+open_tea_box_1	0.6447	0.3716	1.0	0.1672	{u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_tea_cup_1': 1.0, u'add_water_kettle_1': 0.1672}	5
+add_tea_cup_1	0.6182	0.3716	1.0	0.1672	{u'close_tea_box_1': 1.0, u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_water_kettle_1': 0.1672}	5
+close_tea_box_1	0.6193	0.3716	1.0	0.1672	{u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_water_kettle_1': 0.1672}	5
+add_water_cup_1	0.2518	0.3716	1.0	0.1672	{u'drink': 1.0, u'use_soap': 0.3716, u'add_water_kettle_1': 0.1672}	5
+drink	0.2519	0.3708	0.0019	0.1688	{u'turn_off_faucet_1': 0.0019, u'drink': 0.0019, u'use_soap': 0.3708, u'add_water_kettle_1': 0.1669}	6
+
+========================
+turn_on_faucet_1	0.554	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+turn_off_faucet_1	0.9008	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+turn_on_faucet_1	0.1	0.5478	0.5119	0.3112	{u'use_soap': 0.5478, u'add_water_kettle_1': 0.7375}	9
+add_water_kettle_1	0.473	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'turn_off_faucet_1': 0.9855, u'use_soap': 0.3416, u'add_water_kettle_1': 0.205}	9
+turn_off_faucet_1	0.9108	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'turn_off_faucet_1': 0.9855, u'use_soap': 0.3416, u'add_water_kettle_1': 0.205}	9
+switch_on_kettle_1	0.9109	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'turn_off_faucet_1': 0.9855, u'use_soap': 0.3416, u'add_water_kettle_1': 0.205}	9
+switch_off_kettle_1	0.9109	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'turn_off_faucet_1': 0.9855, u'use_soap': 0.3416, u'add_water_kettle_1': 0.205}	9
+get_cup_1	0.9109	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'turn_off_faucet_1': 0.9855, u'use_soap': 0.3416, u'add_water_kettle_1': 0.205}	9
+open_tea_box_1	0.9109	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'turn_off_faucet_1': 0.9855, u'use_soap': 0.3416, u'add_water_kettle_1': 0.205}	9
+open_tea_box_1	0.9109	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'turn_off_faucet_1': 0.9855, u'use_soap': 0.3416, u'add_water_kettle_1': 0.205}	9
+close_tea_box_1	0.9109	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'turn_off_faucet_1': 0.9855, u'use_soap': 0.3416, u'add_water_kettle_1': 0.205}	9
+open_tea_box_1	0.9109	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'turn_off_faucet_1': 0.9855, u'use_soap': 0.3416, u'add_water_kettle_1': 0.205}	9
+add_tea_cup_1	0.9109	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'turn_off_faucet_1': 0.9855, u'use_soap': 0.3416, u'add_water_kettle_1': 0.205}	9
+close_tea_box_1	0.9109	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'turn_off_faucet_1': 0.9855, u'use_soap': 0.3416, u'add_water_kettle_1': 0.205}	9
+add_water_cup_1	0.9109	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'use_soap': 0.3416, u'add_water_kettle_1': 0.9855}	9
+drink	0.9017	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'use_soap': 0.3416, u'add_water_kettle_1': 0.9855}	9
+
+========================
+turn_on_faucet_1	0.554	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+turn_off_faucet_1	0.9008	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+turn_on_faucet_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+add_water_kettle_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+turn_off_faucet_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+switch_on_kettle_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+switch_off_kettle_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+get_cup_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+open_tea_box_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+open_tea_box_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+close_tea_box_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+open_tea_box_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+add_tea_cup_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+close_tea_box_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+add_water_cup_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+drink	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+
+========================
+turn_on_faucet_1	0.554	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+turn_off_faucet_1	0.9008	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+turn_on_faucet_1	0.1	0.5478	0.5119	0.3112	{u'use_soap': 0.5478, u'add_water_kettle_1': 0.7375}	9
+add_water_kettle_1	0.473	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'turn_off_faucet_1': 0.9855, u'use_soap': 0.3416, u'add_water_kettle_1': 0.205}	9
+turn_off_faucet_1	0.341	0.3466	0.726	0.482	{u'switch_on_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_on_kettle_1	0.6217	0.3466	0.726	0.482	{u'switch_off_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_off_kettle_1	0.5228	0.3466	0.726	0.482	{u'get_cup_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+get_cup_1	0.3323	0.3466	0.726	0.482	{u'open_coffee_box_1': 0.378, u'add_water_cup_1': 1.0, u'use_soap': 0.3466, u'open_tea_box_1': 0.622, u'add_water_kettle_1': 0.208}	8
+open_tea_box_1	0.7348	0.3677	0.9578	0.2157	{u'add_water_cup_1': 0.9427, u'open_coffee_box_1': 0.0217, u'add_coffee_cup_1': 0.0366, u'use_soap': 0.3677, u'add_water_kettle_1': 0.1735, u'add_tea_cup_1': 0.9061, u'open_tea_box_1': 0.0356}	16
+open_tea_box_1	0.947	0.3677	0.9578	0.2157	{u'add_water_cup_1': 0.9427, u'open_coffee_box_1': 0.0217, u'add_coffee_cup_1': 0.0366, u'use_soap': 0.3677, u'add_water_kettle_1': 0.1735, u'add_tea_cup_1': 0.9061, u'open_tea_box_1': 0.0356}	16
+close_tea_box_1	0.9516	0.3677	0.9578	0.2157	{u'add_water_cup_1': 0.9427, u'open_coffee_box_1': 0.0217, u'add_coffee_cup_1': 0.0366, u'use_soap': 0.3677, u'add_water_kettle_1': 0.1735, u'open_tea_box_1': 0.9418}	16
+open_tea_box_1	0.6351	0.3711	1.0	0.1683	{u'add_water_cup_1': 0.9075, u'use_soap': 0.3711, u'add_water_kettle_1': 0.167, u'turn_off_faucet_1': 0.0013, u'add_tea_cup_1': 0.9418, u'open_tea_box_1': 0.0582}	16
+add_tea_cup_1	0.6251	0.3716	1.0	0.1672	{u'close_tea_box_1': 0.9924, u'add_water_cup_1': 0.9549, u'use_soap': 0.3716, u'add_tea_cup_1': 0.0076, u'add_water_kettle_1': 0.1672}	15
+close_tea_box_1	0.6101	0.3716	1.0	0.1672	{u'add_water_cup_1': 0.9622, u'use_soap': 0.3716, u'drink': 0.0378, u'add_water_kettle_1': 0.1672}	10
+add_water_cup_1	0.7008	0.3716	1.0	0.1672	{u'drink': 1.0, u'use_soap': 0.3716, u'add_water_kettle_1': 0.1672}	5
+drink	0.2521	0.3708	0.0019	0.1688	{u'turn_off_faucet_1': 0.0019, u'drink': 0.0019, u'use_soap': 0.3708, u'add_water_kettle_1': 0.1669}	6
+
+========================
+turn_on_faucet_1	0.554	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+turn_off_faucet_1	0.9008	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+turn_on_faucet_1	0.1	0.5478	0.5119	0.3112	{u'use_soap': 0.5478, u'add_water_kettle_1': 0.7375}	9
+add_water_kettle_1	0.473	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'turn_off_faucet_1': 0.9855, u'use_soap': 0.3416, u'add_water_kettle_1': 0.205}	9
+turn_off_faucet_1	0.341	0.3466	0.726	0.482	{u'switch_on_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_on_kettle_1	0.2697	0.3466	0.726	0.482	{u'switch_off_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_off_kettle_1	0.3339	0.3466	0.726	0.482	{u'get_cup_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+get_cup_1	0.3323	0.3466	0.726	0.482	{u'open_coffee_box_1': 0.378, u'add_water_cup_1': 1.0, u'use_soap': 0.3466, u'open_tea_box_1': 0.622, u'add_water_kettle_1': 0.208}	8
+open_tea_box_1	0.7432	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'add_tea_cup_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+open_tea_box_1	0.9478	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'add_tea_cup_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+close_tea_box_1	0.9516	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'open_tea_box_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+open_tea_box_1	0.6447	0.3716	1.0	0.1672	{u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_tea_cup_1': 1.0, u'add_water_kettle_1': 0.1672}	5
+add_tea_cup_1	0.9461	0.3716	1.0	0.1672	{u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_tea_cup_1': 1.0, u'add_water_kettle_1': 0.1672}	5
+close_tea_box_1	0.9474	0.3716	1.0	0.1672	{u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'open_tea_box_1': 1.0, u'add_water_kettle_1': 0.1672}	5
+add_water_cup_1	0.537	0.3716	1.0	0.1672	{u'open_tea_box_1': 0.909, u'add_water_cup_1': 0.091, u'use_soap': 0.3716, u'add_tea_cup_1': 0.091, u'add_water_kettle_1': 0.1672}	10
+drink	0.9076	0.3716	1.0	0.1672	{u'open_tea_box_1': 0.909, u'add_water_cup_1': 0.091, u'use_soap': 0.3716, u'add_tea_cup_1': 0.091, u'add_water_kettle_1': 0.1672}	10
+
+========================
+turn_on_faucet_1	0.554	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+turn_off_faucet_1	0.9008	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+turn_on_faucet_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+add_water_kettle_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+turn_off_faucet_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+switch_on_kettle_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+switch_off_kettle_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+get_cup_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+open_tea_box_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+open_tea_box_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+close_tea_box_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+open_tea_box_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+add_tea_cup_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+close_tea_box_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+add_water_cup_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+drink	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+
+========================
+turn_on_faucet_1	0.554	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+turn_off_faucet_1	0.9008	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+turn_on_faucet_1	0.1	0.5478	0.5119	0.3112	{u'use_soap': 0.5478, u'add_water_kettle_1': 0.7375}	9
+add_water_kettle_1	0.473	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'turn_off_faucet_1': 0.9855, u'use_soap': 0.3416, u'add_water_kettle_1': 0.205}	9
+turn_off_faucet_1	0.341	0.3466	0.726	0.482	{u'switch_on_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_on_kettle_1	0.2697	0.3466	0.726	0.482	{u'switch_off_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_off_kettle_1	0.3339	0.3466	0.726	0.482	{u'get_cup_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+get_cup_1	0.3323	0.3466	0.726	0.482	{u'open_coffee_box_1': 0.378, u'add_water_cup_1': 1.0, u'use_soap': 0.3466, u'open_tea_box_1': 0.622, u'add_water_kettle_1': 0.208}	8
+open_tea_box_1	0.7432	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'add_tea_cup_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+open_tea_box_1	0.9478	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'add_tea_cup_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+close_tea_box_1	0.9516	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'open_tea_box_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+open_tea_box_1	0.6447	0.3716	1.0	0.1672	{u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_tea_cup_1': 1.0, u'add_water_kettle_1': 0.1672}	5
+add_tea_cup_1	0.6182	0.3716	1.0	0.1672	{u'close_tea_box_1': 1.0, u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_water_kettle_1': 0.1672}	5
+close_tea_box_1	0.6193	0.3716	1.0	0.1672	{u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_water_kettle_1': 0.1672}	5
+add_water_cup_1	0.3244	0.3716	1.0	0.1672	{u'drink': 1.0, u'use_soap': 0.3716, u'add_water_kettle_1': 0.1672}	5
+drink	0.2575	0.3716	0.0	0.1672	{u'use_soap': 0.3716, u'add_water_kettle_1': 0.1672}	5
+
+========================
+turn_on_faucet_1	0.554	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+turn_off_faucet_1	0.9008	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+turn_on_faucet_1	0.1	0.5478	0.5119	0.3112	{u'use_soap': 0.5478, u'add_water_kettle_1': 0.7375}	9
+add_water_kettle_1	0.473	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'turn_off_faucet_1': 0.9855, u'use_soap': 0.3416, u'add_water_kettle_1': 0.205}	9
+turn_off_faucet_1	0.341	0.3466	0.726	0.482	{u'switch_on_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_on_kettle_1	0.2697	0.3466	0.726	0.482	{u'switch_off_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_off_kettle_1	0.9105	0.3466	0.726	0.482	{u'switch_off_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+get_cup_1	0.9105	0.3466	0.726	0.482	{u'switch_off_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+open_tea_box_1	0.9105	0.3466	0.726	0.482	{u'switch_off_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+open_tea_box_1	0.9105	0.3466	0.726	0.482	{u'switch_off_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+close_tea_box_1	0.9105	0.3466	0.726	0.482	{u'switch_off_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+open_tea_box_1	0.9105	0.3466	0.726	0.482	{u'switch_off_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+add_tea_cup_1	0.9105	0.3466	0.726	0.482	{u'switch_off_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+close_tea_box_1	0.9105	0.3466	0.726	0.482	{u'switch_off_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+add_water_cup_1	0.912	0.3466	0.726	0.482	{u'use_soap': 0.3466, u'add_water_kettle_1': 1.0}	8
+drink	0.9	0.3466	0.726	0.482	{u'use_soap': 0.3466, u'add_water_kettle_1': 1.0}	8
+
+========================
+turn_on_faucet_1	0.554	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+turn_off_faucet_1	0.9008	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+turn_on_faucet_1	0.1	0.5478	0.5119	0.3112	{u'use_soap': 0.5478, u'add_water_kettle_1': 0.7375}	9
+add_water_kettle_1	0.473	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'turn_off_faucet_1': 0.9855, u'use_soap': 0.3416, u'add_water_kettle_1': 0.205}	9
+turn_off_faucet_1	0.341	0.3466	0.726	0.482	{u'switch_on_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_on_kettle_1	0.6217	0.3466	0.726	0.482	{u'switch_off_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_off_kettle_1	0.5228	0.3466	0.726	0.482	{u'get_cup_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+get_cup_1	0.3323	0.3466	0.726	0.482	{u'open_coffee_box_1': 0.378, u'add_water_cup_1': 1.0, u'use_soap': 0.3466, u'open_tea_box_1': 0.622, u'add_water_kettle_1': 0.208}	8
+open_tea_box_1	0.7348	0.3677	0.9578	0.2157	{u'add_water_cup_1': 0.9427, u'open_coffee_box_1': 0.0217, u'add_coffee_cup_1': 0.0366, u'use_soap': 0.3677, u'add_water_kettle_1': 0.1735, u'add_tea_cup_1': 0.9061, u'open_tea_box_1': 0.0356}	16
+open_tea_box_1	0.947	0.3677	0.9578	0.2157	{u'add_water_cup_1': 0.9427, u'open_coffee_box_1': 0.0217, u'add_coffee_cup_1': 0.0366, u'use_soap': 0.3677, u'add_water_kettle_1': 0.1735, u'add_tea_cup_1': 0.9061, u'open_tea_box_1': 0.0356}	16
+close_tea_box_1	0.9516	0.3677	0.9578	0.2157	{u'add_water_cup_1': 0.9427, u'open_coffee_box_1': 0.0217, u'add_coffee_cup_1': 0.0366, u'use_soap': 0.3677, u'add_water_kettle_1': 0.1735, u'open_tea_box_1': 0.9418}	16
+open_tea_box_1	0.6351	0.3711	1.0	0.1683	{u'add_water_cup_1': 0.9075, u'use_soap': 0.3711, u'add_water_kettle_1': 0.167, u'turn_off_faucet_1': 0.0013, u'add_tea_cup_1': 0.9418, u'open_tea_box_1': 0.0582}	16
+add_tea_cup_1	0.6251	0.3716	1.0	0.1672	{u'close_tea_box_1': 0.9924, u'add_water_cup_1': 0.9549, u'use_soap': 0.3716, u'add_tea_cup_1': 0.0076, u'add_water_kettle_1': 0.1672}	15
+close_tea_box_1	0.6101	0.3716	1.0	0.1672	{u'add_water_cup_1': 0.9622, u'use_soap': 0.3716, u'drink': 0.0378, u'add_water_kettle_1': 0.1672}	10
+add_water_cup_1	0.9757	0.3716	1.0	0.1672	{u'drink': 0.0378, u'use_soap': 0.3716, u'add_water_kettle_1': 0.9685}	10
+drink	0.9594	0.3716	1.0	0.1672	{u'add_water_cup_1': 0.0378, u'use_soap': 0.3716, u'add_tea_cup_1': 0.0378, u'add_water_kettle_1': 0.9685}	10
+
+========================
+turn_on_faucet_1	0.554	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+turn_off_faucet_1	0.9008	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+turn_on_faucet_1	0.1	0.5478	0.5119	0.3112	{u'use_soap': 0.5478, u'add_water_kettle_1': 0.7375}	9
+add_water_kettle_1	0.473	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'turn_off_faucet_1': 0.9855, u'use_soap': 0.3416, u'add_water_kettle_1': 0.205}	9
+turn_off_faucet_1	0.341	0.3466	0.726	0.482	{u'switch_on_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_on_kettle_1	0.2697	0.3466	0.726	0.482	{u'switch_off_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_off_kettle_1	0.3339	0.3466	0.726	0.482	{u'get_cup_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+get_cup_1	0.3323	0.3466	0.726	0.482	{u'open_coffee_box_1': 0.378, u'add_water_cup_1': 1.0, u'use_soap': 0.3466, u'open_tea_box_1': 0.622, u'add_water_kettle_1': 0.208}	8
+open_tea_box_1	0.7432	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'add_tea_cup_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+open_tea_box_1	0.9478	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'add_tea_cup_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+close_tea_box_1	0.9516	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'open_tea_box_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+open_tea_box_1	0.6447	0.3716	1.0	0.1672	{u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_tea_cup_1': 1.0, u'add_water_kettle_1': 0.1672}	5
+add_tea_cup_1	0.6182	0.3716	1.0	0.1672	{u'close_tea_box_1': 1.0, u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_water_kettle_1': 0.1672}	5
+close_tea_box_1	0.6193	0.3716	1.0	0.1672	{u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_water_kettle_1': 0.1672}	5
+add_water_cup_1	0.2518	0.3716	1.0	0.1672	{u'drink': 1.0, u'use_soap': 0.3716, u'add_water_kettle_1': 0.1672}	5
+drink	0.2519	0.3708	0.0019	0.1688	{u'turn_off_faucet_1': 0.0019, u'drink': 0.0019, u'use_soap': 0.3708, u'add_water_kettle_1': 0.1669}	6
+
+========================
+turn_on_faucet_1	0.554	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+turn_off_faucet_1	0.9008	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+turn_on_faucet_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+add_water_kettle_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+turn_off_faucet_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+switch_on_kettle_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+switch_off_kettle_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+get_cup_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+open_tea_box_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+open_tea_box_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+close_tea_box_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+open_tea_box_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+add_tea_cup_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+close_tea_box_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+add_water_cup_1	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+drink	0.9	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+
+========================
+turn_on_faucet_1	0.554	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+turn_off_faucet_1	0.9008	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+turn_on_faucet_1	0.1	0.5478	0.5119	0.3112	{u'use_soap': 0.5478, u'add_water_kettle_1': 0.7375}	9
+add_water_kettle_1	0.473	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'turn_off_faucet_1': 0.9855, u'use_soap': 0.3416, u'add_water_kettle_1': 0.205}	9
+turn_off_faucet_1	0.341	0.3466	0.726	0.482	{u'switch_on_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_on_kettle_1	0.6403	0.3466	0.726	0.482	{u'switch_off_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_off_kettle_1	0.5221	0.3466	0.726	0.482	{u'get_cup_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+get_cup_1	0.3323	0.3466	0.726	0.482	{u'open_coffee_box_1': 0.378, u'add_water_cup_1': 1.0, u'use_soap': 0.3466, u'open_tea_box_1': 0.622, u'add_water_kettle_1': 0.208}	8
+open_tea_box_1	0.7432	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'add_tea_cup_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+open_tea_box_1	0.9478	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'add_tea_cup_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+close_tea_box_1	0.9516	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'open_tea_box_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+open_tea_box_1	0.6447	0.3716	1.0	0.1672	{u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_tea_cup_1': 1.0, u'add_water_kettle_1': 0.1672}	5
+add_tea_cup_1	0.9461	0.3716	1.0	0.1672	{u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_tea_cup_1': 1.0, u'add_water_kettle_1': 0.1672}	5
+close_tea_box_1	0.9474	0.3716	1.0	0.1672	{u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'open_tea_box_1': 1.0, u'add_water_kettle_1': 0.1672}	5
+add_water_cup_1	0.5775	0.3716	1.0	0.1672	{u'open_tea_box_1': 0.9, u'add_water_cup_1': 0.1, u'use_soap': 0.3716, u'add_tea_cup_1': 0.1, u'add_water_kettle_1': 0.1672}	10
+drink	0.9157	0.3716	1.0	0.1672	{u'open_tea_box_1': 0.9, u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_tea_cup_1': 0.1, u'add_water_kettle_1': 0.1672}	10
+
+========================
+turn_on_faucet_1	0.554	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+turn_off_faucet_1	0.9008	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+turn_on_faucet_1	0.9008	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+add_water_kettle_1	0.4386	0.0364	0.4818	0.4818	{u'turn_off_faucet_1': 0.9636, u'rinse_hand': 0.0364}	3
+turn_off_faucet_1	0.1327	0.0	0.5	0.5	{u'switch_on_kettle_1': 1.0}	2
+switch_on_kettle_1	0.5266	0.0	0.5018	0.5018	{u'switch_on_kettle_1': 0.0035, u'turn_on_faucet_1': 0.0035, u'switch_off_kettle_1': 0.9965}	4
+switch_off_kettle_1	0.1031	0.0	0.5	0.5	{u'get_cup_1': 1.0}	2
+get_cup_1	0.1	0.0	0.5	0.5	{u'open_coffee_box_1': 0.5, u'add_water_cup_1': 1.0, u'open_tea_box_1': 0.5}	2
+open_tea_box_1	0.7495	0.0	0.8977	0.1023	{u'open_coffee_box_1': 0.0027, u'add_coffee_cup_1': 0.0995, u'add_water_cup_1': 0.9946, u'add_tea_cup_1': 0.895, u'open_tea_box_1': 0.0027}	4
+open_tea_box_1	0.9543	0.0	0.8977	0.1023	{u'open_coffee_box_1': 0.0027, u'add_coffee_cup_1': 0.0995, u'add_water_cup_1': 0.9946, u'add_tea_cup_1': 0.895, u'open_tea_box_1': 0.0027}	4
+close_tea_box_1	0.9543	0.0	0.8977	0.1023	{u'open_coffee_box_1': 0.0027, u'add_coffee_cup_1': 0.0995, u'add_water_cup_1': 0.9946, u'add_tea_cup_1': 0.895, u'open_tea_box_1': 0.0027}	4
+open_tea_box_1	0.9543	0.0	0.8977	0.1023	{u'open_coffee_box_1': 0.0027, u'add_coffee_cup_1': 0.0995, u'add_water_cup_1': 0.9946, u'add_tea_cup_1': 0.895, u'open_tea_box_1': 0.0027}	4
+add_tea_cup_1	0.5967	0.0	1.0	0.0	{u'close_tea_box_1': 0.9983, u'add_water_cup_1': 0.9983, u'add_tea_cup_1': 0.0017}	2
+close_tea_box_1	0.5506	0.0	1.0	0.0	{u'close_tea_box_1': 0.0015, u'add_water_cup_1': 0.9985}	2
+add_water_cup_1	0.1017	0.0	1.0	0.0	{u'drink': 1.0}	1
+drink	0.0122	0.0	0.0	0.0	{}	1
+
+========================
+turn_on_faucet_1	0.554	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+turn_off_faucet_1	0.9008	0.3574	0.3213	0.3213	{u'turn_on_faucet_1': 1.0}	3
+turn_on_faucet_1	0.1	0.5478	0.5119	0.3112	{u'use_soap': 0.5478, u'add_water_kettle_1': 0.7375}	9
+add_water_kettle_1	0.473	0.3561	0.7155	0.4751	{u'rinse_hand': 0.0145, u'turn_off_faucet_1': 0.9855, u'use_soap': 0.3416, u'add_water_kettle_1': 0.205}	9
+turn_off_faucet_1	0.341	0.3466	0.726	0.482	{u'switch_on_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_on_kettle_1	0.2697	0.3466	0.726	0.482	{u'switch_off_kettle_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+switch_off_kettle_1	0.3339	0.3466	0.726	0.482	{u'get_cup_1': 1.0, u'use_soap': 0.3466, u'add_water_kettle_1': 0.208}	8
+get_cup_1	0.3323	0.3466	0.726	0.482	{u'open_coffee_box_1': 0.378, u'add_water_cup_1': 1.0, u'use_soap': 0.3466, u'open_tea_box_1': 0.622, u'add_water_kettle_1': 0.208}	8
+open_tea_box_1	0.7432	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'add_tea_cup_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+open_tea_box_1	0.9478	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'add_tea_cup_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+close_tea_box_1	0.9516	0.369	0.9719	0.1995	{u'add_coffee_cup_1': 0.0388, u'add_water_cup_1': 1.0, u'use_soap': 0.369, u'open_tea_box_1': 0.9612, u'add_water_kettle_1': 0.1714}	8
+open_tea_box_1	0.6447	0.3716	1.0	0.1672	{u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_tea_cup_1': 1.0, u'add_water_kettle_1': 0.1672}	5
+add_tea_cup_1	0.6182	0.3716	1.0	0.1672	{u'close_tea_box_1': 1.0, u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_water_kettle_1': 0.1672}	5
+close_tea_box_1	0.6193	0.3716	1.0	0.1672	{u'add_water_cup_1': 1.0, u'use_soap': 0.3716, u'add_water_kettle_1': 0.1672}	5
+add_water_cup_1	0.3244	0.3716	1.0	0.1672	{u'drink': 1.0, u'use_soap': 0.3716, u'add_water_kettle_1': 0.1672}	5
+drink	0.1991	0.3664	0.014	0.1788	{u'turn_off_faucet_1': 0.014, u'drink': 0.014, u'use_soap': 0.3664, u'add_water_kettle_1': 0.1649}	6

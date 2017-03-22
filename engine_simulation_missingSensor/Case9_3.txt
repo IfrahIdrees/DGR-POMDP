@@ -1,0 +1,240 @@
+
+========================
+turn_on_faucet_1	0.5534	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+use_soap	0.6209	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+use_soap	0.9746	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+turn_off_faucet_1	0.7793	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.0143}	3
+turn_on_faucet_1	0.9996	0.0143	0.4928	0.4928	{u'dry_hand': 0.0143, u'turn_off_faucet_1': 1.0}	3
+use_soap	0.9009	0.0143	0.4928	0.4928	{u'rinse_hand': 0.0143, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.8944	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+dry_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+turn_off_faucet_1	0.1243	0.0	0.5	0.5	{u'switch_on_kettle_1': 1.0}	2
+
+========================
+turn_on_faucet_1	0.5534	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+use_soap	0.9066	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+use_soap	0.6209	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+turn_off_faucet_1	0.7793	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.0143}	3
+turn_on_faucet_1	0.9996	0.0143	0.4928	0.4928	{u'dry_hand': 0.0143, u'turn_off_faucet_1': 1.0}	3
+use_soap	0.9009	0.0143	0.4928	0.4928	{u'rinse_hand': 0.0143, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.8944	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+dry_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+turn_off_faucet_1	0.1243	0.0	0.5	0.5	{u'switch_on_kettle_1': 1.0}	2
+
+========================
+turn_on_faucet_1	0.5534	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+use_soap	0.6209	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+use_soap	0.9746	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+turn_off_faucet_1	0.7793	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.0143}	3
+turn_on_faucet_1	0.9996	0.0143	0.4928	0.4928	{u'dry_hand': 0.0143, u'turn_off_faucet_1': 1.0}	3
+use_soap	0.9009	0.0143	0.4928	0.4928	{u'rinse_hand': 0.0143, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.8944	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+dry_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+turn_off_faucet_1	0.1243	0.0	0.5	0.5	{u'switch_on_kettle_1': 1.0}	2
+
+========================
+turn_on_faucet_1	0.5534	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+use_soap	0.6209	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+use_soap	0.9746	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+turn_off_faucet_1	0.7793	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.0143}	3
+turn_on_faucet_1	0.9996	0.0143	0.4928	0.4928	{u'dry_hand': 0.0143, u'turn_off_faucet_1': 1.0}	3
+use_soap	0.9009	0.0143	0.4928	0.4928	{u'rinse_hand': 0.0143, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.8951	0.0143	0.4928	0.4928	{u'rinse_hand': 0.0143, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.8951	0.0143	0.4928	0.4928	{u'rinse_hand': 0.0143, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+dry_hand	0.9009	0.0143	0.4928	0.4928	{u'rinse_hand': 0.0143, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+turn_off_faucet_1	0.1237	0.0	0.5	0.5	{u'switch_on_kettle_1': 1.0}	2
+
+========================
+turn_on_faucet_1	0.5534	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+use_soap	0.6209	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+use_soap	0.9746	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+turn_off_faucet_1	0.7793	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.0143}	3
+turn_on_faucet_1	0.9996	0.0143	0.4928	0.4928	{u'dry_hand': 0.0143, u'turn_off_faucet_1': 1.0}	3
+use_soap	0.9009	0.0143	0.4928	0.4928	{u'rinse_hand': 0.0143, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.8944	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+dry_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+turn_off_faucet_1	0.1243	0.0	0.5	0.5	{u'switch_on_kettle_1': 1.0}	2
+
+========================
+turn_on_faucet_1	0.5534	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+use_soap	0.6209	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+use_soap	0.9746	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+turn_off_faucet_1	0.7793	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.0143}	3
+turn_on_faucet_1	0.9996	0.0143	0.4928	0.4928	{u'dry_hand': 0.0143, u'turn_off_faucet_1': 1.0}	3
+use_soap	0.9009	0.0143	0.4928	0.4928	{u'rinse_hand': 0.0143, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.8944	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+dry_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+turn_off_faucet_1	0.1243	0.0	0.5	0.5	{u'switch_on_kettle_1': 1.0}	2
+
+========================
+turn_on_faucet_1	0.5534	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+use_soap	0.6209	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+use_soap	0.9746	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+turn_off_faucet_1	0.7793	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.0143}	3
+turn_on_faucet_1	0.9996	0.0143	0.4928	0.4928	{u'dry_hand': 0.0143, u'turn_off_faucet_1': 1.0}	3
+use_soap	0.9009	0.0143	0.4928	0.4928	{u'rinse_hand': 0.0143, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.8944	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+dry_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+turn_off_faucet_1	0.1243	0.0	0.5	0.5	{u'switch_on_kettle_1': 1.0}	2
+
+========================
+turn_on_faucet_1	0.5534	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+use_soap	0.6209	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+use_soap	0.9746	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+turn_off_faucet_1	0.7793	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.0143}	3
+turn_on_faucet_1	0.9996	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.0143}	3
+use_soap	0.9996	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'rinse_hand': 0.0143}	3
+rinse_hand	0.9994	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'use_soap': 0.0143}	3
+rinse_hand	0.9996	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'use_soap': 0.0143}	3
+dry_hand	0.9996	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'use_soap': 0.0143}	3
+turn_off_faucet_1	0.9996	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'turn_on_faucet_1': 0.0143}	3
+
+========================
+turn_on_faucet_1	0.5534	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+use_soap	0.9066	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+use_soap	0.6209	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+turn_off_faucet_1	0.7793	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.0143}	3
+turn_on_faucet_1	0.9996	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.0143}	3
+use_soap	0.9996	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'rinse_hand': 0.0143}	3
+rinse_hand	0.9996	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'use_soap': 0.0143}	3
+rinse_hand	0.9996	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'use_soap': 0.0143}	3
+dry_hand	0.9996	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'use_soap': 0.0143}	3
+turn_off_faucet_1	0.9996	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'turn_on_faucet_1': 0.0143}	3
+
+========================
+turn_on_faucet_1	0.5534	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+use_soap	0.6209	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+use_soap	0.9746	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+turn_off_faucet_1	0.7793	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.0143}	3
+turn_on_faucet_1	0.9996	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.0143}	3
+use_soap	0.9996	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.0143}	3
+rinse_hand	0.9996	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.0143}	3
+rinse_hand	0.9996	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.0143}	3
+dry_hand	0.9996	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'rinse_hand': 0.0143}	3
+turn_off_faucet_1	0.9996	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'turn_on_faucet_1': 0.0143}	3
+
+========================
+turn_on_faucet_1	0.5534	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+use_soap	0.9066	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+use_soap	0.6209	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+turn_off_faucet_1	0.7793	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.0143}	3
+turn_on_faucet_1	0.9996	0.0143	0.4928	0.4928	{u'dry_hand': 0.0143, u'turn_off_faucet_1': 1.0}	3
+use_soap	0.9009	0.0143	0.4928	0.4928	{u'rinse_hand': 0.0143, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.8951	0.0143	0.4928	0.4928	{u'rinse_hand': 0.0143, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.8944	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+dry_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+turn_off_faucet_1	0.1243	0.0	0.5	0.5	{u'switch_on_kettle_1': 1.0}	2
+
+========================
+turn_on_faucet_1	0.5534	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+use_soap	0.6209	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+use_soap	0.9746	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+turn_off_faucet_1	0.7793	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.0143}	3
+turn_on_faucet_1	0.9996	0.0143	0.4928	0.4928	{u'dry_hand': 0.0143, u'turn_off_faucet_1': 1.0}	3
+use_soap	0.9009	0.0143	0.4928	0.4928	{u'rinse_hand': 0.0143, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.8944	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+dry_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+turn_off_faucet_1	0.1243	0.0	0.5	0.5	{u'switch_on_kettle_1': 1.0}	2
+
+========================
+turn_on_faucet_1	0.5534	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+use_soap	0.6209	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+use_soap	0.9746	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+turn_off_faucet_1	0.7793	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.0143}	3
+turn_on_faucet_1	0.9996	0.0143	0.4928	0.4928	{u'dry_hand': 0.0143, u'turn_off_faucet_1': 1.0}	3
+use_soap	0.9009	0.0143	0.4928	0.4928	{u'rinse_hand': 0.0143, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.8951	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+dry_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+turn_off_faucet_1	0.1243	0.0	0.5	0.5	{u'switch_on_kettle_1': 1.0}	2
+
+========================
+turn_on_faucet_1	0.5534	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+use_soap	0.6209	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+use_soap	0.9746	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+turn_off_faucet_1	0.7793	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.0143}	3
+turn_on_faucet_1	0.9996	0.0143	0.4928	0.4928	{u'dry_hand': 0.0143, u'turn_off_faucet_1': 1.0}	3
+use_soap	0.9009	0.0143	0.4928	0.4928	{u'rinse_hand': 0.0143, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.8944	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+dry_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+turn_off_faucet_1	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+
+========================
+turn_on_faucet_1	0.5534	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+use_soap	0.6209	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+use_soap	0.9746	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+turn_off_faucet_1	0.7793	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.0143}	3
+turn_on_faucet_1	0.9996	0.0143	0.4928	0.4928	{u'dry_hand': 0.0143, u'turn_off_faucet_1': 1.0}	3
+use_soap	0.9009	0.0143	0.4928	0.4928	{u'rinse_hand': 0.0143, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.8951	0.0143	0.4928	0.4928	{u'rinse_hand': 0.0143, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.8944	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+dry_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+turn_off_faucet_1	0.1243	0.0	0.5	0.5	{u'switch_on_kettle_1': 1.0}	2
+
+========================
+turn_on_faucet_1	0.5534	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+use_soap	0.6209	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+use_soap	0.9746	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+turn_off_faucet_1	0.7793	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.0143}	3
+turn_on_faucet_1	0.9996	0.0143	0.4928	0.4928	{u'dry_hand': 0.0143, u'turn_off_faucet_1': 1.0}	3
+use_soap	0.9009	0.0143	0.4928	0.4928	{u'rinse_hand': 0.0143, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.8951	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+dry_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+turn_off_faucet_1	0.1243	0.0	0.5	0.5	{u'switch_on_kettle_1': 1.0}	2
+
+========================
+turn_on_faucet_1	0.5534	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+use_soap	0.6209	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+use_soap	0.9746	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+turn_off_faucet_1	0.7793	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.0143}	3
+turn_on_faucet_1	0.9996	0.0143	0.4928	0.4928	{u'dry_hand': 0.0143, u'turn_off_faucet_1': 1.0}	3
+use_soap	0.9009	0.0143	0.4928	0.4928	{u'rinse_hand': 0.0143, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.8951	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+dry_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+turn_off_faucet_1	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+
+========================
+turn_on_faucet_1	0.5534	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+use_soap	0.6209	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+use_soap	0.9746	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+turn_off_faucet_1	0.9746	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+turn_on_faucet_1	0.9746	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+use_soap	0.9746	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+rinse_hand	0.2209	0.9897	0.0052	0.0052	{u'switch_on_kettle_1': 0.0103, u'dry_hand': 0.9897, u'turn_off_faucet_1': 0.9897}	3
+rinse_hand	0.9011	0.9897	0.0052	0.0052	{u'switch_on_kettle_1': 0.0103, u'dry_hand': 0.9897, u'turn_off_faucet_1': 0.9897}	3
+dry_hand	0.5066	1.0	0.0	0.0	{u'dry_hand': 0.1003, u'turn_off_faucet_1': 0.8997}	2
+turn_off_faucet_1	0.1982	0.0	0.0	0.0	{}	1
+
+========================
+turn_on_faucet_1	0.5534	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+use_soap	0.6209	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+use_soap	0.9746	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+turn_off_faucet_1	0.7793	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.0143}	3
+turn_on_faucet_1	0.9996	0.0143	0.4928	0.4928	{u'dry_hand': 0.0143, u'turn_off_faucet_1': 1.0}	3
+use_soap	0.9009	0.0143	0.4928	0.4928	{u'rinse_hand': 0.0143, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.9009	0.0143	0.4928	0.4928	{u'rinse_hand': 0.0143, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.8944	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+dry_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+turn_off_faucet_1	0.1243	0.0	0.5	0.5	{u'switch_on_kettle_1': 1.0}	2
+
+========================
+turn_on_faucet_1	0.5534	0.3574	0.3213	0.3213	{u'use_soap': 0.3574, u'add_water_kettle_1': 0.6426}	3
+use_soap	0.6209	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+use_soap	0.9746	0.7559	0.122	0.122	{u'turn_off_faucet_1': 0.2441, u'rinse_hand': 0.7559}	3
+turn_off_faucet_1	0.7793	0.0143	0.4928	0.4928	{u'switch_on_kettle_1': 0.9857, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.0143}	3
+turn_on_faucet_1	0.9996	0.0143	0.4928	0.4928	{u'dry_hand': 0.0143, u'turn_off_faucet_1': 1.0}	3
+use_soap	0.9009	0.0143	0.4928	0.4928	{u'rinse_hand': 0.0143, u'dry_hand': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.8944	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+rinse_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+dry_hand	0.9015	0.0143	0.4928	0.4928	{u'use_soap': 0.0143, u'turn_off_faucet_1': 0.9857}	3
+turn_off_faucet_1	0.1243	0.0	0.5	0.5	{u'switch_on_kettle_1': 1.0}	2
