@@ -46,7 +46,7 @@ if __name__ == '__main__':
     #files = [1, 2, 3]
     #sensor_reliability = [-1, 0.5, -2]
     #for file_num in range(4, 8):
-    for file_num in range(1, 4):
+    for file_num in range(5, 7):
         for x in sensor_reliability:
             ##the output file name
             output_file_name = "Case" + str(file_num) + "_" + str(x) + ".txt"
