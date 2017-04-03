@@ -72,6 +72,8 @@ class Tracking_Engine(object):
                     
                     #update the explanation set, part 2
                     exp.explaSet_expand_part2(length)
+                    exp.popLeftK(length)
+                    
 
                 #generate pending set         
                 exp.pendingset_generate()
