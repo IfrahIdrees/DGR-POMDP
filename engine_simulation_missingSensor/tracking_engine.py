@@ -81,8 +81,8 @@ class Tracking_Engine(object):
                 exp.task_prob_calculate()
                 
                 #print "Explanation Number:  ", len(exp._explaset)
-                exp.print_explaSet()
-                
+                exp.print_explaSet1()
+                break
                 
                 
                 

@@ -78,6 +78,7 @@ class Tracking_Engine(object):
                 #print "Explanation Number:  ", len(exp._explaset)
                 exp.print_explaSet()
                 
+                break
                 
                 
                 
