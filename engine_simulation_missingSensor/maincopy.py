@@ -39,7 +39,7 @@ if __name__ == '__main__':
     
     file_num = 4
     #sensor_reliability = [None, 0.9, 0.95, 0.8]
-    sensor_reliability = [0.8]
+    sensor_reliability = [0.9]
     #sensor_reliability = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     #sensor_reliability = [None, 0.95, 0.9]
     #sensor_reliability = [1, 2, 3, 4, 5, 6]
@@ -103,6 +103,8 @@ if __name__ == '__main__':
                     f.write('\n========================\n')
                     
                 tracking_engine = Tracking_Engine(no_trigger = no_notif_trigger_prob, sleep_interval = interval, cond_satisfy=cond_satisfy, cond_notsatisfy = cond_notsatisfy, delete_trigger = delete_trigger, otherHappen = other_happen, file_name = input_file_name, output_file_name = output_file_name)
+                
+                
                 tracking_engine.start()
             
             print "I am good until now" 

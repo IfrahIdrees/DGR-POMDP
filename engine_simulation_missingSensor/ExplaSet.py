@@ -186,7 +186,7 @@ class explaSet(object):
         #print self._action_posterior_prob                           
         for k in self._action_posterior_prob: 
             posteriorK = self.cal_posterior(k)
-            #print "the posterior for ", k, "is: ", posteriorK
+            print "the posterior for ", k, "is: ", posteriorK
             otherHappen = otherHappen - posteriorK * self._action_posterior_prob[k]
             #otherHappen = otherHappen*(1-posteriorK)
             self._action_posterior_prob[k] = self._action_posterior_prob[k] * posteriorK
