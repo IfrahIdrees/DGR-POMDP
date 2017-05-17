@@ -66,6 +66,7 @@ class Tracking_Engine(object):
                     exp.explaSet_expand_part1(length)
 
                     
+                    #print exp._prior
                     #udpate the state
                     state = State()
                     state.update_state_belief(exp)
@@ -81,8 +82,8 @@ class Tracking_Engine(object):
                 exp.task_prob_calculate()
                 
                 #print "Explanation Number:  ", len(exp._explaset)
-                exp.print_explaSet1()
-                break
+                exp.print_explaSet()
+                
                 
                 
                 
