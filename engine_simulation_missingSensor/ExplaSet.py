@@ -189,7 +189,7 @@ class explaSet(object):
                 else:
                     self._action_posterior_prob[action[0]] = action[1]
         #---------------------------------
-        '''   
+        #'''   
             for start_task in expla._start_task:
                 if expla._start_task[start_task] == 0:
                     target_method = db.find_method(start_task)
@@ -199,7 +199,7 @@ class explaSet(object):
                             self._action_posterior_prob[start_action] = self._action_posterior_prob[start_action]+initialize_prob
                         else:
                             self._action_posterior_prob[start_action] = initialize_prob
-        '''
+        #'''
         #---------------------------------
         '''
         with open(self._output_file_name, 'a') as f:
