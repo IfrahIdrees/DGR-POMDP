@@ -28,6 +28,7 @@ class explaSet(object):
         self._non_happen = non_happen
         self._sensor_notification = []
         self._output_file_name = output_file_name
+        self._prior = {}
         #self._start_action = {} #format: {action1: 0, action2:1}, 0 stands has not been execute, 
     
     ##################################################################################################    
@@ -77,7 +78,7 @@ class explaSet(object):
         with open(self._output_file_name, 'a') as f:
             new_line = "Explanation Number:  " + str(len(self._explaset)) + "\n"
             f.write(new_line)
-        #'''
+        '''
             for index in range(len(self._explaset)):
                 x = self._explaset[index]
                 new_line = "\n" + "--------------Explanation " + str(index+1) + "------------------\n"
@@ -106,7 +107,7 @@ class explaSet(object):
                         f.write(new_line)
                         f.write("\n")
             f.write("\n")
-        #'''        
+        '''        
     
     ##################################################################################################    
     ####                                        Part II                                          #####
@@ -120,7 +121,8 @@ class explaSet(object):
         goal = db.find_all_method()
         mypendingSet=[]
         mystart_task = {}
-        
+        candicatePendingSet = {}
+        '''
         for x in goal:
             if len(x["start_action"])>0:
                 mystart_task[x["m_name"]] = 0 #this task has not started yet
@@ -133,6 +135,30 @@ class explaSet(object):
         prob = float(1)/(len(mypendingSet))
         for x in mypendingSet:
             x[1]=prob
+        exp = Explanation(v=1, pendingSet=mypendingSet, start_task = mystart_task)    
+        #exp = Explanation(v=1, pendingSet=mypendingSet, start_action=mystart_action)
+        self._explaset.append(exp)
+        '''
+        
+        goalNum = 0
+        for x in goal:
+            if len(x["start_action"])>0:
+                goalNum = goalNum + 1
+                mystart_task[x["m_name"]] = 0
+        goalPrior = float(1) / goalNum
+        for x in goal:
+            if len(x["start_action"])>0:
+                mystart_task[x["m_name"]] = 0 #this task has not started yet
+                
+                for y in x["start_action"]:
+                    if y not in candicatePendingSet:
+                        candicatePendingSet[y] = goalPrior*float(1)/len(x["start_action"])
+                    else:
+                        candicatePendingSet[y] = candicatePendingSet[y] + goalPrior*float(1)/len(x["start_action"]) 
+        
+        
+        for x in candicatePendingSet:
+            mypendingSet.append([x, candicatePendingSet[x]])
         exp = Explanation(v=1, pendingSet=mypendingSet, start_task = mystart_task)    
         #exp = Explanation(v=1, pendingSet=mypendingSet, start_action=mystart_action)
         self._explaset.append(exp)
@@ -153,6 +179,7 @@ class explaSet(object):
         for expla in self._explaset:
             #print expla._pendingSet
             #add actions in pending set
+            
             for action in expla._pendingSet:
                 if action[0] in self._action_posterior_prob:
                     #print "the add value is", action[1]
@@ -162,7 +189,7 @@ class explaSet(object):
                 else:
                     self._action_posterior_prob[action[0]] = action[1]
         #---------------------------------
-        '''   
+        #'''   
             for start_task in expla._start_task:
                 if expla._start_task[start_task] == 0:
                     target_method = db.find_method(start_task)
@@ -172,7 +199,7 @@ class explaSet(object):
                             self._action_posterior_prob[start_action] = self._action_posterior_prob[start_action]+initialize_prob
                         else:
                             self._action_posterior_prob[start_action] = initialize_prob
-        '''
+        #'''
         #---------------------------------
         '''
         with open(self._output_file_name, 'a') as f:
@@ -183,6 +210,8 @@ class explaSet(object):
             f.write("\n")
         '''
         
+        self._prior = copy.deepcopy(self._action_posterior_prob)
+        #print self._prior
         #print self._action_posterior_prob                           
         for k in self._action_posterior_prob: 
             posteriorK = self.cal_posterior(k)
