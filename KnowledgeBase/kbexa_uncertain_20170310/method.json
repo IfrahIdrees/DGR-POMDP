@@ -68,9 +68,6 @@
 }
 
 
-
-
-
 {
     "type":"method",
     "m_name":"kettle_1_heat_water",
@@ -95,9 +92,7 @@
             "dec":[]
         }}],
     "parent":["prepare_hot_water"],
-    "start_action":[]
-     
-        
+    "start_action":[]     
 }
 
 
