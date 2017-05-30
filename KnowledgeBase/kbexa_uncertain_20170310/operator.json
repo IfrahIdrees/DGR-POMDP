@@ -46,6 +46,7 @@
     "parent":["clean_hand"]
 }
 
+
 {
     "type":"step",
     "st_name":"turn_on_faucet_1",
