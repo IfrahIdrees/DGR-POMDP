@@ -1,0 +1,8 @@
+[]#['use_soap', 'add_water_kettle_1']
+[1]#['rinse_hand']
+[1]#['turn_on_faucet_1']
+[1]#['use_soap', 'add_water_kettle_1']
+[1]#['rinse_hand']
+[1]#['dry_hand', 'turn_off_faucet_1']
+[1]#['dry_hand']
+[]#[]

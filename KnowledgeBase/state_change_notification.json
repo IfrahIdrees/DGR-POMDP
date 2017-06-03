@@ -1,9 +1,0 @@
-
-{
-    "name":"faucet_1",
-    "reliability":"0.9",
-    "attribute": "state",
-    "previous": "on",
-    "current": "off",
-}
-
