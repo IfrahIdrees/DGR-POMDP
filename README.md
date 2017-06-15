@@ -3,7 +3,10 @@
 Code for Thesis: 
 
 Hierarchical Task Recognition and Planning in Smart Homes with Partial Observability
-(url: http://hdl.handle.net/10012/12001)
+
+To cite this work:
+
+Dan Wang (2017). Hierarchical Task Recognition and Planning in Smart Homes with Partial Observability. UWSpace. http://hdl.handle.net/10012/12001
 
 Author: Dan Wang danwangkoala@gmail.com (May 2016 - June 2017)
 
