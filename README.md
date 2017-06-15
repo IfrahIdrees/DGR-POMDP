@@ -10,6 +10,8 @@ Dan Wang (2017). Hierarchical Task Recognition and Planning in Smart Homes with 
 
 Author: Dan Wang danwangkoala@gmail.com (May 2016 - June 2017)
 
+Supervised by Prof. Jesse Hoey (https://cs.uwaterloo.ca/~jhoey/)
+
 Association: Computer Science, University of Waterloo.
 
 Research purposes only. Any commerical uses strictly forbidden.
