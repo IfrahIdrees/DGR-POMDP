@@ -6,9 +6,10 @@ Hierarchical Task Recognition and Planning in Smart Homes with Partial Observabi
 
 To cite this work:
 
-Dan Wang (2017). Hierarchical Task Recognition and Planning in Smart Homes with Partial Observability. UWSpace. http://hdl.handle.net/10012/12001
+Option 1: Dan Wang (2017). Hierarchical Task Recognition and Planning in Smart Homes with Partial Observability. UWSpace. http://hdl.handle.net/10012/12001
+Option 2: Wang, D. and Hoey, J., 2017, November. Hierarchical Task Recognition and Planning in Smart Homes with Partial Observability. In International Conference on Ubiquitous Computing and Ambient Intelligence (pp. 439-452). Springer, Cham.
 
-Author: Dan Wang danwangkoala@gmail.com (May 2016 - June 2017)
+Author: Dan Wang danwangkoala@gmail.com (May 2016 - June 2017) 
 
 Supervised by Prof. Jesse Hoey (https://cs.uwaterloo.ca/~jhoey/)
 
