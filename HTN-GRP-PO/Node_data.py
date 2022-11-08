@@ -29,8 +29,8 @@ class Node_data():
     
     #out put all the properties of the data instance
     def print_property(self):
-        print "completeness:", self._completeness
-        print "ready       :", self._ready
-        print "predecessors:", self._pre
-        print "decedants   :", self._dec
-        print "branch fac  :", self._branch
+        print("completeness:", self._completeness)
+        print("ready       :", self._ready)
+        print("predecessors:", self._pre)
+        print("decedants   :", self._dec)
+        print("branch fac  :", self._branch)

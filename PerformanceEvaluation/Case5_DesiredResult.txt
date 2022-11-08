@@ -13,4 +13,4 @@
 [3]#['add_water_cup_1', 'close_coffee_box_1']
 [3]#['add_water_cup_1']
 [3]#['drink']
-[-3]#[]
+[]#[]

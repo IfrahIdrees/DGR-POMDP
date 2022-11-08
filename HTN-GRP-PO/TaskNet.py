@@ -70,9 +70,9 @@ class TaskNet(object):
         '''
         tree.show(line_type = "ascii")
         all_node = tree.all_nodes()
-        print "Inside pendingSet update--------------------------------"
+        print("Inside pendingSet update--------------------------------"
         for x in all_node:
-            print x.tag, "   ", x.data._ready
+            print(x.tag, "   ", x.data._ready
         '''
         expand_tree = []
         tree_queue = deque([])
@@ -160,9 +160,9 @@ class TaskNet(object):
         '''
         tree.show(line_type = "ascii")
         all_node = tree.all_nodes()
-        print "before update the ready ones is--------------------------------"
+        print("before update the ready ones is--------------------------------"
         for x in all_node:
-            print x.tag, "   ", x.data._ready
+            print(x.tag, "   ", x.data._ready
         '''
         
         node_queue = deque([])

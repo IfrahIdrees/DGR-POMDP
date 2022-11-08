@@ -94,3 +94,5 @@ ENV/
 
 # tmp
 ~*
+HTN-GRP-PO/experiments/*
+HTN-GRP-PO/*.txt

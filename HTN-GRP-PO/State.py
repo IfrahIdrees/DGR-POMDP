@@ -46,10 +46,10 @@ class State(object):
         action_list = {}
         title = []
         happen_sum = 0
-        #for action_candidate in exp._action_posterior_prob:
-            #action_list[action_candidate] = exp._action_posterior_prob[action_candidate]
-        for action_candidate in exp._prior:
-            action_list[action_candidate] = exp._prior[action_candidate]
+        for action_candidate in exp._action_posterior_prob:
+            action_list[action_candidate] = exp._action_posterior_prob[action_candidate]
+        # for action_candidate in exp._prior:
+        #     action_list[action_candidate] = exp._prior[action_candidate]
             happen_sum = happen_sum + action_list[action_candidate]
             op = db.get_operator(action_candidate)
             for x in op["effect"]:
@@ -70,6 +70,8 @@ class State(object):
                 action_list[k] = (action_list[k]/happen_sum)*happen_prob   
         action_list["nothing"] = noth_prob
         
+        exp._action_posterior_prob = copy.deepcopy(action_list)
+
         return [action_list, title]
 
 

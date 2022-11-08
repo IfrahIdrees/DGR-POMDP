@@ -57,10 +57,10 @@
         },
         "turn_off_faucet_1":{
             "pre":["clean_hand"],
-            "dec":[]
+            "dec":["dry_hand"]
         },
         "dry_hand":{
-            "pre":["clean_hand"],
+            "pre":["turn_off_faucet_1"],
             "dec":[]
         }}],
     "parent":[],    

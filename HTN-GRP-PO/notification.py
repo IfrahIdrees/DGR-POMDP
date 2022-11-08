@@ -10,7 +10,7 @@ Research sponsored by AGEWELL Networks of Centers of Excellence (NCE).
 #store the input test case into a step list
 
 
-from Queue import *
+from queue import *
 
 class notification(object):
     def __init__(self, file_name):

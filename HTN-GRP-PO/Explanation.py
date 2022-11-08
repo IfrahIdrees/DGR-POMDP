@@ -126,7 +126,8 @@ class Explanation(object):
                     action_node.data._completeness = True
                     executed_sequence = ExecuteSequence(sequence = copy.deepcopy(taskNet._execute_sequence._sequence), effect_summary = copy.deepcopy(taskNet._execute_sequence._effect_summary))
                     executed_sequence.add_action(act_expla[0])
-                    newTaskNet = TaskNet(goalName = theTree.get_node(theTree.root).tag, tree = theTree, expandProb = taskNetPending._branch_factor, execute_sequence = copy.deepcopy(executed_sequence))
+                    newTaskNet = TaskNet(goalName = theTree.get_node(theTree.root).tag, tree = theTree, expandProb = taskNetPending._branch_factor, execute_sequence = executed_sequence)
+                    # newTaskNet = TaskNet(goalName = theTree.get_node(theTree.root).tag, tree = theTree, expandProb = taskNetPending._branch_factor, execute_sequence = copy.deepcopy(executed_sequence))
                     newTaskNet.update()
                     #get a new taskNet end
                     
@@ -170,7 +171,7 @@ class Explanation(object):
                 thisTree = copy.deepcopy(temp_forest.popleft())
                 tag = thisTree[0].get_node(thisTree[0].root).tag
                 parents = db.get_parent_list(tag)
-                if parents==False: print "error happend here please check"
+                if parents==False: print("error happend here please check")
                 if len(parents)>0: 
                     for x in parents: #x must be an method
                         method = db.find_method(x)
@@ -183,7 +184,8 @@ class Explanation(object):
                 elif len(parents)==0: #this tree already reached goal node
                     executed_sequence = ExecuteSequence(sequence = [], effect_summary = {})
                     executed_sequence.add_action(action)
-                    my_goal = TaskNet(goalName=tag, tree=thisTree[0], expandProb=thisTree[1], execute_sequence = copy.deepcopy(executed_sequence))
+                    my_goal = TaskNet(goalName=tag, tree=thisTree[0], expandProb=thisTree[1], execute_sequence = executed_sequence)
+                    # my_goal = TaskNet(goalName=tag, tree=thisTree[0], expandProb=thisTree[1], execute_sequence = copy.deepcopy(executed_sequence))
                     my_goal.update()
                     task_net.append(my_goal)
         

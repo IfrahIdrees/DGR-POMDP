@@ -30,9 +30,9 @@ def call_for_caregiver_sensor_cause(bad_sensor, output_file_name):
     
     
     '''
-    print "Some sensor is not working well now. Please fix them"
-    print "The non-working sensors are : "
+    print("Some sensor is not working well now. Please fix them"
+    print("The non-working sensors are : "
     for sensor in bad_sensor:
-        print sensor["object"], "-----", sensor["attribute"]
+        print(sensor["object"], "-----", sensor["attribute"]
     exit(0)
     '''

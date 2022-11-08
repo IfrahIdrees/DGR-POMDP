@@ -22,7 +22,7 @@ from helper import *
 from TaskHint import *
 from SensorCheck import *
 from CareGiver import *
-
+import math
 #from __future__ import print_function  # Only needed for Python 2
 
 db = DB_Object()
@@ -38,11 +38,12 @@ class explaSet(object):
         self._sensor_notification = []
         self._output_file_name = output_file_name
         self._prior = {}
+        self._other_happen = None  
     
     ##################################################################################################    
     ####                                        Part I                                           #####
     ####                Basic function about the explanation set. Include:                       #####
-    ####                add, pop, length, get, set parameter value, normalize, print             #####
+    ####                add, pop, length, get, set parameter value, normalize, print(            #####
     ##################################################################################################
     
     def add_exp(self, e):
@@ -72,7 +73,15 @@ class explaSet(object):
         if my_sum == 0.0:
             return       
         for x in self._explaset:
-            x._prob = x._prob/my_sum   
+            x._prob = x._prob/my_sum 
+
+    def normalize_dict(self, dict_): 
+        my_sum = sum(dict_.values())      
+        if my_sum == 0.0:
+            return       
+        for key, x in dict_.items():
+            dict_[key] = dict_[key]/my_sum 
+
     
     
     def print_explaSet(self):
@@ -181,8 +190,11 @@ class explaSet(object):
                             self._action_posterior_prob[start_action] = self._action_posterior_prob[start_action]+initialize_prob
                         else:
                             self._action_posterior_prob[start_action] = initialize_prob
+                        # if start_action not in self._action_posterior_prob:
+                            # self._action_posterior_prob[start_action] = self._delete_trigger #initialize_prob
         #'''
         #---------------------------------
+        # self.normalize_dict(self._action_posterior_prob)
         self._prior = copy.deepcopy(self._action_posterior_prob)                           
         for k in self._action_posterior_prob: 
             posteriorK = self.cal_posterior(k)
@@ -211,6 +223,7 @@ class explaSet(object):
         for item in objAttSet:
             title.append(item.split("-"))
         #attribute is the corresponding attribute distribution in title
+        title = sorted(title)
         attribute = []
         observe_prob = []
         for item in title:
@@ -293,7 +306,7 @@ class explaSet(object):
                 if attri=="ability":
                     ability_list = bef[index].split(",")
                     if compare_ability(ability_list, precond[ob][attri]) is False:
-                        print "return not satisfy because of ability not enough "
+                        print("return not satisfy because of ability not enough ")
                         return self._cond_notsatisfy
                 else:
                     if precond[ob][attri]!=bef[index]:
@@ -329,6 +342,7 @@ class explaSet(object):
         
         for i in range(length):
             x =   self.get(i+1)
+            # print("action posterior after bayseian inference is",  self._action_posterior_prob)
             for action in self._action_posterior_prob:
                 #case1: nothing happened: update the prob of the explanation,do not need to update tree structure. 
                 if action == "nothing":
@@ -386,7 +400,7 @@ class explaSet(object):
         taskhint.average_level()
 
         taskhint.print_taskhintInTable()    
-
+        return taskhint
     ##################################################################################################    
     ####                                        Part VII                                         #####
     ####            Exception handling. This part is used when the probability of                #####
@@ -395,7 +409,7 @@ class explaSet(object):
     ##################################################################################################
     
     def handle_exception(self):
-        print "into handle exception"
+        print("into handle exception")
         sensor_cause = {}
         sensor_cause["bad_sensor"] = []
         sensor_cause["sensor_cause"] = False
@@ -410,7 +424,7 @@ class explaSet(object):
         
         # bad sensor cause the exception, call the caregiver to repair the sensors
         if len(sensor_cause["bad_sensor"]) > 0:
-            print "bad sensor cause sensor exception"
+            print("bad sensor cause sensor exception")
             sensor_cause["sensor_cause"] = True
             call_for_caregiver_sensor_cause(sensor_cause["bad_sensor"], self._output_file_name)
         
@@ -449,7 +463,7 @@ class explaSet(object):
 
     def belief_state_repair_execute(self, belief_state_repair_summary):
         for effect in belief_state_repair_summary:
-            if belief_state_repair_summary[effect] > 0.7:
+            #if belief_state_repair_summary[effect] > 0.7:
                 belief_state = effect.split("/")
                 opposite_attri_value = db.get_reverse_attribute_value(belief_state[0], belief_state[1], belief_state[2])
                 new_att_distribution = {}

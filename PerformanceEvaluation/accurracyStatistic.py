@@ -35,7 +35,7 @@ for case_num in range(7, 11):
     bench_mark = []
     for step_standard in input_standard:
         step_standard_info = re.split('#|\n', step_standard)
-        #print step_standard_info
+        #print(step_standard_info
         this_step_standard = {}
         this_step_standard['goal'] = ast.literal_eval(step_standard_info[0])
         this_step_standard['pendingSet'] = ast.literal_eval(step_standard_info[1])
@@ -46,7 +46,7 @@ for case_num in range(7, 11):
         output.close()
     for reliability in sensor_reliability:
         result_file_name = folder_name + str(case_num) + "_" + str(reliability) + ".txt"
-        print "the result file name is: ", result_file_name
+        print("the result file name is: ", result_file_name)
         with open(result_file_name) as f:
             input_result = f.readlines()
             f.close()
@@ -61,14 +61,14 @@ for case_num in range(7, 11):
                 k=0
             else:
                 thisline = re.split('\t|\n|#', line)
-                print thisline
+                print(thisline)
                 goal_recognition_result = thisline[2:5]
-                print goal_recognition_result
+                print(goal_recognition_result)
                 
                 sum_point = sum_point + stepResultTest(goal_recognition_result, thisline[5], bench_mark[k], reliability, case_num)
                 k = k + 1
                 
-        print sum_point
+        print(sum_point)
         accurracy = (float)(sum_point)/(float)(case_step_num * 2 * 20)
         with open('accurracyStatisticOutput.txt', 'a') as output:
             

@@ -132,7 +132,7 @@ class Tree(object):
                        func=print, iflast=[]):
         """
         Another implementation of printing tree using Stack
-        Print tree structure in hierarchy style.
+        print(tree structure in hierarchy style.
 
         For example:
             Root

@@ -19,8 +19,24 @@ from pymongo import MongoClient
 import pymongo
 import random
 
-client = MongoClient()
-db = client.smart_home
+import config
+
+if config.RANDOM_BASELINE:
+    client = MongoClient()
+    db = client.smart_homeRANDOM
+else:
+    client = MongoClient()
+    db = client.smart_home8
+# client = MongoClient()
+# db = client.smart_home8
+# import config
+
+# if config.RANDOM_BASELINE:
+#     client = MongoClient()
+#     db = client.smart_homeRANDOM
+# else:
+#     client = MongoClient()
+#     db = client.smart_home8
 
 
 class DB_Object(object):
@@ -95,7 +111,7 @@ class DB_Object(object):
          
     # Find and return the attribute value belief from belief state
     def get_attribute_prob(self, s, ob_name, attri_name):
-        print "inside database get attribute prob", ob_name, attri_name
+        print("inside database get attribute prob", ob_name, attri_name)
         st = list(self._state.find({"ob_name":ob_name}))
         return float(st[0][attri_name][s])
     
@@ -164,15 +180,16 @@ class DB_Object(object):
         label = False
         sensor = list(self._sensor.find({"ob_name":ob_name, "attri_name":attri_name}))
         if len(sensor)!=1:
-            print "inside udpate_sensor_value, the number of target ob_name is bad", len(sensor)
+            print("inside udpate_sensor_value, the number of target ob_name is bad", len(sensor))
             sys.exit(0)
         
         elif sensor[0]["reliability"] == -1.0: ##in this case the sensor is missing just return False
-            print "This is an missing sensor"
+            print("This is an missing sensor")
             return label
         else:
             sensor = sensor[0]
-            randomN = random.random()
+            randomN = config.randomNs[config.randomIndex]
+            config.randomIndex+=1
             if(randomN<=sensor["reliability"]):
                 label = True
                 valueNum = sensor["value"][1]
@@ -214,9 +231,9 @@ class DB_Object(object):
     # Update belief state            
     def update_state_belief(self, ob_name, attri_name, attri_distri):
         '''
-        print "inside database.py, update_state_belief:    ", ob_name, attri_name
+        print("inside database.py, update_state_belief:    ", ob_name, attri_name
         thestate =list (self._state.find({"ob_name":ob_name}))
-        print "before state update, the distribution is", thestate[0]
+        print("before state update, the distribution is", thestate[0]
         '''
         result = self._state.update_many(
             {"ob_name":ob_name},
@@ -229,9 +246,9 @@ class DB_Object(object):
         
         '''
         thestate =list (self._state.find({"ob_name":ob_name}))
-        print "after state update, the distribution is", thestate[0]
+        print("after state update, the distribution is", thestate[0]
         '''
-        #print "then number of changes is", result.matched_count
+        #print("then number of changes is", result.matched_count
     def get_attri_distribution(self, ob_name, attri_name):
         object_state = list(self._state.find({"ob_name": ob_name}))
         object_state = object_state[0]
@@ -254,7 +271,7 @@ class DB_Object(object):
     def get_obj_Rstate(self, ob_name):
         objList = list(self._Rstate.find({"ob_name":ob_name}))
         if len(objList)!=1:
-            print "inside get_obj_Rstate, the number of target ob_name is bad", len(objList)
+            print("inside get_obj_Rstate, the number of target ob_name is bad", len(objList))
             sys.exit(0)
         else:
             return objList[0]
