@@ -8,36 +8,40 @@ Code is provided without any guarantees.
 Research sponsored by AGEWELL Networks of Centers of Excellence (NCE).
 ----------------------------------------------------------------------------------------------"""
 
-#######################################################################################################
+##########################################################################
 ####          The TaskNetPendingSet class. Map to the "decomposed goal network" in thesis          ####
 ####          Also refer to "Interface specification part II"                                      ####
-#######################################################################################################
+##########################################################################
 
 
+from TaskNet import *
+from treelib import Node
+from treelib import Tree
 import sys
 sys.dont_write_bytecode = True
 
-from treelib import Tree
-from treelib import Node
-from TaskNet import *
 
 
 class TaskNetPendingSet(object):
-    def __init__(self, tree = Tree(), branch_factor = 1, pending_actions = []):
+    def __init__(self, tree=Tree(), branch_factor=1, pending_actions=[]):
         self._tree = tree
         self._branch_factor = branch_factor
         self._pending_actions = pending_actions
-   
-   
-    #the action exist in the pending_actions of the TaskNetPendingSet,
-    #and now this action has happened. generate a new TaskNet based on 
-    #this decomposition.
+
+    # the action exist in the pending_actions of the TaskNetPendingSet,
+    # and now this action has happened. generate a new TaskNet based on
+    # this decomposition.
+
     def generate_new_taskNet(self, action):
         theTree = self._tree
         action_node = theTree.get_node(action)
         action_node.data._completeness = True
         print(theTree.get_node(theTree.root).tag)
         print(self._branch_factor)
-        newTaskNet = TaskNet(goalName = theTree.get_node(theTree.root).tag, tree = theTree, expandProb = self._branch_factor)
+        newTaskNet = TaskNet(
+            goalName=theTree.get_node(
+                theTree.root).tag,
+            tree=theTree,
+            expandProb=self._branch_factor)
         newTaskNet.update()
         return newTaskNet
