@@ -23,8 +23,16 @@ class TaskHint(object):
     def __init__(self, output_file_name = "Case4.txt"):
         self._output_file_name = output_file_name
         self.prompt_task = {}
-        self.step_dict = set(['use_soap', 'rinse_hand', 'turn_on_faucet_1', 'turn_off_faucet_1', 'dry_hand', 'switch_on_kettle_1', 'switch_off_kettle_1', 'add_water_kettle_1', 'get_cup_1', 'open_tea_box_1', 'add_tea_cup_1', 'close_tea_box_1', 'add_water_cup_1', 'open_coffee_box_1', 'add_coffee_cup_1', 'close_coffee_box_1', 'drink'])
-        
+        #self.step_dict = set(['use_soap', 'rinse_hand', 'turn_on_faucet_1', 'turn_off_faucet_1', 'dry_hand', 'switch_on_kettle_1', 'switch_off_kettle_1', 'add_water_kettle_1', 'get_cup_1', 'open_tea_box_1', 'add_tea_cup_1', 'close_tea_box_1', 'add_water_cup_1', 'open_coffee_box_1', 'add_coffee_cup_1', 'close_coffee_box_1', 'drink'])
+        self.step_dict = set([
+            "pick_up_blockN",
+            "put_down_NO",
+            "pick_up_blockO",
+            "put_down_OT",
+            "pick_up_blockT",
+            "put_down_TO",
+            "put_down_ON"
+        ])
         
     
     #reset the prompt_task
@@ -67,20 +75,35 @@ class TaskHint(object):
             if k in self.step_dict:
                 step_level_hint[k] = round(v[0], 8)
                 
-        wash_hand = 0.0
-        make_tea = 0.0
-        make_coffee = 0.0
+        # wash_hand = 0.0
+        # make_tea = 0.0
+        # make_coffee = 0.0
         
-        if 'wash_hand' in self.prompt_task:
-            wash_hand = round(self.prompt_task['wash_hand'][0], 8)
-        if 'make_tea' in self.prompt_task:
-            make_tea = round(self.prompt_task['make_tea'][0], 8)
-        if 'make_coffee' in self.prompt_task:
-            make_coffee = round(self.prompt_task['make_coffee'][0], 8)
+        # if 'wash_hand' in self.prompt_task:
+        #     wash_hand = round(self.prompt_task['wash_hand'][0], 8)
+        # if 'make_tea' in self.prompt_task:
+        #     make_tea = round(self.prompt_task['make_tea'][0], 8)
+        # if 'make_coffee' in self.prompt_task:
+        #     make_coffee = round(self.prompt_task['make_coffee'][0], 8)
             
-        with open(self._output_file_name, 'a') as f:
-            f.write(str(wash_hand) + "\t" + str(make_tea) + "\t" + str(make_coffee) + "\t" + str(step_level_hint) + "\t")
+        # with open(self._output_file_name, 'a') as f:
+        #     f.write(str(wash_hand) + "\t" + str(make_tea) + "\t" + str(make_coffee) + "\t" + str(step_level_hint) + "\t")
         
+        stack_word_NOT = 0.0
+        stack_word_ON = 0.0
+
+        if 'stack_word_NOT' in self.prompt_task:
+            stack_word_NOT = round(self.prompt_task['stack_word_NOT'][0], 8)
+        if 'stack_word_ON' in self.prompt_task:
+            stack_word_ON = round(self.prompt_task['stack_word_ON'][0], 8)
+            
+        #goal_recog_prob = str(wash_hand) + "\t" + str(make_tea) + "\t" + str(make_coffee) + "\t" + str(step_level_hint) + "\t"
+        #goal_recog_prob = str(stack_word_NOT) + "\t" + str(stack_word_ON)
+        with open(self._output_file_name, 'a') as f:
+            f.write(str(stack_word_NOT) + "\t" + str(stack_word_ON) + "\t" + str(step_level_hint) + "\t")
+        
+
+
     def print_taskhint(self):
         hint_in_level_format = {}
         for k, v in self.prompt_task.items():

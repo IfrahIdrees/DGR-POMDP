@@ -51,7 +51,7 @@ if __name__ == '__main__':
     other_happens = [0.76, 0.765]  # 0.75 #0.68 try 0.78 next
 
     # sensor set up files
-    sensor_reliability = [0.99, 0.95, 0.9, 0.8, 0.75]
+    sensor_reliability = [0.99]
     trials = 51
     config.seed = 5999
     config.trials = trials
@@ -74,7 +74,7 @@ if __name__ == '__main__':
 
         # file_nums = [9]
         # for file_num in file_nums:
-        for file_num in range(6, 7):
+        for file_num in range(1, 2):
             if file_num == 4:
                 continue
             for x in sensor_reliability:
@@ -87,7 +87,7 @@ if __name__ == '__main__':
                         str(file_num) + "_" + str(x) + ".txt"
 
                 # input file name
-                input_file_name = "../TestCases/Case" + str(file_num)
+                input_file_name = "../TestCases/BlockTests/Case" + str(file_num)
                 if not exists(input_file_name):
                     continue
 
@@ -128,43 +128,43 @@ if __name__ == '__main__':
                     # to the end of each command line
                     if config.RANDOM_BASELINE:
                         os.system(
-                            "mongoimport --db smart_homeRANDOM --collection method --drop --file ../KnowledgeBase/method.json")
+                            "mongoimport --db smart_homeRANDOM --collection method --drop --file ../KnowledgeBase_block_domain/method.json")
                         os.system(
-                            "mongoimport --db smart_homeRANDOM --collection state --drop --file ../KnowledgeBase/state.json")
+                            "mongoimport --db smart_homeRANDOM --collection state --drop --file ../KnowledgeBase_block_domain/state.json")
                         os.system(
-                            "mongoimport --db smart_homeRANDOM --collection operator --drop --file ../KnowledgeBase/operator.json")
+                            "mongoimport --db smart_homeRANDOM --collection operator --drop --file ../KnowledgeBase_block_domain/operator.json")
                         os.system(
-                            "mongoimport --db smart_homeRANDOM --collection Rstate --drop --file ../KnowledgeBase/realState.json")
+                            "mongoimport --db smart_homeRANDOM --collection Rstate --drop --file ../KnowledgeBase_block_domain/realState.json")
                     else:
                         os.system(
-                            "mongoimport --db smart_home8 --collection method --drop --file ../KnowledgeBase/method.json")
+                            "mongoimport --db smart_home8 --collection method --drop --file ../KnowledgeBase_block_domain/method.json")
                         os.system(
-                            "mongoimport --db smart_home8 --collection state --drop --file ../KnowledgeBase/state.json")
+                            "mongoimport --db smart_home8 --collection state --drop --file ../KnowledgeBase_block_domain/state.json")
                         os.system(
-                            "mongoimport --db smart_home8 --collection operator --drop --file ../KnowledgeBase/operator.json")
+                            "mongoimport --db smart_home8 --collection operator --drop --file ../KnowledgeBase_block_domain/operator.json")
                         os.system(
-                            "mongoimport --db smart_home8 --collection Rstate --drop --file ../KnowledgeBase/realState.json")
+                            "mongoimport --db smart_home8 --collection Rstate --drop --file ../KnowledgeBase_block_domain/realState.json")
 
                     # command for sensor reliability set up
                     if config.RANDOM_BASELINE:
                         if x is None:
-                            sensor_command = "mongoimport --db smart_homeRANDOM --collection sensor --drop --file ../KnowledgeBase/sensor_reliability/sensor.json"
+                            sensor_command = "mongoimport --db smart_homeRANDOM --collection sensor --drop --file ../KnowledgeBase_block_domain/sensor_reliability/sensor.json"
                         else:
-                            sensor_command = "mongoimport --db smart_homeRANDOM --collection sensor --drop --file ../KnowledgeBase/sensor_reliability/sensor" + \
+                            sensor_command = "mongoimport --db smart_homeRANDOM --collection sensor --drop --file ../KnowledgeBase_block_domain/sensor_reliability/sensor" + \
                                 "_" + str(x) + ".json"
 
                     else:
                         if x is None:
-                            sensor_command = "mongoimport --db smart_home8 --collection sensor --drop --file ../KnowledgeBase/sensor_reliability/sensor.json"
+                            sensor_command = "mongoimport --db smart_home8 --collection sensor --drop --file ../KnowledgeBase_block_domain/sensor_reliability/sensor.json"
                         else:
-                            sensor_command = "mongoimport --db smart_home8 --collection sensor --drop --file ../KnowledgeBase/sensor_reliability/sensor" + \
+                            sensor_command = "mongoimport --db smart_home8 --collection sensor --drop --file ../KnowledgeBase_block_domain/sensor_reliability/sensor" + \
                                 "_" + str(x) + ".json"
                     os.system(sensor_command)
                     print(db.list_collection_names())
 
                     # command for sensor missing set up
                     '''
-                    sensor_command = "mongoimport --db smart_home8 --collection sensor --drop --file ../KnowledgeBase/missing_sensor/sensor" + "_" + str(x) + ".json"
+                    sensor_command = "mongoimport --db smart_home8 --collection sensor --drop --file ../KnowledgeBase_block_domain/missing_sensor/sensor" + "_" + str(x) + ".json"
                     os.system(sensor_command)
                     '''
 
