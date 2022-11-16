@@ -33,6 +33,33 @@
     "start_action":["pick_up_blockT"]
 }
 
+{
+    "type":"method",
+    "m_name":"stack_word_NOT", 
+    "precondition":[{
+        "blockT":{
+            "on_table":"yes"
+        },
+        "blockO":{
+            "on_table":"yes"
+        }, 
+        "blockN":{
+            "on_table":"yes"
+        }
+    }],
+    "subtasks":[{
+        "stack_word_OT":{
+            "pre":[],
+            "dec":["stack_word_NO"]
+        },
+        "stack_word_NO":{
+            "pre":["stack_word_OT"],
+            "dec":[]
+        }
+    }],
+    "parent":[],
+    "start_action":["pick_up_blockO"]
+}
 
 {
     "type":"method",
@@ -80,10 +107,31 @@
             "dec":[]
         }
     }],
-    "parent":["stack_word_NOTE"],
+    "parent":["stack_word_NOT"],
     "start_action":[]
 }
 
+{
+    "type":"method",
+    "m_name":"stack_word_TO", 
+    "precondition":[{
+        "blockO":{
+            "clear":"yes"
+        }
+    }],
+    "subtasks":[{
+        "pick_up_blockT":{
+            "pre":[],
+            "dec":["put_down_TO"]
+        },
+        "put_down_TO":{
+            "pre":["pick_up_blockT"],
+            "dec":[]
+        }
+    }],
+    "parent":[],
+    "start_action":[]
+}
 
 {
     "type":"method",
@@ -103,8 +151,8 @@
             "dec":[]
         }
     }],
-    "parent":["stack_word_ONE"],
-    "start_action":[]
+    "parent":[],
+    "start_action":["stack_word_ONE"]
 }
 
 {
@@ -125,7 +173,7 @@
             "dec":[]
         }
     }],
-    "parent":["stack_word_NOTE"],
+    "parent":["stack_word_NOT"],
     "start_action":[]
 }
 
