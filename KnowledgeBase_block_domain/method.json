@@ -63,7 +63,7 @@
 
 {
     "type":"method",
-    "m_name":"stack_word_NOT", 
+    "m_name":"stack_word_ONE", 
     "precondition":[{
         "blockE":{
             "on_table":"yes"
