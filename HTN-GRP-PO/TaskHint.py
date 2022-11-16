@@ -29,9 +29,12 @@ class TaskHint(object):
             "put_down_NO",
             "pick_up_blockO",
             "put_down_OT",
+            "put_down_ON",
             "pick_up_blockT",
             "put_down_TO",
-            "put_down_ON"
+            "put_down_ON",
+            "put_down_TE",
+            "put_down_NE"
         ])
         
     
@@ -89,18 +92,18 @@ class TaskHint(object):
         # with open(self._output_file_name, 'a') as f:
         #     f.write(str(wash_hand) + "\t" + str(make_tea) + "\t" + str(make_coffee) + "\t" + str(step_level_hint) + "\t")
         
-        stack_word_NOT = 0.0
-        stack_word_ON = 0.0
+        stack_word_NOTE = 0.0
+        stack_word_ONE = 0.0
 
-        if 'stack_word_NOT' in self.prompt_task:
-            stack_word_NOT = round(self.prompt_task['stack_word_NOT'][0], 8)
-        if 'stack_word_ON' in self.prompt_task:
-            stack_word_ON = round(self.prompt_task['stack_word_ON'][0], 8)
+        if 'stack_word_NOTE' in self.prompt_task:
+            stack_word_NOTE = round(self.prompt_task['stack_word_NOTE'][0], 8)
+        if 'stack_word_ONE' in self.prompt_task:
+            stack_word_ONE = round(self.prompt_task['stack_word_ONE'][0], 8)
             
         #goal_recog_prob = str(wash_hand) + "\t" + str(make_tea) + "\t" + str(make_coffee) + "\t" + str(step_level_hint) + "\t"
         #goal_recog_prob = str(stack_word_NOT) + "\t" + str(stack_word_ON)
         with open(self._output_file_name, 'a') as f:
-            f.write(str(stack_word_NOT) + "\t" + str(stack_word_ON) + "\t" + str(step_level_hint) + "\t")
+            f.write(str(stack_word_NOTE) + "\t" + str(stack_word_ONE) + "\t" + str(step_level_hint) + "\t")
         
 
 
