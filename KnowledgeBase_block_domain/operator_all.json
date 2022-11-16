@@ -43,7 +43,7 @@
             "is_holding": "yes"
         }
     },
-    "parent":["stack_word_NO", "stack_word_NE"]
+    "parent":["stack_word_NOT", "stack_word_NE"]
 }
 
 {
@@ -70,6 +70,29 @@
 
 }
 
+{
+    "type":"step",
+    "st_name":"put_down_TO",
+    "precondition":{
+        "hand_1":{
+            "is_holding": "yes"
+        },
+        "blockO":{
+            "clear":"yes"
+        }
+    },
+    "effect":{
+        "blockO":{
+            "clear": "no",
+            "on_top_blockT": "yes"
+        },
+        "hand_1":{
+            "is_holding": "no"
+        }
+    },
+    "parent":["stack_word_TO"]
+
+}
 
 {
     "type":"step",
