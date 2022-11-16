@@ -1,0 +1,60 @@
+{
+    "ob_name":"blockT",
+    "ob_type":"block",
+    "on_table":"yes",
+    "on_top_blockN": "no",
+    "on_top_blockO": "no",
+    "on_top_blockE": "no",
+    "on_top_blockU": "no",
+    "clear": "yes"
+}
+
+{
+    "ob_name":"blockO",
+    "ob_type":"block",
+    "on_table":"yes",
+    "on_top_blockN": "no",
+    "on_top_blockT": "no",
+    "on_top_blockE": "no",
+    "on_top_blockU": "no",
+    "clear": "yes"
+}
+
+{
+    "ob_name":"blockN",
+    "ob_type":"block",
+    "on_table":"yes",
+    "on_top_blockO": "no",
+    "on_top_blockT": "no",
+    "on_top_blockE": "no",
+    "on_top_blockU": "no",
+    "clear": "yes"
+}
+
+{
+    "ob_name":"blockE",
+    "ob_type":"block",
+    "on_table":"yes",
+    "on_top_blockO": "no",
+    "on_top_blockT": "no",
+    "on_top_blockN": "no",
+    "on_top_blockU": "no",
+    "clear": "yes"
+}
+
+{
+    "ob_name":"blockU",
+    "ob_type":"block",
+    "on_table":"yes",
+    "on_top_blockO": "no",
+    "on_top_blockT": "no",
+    "on_top_blockN": "no",
+    "on_top_blockE": "no",
+    "clear": "yes"
+}
+
+{
+    "ob_name":"hand_1",
+    "ob_type":"hand",
+    "is_holding":"no"
+}

@@ -1,0 +1,154 @@
+{
+    "ob_name":"blockT",
+    "ob_type":"block",
+    "on_table":{
+        "yes":0.999,
+        "no":0.0001
+    },
+    "on_top_blockN":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockO":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockE":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockU":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "clear":{
+        "yes":0.999,
+        "no":0.0001
+    }
+}
+
+{
+    "ob_name":"blockO",
+    "ob_type":"block",
+    "on_table":{
+        "yes":0.999,
+        "no":0.0001
+    },
+    "on_top_blockN":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockT":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockE":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockU":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "clear":{
+        "yes":0.999,
+        "no":0.0001
+    }
+}
+
+{
+    "ob_name":"blockN",
+    "ob_type":"block",
+    "on_table":{
+        "yes":0.999,
+        "no":0.0001
+    },
+    "on_top_blockO":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockT":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockE":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockU":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "clear":{
+        "yes":0.999,
+        "no":0.0001
+    }
+}
+
+{
+    "ob_name":"blockE",
+    "ob_type":"block",
+    "on_table":{
+        "yes":0.999,
+        "no":0.0001
+    },
+    "on_top_blockO":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockT":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockN":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockU":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "clear":{
+        "yes":0.999,
+        "no":0.0001
+    }
+}
+
+{
+    "ob_name":"blockU",
+    "ob_type":"block",
+    "on_table":{
+        "yes":0.999,
+        "no":0.0001
+    },
+    "on_top_blockO":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockT":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockE":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockN":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "clear":{
+        "yes":0.999,
+        "no":0.0001
+    }
+}
+
+{
+    "ob_name":"hand_1",
+    "ob_type":"hand",
+    "is_holding":{
+        "no":0.999,
+        "yes":0.001
+    }
+
+}

@@ -76,3 +76,14 @@ Include:
         
         the script that is used to compute the output accuracy
 
+
+## Block Domains Goal
+
+NOT, ON,TO
+goal: NOT, TOON
+goal: SNOT, TOON
+goal: SNOT, TOON, SHOT
+
+
+
+
