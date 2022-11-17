@@ -36,7 +36,7 @@
 
 {
     "type":"method",
-    "m_name":"stack_word_ONE", 
+    "m_name":"stack_word_TONE", 
     "precondition":[{
         "blockE":{
             "on_table":"yes"
@@ -46,16 +46,58 @@
         }, 
         "blockN":{
             "on_table":"yes"
+        },
+        "blockT":{
+            "on_table":"yes"
         }
     }],
     "subtasks":[{
+        "stack_word_TO": {
+            "pre":["stack_word_ON"],
+            "dec":[]
+        },
         "stack_word_NE":{
             "pre":[],
             "dec":["stack_word_ON"]
         },
         "stack_word_ON":{
             "pre":["stack_word_NE"],
+            "dec":["stack_word_TO"]
+        }
+    }],
+    "parent":[],
+    "start_action":["pick_up_blockN"]
+}
+
+{
+    "type":"method",
+    "m_name":"stack_word_TUNE", 
+    "precondition":[{
+        "blockE":{
+            "on_table":"yes"
+        },
+        "blockU":{
+            "on_table":"yes"
+        }, 
+        "blockN":{
+            "on_table":"yes"
+        },
+        "blockT":{
+            "on_table":"yes"
+        }
+    }],
+    "subtasks":[{
+        "stack_word_TU": {
+            "pre":["stack_word_UN"],
             "dec":[]
+        },
+        "stack_word_NE":{
+            "pre":[],
+            "dec":["stack_word_UN"]
+        },
+        "stack_word_UN":{
+            "pre":["stack_word_NE"],
+            "dec":["stack_word_TU"]
         }
     }],
     "parent":[],
@@ -103,7 +145,7 @@
             "dec":[]
         }
     }],
-    "parent":["stack_word_ONE"],
+    "parent":["stack_word_TONE"],
     "start_action":[]
 }
 
@@ -169,6 +211,72 @@
             "dec":[]
         }
     }],
-    "parent":["stack_word_ONE"],
+    "parent":["stack_word_TONE", "stack_word_TUNE"],
+    "start_action":[]
+}
+
+{
+    "type":"method",
+    "m_name":"stack_word_TO", 
+    "precondition":[{
+        "blockO":{
+            "clear":"yes"
+        }
+    }],
+    "subtasks":[{
+        "pick_up_blockT":{
+            "pre":[],
+            "dec":["put_down_TO"]
+        },
+        "put_down_TO":{
+            "pre":["pick_up_blockT"],
+            "dec":[]
+        }
+    }],
+    "parent":["stack_word_TONE", "stack_word_TUNE"],
+    "start_action":[]
+}
+
+{
+    "type":"method",
+    "m_name":"stack_word_TU", 
+    "precondition":[{
+        "blockU":{
+            "clear":"yes"
+        }
+    }],
+    "subtasks":[{
+        "pick_up_blockT":{
+            "pre":[],
+            "dec":["put_down_TU"]
+        },
+        "put_down_TU":{
+            "pre":["pick_up_blockT"],
+            "dec":[]
+        }
+    }],
+    "parent":["stack_word_TUNE"],
+    "start_action":[]
+}
+
+{
+    "type":"method",
+    "m_name":"stack_word_UN", 
+    "precondition":[{
+        "blockN":{
+            "clear":"yes"
+        }
+    }],
+    "subtasks":[{
+        "pick_up_blockU":{
+            "pre":[],
+            "dec":["put_down_UN"]
+        },
+        "put_down_UN":{
+            "pre":["pick_up_blockU"],
+            "dec":[]
+        }
+    }],
+    "parent":["stack_word_TUNE"],
     "start_action":[]
 }

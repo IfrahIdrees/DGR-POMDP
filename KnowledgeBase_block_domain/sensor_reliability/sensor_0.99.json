@@ -210,7 +210,35 @@
 
 {
     "ob_name":"hand_1",
-    "attri_name": "is_holding",
+    "attri_name": "is_holdingN",
+    "value":["no", 2],
+    "reliability":0.99
+}
+
+{
+    "ob_name":"hand_1",
+    "attri_name": "is_holdingO",
+    "value":["no", 2],
+    "reliability":0.99
+}
+
+{
+    "ob_name":"hand_1",
+    "attri_name": "is_holdingT",
+    "value":["no", 2],
+    "reliability":0.99
+}
+
+{
+    "ob_name":"hand_1",
+    "attri_name": "is_holdingE",
+    "value":["no", 2],
+    "reliability":0.99
+}
+
+{
+    "ob_name":"hand_1",
+    "attri_name": "is_holdingU",
     "value":["no", 2],
     "reliability":0.99
 }

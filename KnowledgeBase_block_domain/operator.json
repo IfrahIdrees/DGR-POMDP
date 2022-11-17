@@ -3,12 +3,12 @@
     "st_name":"pick_up_blockO",
     "precondition":{
         "hand_1":{
-            "is_holding": "no"
+            "is_holdingO": "no"
         }
     },
     "effect":{
         "hand_1":{
-            "is_holding": "yes"
+            "is_holdingO": "yes"
         }
     },
     "parent":["stack_word_OT", "stack_word_ON"]
@@ -16,15 +16,31 @@
 
 {
     "type":"step",
-    "st_name":"pick_up_blockT",
+    "st_name":"pick_up_blockU",
     "precondition":{
         "hand_1":{
-            "is_holding": "no"
+            "is_holdingU": "no"
         }
     },
     "effect":{
         "hand_1":{
-            "is_holding": "yes"
+            "is_holdingU": "yes"
+        }
+    },
+    "parent":["stack_word_UN"]
+}
+
+{
+    "type":"step",
+    "st_name":"pick_up_blockT",
+    "precondition":{
+        "hand_1":{
+            "is_holdingT": "no"
+        }
+    },
+    "effect":{
+        "hand_1":{
+            "is_holdingT": "yes"
         }
     },
     "parent":["stack_word_TE"]
@@ -35,12 +51,12 @@
     "st_name":"pick_up_blockN",
     "precondition":{
         "hand_1":{
-            "is_holding": "no"
+            "is_holdingN": "no"
         }
     },
     "effect":{
         "hand_1":{
-            "is_holding": "yes"
+            "is_holdingN": "yes"
         }
     },
     "parent":["stack_word_NO", "stack_word_NE"]
@@ -54,7 +70,7 @@
             "clear": "yes"
         },
         "hand_1":{
-            "is_holding": "yes"
+            "is_holdingO": "yes"
         }
     },
     "effect":{
@@ -63,20 +79,43 @@
             "on_top_blockO": "yes"
         },
         "hand_1":{
-            "is_holding": "no"
+            "is_holdingO": "no"
         }
     },
     "parent":["stack_word_OT"]
 
 }
 
+{
+    "type":"step",
+    "st_name":"put_down_UN",
+    "precondition":{
+        "blockN":{
+            "clear": "yes"
+        },
+        "hand_1":{
+            "is_holdingU": "yes"
+        }
+    },
+    "effect":{
+        "blockN":{
+            "clear": "no",
+            "on_top_blockU": "yes"
+        },
+        "hand_1":{
+            "is_holdingU": "no"
+        }
+    },
+    "parent":["stack_word_UN"]
+
+}
 
 {
     "type":"step",
     "st_name":"put_down_TE",
     "precondition":{
         "hand_1":{
-            "is_holding": "yes"
+            "is_holdingT": "yes"
         },
         "blockE":{
             "clear":"yes"
@@ -88,7 +127,7 @@
             "on_top_blockT": "yes"
         },
         "hand_1":{
-            "is_holding": "no"
+            "is_holdingT": "no"
         }
     },
     "parent":["stack_word_TE"]
@@ -97,10 +136,34 @@
 
 {
     "type":"step",
+    "st_name":"put_down_TU",
+    "precondition":{
+        "hand_1":{
+            "is_holdingT": "yes"
+        },
+        "blockU":{
+            "clear":"yes"
+        }
+    },
+    "effect":{
+        "blockU":{
+            "clear": "no",
+            "on_top_blockT": "yes"
+        },
+        "hand_1":{
+            "is_holdingT": "no"
+        }
+    },
+    "parent":["stack_word_TU"]
+
+}
+
+{
+    "type":"step",
     "st_name":"put_down_NE",
     "precondition":{
         "hand_1":{
-            "is_holding": "yes"
+            "is_holdingN": "yes"
         },
         "blockE":{
             "clear":"yes"
@@ -112,7 +175,7 @@
             "on_top_blockN": "yes"
         },
         "hand_1":{
-            "is_holding": "no"
+            "is_holdingN": "no"
         }
     },
     "parent":["stack_word_NE"]
@@ -124,7 +187,7 @@
     "st_name":"put_down_NO",
     "precondition":{
         "hand_1":{
-            "is_holding": "yes"
+            "is_holdingN": "yes"
         },
         "blockO":{
             "clear":"yes"
@@ -136,7 +199,7 @@
             "on_top_blockN": "yes"
         },
         "hand_1":{
-            "is_holding": "no"
+            "is_holdingN": "no"
         }
     },
     "parent":["stack_word_NO"]
@@ -151,7 +214,7 @@
             "clear": "yes"
         },
         "hand_1":{
-            "is_holding": "yes"
+            "is_holdingO": "yes"
         }
     },
     "effect":{
@@ -160,10 +223,34 @@
             "on_top_blockO": "yes"
         },
         "hand_1":{
-            "is_holding": "no"
+            "is_holdingO": "no"
         }
     },
     "parent":["stack_word_ON"]
+
+}
+
+{
+    "type":"step",
+    "st_name":"put_down_TO",
+    "precondition":{
+        "hand_1":{
+            "is_holdingT": "yes"
+        },
+        "blockO":{
+            "clear":"yes"
+        }
+    },
+    "effect":{
+        "blockO":{
+            "clear": "no",
+            "on_top_blockT": "yes"
+        },
+        "hand_1":{
+            "is_holdingT": "no"
+        }
+    },
+    "parent":["stack_word_TO"]
 
 }
 

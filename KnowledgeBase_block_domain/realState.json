@@ -56,5 +56,9 @@
 {
     "ob_name":"hand_1",
     "ob_type":"hand",
-    "is_holding":"no"
+    "is_holdingN":"no",
+    "is_holdingO":"no",
+    "is_holdingT":"no",
+    "is_holdingE":"no",
+    "is_holdingU":"no"
 }

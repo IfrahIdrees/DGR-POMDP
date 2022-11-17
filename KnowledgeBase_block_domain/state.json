@@ -146,9 +146,24 @@
 {
     "ob_name":"hand_1",
     "ob_type":"hand",
-    "is_holding":{
+    "is_holdingN":{
+        "no":0.999,
+        "yes":0.001
+    },
+    "is_holdingO":{
+        "no":0.999,
+        "yes":0.001
+    },
+    "is_holdingT":{
+        "no":0.999,
+        "yes":0.001
+    },
+    "is_holdingE":{
+        "no":0.999,
+        "yes":0.001
+    },
+    "is_holdingU":{
         "no":0.999,
         "yes":0.001
     }
-
 }
