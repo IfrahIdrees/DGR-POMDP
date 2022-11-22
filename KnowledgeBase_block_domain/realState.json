@@ -6,6 +6,19 @@
     "on_top_blockO": "no",
     "on_top_blockE": "no",
     "on_top_blockU": "no",
+    "on_top_blockR": "no",
+    "clear": "yes"
+}
+
+{
+    "ob_name":"blockR",
+    "ob_type":"block",
+    "on_table":"yes",
+    "on_top_blockN": "no",
+    "on_top_blockO": "no",
+    "on_top_blockE": "no",
+    "on_top_blockU": "no",
+    "on_top_blockT": "no",
     "clear": "yes"
 }
 
@@ -17,6 +30,7 @@
     "on_top_blockT": "no",
     "on_top_blockE": "no",
     "on_top_blockU": "no",
+    "on_top_blockR": "no",
     "clear": "yes"
 }
 
@@ -28,6 +42,7 @@
     "on_top_blockT": "no",
     "on_top_blockE": "no",
     "on_top_blockU": "no",
+    "on_top_blockR": "no",
     "clear": "yes"
 }
 
@@ -39,6 +54,7 @@
     "on_top_blockT": "no",
     "on_top_blockN": "no",
     "on_top_blockU": "no",
+    "on_top_blockR": "no",
     "clear": "yes"
 }
 
@@ -50,6 +66,7 @@
     "on_top_blockT": "no",
     "on_top_blockN": "no",
     "on_top_blockE": "no",
+    "on_top_blockR": "no",
     "clear": "yes"
 }
 
@@ -60,5 +77,6 @@
     "is_holdingO":"no",
     "is_holdingT":"no",
     "is_holdingE":"no",
-    "is_holdingU":"no"
+    "is_holdingU":"no",
+    "is_holdingR":"no"
 }

@@ -59,7 +59,23 @@
             "is_holdingN": "yes"
         }
     },
-    "parent":["stack_word_NO", "stack_word_NE"]
+    "parent":["stack_word_NE"]
+}
+
+{
+    "type":"step",
+    "st_name":"pick_up_blockR",
+    "precondition":{
+        "hand_1":{
+            "is_holdingR": "no"
+        }
+    },
+    "effect":{
+        "hand_1":{
+            "is_holdingR": "yes"
+        }
+    },
+    "parent":["stack_word_RO"]
 }
 
 {
@@ -184,10 +200,10 @@
 
 {
     "type":"step",
-    "st_name":"put_down_NO",
+    "st_name":"put_down_RO",
     "precondition":{
         "hand_1":{
-            "is_holdingN": "yes"
+            "is_holdingR": "yes"
         },
         "blockO":{
             "clear":"yes"
@@ -196,13 +212,13 @@
     "effect":{
         "blockO":{
             "clear": "no",
-            "on_top_blockN": "yes"
+            "on_top_blockR": "yes"
         },
         "hand_1":{
-            "is_holdingN": "no"
+            "is_holdingR": "no"
         }
     },
-    "parent":["stack_word_NO"]
+    "parent":["stack_word_RO"]
 
 }
 

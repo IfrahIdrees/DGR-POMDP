@@ -1,6 +1,6 @@
 {
     "type":"method",
-    "m_name":"stack_word_NOTE", 
+    "m_name":"stack_word_ROTE", 
     "precondition":[{
         "blockT":{
             "on_table":"yes"
@@ -8,7 +8,7 @@
         "blockO":{
             "on_table":"yes"
         }, 
-        "blockN":{
+        "blockR":{
             "on_table":"yes"
         },
         "blockE":{
@@ -22,9 +22,9 @@
         },
         "stack_word_OT":{
             "pre":["stack_word_TE"],
-            "dec":["stack_word_NO"]
+            "dec":["stack_word_RO"]
         },
-        "stack_word_NO":{
+        "stack_word_RO":{
             "pre":["stack_word_OT"],
             "dec":[]
         }
@@ -122,7 +122,7 @@
             "dec":[]
         }
     }],
-    "parent":["stack_word_NOTE"],
+    "parent":["stack_word_ROTE"],
     "start_action":[]
 }
 
@@ -151,23 +151,23 @@
 
 {
     "type":"method",
-    "m_name":"stack_word_NO", 
+    "m_name":"stack_word_RO", 
     "precondition":[{
         "blockO":{
             "clear":"yes"
         }
     }],
     "subtasks":[{
-        "pick_up_blockN":{
+        "pick_up_blockR":{
             "pre":[],
-            "dec":["put_down_NO"]
+            "dec":["put_down_RO"]
         },
-        "put_down_NO":{
-            "pre":["pick_up_blockN"],
+        "put_down_RO":{
+            "pre":["pick_up_blockR"],
             "dec":[]
         }
     }],
-    "parent":["stack_word_NOTE"],
+    "parent":["stack_word_ROTE"],
     "start_action":[]
 }
 
@@ -189,7 +189,7 @@
             "dec":[]
         }
     }],
-    "parent":["stack_word_NOTE"],
+    "parent":["stack_word_ROTE"],
     "start_action":[]
 }
 

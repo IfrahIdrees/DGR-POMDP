@@ -26,7 +26,8 @@ class TaskHint(object):
         #self.step_dict = set(['use_soap', 'rinse_hand', 'turn_on_faucet_1', 'turn_off_faucet_1', 'dry_hand', 'switch_on_kettle_1', 'switch_off_kettle_1', 'add_water_kettle_1', 'get_cup_1', 'open_tea_box_1', 'add_tea_cup_1', 'close_tea_box_1', 'add_water_cup_1', 'open_coffee_box_1', 'add_coffee_cup_1', 'close_coffee_box_1', 'drink'])
         self.step_dict = set([
             "pick_up_blockN",
-            "put_down_NO",
+            "pick_up_blockR",
+            "put_down_RO",
             "pick_up_blockO",
             "put_down_OT",
             "put_down_ON",
@@ -95,12 +96,12 @@ class TaskHint(object):
         # with open(self._output_file_name, 'a') as f:
         #     f.write(str(wash_hand) + "\t" + str(make_tea) + "\t" + str(make_coffee) + "\t" + str(step_level_hint) + "\t")
         
-        stack_word_NOTE = 0.0
+        stack_word_ROTE = 0.0
         stack_word_TONE = 0.0
         stack_word_TUNE = 0.0
 
-        if 'stack_word_NOTE' in self.prompt_task:
-            stack_word_NOTE = round(self.prompt_task['stack_word_NOTE'][0], 8)
+        if 'stack_word_ROTE' in self.prompt_task:
+            stack_word_ROTE = round(self.prompt_task['stack_word_ROTE'][0], 8)
         if 'stack_word_TONE' in self.prompt_task:
             stack_word_TONE = round(self.prompt_task['stack_word_TONE'][0], 8)
         if 'stack_word_TUNE' in self.prompt_task:
@@ -109,7 +110,7 @@ class TaskHint(object):
         #goal_recog_prob = str(wash_hand) + "\t" + str(make_tea) + "\t" + str(make_coffee) + "\t" + str(step_level_hint) + "\t"
         #goal_recog_prob = str(stack_word_NOT) + "\t" + str(stack_word_ON)
         with open(self._output_file_name, 'a') as f:
-            f.write(str(stack_word_NOTE) + "\t" + str(stack_word_TONE) + "\t" + str(stack_word_TUNE) + "\t" + str(step_level_hint) + "\t")
+            f.write(str(stack_word_ROTE) + "\t" + str(stack_word_TONE) + "\t" + str(stack_word_TUNE) + "\t" + str(step_level_hint) + "\t")
         
 
 
