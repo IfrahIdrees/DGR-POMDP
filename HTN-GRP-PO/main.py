@@ -10,7 +10,6 @@ Research sponsored by AGEWELL Networks of Centers of Excellence (NCE).
 
 
 from os.path import exists
-import numpy as np
 from tracking_engine import *
 import config
 import os
@@ -61,7 +60,7 @@ if __name__ == '__main__':
 
     # file_nums = [1,2,3,5,7,9,10]
     # for file_num in file_nums:
-    for other_happen in np.arange(other_happens[0], other_happens[1], 0.005):
+    for other_happen in config.np.arange(other_happens[0], other_happens[1], 0.005):
         output_folder_name = "otherhappen_" + str(other_happen) + "/"
         if not exists(output_folder_name):
             os.mkdir(output_folder_name)
@@ -74,7 +73,7 @@ if __name__ == '__main__':
 
         # file_nums = [9]
         # for file_num in file_nums:
-        for file_num in range(6, 7):
+        for file_num in range(1, 7):
             if file_num == 4:
                 continue
             for x in sensor_reliability:
@@ -96,7 +95,16 @@ if __name__ == '__main__':
                     if config.RANDOM_BASELINE:
                         with open("debugrandom_no.txt", 'a') as f:
                             f.write(
-                                "************case:" +
+                                "\n************case:" +
+                                str(file_num) +
+                                "-" +
+                                str(x) +
+                                "-" +
+                                str(repeat))
+
+                        with open("mcts_debugrandom_no.txt", 'a') as f:
+                            f.write(
+                                "\n************case:" +
                                 str(file_num) +
                                 "-" +
                                 str(x) +
@@ -105,7 +113,16 @@ if __name__ == '__main__':
                     else:
                         with open("random_no.txt", 'a') as f:
                             f.write(
-                                "************case:" +
+                                "\n************case:" +
+                                str(file_num) +
+                                "-" +
+                                str(x) +
+                                "-" +
+                                str(repeat))
+
+                        with open("mcts_random_no.txt", 'a') as f:
+                            f.write(
+                                "\n************case:" +
                                 str(file_num) +
                                 "-" +
                                 str(x) +
@@ -115,6 +132,7 @@ if __name__ == '__main__':
                         # config.seed = 5999
                         config.randomIndex = 0
                         config.randomIndex = 48
+                        config.realRandomIndex = 48
                         # config.randomIndex = 321
 
                     db.method.drop()
@@ -122,6 +140,8 @@ if __name__ == '__main__':
                     db.operator.drop()
                     db.sensor.drop()
                     db.Rstate.drop()
+                    db.backup_state.drop()
+                    db.backup_sensor.drop()
                     sensor_command = ""
 
                     # Some times those command do not work, add "--jsonArray"
@@ -185,10 +205,21 @@ if __name__ == '__main__':
                         otherHappen=other_happen,
                         file_name=input_file_name,
                         output_file_name=output_file_name,
-                        output_folder_name=output_folder_name)
+                        output_folder_name=output_folder_name,
+                        trial=repeat)
                     tracking_engine.start()
 
                 print("I am good until now")
+
+                with open('config_info.csv', 'a', newline='') as csvfile:
+                    spamwriter = csv.writer(
+                        csvfile,
+                        delimiter=',',
+                        quotechar='|',
+                        quoting=csv.QUOTE_MINIMAL)
+                    # spamwriter.writerow(['Spam'] * 5 + ['Baked Beans'])
+                    spamwriter.writerow([file_num, str(x), str(
+                        repeat), config.randomIndex, config.realRandomIndex])
 
 else:
     print('I am being imported')

@@ -12,6 +12,7 @@ Research sponsored by AGEWELL Networks of Centers of Excellence (NCE).
 ####                    Also refer to "Interface specification part II"                            ####
 ##########################################################################
 
+# import numpy as np
 import math
 from CareGiver import *
 from SensorCheck import *
@@ -20,9 +21,12 @@ from helper import *
 from Explanation import *
 from database import *
 from collections import deque
+from collections import defaultdict
 import copy
 import sys
 sys.dont_write_bytecode = True
+# np.random.seed(10)
+from config import *
 # from __future__ import print_function  # Only needed for Python 2
 
 db = DB_Object()
@@ -178,7 +182,7 @@ class explaSet(object):
     # Also refer to "Step recognition.md"
     ##########################################################################
 
-    def action_posterior(self):
+    def action_posterior(self, real_step = True, mcts_filename = None):
         self._action_posterior_prob = {}
         otherHappen = 1
         for expla in self._explaset:
@@ -244,8 +248,12 @@ class explaSet(object):
 
         # variance = max(self._prior.values())-min(self._prior.values()) #added to correct 10 plans 10 plans wrong but other happen not called
         # otherHappen = otherHappen*variance
-        with open(self._output_file_name, 'a') as f:
-            f.write(str(round(otherHappen, 4)) + "\t")
+        if not real_step:
+            with open(mcts_filename, 'a') as f:
+                f.write(str(round(otherHappen, 4)) + "\t")
+        else:
+            with open(self._output_file_name, 'a') as f:
+                f.write(str(round(otherHappen, 4)) + "\t")
         return otherHappen
 
     # version begin from March 14, 2017
@@ -444,11 +452,23 @@ class explaSet(object):
     # based on the current tree structure and belief state
     ##########################################################################
 
-    def pendingset_generate(self):
+    def pendingset_generate(self, inverse_pending_set=None):
+        aggregate_pending_set = np.zeros(shape=(1, 2))
         self.normalize()
+        index = 0
         for expla in self._explaset:
-            expla.create_pendingSet()
-
+            pending_set = expla.create_pendingSet()
+            pending_set = np.asarray(pending_set)
+            if isinstance(inverse_pending_set, defaultdict):
+                for pending_action in pending_set:
+                    inverse_pending_set[pending_action[0]].append(index)
+            aggregate_pending_set = np.vstack(
+                [aggregate_pending_set, pending_set])
+            # aggregate_pending_set[index] =  np.vstack([aggregate_pending_set,pending_set])
+            index += 1
+            # aggregate_pending_set.append(pending_set)
+        aggregate_pending_set = np.delete(aggregate_pending_set, 0, 0)
+        return aggregate_pending_set, inverse_pending_set
     ##########################################################################
     # Part VI
     # Calculate the probability of each node in the explanation

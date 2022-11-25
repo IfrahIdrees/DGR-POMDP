@@ -20,6 +20,8 @@ from Simulator import *
 import config
 import csv
 from pathlib import Path
+from monte_carlo_tree_search import *
+from dialogue_policy import *
 
 
 class Tracking_Engine(object):
@@ -34,7 +36,8 @@ class Tracking_Engine(object):
             otherHappen=0.75,
             file_name="Case1",
             output_file_name="Case1.txt",
-            output_folder_name="otherhappen_0.75/"):
+            output_folder_name="otherhappen_0.75/",
+            trial=0):
         self._no_trigger = no_trigger
         self._sleep_interval = sleep_interval
         self._cond_satisfy = cond_satisfy
@@ -64,11 +67,12 @@ class Tracking_Engine(object):
             'add_coffee_cup_1',
             'close_coffee_box_1',
             'drink']
-        output_case_file_name = output_file_name.split("/")[1]
+        self.output_case_file_name = output_file_name.split("/")[1]
         self.reward_csv_filename = Path(
             self._output_folder_name +
             "Reward_" +
-            output_case_file_name).with_suffix('.csv')
+            self.output_case_file_name).with_suffix('.csv')
+        self.trial = trial
 
     def start(self):
         print
@@ -83,6 +87,16 @@ class Tracking_Engine(object):
             non_happen=self._non_happen,
             output_file_name=self._output_file_name)
         exp.explaInitialize()
+        monte_carlo_tree = MCTS(
+            self._output_folder_name,
+            self.output_case_file_name,
+            db=db,
+            trial=self.trial)
+        agent_state = AgentState(
+            exp,
+            terminal=False,
+            action_node=False,
+            step_index=0)
 
         # always iterate
         step_index = 0
@@ -99,7 +113,8 @@ class Tracking_Engine(object):
             else:
                 if step != "none":
                     sensor_notification = copy.deepcopy(
-                        realStateANDSensorUpdate(step, self._output_file_name))
+                        realStateANDSensorUpdate(
+                            step, self._output_file_name, real_step=True))
 
                     exp.setSensorNotification(sensor_notification)
 
@@ -108,8 +123,39 @@ class Tracking_Engine(object):
                 otherHappen = exp.action_posterior()
 
                 # robot plans dialogue action
+                pipeline = [{"$match": {}},
+                            {"$out": "backup_state"},
+                            ]
 
-                # wrong step detect
+                db._state.aggregate(pipeline)
+                # db._backup_state = self.db_client.backup_state
+
+                pipeline = [{"$match": {}},
+                            {"$out": "backup_sensor"},
+                            ]
+                db._sensor.aggregate(pipeline)
+
+                real_exp = copy.deepcopy(exp)
+
+                if not notif._notif.empty():
+                    agent_state = AgentState(
+                        exp, terminal=False, action_node=False, step_index=step_index)
+                    monte_carlo_tree.rollout_loop(agent_state, step)
+
+                # agent_state.simulate(monte_carlo_tree)
+
+                '''Restoring the state for next iteration, env variable in HTNcoachproblem should be reset'''
+                exp = real_exp
+                pipeline = [{"$match": {}},
+                            {"$out": "state"},
+                            ]
+                db._backup_state.aggregate(pipeline)
+
+                pipeline = [{"$match": {}},
+                            {"$out": "sensor"},
+                            ]
+                db._backup_sensor.aggregate(pipeline)
+
                 if otherHappen > self._other_happen:
                     # if otherHappen:
                     # wrong step handling

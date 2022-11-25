@@ -46,6 +46,8 @@ class DB_Object(object):
         self._state = db.state
         self._sensor = db.sensor
         self._Rstate = db.Rstate
+        self._backup_state = db.backup_state
+        self._backup_sensor = db.backup_sensor
 
     ##########################################################################
     ####                        method related functions                            ####
@@ -74,6 +76,9 @@ class DB_Object(object):
 
     # Find and return the specific action
     def get_operator(self, op_name):
+        # print("operator name in database.py: ",op_name)
+        # if op_name == "nothing":
+        # return []
         op = list(self._operator.find({"st_name": op_name}))
         return op[0]
     '''
@@ -181,7 +186,7 @@ class DB_Object(object):
     # the returned "label" tells if the sensor state is updated.
     # "False": No, "True": Yes
 
-    def update_sensor_value(self, ob_name, attri_name, value):
+    def update_sensor_value(self, ob_name, attri_name, value, real_step=True):
         label = False
         sensor = list(self._sensor.find(
             {"ob_name": ob_name, "attri_name": attri_name}))
@@ -197,25 +202,56 @@ class DB_Object(object):
             return label
         else:
             sensor = sensor[0]
-            randomN = config.randomNs[config.randomIndex]
+            # randomN = config.randomNs[config.randomIndex]
 
-            if config.RANDOM_BASELINE:
-                with open("debugrandom_no.txt", 'a') as f:
-                    f.write(ob_name + "-" + attri_name + "-" +
-                            "index" + str(config.randomIndex) +
-                            str(randomN) +
-                            '\n')
+            if real_step:
+                randomN = config.randomNs[config.realRandomIndex]
+
+                if config.RANDOM_BASELINE:
+                    with open("debugrandom_no.txt", 'a') as f:
+                        f.write("******** REAL ********* - " +
+                                ob_name +
+                                "-" +
+                                attri_name +
+                                "-" +
+                                "index - " +
+                                str(config.randomIndex) +
+                                str(randomN) +
+                                '\n')
+                else:
+                    with open("random_no.txt", 'a') as f:
+                        f.write("******** REAL ********* - " +
+                                ob_name +
+                                "-" +
+                                attri_name +
+                                "-" +
+                                "index - " +
+                                str(config.randomIndex) +
+                                str(randomN) +
+                                '\n')
+
+                config.realRandomIndex += 1
             else:
-                with open("random_no.txt", 'a') as f:
-                    f.write(ob_name + "-" + attri_name + "-" +
-                            "index" + str(config.randomIndex) +
-                            str(randomN) +
-                            '\n')
+                randomN = config.randomNs[config.randomIndex]
+                if config.RANDOM_BASELINE:
+                    with open("mcts_debugrandom_no.txt", 'a') as f:
+                        f.write(ob_name + "-" + attri_name + "-" +
+                                "index" + str(config.randomIndex) +
+                                str(randomN) +
+                                '\n')
+                else:
+                    with open("mcts_random_no.txt", 'a') as f:
+                        f.write(ob_name + "-" + attri_name + "-" +
+                                "index" + str(config.randomIndex) +
+                                str(randomN) +
+                                '\n')
+                config.randomIndex += 1
+
             # with open("random_no.txt", 'a') as f:
                 # f.write(ob_name+"-"+attri_name+
                 #     str(randomN) +
                 #     '\n')
-            config.randomIndex += 1
+            # config.randomIndex += 1
 
             if(randomN <= sensor["reliability"]):
                 label = True
