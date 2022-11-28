@@ -1,0 +1,335 @@
+{
+    "ob_name":"blockT",
+    "attri_name":"on_table",
+    "value":["yes", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockT",
+    "attri_name":"on_top_blockN",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockT",
+    "attri_name":"on_top_blockO",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockT",
+    "attri_name":"on_top_blockU",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockT",
+    "attri_name":"on_top_blockE",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockT",
+    "attri_name":"on_top_blockR",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockT",
+    "attri_name":"clear",
+    "value":["yes", 2],
+    "reliability":0.90
+}  
+
+{
+    "ob_name":"blockO",
+    "attri_name":"on_table",
+    "value":["yes", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockO",
+    "attri_name":"on_top_blockN",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockO",
+    "attri_name":"on_top_blockT",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockO",
+    "attri_name":"on_top_blockE",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockO",
+    "attri_name":"on_top_blockU",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockO",
+    "attri_name":"on_top_blockR",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockO",
+    "attri_name":"clear",
+    "value":["yes", 2],
+    "reliability":0.90
+}  
+
+{
+    "ob_name":"blockN",
+    "attri_name":"on_table",
+    "value":["yes", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockN",
+    "attri_name":"on_top_blockT",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockN",
+    "attri_name":"on_top_blockO",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockN",
+    "attri_name":"on_top_blockU",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockN",
+    "attri_name":"on_top_blockR",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockN",
+    "attri_name":"on_top_blockE",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockN",
+    "attri_name":"clear",
+    "value":["yes", 2],
+    "reliability":0.90
+}  
+
+{
+    "ob_name":"blockE",
+    "attri_name":"on_table",
+    "value":["yes", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockE",
+    "attri_name":"on_top_blockN",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockE",
+    "attri_name":"on_top_blockT",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockE",
+    "attri_name":"on_top_blockO",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockE",
+    "attri_name":"on_top_blockU",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockE",
+    "attri_name":"on_top_blockR",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockE",
+    "attri_name":"clear",
+    "value":["yes", 2],
+    "reliability":0.90
+}  
+
+{
+    "ob_name":"blockU",
+    "attri_name":"on_table",
+    "value":["yes", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockU",
+    "attri_name":"on_top_blockN",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockU",
+    "attri_name":"on_top_blockT",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockU",
+    "attri_name":"on_top_blockE",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockU",
+    "attri_name":"on_top_blockO",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockU",
+    "attri_name":"on_top_blockR",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockU",
+    "attri_name":"clear",
+    "value":["yes", 2],
+    "reliability":0.90
+}  
+
+{
+    "ob_name":"blockR",
+    "attri_name":"on_table",
+    "value":["yes", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockR",
+    "attri_name":"on_top_blockN",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockR",
+    "attri_name":"on_top_blockT",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockR",
+    "attri_name":"on_top_blockE",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockR",
+    "attri_name":"on_top_blockO",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockR",
+    "attri_name":"on_top_blockE",
+    "value":["no", 2],
+    "reliability":0.90
+}   
+
+{
+    "ob_name":"blockR",
+    "attri_name":"clear",
+    "value":["yes", 2],
+    "reliability":0.90
+}  
+
+{
+    "ob_name":"hand_1",
+    "attri_name": "is_holdingN",
+    "value":["no", 2],
+    "reliability":0.90
+}
+
+{
+    "ob_name":"hand_1",
+    "attri_name": "is_holdingO",
+    "value":["no", 2],
+    "reliability":0.90
+}
+
+{
+    "ob_name":"hand_1",
+    "attri_name": "is_holdingT",
+    "value":["no", 2],
+    "reliability":0.90
+}
+
+{
+    "ob_name":"hand_1",
+    "attri_name": "is_holdingE",
+    "value":["no", 2],
+    "reliability":0.90
+}
+
+{
+    "ob_name":"hand_1",
+    "attri_name": "is_holdingU",
+    "value":["no", 2],
+    "reliability":0.90
+}
+
+{
+    "ob_name":"hand_1",
+    "attri_name": "is_holdingR",
+    "value":["no", 2],
+    "reliability":0.90
+}

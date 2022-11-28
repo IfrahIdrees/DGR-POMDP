@@ -11,8 +11,9 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
-            "cwd": "/Users/naveen/h2r/DGR-POMDP/HTN-GRP-PO"
-            "python.defaultInterpreterPath": "/Users/naveen/h2r/h2r_env/bin/python"
+            "cwd": "${fileDirname}",
+            // "cwd": "/Users/naveen/h2r/DGR-POMDP/HTN-GRP-PO"
+            // "python.defaultInterpreterPath": "/Users/naveen/h2r/h2r_env/bin/python"
         }
     ]
 }

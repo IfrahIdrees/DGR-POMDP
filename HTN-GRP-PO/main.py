@@ -51,8 +51,11 @@ if __name__ == '__main__':
     other_happens = [0.76, 0.765]  # 0.75 #0.68 try 0.78 next
 
     # sensor set up files
+    # sensor_reliability = [0.99, 0.95, 0.9, 0.8]
+    sensor_reliability = [0.99, 0.95, 0.9, 0.8, 0.75]
     sensor_reliability = [0.99]
-    trials = 4
+
+    trials = 10
     config.seed = 5999
     config.trials = trials
     random.seed(config.seed)

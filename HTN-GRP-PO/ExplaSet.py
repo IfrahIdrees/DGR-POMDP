@@ -65,7 +65,8 @@ class explaSet(object):
         return len(self._explaset)
 
     def get(self, index):
-        return self._explaset[len(self._explaset) - index]
+        # return self._explaset[len(self._explaset) - index]
+        return self._explaset[index]
 
     def setSensorNotification(self, sensor_notification):
         self._sensor_notification = copy.deepcopy(sensor_notification)
@@ -397,7 +398,9 @@ class explaSet(object):
     def explaSet_expand_part1(self, length):
 
         for i in range(length):
-            x = self.get(i + 1)
+            # x = self.get(i + 1)
+            x = self.get(i)
+            # print("here")
             # print("action posterior after bayseian inference is",  self._action_posterior_prob)
             for action in self._action_posterior_prob:
                 # case1: nothing happened: update the prob of the
