@@ -270,3 +270,122 @@
 
 }
 
+{
+    "type":"step",
+    "st_name":"pick_up_blockW",
+    "precondition":{
+        "hand_1":{
+            "is_holdingW": "no"
+        }
+    },
+    "effect":{
+        "hand_1":{
+            "is_holdingW": "yes"
+        }
+    },
+    "parent":["stack_word_WK"]
+}
+
+{
+    "type":"step",
+    "st_name":"pick_up_blockA",
+    "precondition":{
+        "hand_1":{
+            "is_holdingA": "no"
+        }
+    },
+    "effect":{
+        "hand_1":{
+            "is_holdingA": "yes"
+        }
+    },
+    "parent":["stack_word_AW"]
+}
+
+{
+    "type":"step",
+    "st_name":"pick_up_blockH",
+    "precondition":{
+        "hand_1":{
+            "is_holdingH": "no"
+        }
+    },
+    "effect":{
+        "hand_1":{
+            "is_holdingH": "yes"
+        }
+    },
+    "parent":["stack_word_HA"]
+}
+
+{
+    "type":"step",
+    "st_name":"put_down_WK",
+    "precondition":{
+        "blockK":{
+            "clear": "yes"
+        },
+        "hand_1":{
+            "is_holdingW": "yes"
+        }
+    },
+    "effect":{
+        "blockK":{
+            "clear": "no",
+            "on_top_blockW": "yes"
+        },
+        "hand_1":{
+            "is_holdingW": "no"
+        }
+    },
+    "parent":["stack_word_WK"]
+
+}
+
+{
+    "type":"step",
+    "st_name":"put_down_AW",
+    "precondition":{
+        "blockW":{
+            "clear": "yes"
+        },
+        "hand_1":{
+            "is_holdingA": "yes"
+        }
+    },
+    "effect":{
+        "blockW":{
+            "clear": "no",
+            "on_top_blockA": "yes"
+        },
+        "hand_1":{
+            "is_holdingA": "no"
+        }
+    },
+    "parent":["stack_word_AW"]
+
+}
+
+{
+    "type":"step",
+    "st_name":"put_down_HA",
+    "precondition":{
+        "blockA":{
+            "clear": "yes"
+        },
+        "hand_1":{
+            "is_holdingH": "yes"
+        }
+    },
+    "effect":{
+        "blockA":{
+            "clear": "no",
+            "on_top_blockH": "yes"
+        },
+        "hand_1":{
+            "is_holdingH": "no"
+        }
+    },
+    "parent":["stack_word_HA"]
+
+}

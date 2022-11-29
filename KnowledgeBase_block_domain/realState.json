@@ -78,5 +78,49 @@
     "is_holdingT":"no",
     "is_holdingE":"no",
     "is_holdingU":"no",
-    "is_holdingR":"no"
+    "is_holdingR":"no",
+    "is_holdingH":"no",
+    "is_holdingA":"no",
+    "is_holdingW":"no",
+    "is_holdingK":"no"
+}
+
+{
+    "ob_name":"blockH",
+    "ob_type":"block",
+    "on_table":"yes",
+    "on_top_blockA": "no",
+    "on_top_blockW": "no",
+    "on_top_blockK": "no",
+    "clear": "yes"
+}
+
+{
+    "ob_name":"blockA",
+    "ob_type":"block",
+    "on_table":"yes",
+    "on_top_blockH": "no",
+    "on_top_blockW": "no",
+    "on_top_blockK": "no",
+    "clear": "yes"
+}
+
+{
+    "ob_name":"blockW",
+    "ob_type":"block",
+    "on_table":"yes",
+    "on_top_blockA": "no",
+    "on_top_blockH": "no",
+    "on_top_blockK": "no",
+    "clear": "yes"
+}
+
+{
+    "ob_name":"blockK",
+    "ob_type":"block",
+    "on_table":"yes",
+    "on_top_blockA": "no",
+    "on_top_blockW": "no",
+    "on_top_blockH": "no",
+    "clear": "yes"
 }

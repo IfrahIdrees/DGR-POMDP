@@ -333,3 +333,171 @@
     "value":["no", 2],
     "reliability":0.99
 }
+
+{
+    "ob_name":"blockH",
+    "attri_name":"on_table",
+    "value":["yes", 2],
+    "reliability":0.99
+}   
+
+{
+    "ob_name":"blockH",
+    "attri_name":"on_top_blockW",
+    "value":["no", 2],
+    "reliability":0.99
+}   
+
+{
+    "ob_name":"blockH",
+    "attri_name":"on_top_blockA",
+    "value":["no", 2],
+    "reliability":0.99
+}   
+
+{
+    "ob_name":"blockH",
+    "attri_name":"on_top_blockK",
+    "value":["no", 2],
+    "reliability":0.99
+}   
+
+{
+    "ob_name":"blockH",
+    "attri_name":"clear",
+    "value":["yes", 2],
+    "reliability":0.99
+}  
+
+{
+    "ob_name":"blockA",
+    "attri_name":"on_table",
+    "value":["yes", 2],
+    "reliability":0.99
+}   
+
+{
+    "ob_name":"blockA",
+    "attri_name":"on_top_blockW",
+    "value":["no", 2],
+    "reliability":0.99
+}   
+
+{
+    "ob_name":"blockA",
+    "attri_name":"on_top_blockH",
+    "value":["no", 2],
+    "reliability":0.99
+}   
+
+{
+    "ob_name":"blockA",
+    "attri_name":"on_top_blockK",
+    "value":["no", 2],
+    "reliability":0.99
+}   
+
+{
+    "ob_name":"blockA",
+    "attri_name":"clear",
+    "value":["yes", 2],
+    "reliability":0.99
+}  
+
+{
+    "ob_name":"blockW",
+    "attri_name":"on_table",
+    "value":["yes", 2],
+    "reliability":0.99
+}   
+
+{
+    "ob_name":"blockW",
+    "attri_name":"on_top_blockH",
+    "value":["no", 2],
+    "reliability":0.99
+}   
+
+{
+    "ob_name":"blockW",
+    "attri_name":"on_top_blockA",
+    "value":["no", 2],
+    "reliability":0.99
+}   
+
+{
+    "ob_name":"blockW",
+    "attri_name":"on_top_blockK",
+    "value":["no", 2],
+    "reliability":0.99
+}   
+
+{
+    "ob_name":"blockW",
+    "attri_name":"clear",
+    "value":["yes", 2],
+    "reliability":0.99
+}  
+
+{
+    "ob_name":"blockK",
+    "attri_name":"on_table",
+    "value":["yes", 2],
+    "reliability":0.99
+}   
+
+{
+    "ob_name":"blockK",
+    "attri_name":"on_top_blockW",
+    "value":["no", 2],
+    "reliability":0.99
+}   
+
+{
+    "ob_name":"blockK",
+    "attri_name":"on_top_blockH",
+    "value":["no", 2],
+    "reliability":0.99
+}   
+
+{
+    "ob_name":"blockK",
+    "attri_name":"on_top_blockA",
+    "value":["no", 2],
+    "reliability":0.99
+}   
+
+{
+    "ob_name":"blockK",
+    "attri_name":"clear",
+    "value":["yes", 2],
+    "reliability":0.99
+}  
+
+{
+    "ob_name":"hand_1",
+    "attri_name": "is_holdingH",
+    "value":["no", 2],
+    "reliability":0.99
+}
+
+{
+    "ob_name":"hand_1",
+    "attri_name": "is_holdingA",
+    "value":["no", 2],
+    "reliability":0.99
+}
+
+{
+    "ob_name":"hand_1",
+    "attri_name": "is_holdingW",
+    "value":["no", 2],
+    "reliability":0.99
+}
+
+{
+    "ob_name":"hand_1",
+    "attri_name": "is_holdingK",
+    "value":["no", 2],
+    "reliability":0.99
+}

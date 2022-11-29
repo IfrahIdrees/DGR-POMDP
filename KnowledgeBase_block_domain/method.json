@@ -106,6 +106,41 @@
 
 {
     "type":"method",
+    "m_name":"stack_word_HAWK", 
+    "precondition":[{
+        "blockH":{
+            "on_table":"yes"
+        },
+        "blockA":{
+            "on_table":"yes"
+        }, 
+        "blockW":{
+            "on_table":"yes"
+        },
+        "blockK":{
+            "on_table":"yes"
+        }
+    }],
+    "subtasks":[{
+        "stack_word_WK":{
+            "pre":[],
+            "dec":["stack_word_AW"]
+        },
+        "stack_word_AW":{
+            "pre":["stack_word_WK"],
+            "dec":["stack_word_HA"]
+        },
+        "stack_word_HA":{
+            "pre":["stack_word_AW"],
+            "dec":[]
+        }
+    }],
+    "parent":[],
+    "start_action":["pick_up_blockW"]
+}
+
+{
+    "type":"method",
     "m_name":"stack_word_OT", 
     "precondition":[{
         "blockT":{
@@ -278,5 +313,71 @@
         }
     }],
     "parent":["stack_word_TUNE"],
+    "start_action":[]
+}
+
+{
+    "type":"method",
+    "m_name":"stack_word_WK", 
+    "precondition":[{
+        "blockK":{
+            "clear":"yes"
+        }
+    }],
+    "subtasks":[{
+        "pick_up_blockW":{
+            "pre":[],
+            "dec":["put_down_WK"]
+        },
+        "put_down_WK":{
+            "pre":["pick_up_blockW"],
+            "dec":[]
+        }
+    }],
+    "parent":["stack_word_HAWK"],
+    "start_action":[]
+}
+
+{
+    "type":"method",
+    "m_name":"stack_word_AW", 
+    "precondition":[{
+        "blockW":{
+            "clear":"yes"
+        }
+    }],
+    "subtasks":[{
+        "pick_up_blockA":{
+            "pre":[],
+            "dec":["put_down_AW"]
+        },
+        "put_down_AW":{
+            "pre":["pick_up_blockA"],
+            "dec":[]
+        }
+    }],
+    "parent":["stack_word_HAWK"],
+    "start_action":[]
+}
+
+{
+    "type":"method",
+    "m_name":"stack_word_HA", 
+    "precondition":[{
+        "blockA":{
+            "clear":"yes"
+        }
+    }],
+    "subtasks":[{
+        "pick_up_blockH":{
+            "pre":[],
+            "dec":["put_down_HA"]
+        },
+        "put_down_HA":{
+            "pre":["pick_up_blockH"],
+            "dec":[]
+        }
+    }],
+    "parent":["stack_word_HAWK"],
     "start_action":[]
 }

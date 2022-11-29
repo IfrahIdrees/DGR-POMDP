@@ -222,5 +222,121 @@
     "is_holdingR":{
         "no":0.999,
         "yes":0.001
+    },
+    "is_holdingH":{
+        "no":0.999,
+        "yes":0.001
+    },
+    "is_holdingA":{
+        "no":0.999,
+        "yes":0.001
+    },
+    "is_holdingW":{
+        "no":0.999,
+        "yes":0.001
+    },
+    "is_holdingK":{
+        "no":0.999,
+        "yes":0.001
+    }
+}
+
+{
+    "ob_name":"blockH",
+    "ob_type":"block",
+    "on_table":{
+        "yes":0.999,
+        "no":0.0001
+    },
+    "on_top_blockA":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockW":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockK":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "clear":{
+        "yes":0.999,
+        "no":0.0001
+    }
+}
+
+{
+    "ob_name":"blockA",
+    "ob_type":"block",
+    "on_table":{
+        "yes":0.999,
+        "no":0.0001
+    },
+    "on_top_blockH":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockW":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockK":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "clear":{
+        "yes":0.999,
+        "no":0.0001
+    }
+}
+
+{
+    "ob_name":"blockW",
+    "ob_type":"block",
+    "on_table":{
+        "yes":0.999,
+        "no":0.0001
+    },
+    "on_top_blockA":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockH":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockK":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "clear":{
+        "yes":0.999,
+        "no":0.0001
+    }
+}
+
+{
+    "ob_name":"blockK",
+    "ob_type":"block",
+    "on_table":{
+        "yes":0.999,
+        "no":0.0001
+    },
+    "on_top_blockA":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockW":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockH":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "clear":{
+        "yes":0.999,
+        "no":0.0001
     }
 }
