@@ -77,9 +77,7 @@ if __name__ == '__main__':
 
         # file_nums = [9]
         # for file_num in file_nums:
-        for file_num in range(1, 4):
-            if file_num == 4:
-                continue
+        for file_num in range(1, 7):
             for x in sensor_reliability:
                 # output file name
                 if config.RANDOM_BASELINE:
