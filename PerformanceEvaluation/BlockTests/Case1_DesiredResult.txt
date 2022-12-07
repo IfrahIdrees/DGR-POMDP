@@ -1,0 +1,6 @@
+[]#['put_down_TE']
+[1]#['pick_up_blockO']
+[1]#['put_down_OT']
+[1]#['pick_up_blockR']
+[1]#['put_down_RO']
+[]#[]
