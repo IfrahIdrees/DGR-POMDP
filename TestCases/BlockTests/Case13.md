@@ -1,5 +1,7 @@
 pick_up_blockN
 put_down_NE
+<u> pick_up_blockT
+put_down_TE </u>
 pick_up_blockU
 put_down_UN
 pick_up_blockT

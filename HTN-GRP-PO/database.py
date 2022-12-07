@@ -26,7 +26,7 @@ if config.RANDOM_BASELINE:
     db = client.smart_homeRANDOM
 else:
     client = MongoClient()
-    db = client.smart_home8
+    db = client.smart_homeextended_domain
 # client = MongoClient()
 # db = client.smart_home8
 # import config

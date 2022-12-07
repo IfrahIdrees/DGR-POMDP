@@ -21,7 +21,7 @@ client = MongoClient()
 if config.RANDOM_BASELINE:
     db = client.smart_homeRANDOM
 else:
-    db = client.smart_home8
+    db = client.smart_homeextended_domain
 
 if __name__ == '__main__':
 
@@ -52,10 +52,10 @@ if __name__ == '__main__':
 
     # sensor set up files
     # sensor_reliability = [0.99, 0.95, 0.9, 0.8]
-    sensor_reliability = [0.99, 0.95, 0.9, 0.8, 0.75]
-    sensor_reliability = [0.99]
+    sensor_reliability = [0.99, 0.95, 0.9, 0.8]
+    # sensor_reliability = [0.95, 0.9, 0.8, 0.75]
 
-    trials = 10
+    trials = 21
     config.seed = 5999
     config.trials = trials
     random.seed(config.seed)
@@ -77,7 +77,7 @@ if __name__ == '__main__':
 
         # file_nums = [9]
         # for file_num in file_nums:
-        for file_num in range(1, 7):
+        for file_num in range(1, 14):
             for x in sensor_reliability:
                 # output file name
                 if config.RANDOM_BASELINE:
@@ -138,13 +138,13 @@ if __name__ == '__main__':
                             "mongoimport --db smart_homeRANDOM --collection Rstate --drop --file ../KnowledgeBase_block_domain/realState.json")
                     else:
                         os.system(
-                            "mongoimport --db smart_home8 --collection method --drop --file ../KnowledgeBase_block_domain/method.json")
+                            "mongoimport --db smart_homeextended_domain --collection method --drop --file ../KnowledgeBase_block_domain/method.json")
                         os.system(
-                            "mongoimport --db smart_home8 --collection state --drop --file ../KnowledgeBase_block_domain/state.json")
+                            "mongoimport --db smart_homeextended_domain --collection state --drop --file ../KnowledgeBase_block_domain/state.json")
                         os.system(
-                            "mongoimport --db smart_home8 --collection operator --drop --file ../KnowledgeBase_block_domain/operator.json")
+                            "mongoimport --db smart_homeextended_domain --collection operator --drop --file ../KnowledgeBase_block_domain/operator.json")
                         os.system(
-                            "mongoimport --db smart_home8 --collection Rstate --drop --file ../KnowledgeBase_block_domain/realState.json")
+                            "mongoimport --db smart_homeextended_domain --collection Rstate --drop --file ../KnowledgeBase_block_domain/realState.json")
 
                     # command for sensor reliability set up
                     if config.RANDOM_BASELINE:
@@ -156,16 +156,16 @@ if __name__ == '__main__':
 
                     else:
                         if x is None:
-                            sensor_command = "mongoimport --db smart_home8 --collection sensor --drop --file ../KnowledgeBase_block_domain/sensor_reliability/sensor.json"
+                            sensor_command = "mongoimport --db smart_homeextended_domain --collection sensor --drop --file ../KnowledgeBase_block_domain/sensor_reliability/sensor.json"
                         else:
-                            sensor_command = "mongoimport --db smart_home8 --collection sensor --drop --file ../KnowledgeBase_block_domain/sensor_reliability/sensor" + \
+                            sensor_command = "mongoimport --db smart_homeextended_domain --collection sensor --drop --file ../KnowledgeBase_block_domain/sensor_reliability/sensor" + \
                                 "_" + str(x) + ".json"
                     os.system(sensor_command)
                     print(db.list_collection_names())
 
                     # command for sensor missing set up
                     '''
-                    sensor_command = "mongoimport --db smart_home8 --collection sensor --drop --file ../KnowledgeBase_block_domain/missing_sensor/sensor" + "_" + str(x) + ".json"
+                    sensor_command = "mongoimport --db smart_homeextended_domain --collection sensor --drop --file ../KnowledgeBase_block_domain/missing_sensor/sensor" + "_" + str(x) + ".json"
                     os.system(sensor_command)
                     '''
 
