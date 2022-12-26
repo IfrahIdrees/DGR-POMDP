@@ -92,18 +92,20 @@ class Tracking_Engine(object):
             self.output_case_file_name,
             db=db,
             trial=self.trial)
+        turn_information = TurnInformation(terminal=False,
+                                           action_node=False,
+                                           step_index=0)
         agent_state = AgentState(
             exp,
-            terminal=False,
-            action_node=False,
-            step_index=0)
+            turn_information)
 
         # always iterate
         step_index = 0
         while(notif._notif.qsize() > 0):
             step = notif.get_one_notif()
             notif.delete_one_notif()
-
+            if step ==  "turn_off_faucet_1":
+                print("here")
             # if no notification, and the random prob is less than
             # no_notif_trigger_prob, sleep the engine
             if step == "none" and random.random() < self._no_trigger:
@@ -138,11 +140,14 @@ class Tracking_Engine(object):
                 real_exp = copy.deepcopy(exp)
 
                 if not notif._notif.empty():
+                    turn_information = TurnInformation(terminal=False,
+                    action_node=False,
+                    step_index=step_index)
                     agent_state = AgentState(
-                        exp, terminal=False, action_node=False, step_index=step_index)
+                        exp, turn_information)
                     monte_carlo_tree.rollout_loop(agent_state, step)
 
-                # agent_state.simulate(monte_carlo_tree)
+                ## agent_state.simulate(monte_carlo_tree)
 
                 '''Restoring the state for next iteration, env variable in HTNcoachproblem should be reset'''
                 exp = real_exp

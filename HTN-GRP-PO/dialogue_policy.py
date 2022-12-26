@@ -13,7 +13,39 @@ from Explanation import *
 from config import *
 from State import *
 
-_AS = namedtuple("AgentState", "explaset terminal action_node, step_index")
+
+class Action:
+
+    def __init__(self, name):
+        self.name = name
+
+
+class TurnInformation:
+
+    def __init__(self, terminal, action_node, step_index):
+        self.terminal = terminal
+        self.action_node = action_node
+        self.step_index = step_index
+        self.chosen_action = None
+
+
+class AgentAskClarificationQuestion(Action):
+    """
+    Robot action for giving the next instruction
+    """
+    # @II need to code that it increases instruction by 1. As in MoveAction East is (1,0) (just defining)
+
+    def __init__(self):
+        super().__init__("ask-clarification-question")
+        self.question_asked = None
+
+    def update_question_asked_param(self, state, question_asked_pair=None):
+        current_pending_set = np.asarray(state.sampled_explanation._pendingSet)
+        index = np.argmax(current_pending_set[:, 1], axis=0)
+        self.question_asked = current_pending_set[index, 0]
+
+
+_AS = namedtuple("AgentState", "explaset turn_information")
 # Inheriting from a namedtuple is convenient because it makes the class
 # immutable and predefines __init__, __repr__, __hash__, __eq__, and others
 
@@ -22,7 +54,7 @@ class AgentState(_AS, MCNode):
     # equality should be at expla not explaset
     # children will be expla
 
-    def __init__(self, explaset, terminal, action_node, step_index):
+    def __init__(self, explaset, turn_information):
         # self.explaset = explaset
         # self.terminal = terminal
         # self.pending_actions = set([action[0] for action in self._pendingSet])
@@ -35,7 +67,7 @@ class AgentState(_AS, MCNode):
         self.counter_execute_sequences = None
         self.sampled_explanation = None
         self._delete_trigger = self.explaset._delete_trigger
-        self.successor_explanations = None
+
         # self.current_action =
         # TODO: ADD ACTION LIST
         # self.question_asked = None
@@ -54,7 +86,9 @@ class AgentState(_AS, MCNode):
         hashint += hash("".join(set(self.pending_actions)))
         hashint += hash(json.dumps(self.counter_execute_sequences))
         hashint += hash(json.dumps(self.sampled_explanation._start_task))
-        hashint += self.step_index
+        hashint += self.turn_information.step_index
+        hashint += self.turn_information.action_node
+        hashint += hash(self.turn_information.chosen_action)
         return hashint
 
     def extract_execute_sequence(self, execute_sequence):
@@ -64,24 +98,37 @@ class AgentState(_AS, MCNode):
         return counter_execute_sequence
 
     def __eq__(self, other):
-        # self_pending_actions = set([action[0] for action in self._pendingSet])
-        # other_pending_actions = set([action[0] for action in other._pendingSet])
-        # self_execute_sequence = [taskNet._execute_sequence for taskNet in self._forest]
-        # other_execute_sequence = [taskNet._execute_sequence for taskNet in other._forest]
-        # check_counter_execute_sequence = collections.Counter(itertools.chain(*self_execute_sequence)) == collections.Counter(itertools.chain(*other_execute_sequence))
-        # if isinstance(other, Explanation) and \
-        #     self._start_task == other._start_task and\
-        #     len(self.execute_sequences)  == len(other.execute_sequences) and\
-        #     check_counter_execute_sequence:
-        #     # self_pending_actions == other_pending_actions and
-        #     return True
-        # return False
-
         if self.__hash__() == other.__hash__():
             return True
         return False
 
-    def find_children(self):
+    def find_action_children(self):
+        children = []
+        action_list = [Action("wait"), AgentAskClarificationQuestion()]
+        for action in action_list:
+            next_state = copy.deepcopy(self)
+            # next_state.turn_information.action_node = True
+            next_state = self.update_action(action, next_state)
+            children.append(next_state)
+
+        return children
+
+    def update_turn_information(self, tmp_node):
+        self.turn_information.action_node = tmp_node.turn_information.action_node
+        self.turn_information.chosen_action = tmp_node.turn_information.chosen_action
+        self.turn_information.step_index = tmp_node.turn_information.step_index
+        self.turn_information.terminal = tmp_node.turn_information.terminal
+
+    def update_action(self, action, next_state):
+        if isinstance(action, AgentAskClarificationQuestion):
+            action.update_question_asked_param(next_state)
+            next_state.turn_information.chosen_action = action
+        return next_state
+
+    def __str__(self):
+        return self.__repr__()
+
+    def find_observation_children(self):
         children = []
         # find = False
         # Case2 : continue on an on-going task
@@ -227,7 +274,7 @@ class AgentState(_AS, MCNode):
 
         # for taskNet in self._forest:
 
-        # return super().find_children()
+        # return super().find_observation_children()
 
     def sample(self):
         '''Sample for current node from current explaset'''
@@ -245,25 +292,3 @@ class AgentState(_AS, MCNode):
         flattened_execute_sequences = itertools.chain(*self.execute_sequences)
         self.counter_execute_sequences = self.extract_execute_sequence(
             flattened_execute_sequences)
-
-    # def simulate(self,monte_carlo_tree):
-    #     self.pending_actions = set([action[0] for action in self.sampled_explanation._pendingSet])
-    #     self.execute_sequences = [taskNet._execute_sequence for taskNet in self.sampled_explanation._forest]
-    #     flattened_execute_sequences = itertools.chain(*self.execute_sequences)
-    #     self.counter_execute_sequences = self.extract_execute_sequence(flattened_execute_sequences)
-    #     # for i in range(monte_carlo_tree.sim_num):
-    #     for i in range(1):
-    #         pipeline = [ {"$match": {}},
-    #                     {"$out": "state"},
-    #         ]
-    #         self.db._backup_state.aggregate(pipeline)
-
-    #         pipeline = [ {"$match": {}},
-    #                     {"$out": "sensor"},
-    #         ]
-    #         self.db._backup_sensor.aggregate(pipeline)
-
-    #         monte_carlo_tree.do_rollout(self)
-
-    #     # return monte_carlo_tree.choose(self)
-    #     return None

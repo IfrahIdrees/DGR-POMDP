@@ -13,6 +13,7 @@ Research sponsored by AGEWELL Networks of Centers of Excellence (NCE).
 ##########################################################################
 
 # import numpy as np
+from config import *
 import math
 from CareGiver import *
 from SensorCheck import *
@@ -26,7 +27,6 @@ import copy
 import sys
 sys.dont_write_bytecode = True
 # np.random.seed(10)
-from config import *
 # from __future__ import print_function  # Only needed for Python 2
 
 db = DB_Object()
@@ -69,7 +69,8 @@ class explaSet(object):
         return len(self._explaset)
 
     def get(self, index):
-        return self._explaset[len(self._explaset) - index]
+        # return self._explaset[len(self._explaset) - index]
+        return self._explaset[index]
 
     def setSensorNotification(self, sensor_notification):
         self._sensor_notification = copy.deepcopy(sensor_notification)
@@ -182,7 +183,7 @@ class explaSet(object):
     # Also refer to "Step recognition.md"
     ##########################################################################
 
-    def action_posterior(self, real_step = True, mcts_filename = None):
+    def action_posterior(self, real_step=True, mcts_filename=None):
         self._action_posterior_prob = {}
         otherHappen = 1
         for expla in self._explaset:
@@ -250,7 +251,7 @@ class explaSet(object):
         # otherHappen = otherHappen*variance
         if not real_step:
             with open(mcts_filename, 'a') as f:
-                f.write(str(round(otherHappen, 4)) + "\t")
+                f.write(str(round(otherHappen, 4)) + "\n")
         else:
             with open(self._output_file_name, 'a') as f:
                 f.write(str(round(otherHappen, 4)) + "\t")
@@ -405,7 +406,9 @@ class explaSet(object):
     def explaSet_expand_part1(self, length):
 
         for i in range(length):
-            x = self.get(i + 1)
+            # x = self.get(i + 1)
+            x = self.get(i)
+            # x = self.pop()
             # print("action posterior after bayseian inference is",  self._action_posterior_prob)
             for action in self._action_posterior_prob:
                 # case1: nothing happened: update the prob of the
@@ -452,18 +455,41 @@ class explaSet(object):
     # based on the current tree structure and belief state
     ##########################################################################
 
-    def pendingset_generate(self, inverse_pending_set=None):
+    def pendingset_generate(self, inverse_pending_set=None,
+                            single_goal_indices=None, previous_goal=None,
+                            real_step = True):
         aggregate_pending_set = np.zeros(shape=(1, 2))
         self.normalize()
         index = 0
         for expla in self._explaset:
             pending_set = expla.create_pendingSet()
-            pending_set = np.asarray(pending_set)
-            if isinstance(inverse_pending_set, defaultdict):
-                for pending_action in pending_set:
-                    inverse_pending_set[pending_action[0]].append(index)
-            aggregate_pending_set = np.vstack(
-                [aggregate_pending_set, pending_set])
+            pending_dict = {}
+            filtered_pending_set = []
+
+            if not real_step:
+                '''Look for tasknets having goal similar to previous goal'''
+                '''Need to make inverse pending dict'''
+                # pending_set = np.asarray(pending_set)
+                if previous_goal == None:
+                    aggregate_pending_set = np.vstack(
+                    [aggregate_pending_set, pending_set])
+                else:
+                    for act, prob in pending_set:
+                        pending_dict[act] = prob
+                    for tasknet in expla._forest:
+                        if tasknet._goalName == previous_goal:
+                            for pending_action in tasknet._pendingset:
+                                filtered_pending_set.append([pending_action,pending_dict[pending_action]])
+                    aggregate_pending_set = np.vstack(
+                        [aggregate_pending_set, filtered_pending_set])
+            ''' only look for explanation with single goal
+                if single_goal_indices and index in single_goal_indices:
+                if isinstance(inverse_pending_set, defaultdict):
+                    for pending_action in pending_set:
+                        inverse_pending_set[pending_action[0]].append(index)
+                aggregate_pending_set = np.vstack(
+                    [aggregate_pending_set, pending_set])'''
+
             # aggregate_pending_set[index] =  np.vstack([aggregate_pending_set,pending_set])
             index += 1
             # aggregate_pending_set.append(pending_set)

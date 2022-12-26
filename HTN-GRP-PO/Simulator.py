@@ -10,7 +10,7 @@ Research sponsored by AGEWELL Networks of Centers of Excellence (NCE).
 
 
 ##########################################################################
-#####                           Simulate the state change in a real enviro
+# Simulate the state change in a real environment
 ##########################################################################
 
 
@@ -33,7 +33,7 @@ def realStateANDSensorUpdate(step_name, output_file_name, real_step=True):
     #         f.write(step_name + "\t")
     else:
         print("mcts Simulate step: ", step_name)
-        sep = "\n"
+        sep = "\t"
 
     #     with open("mcts"+output_file_name, 'a') as f:
     #         #version changed in March 14, generate a table

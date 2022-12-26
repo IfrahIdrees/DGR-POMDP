@@ -76,3 +76,11 @@ Include:
         
         the script that is used to compute the output accuracy
 
+[Dec-26-22]
+1. Added human and agent turns to MCTS so now alternate between human actions and the agent actions
+2. fixed how to get explaset for explaSet_expand_part1()
+3. pending set generates in simulation the next step but when real step not return correct thing
+4. if goal complete in simulation you start a new goal which is different
+
+
+
