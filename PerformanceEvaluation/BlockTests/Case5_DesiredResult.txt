@@ -4,7 +4,7 @@
 [3]#['pick_up_blockT']
 [3]#['put_down_TU']
 []#['pick_up_blockW']
-[]#['put_down_WK']
+[4]#['put_down_WK']
 [4]#['pick_up_blockA']
 [4]#['put_down_AW']
 [4]#['pick_up_blockH']

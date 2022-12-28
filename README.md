@@ -78,11 +78,17 @@ Include:
 
 
 ## Block Domains Goal
-
+[Previous]
 NOT, ON,TO
 goal: NOT, TOON
 goal: SNOT, TOON
-goal: SNOT, TOON, SHOT
+goal: SNOT, TOON, SHOTTH
+goal: ROTE, TONE, TUNE, HAWK
+
+goal: OXYTONE(S), ECOTONE(S), ROTE, HAWK,
+
+
+ignore case 10, go with case 8
 
 
 

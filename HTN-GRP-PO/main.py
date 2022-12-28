@@ -53,7 +53,7 @@ if __name__ == '__main__':
     # sensor set up files
     # sensor_reliability = [0.99, 0.95, 0.9, 0.8]
     sensor_reliability = [0.99, 0.95, 0.9, 0.8]
-    # sensor_reliability = [0.95, 0.9, 0.8, 0.75]
+    # sensor_reliability = 	[0.95, 0.9, 0.8, 0.75]
 
     trials = 21
     config.seed = 5999
@@ -77,7 +77,7 @@ if __name__ == '__main__':
 
         # file_nums = [9]
         # for file_num in file_nums:
-        for file_num in range(1, 14):
+        for file_num in range(13, 14):
             for x in sensor_reliability:
                 # output file name
                 if config.RANDOM_BASELINE:
