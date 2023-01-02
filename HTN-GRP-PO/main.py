@@ -53,9 +53,9 @@ if __name__ == '__main__':
     sensor_reliability = [0.99, 0.95, 0.9, 0.8]
     # sensor_reliability = [0.99, 0.95, 0.9]
     # sensor_reliability = [0.99, 0.8]
-    sensor_reliability = [0.9]
+    # sensor_reliability = [0.9, 0.8]
     trials = 51
-    trials = 5
+    trials = 2
     config.seed = 5999
     config.trials = trials
     random.seed(config.seed)
@@ -79,7 +79,7 @@ if __name__ == '__main__':
 
         # file_nums = [9]
         # for file_num in file_nums:
-        for file_num in range(2, 7):
+        for file_num in range(1, 5):
             if file_num == 4:
                 continue
             for x in sensor_reliability:

@@ -22,7 +22,8 @@ db = DB_Object()
 
 
 # given the happened step, update the realState in database
-def realStateANDSensorUpdate(step_name, output_file_name, real_step=True):
+def realStateANDSensorUpdate(
+        step_name, output_file_name, real_step=True, is_wrong_step_or_belief=False):
     # print("Simulate step: ", step_name)
     if real_step:
         print("\nreal Simulate step: ", step_name, "\n")
@@ -49,12 +50,13 @@ def realStateANDSensorUpdate(step_name, output_file_name, real_step=True):
         for att in effect[obj]:
             if real_step:
                 db.update_obj_Rstate(obj, att, effect[obj][att])
-            update_result = db.update_sensor_value(
-                obj, att, effect[obj][att], real_step)
-            if update_result:
-                new_item = {}
-                new_item["object"] = obj
-                new_item["attribute"] = att
-                new_item["obj_att_value"] = effect[obj][att]
-                sensor_notification.append(new_item)
+            if not is_wrong_step_or_belief:
+                update_result = db.update_sensor_value(
+                    obj, att, effect[obj][att], real_step)
+                if update_result:
+                    new_item = {}
+                    new_item["object"] = obj
+                    new_item["attribute"] = att
+                    new_item["obj_att_value"] = effect[obj][att]
+                    sensor_notification.append(new_item)
     return sensor_notification

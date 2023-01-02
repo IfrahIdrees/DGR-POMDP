@@ -1,5 +1,5 @@
-turn_on_faucet_1
-use_soap
-rinse_hand
-turn_off_faucet_1
-dry_hand
+turn_on_faucet_1,0
+use_soap,1
+rinse_hand,1
+turn_off_faucet_1,1
+dry_hand,9

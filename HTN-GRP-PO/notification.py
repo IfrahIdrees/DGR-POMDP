@@ -7,33 +7,33 @@ Research purposes only. Any commerical uses strictly forbidden.
 Code is provided without any guarantees.
 Research sponsored by AGEWELL Networks of Centers of Excellence (NCE).
 ----------------------------------------------------------------------------------------------"""
-#store the input test case into a step list
+# store the input test case into a step list
 
 
 from queue import *
 
+
 class notification(object):
     def __init__(self, file_name):
         self._notif = Queue()
-        
+
         step_input = open(file_name, "r")
         steps = step_input.readlines()
         step_input.close()
-        
+
         for step in steps:
-            step = ''.join(step.split("\n"))
-            self._notif.put(step)
-        
-    ##without deleting
+            step, goal = step.split("\n")[0].split(",")
+            self._notif.put([step, int(goal)])
+
+    # without deleting
     def get_one_notif(self):
         if self._notif.empty():
             return None
         else:
-            return self._notif.queue[0]  
-        
-        
-    ##delete the next element in insertion order
+            return self._notif.queue[0]
+
+    # delete the next element in insertion order
+
     def delete_one_notif(self):
         if not self._notif.empty():
-            self._notif.get() 
-
+            self._notif.get()

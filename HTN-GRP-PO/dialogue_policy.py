@@ -22,11 +22,20 @@ class Action:
 
 class TurnInformation:
 
-    def __init__(self, terminal, action_node, step_index):
+    def __init__(self, terminal, action_node):
         self.terminal = terminal
         self.action_node = action_node
-        self.step_index = step_index
         self.chosen_action = None
+        self._step_information = [None, None]  # step_index, step_name
+        self._goal = [None, None]  # previous goal, current goal
+
+    def update_turn_information(
+            self, step_index, step_name, goal, action_node=None):
+        self._goal[0] = self._goal[1]
+        self._step_information = [step_index, step_name]
+        self._goal[1] = goal
+        if action_node is not None:
+            self.action_node = action_node
 
 
 class AgentAskClarificationQuestion(Action):
@@ -39,7 +48,7 @@ class AgentAskClarificationQuestion(Action):
         super().__init__("ask-clarification-question")
         self.question_asked = None
 
-    def update_question_asked_param(self, state, question_asked_pair=None):
+    def update_question_asked_param(self, state):
         current_pending_set = np.asarray(state.sampled_explanation._pendingSet)
         index = np.argmax(current_pending_set[:, 1], axis=0)
         self.question_asked = current_pending_set[index, 0]
@@ -86,7 +95,9 @@ class AgentState(_AS, MCNode):
         hashint += hash("".join(set(self.pending_actions)))
         hashint += hash(json.dumps(self.counter_execute_sequences))
         hashint += hash(json.dumps(self.sampled_explanation._start_task))
-        hashint += self.turn_information.step_index
+        # stepindex, and goal
+        hashint += self.turn_information._step_information[0] + \
+            self.turn_information._goal[1]
         hashint += self.turn_information.action_node
         hashint += hash(self.turn_information.chosen_action)
         return hashint
@@ -113,16 +124,20 @@ class AgentState(_AS, MCNode):
 
         return children
 
-    def update_turn_information(self, tmp_node):
+    def update_turn_information(self, tmp_node=None):
+        '''
+        should not take on action_node, chosen_action from previous node
+
+        self.turn_information.chosen_action = tmp_node.turn_information.chosen_action'''
         self.turn_information.action_node = tmp_node.turn_information.action_node
-        self.turn_information.chosen_action = tmp_node.turn_information.chosen_action
-        self.turn_information.step_index = tmp_node.turn_information.step_index
         self.turn_information.terminal = tmp_node.turn_information.terminal
+        self.turn_information._step_information = tmp_node.turn_information._step_information
+        self.turn_information._goal = tmp_node.turn_information._goal
 
     def update_action(self, action, next_state):
         if isinstance(action, AgentAskClarificationQuestion):
             action.update_question_asked_param(next_state)
-            next_state.turn_information.chosen_action = action
+        next_state.turn_information.chosen_action = action
         return next_state
 
     def __str__(self):
@@ -152,46 +167,6 @@ class AgentState(_AS, MCNode):
             new_explas = self.sampled_explanation.generate_new_expla_part2(
                 [action, action_prob])
             children = self.append_children(children, new_explas)
-
-        # for taskNet in self.sampled_explanation._forest:
-        #     for taskNetPending in taskNet._pendingset:
-        #         for act_expla in taskNetPending._pending_actions:
-        #         #get a new taskNet start
-        #             theTree = copy.deepcopy(taskNetPending._tree)
-        #             action_node = theTree.get_node(act_expla)
-        #             action_node.data._completeness = True
-        #             executed_sequence = ExecuteSequence(sequence = copy.deepcopy(taskNet._execute_sequence._sequence), effect_summary = copy.deepcopy(taskNet._execute_sequence._effect_summary))
-        #             executed_sequence.add_action(act_expla)
-        #             newTaskNet = TaskNet(goalName = theTree.get_node(theTree.root).tag, tree = theTree, expandProb = taskNetPending._branch_factor, execute_sequence = executed_sequence)
-        #             # newTaskNet = TaskNet(goalName = theTree.get_node(theTree.root).tag, tree = theTree, expandProb = taskNetPending._branch_factor, execute_sequence = copy.deepcopy(executed_sequence))
-        #             newTaskNet.update()
-        #             #get a new taskNet end
-
-        #             newforest = list(self.sampled_explanation._forest)
-        #             newforest.remove(taskNet)
-        #             prob = newTaskNet._expandProb*self.sampled_explanation._prob
-
-        #                 ##this goal has already been completed
-        #                 ##remove it and add its start action into
-        #                 ##the explanation start action list
-        #             if newTaskNet._complete==True:
-        #                 newstart_task = copy.deepcopy(self.sampled_explanation._start_task)
-        #                 newstart_task[newTaskNet._goalName] = 0
-        #                 newexp = Explanation(v=prob, forest = newforest, start_task=newstart_task)
-
-        #                 ##this goal has not been completed
-        #             else:
-        #                 newforest.append(newTaskNet)
-        #                 newstart_task = copy.deepcopy(self.sampled_explanation._start_task)
-        #                 newexp = Explanation(v=prob, forest = newforest, start_task=newstart_task)
-
-        #             children = self.append_children(children, [newexp])
-
-        '''self.successor_explanations = children'''
-        # node.pending_actions = set([action[0] for action in node.sampled_explanation._pendingSet])
-        # node.execute_sequences = [taskNet._execute_sequence for taskNet in node.sampled_explanation._forest]
-        # flattened_execute_sequences = itertools.chain(*node.execute_sequences)
-        # node.counter_execute_sequences = node.extract_execute_sequence(flattened_execute_sequences)
 
         '''create agent states from the children'''
         next_states = []
@@ -292,3 +267,8 @@ class AgentState(_AS, MCNode):
         flattened_execute_sequences = itertools.chain(*self.execute_sequences)
         self.counter_execute_sequences = self.extract_execute_sequence(
             flattened_execute_sequences)
+
+    def copy_explaset(self, explaset):
+        self.explaset._action_posterior_prob = explaset._action_posterior_prob
+        self.explaset._explaset = explaset._explaset
+        self.explaset._prior = explaset._prior

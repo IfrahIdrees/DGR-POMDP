@@ -93,8 +93,7 @@ class Tracking_Engine(object):
             db=db,
             trial=self.trial)
         turn_information = TurnInformation(terminal=False,
-                                           action_node=False,
-                                           step_index=0)
+                                           action_node=False)
         agent_state = AgentState(
             exp,
             turn_information)
@@ -102,9 +101,9 @@ class Tracking_Engine(object):
         # always iterate
         step_index = 0
         while(notif._notif.qsize() > 0):
-            step = notif.get_one_notif()
+            step, goal = notif.get_one_notif()
             notif.delete_one_notif()
-            if step ==  "turn_off_faucet_1":
+            if step == "turn_off_faucet_1":
                 print("here")
             # if no notification, and the random prob is less than
             # no_notif_trigger_prob, sleep the engine
@@ -123,7 +122,6 @@ class Tracking_Engine(object):
                 # posterior
                 start_time = time.time()
                 otherHappen = exp.action_posterior()
-
                 # robot plans dialogue action
                 pipeline = [{"$match": {}},
                             {"$out": "backup_state"},
@@ -140,14 +138,10 @@ class Tracking_Engine(object):
                 real_exp = copy.deepcopy(exp)
 
                 if not notif._notif.empty():
-                    turn_information = TurnInformation(terminal=False,
-                    action_node=False,
-                    step_index=step_index)
-                    agent_state = AgentState(
-                        exp, turn_information)
+                    agent_state.turn_information.update_turn_information(
+                        step_index, step, goal)
+                    agent_state.copy_explaset(exp)
                     monte_carlo_tree.rollout_loop(agent_state, step)
-
-                ## agent_state.simulate(monte_carlo_tree)
 
                 '''Restoring the state for next iteration, env variable in HTNcoachproblem should be reset'''
                 exp = real_exp

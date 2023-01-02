@@ -455,9 +455,21 @@ class explaSet(object):
     # based on the current tree structure and belief state
     ##########################################################################
 
-    def pendingset_generate(self, inverse_pending_set=None,
-                            single_goal_indices=None, previous_goal=None,
-                            real_step = True):
+    def pendingset_generate(self):
+        ''',inverse_pending_set=None,
+        single_goal_indices=None, previous_goal=None,
+        real_step = True):'''
+        self.normalize()
+        inverse_pending_dict = defaultdict(list)
+        index = 0
+        for expla in self._explaset:
+            pending_set = expla.create_pendingSet()
+            for act, prob in pending_set:
+                inverse_pending_dict[act].append(index)
+            index += 1
+        return inverse_pending_dict
+
+        '''##### pending set generate with
         aggregate_pending_set = np.zeros(shape=(1, 2))
         self.normalize()
         index = 0
@@ -467,8 +479,8 @@ class explaSet(object):
             filtered_pending_set = []
 
             if not real_step:
-                '''Look for tasknets having goal similar to previous goal'''
-                '''Need to make inverse pending dict'''
+                'Look for tasknets having goal similar to previous goal'
+                'Need to make inverse pending dict'
                 # pending_set = np.asarray(pending_set)
                 if previous_goal == None:
                     aggregate_pending_set = np.vstack(
@@ -481,8 +493,8 @@ class explaSet(object):
                             for pending_action in tasknet._pendingset:
                                 filtered_pending_set.append([pending_action,pending_dict[pending_action]])
                     aggregate_pending_set = np.vstack(
-                        [aggregate_pending_set, filtered_pending_set])
-            ''' only look for explanation with single goal
+                        [aggregate_pending_set, filtered_pending_set])'''
+        '''only look for explanation with single goal
                 if single_goal_indices and index in single_goal_indices:
                 if isinstance(inverse_pending_set, defaultdict):
                     for pending_action in pending_set:
@@ -490,11 +502,11 @@ class explaSet(object):
                 aggregate_pending_set = np.vstack(
                     [aggregate_pending_set, pending_set])'''
 
-            # aggregate_pending_set[index] =  np.vstack([aggregate_pending_set,pending_set])
+        '''# aggregate_pending_set[index] =  np.vstack([aggregate_pending_set,pending_set])
             index += 1
             # aggregate_pending_set.append(pending_set)
         aggregate_pending_set = np.delete(aggregate_pending_set, 0, 0)
-        return aggregate_pending_set, inverse_pending_set
+        return aggregate_pending_set, inverse_pending_set'''
     ##########################################################################
     # Part VI
     # Calculate the probability of each node in the explanation

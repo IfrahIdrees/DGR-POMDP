@@ -21,36 +21,40 @@ from config import *
 # vnode child action node (qnode)
 
 STEP_DICT = {
-    "wash_hand":["turn_on_faucet_1",
-"use_soap",
-"rinse_hand",
-"turn_off_faucet_1",
-"dry_hand"],
-"make_tea":["turn_on_faucet_1",
-"add_water_kettle_1",
-"turn_off_faucet_1",
-"switch_on_kettle_1",
-"switch_off_kettle_1",
-"get_cup_1",
-"open_tea_box_1",
-"add_tea_cup_1",
-"close_tea_box_1",
-"add_water_cup_1",
-"drink"
-],
-"make_coffee":["turn_on_faucet_1",
-"add_water_kettle_1",
-"turn_off_faucet_1",
-"switch_on_kettle_1",
-"switch_off_kettle_1",
-"get_cup_1",
-"open_coffee_box_1",
-"add_coffee_cup_1",
-"close_tea_box_1",
-"add_water_cup_1",
-"drink"
-]
+    1: ["turn_on_faucet_1",
+        "use_soap",
+        "rinse_hand",
+        "turn_off_faucet_1",
+        "dry_hand"],
+
+    2: ["turn_on_faucet_1",
+        "add_water_kettle_1",
+        "turn_off_faucet_1",
+        "switch_on_kettle_1",
+        "switch_off_kettle_1",
+        "get_cup_1",
+        "open_tea_box_1",
+        "add_tea_cup_1",
+        "close_tea_box_1",
+        "add_water_cup_1",
+        "drink"
+        ],
+
+    3: ["turn_on_faucet_1",
+        "add_water_kettle_1",
+        "turn_off_faucet_1",
+        "switch_on_kettle_1",
+        "switch_off_kettle_1",
+        "get_cup_1",
+        "open_coffee_box_1",
+        "add_coffee_cup_1",
+        "close_coffee_box_1",
+        "add_water_cup_1",
+        "drink"
+        ]
 }
+
+
 class MCTS:
     "Monte Carlo tree searcher. First rollout the tree then choose a move."
 
@@ -82,7 +86,6 @@ class MCTS:
             output_filename).with_suffix('.csv')
         self.depth = 25
         self.trial = trial
-        
 
     def choose(self, node):
         "Choose the best successor of node. (Choose a move in the game)"
@@ -172,13 +175,14 @@ class MCTS:
                 # node is either unexplored or terminal
                 return path
 
-            # for action node
+            # handling action node
             if not node.turn_information.action_node:
+                # return only when observation node
                 unexplored = self.children[node] - self.children.keys()
                 if unexplored:
                     n = unexplored.pop()
                     path.append(n)
-                    # return path
+                    return path
                 # descend a layer deeper get action node
                 node = self._uct_select(node)
             else:
@@ -238,18 +242,35 @@ class MCTS:
         #     invert_reward = not invert_reward
         # https://www.geeksforgeeks.org/print-all-interleavings-of-given-two-strings/
         step_num = 0
-        previous_goal = None
-        second_action = None
+        # previous_goal = None
+        # second_action = None
         num_goals = 0
         total_goals = np.random.choice(2) + 1
+        is_wrong_step_or_belief = False
+        is_goal_chosen = False
+
+        real_current_goal = node.turn_information._goal[1]  # current goal
+        if real_current_goal != 0 and real_current_goal != 9:
+            # current step names
+            real_current_step = node.turn_information._step_information[1]
+            # use the above information to update the step_information[0]
+            if real_current_goal == -1:
+                real_current_goal = np.random.choice([2, 3])
+            adjusted_real_current_step_index = STEP_DICT[real_current_goal].index(
+                real_current_step)
+            node.turn_information._step_information[0] = adjusted_real_current_step_index
+
+        # fix the step index to be the one relative to one goal not the one in
+        # multiple goal
         while True:
             # chose agent action first
+
             if not node.turn_information.action_node:
-                # select next action based on preference
-                # if node in self.children:
-                # children = self.children[node]
-                # else:
+                # current node is observation node
+                # select next node - action based on preference
                 children = node.find_action_children()
+                # should NOT make the node.turn_information.action_node true since flip at bottom
+                # should make the node.turn_information.chosen_action non-None
 
                 index = 0
                 previous_node = node
@@ -265,30 +286,77 @@ class MCTS:
                 if not children or step_num > self.depth or num_goals == total_goals:
                     return
 
-                goal_complete = False
-                single_goal_indices = []
-                # if len(children) == 2:
-                #     print("here")
-                # len(children/ children[0].explaset._explaset) == 2 means
-                # multiple goals
+                '''goal_complete = False
+                single_goal_indices = []'''
+
+                '''# select the index of explaset that have single goals
                 for index, expla in enumerate(children[0].explaset._explaset):
                     if list(expla._start_task.values()).count(
                             0) == len(expla._start_task.keys()):
                         goal_complete = True
                     if list(expla._start_task.values()).count(1) == 1:
                         single_goal_indices.append(index)
+                        # if all(expla._start_task.values == 0)'''
 
-                        # if all(expla._start_task.values == 0)
-                inverse_pending_dict = defaultdict(list)
+                # generate pending
+                # inverse_pending_dict = defaultdict(list)
                 current_explaset = children[0].explaset
-                current_pending_set, inverse_pending_dict = current_explaset.pendingset_generate(
-                    inverse_pending_dict, single_goal_indices, previous_goal, real_step=False)
+                inverse_pending_dict = current_explaset.pendingset_generate()
+                previous_goal, current_goal = children[0].turn_information._goal
+                step_index = children[0].turn_information._step_information[0]
+                if current_goal == 0:
+                    # this is the first step choose any of the
+                    # second steps
+                    next_human_action = np.random.choice(
+                        ["use_soap", "add_water_kettle_1"], p=[0.33, 1 - 0.33])
+                    if next_human_action == "use_soap":
+                        next_goal = 1
+                    else:
+                        next_goal = 2
+                        # TODO: need to make next goal random
+                        # next_goal = np.random.choice([2,3])
+                        # next_goal = -1
+                    # step_index+=1 #[Done]TODO:(not increment the previous stepindex that continues the numbering
+                    # rather reset it)
+                    step_index = 1
+                elif current_goal == 9:
+                    # new goal needs to start
+                    # it should be opposite to previous
+                    # if previous_goal == 1:
+                    #     next_human_action = "add_water_kettle_1"
+                    # elif previous_goal == 2 or previous_goal ==3:
+                    #     next_human_action = "use_soap"
+                    next_human_action = "turn_on_faucet_1"
+                    next_goal = 0
+                    step_index = 0
+                    num_goals += 1
+                else:
+                    # select the next human action for
+                    # the current ongoing goal
+                    # if current_goal == -1:
+                    # current_goal =previous_goal #np.random.choice([2,3])
+                    if current_goal == -1 and not is_goal_chosen:
+                        current_goal = np.random.choice([2, 3])
+                        is_goal_chosen = True
+                    elif current_goal == -1:
+                        current_goal = previous_goal
+                    next_goal = current_goal
+                    next_human_action = STEP_DICT[current_goal][step_index + 1]
+                    if step_index + 2 == len(STEP_DICT[current_goal]):
+                        # at second last step say that the goal for the last
+                        # step is 9
+                        next_goal = 9
+                    step_index += 1
 
-                if not list(current_pending_set):
-                    # print(node.children)
-                    print("here")
+                # previous_goal = current_goal
+                '''current_pending_set, inverse_pending_dict = current_explaset.pendingset_generate(
+                    inverse_pending_dict, single_goal_indices, previous_goal, real_step=False)'''
 
-                if goal_complete:
+                ''' if not list(current_pending_set):
+                     # print(node.children)
+                     print("here")'''
+
+                '''if goal_complete:
                     # start new goal
                     num_goals += 1
                     if previous_goal == "wash_hands":
@@ -316,28 +384,67 @@ class MCTS:
                     p /= p.sum()  # normalize
                     next_human_action = np.random.choice(
                         current_pending_set[:, 0], p=p)
-                # TODO: maybe weighted sampled explanation
-                if inverse_pending_dict == {}:
-                    print("here")
-                if next_human_action not in inverse_pending_dict.keys():
-                    # new goal not supported by the current pending set.
-                    return
-                next_sampled_explanation_index = np.random.choice(
-                    inverse_pending_dict[next_human_action])
-                if next_human_action == "open_coffee_box_1":
-                    print("here")
+                # TODO: maybe weighted sampled explanation'''
 
-                # move to next agent state node with sampled_explanation
-                for start_task, value in expla._start_task.items():
-                    if value == 1:
-                        previous_goal = start_task
-                node = children[next_sampled_explanation_index]
-                sensor_notification = copy.deepcopy(
-                    realStateANDSensorUpdate(
-                        next_human_action,
-                        self.output_filename,
-                        real_step=False))
-                node.explaset.setSensorNotification(sensor_notification)
+                ''' if inverse_pending_dict == {}:
+                    print("here")'''
+                # issue is that inverse_pending_dict is notupdated and is
+                # always empty.
+                '''if next_human_action not in inverse_pending_dict.keys():
+                    # new goal not supported by the current pending set.
+                    return'''
+
+                print("next human action is:", next_human_action, "next_goal is:", next_goal,
+                      "next human action is part of belief:", next_human_action in inverse_pending_dict,
+                      "pending dict is", inverse_pending_dict)
+                if next_human_action == "get_cup_1":
+                    print("here")
+                if not next_human_action in inverse_pending_dict:
+                    is_wrong_step_or_belief = True
+                    sensor_notification = copy.deepcopy(
+                        realStateANDSensorUpdate(
+                            next_human_action,
+                            self.output_filename,
+                            real_step=False,
+                            is_wrong_step_or_belief=is_wrong_step_or_belief))
+                    node.explaset.setSensorNotification(sensor_notification)
+                    # keep the turn_information and node same, in case our simulator's action
+                    # are not same as agent's belief
+                    # we are covering the other happen corner case
+
+                elif next_human_action in inverse_pending_dict:
+                    next_sampled_explanation_index = np.random.choice(
+                        inverse_pending_dict[next_human_action])
+                    # TODO: Fix this add heauristic!
+                    # if next_human_action == "open_coffee_box_1":
+                    # print("here")
+                    # print("next human action is:",next_human_action, "next_goal is:", goal)
+
+                    # move to next agent state node with sampled_explanation
+                    '''for start_task, value in expla._start_task.items():
+                        if value == 1:
+                            previous_goal = start_task'''
+                    node = children[next_sampled_explanation_index]
+
+                    sensor_notification = copy.deepcopy(
+                        realStateANDSensorUpdate(
+                            next_human_action,
+                            self.output_filename,
+                            real_step=False))
+                    node.explaset.setSensorNotification(sensor_notification)
+
+                with open(self.output_filename, 'a') as f:
+                    f.write(
+                        str(step_index) +
+                        "\t " +
+                        inverse_pending_dict.__str__() +
+                        "\t")
+
+                node.turn_information.update_turn_information(
+                    step_index, next_human_action, next_goal)
+                # node.turn_information._goal[0] = node.explaset._goal[1] ##make the current goal as previous
+                # node.turn_information.goal[1] = next_goal
+                # node.turn_information._step_information = [step_index,next_human_action]
 
                 # update the action posterior
 
@@ -347,7 +454,7 @@ class MCTS:
                 # iteration
 
                 step_num += 1
-                node.turn_information.step_index = step_num
+                # node.turn_information.step_index = step_num
             node.turn_information.action_node = not node.turn_information.action_node
 
             # TODO: keep track of goal change and 0,0,0
