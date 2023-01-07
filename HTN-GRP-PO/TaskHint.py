@@ -44,7 +44,14 @@ class TaskHint(object):
             "pick_up_blockA",
             "put_down_AW",
             "pick_up_blockH",
-            "put_down_HA"
+            "put_down_HA",
+            "pick_up_blockS",
+            "put_down_ST",
+            "pick_up_blockP",
+            "put_down_PS",
+            "put_down_AP", 
+            "pick_up_blockC",
+            "put_down_CA"
         ])
         
     
@@ -106,6 +113,7 @@ class TaskHint(object):
         stack_word_TONE = 0.0
         stack_word_TUNE = 0.0
         stack_word_HAWK = 0.0
+        stack_word_CAPSTONE = 0.0
 
         if 'stack_word_ROTE' in self.prompt_task:
             stack_word_ROTE = round(self.prompt_task['stack_word_ROTE'][0], 8)
@@ -115,11 +123,13 @@ class TaskHint(object):
             stack_word_TUNE = round(self.prompt_task['stack_word_TUNE'][0], 8)
         if 'stack_word_HAWK' in self.prompt_task:
             stack_word_HAWK = round(self.prompt_task['stack_word_HAWK'][0], 8)
+        if 'stack_word_CAPSTONE' in self.prompt_task:
+            stack_word_CAPSTONE = round(self.prompt_task['stack_word_CAPSTONE'][0], 8)
             
         #goal_recog_prob = str(wash_hand) + "\t" + str(make_tea) + "\t" + str(make_coffee) + "\t" + str(step_level_hint) + "\t"
         #goal_recog_prob = str(stack_word_NOT) + "\t" + str(stack_word_ON)
         with open(self._output_file_name, 'a') as f:
-            f.write(str(stack_word_ROTE) + "\t" + str(stack_word_TONE) + "\t" + str(stack_word_TUNE) + "\t" + str(stack_word_HAWK) + "\t" + str(step_level_hint) + "\t")
+            f.write(str(stack_word_ROTE) + "\t" + str(stack_word_TONE) + "\t" + str(stack_word_TUNE) + "\t" + str(stack_word_HAWK) + "\t" + str(stack_word_CAPSTONE) + "\t" + str(step_level_hint) + "\t")
         
 
 

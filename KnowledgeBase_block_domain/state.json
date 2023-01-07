@@ -25,6 +25,10 @@
         "yes":0.001,
         "no":0.999
     },
+    "on_top_blockS":{
+        "yes":0.001,
+        "no":0.999
+    },
     "clear":{
         "yes":0.999,
         "no":0.0001
@@ -238,6 +242,18 @@
     "is_holdingK":{
         "no":0.999,
         "yes":0.001
+    },
+    "is_holdingC":{
+        "no":0.999,
+        "yes":0.001
+    },
+    "is_holdingP":{
+        "no":0.999,
+        "yes":0.001
+    },
+    "is_holdingS":{
+        "no":0.999,
+        "yes":0.001
     }
 }
 
@@ -282,6 +298,14 @@
         "no":0.999
     },
     "on_top_blockK":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockP":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockC":{
         "yes":0.001,
         "no":0.999
     },
@@ -332,6 +356,81 @@
         "no":0.999
     },
     "on_top_blockH":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "clear":{
+        "yes":0.999,
+        "no":0.0001
+    }
+}
+
+{
+    "ob_name":"blockC",
+    "ob_type":"block",
+    "on_table":{
+        "yes":0.999,
+        "no":0.0001
+    },
+    "on_top_blockA":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockP":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockS":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "clear":{
+        "yes":0.999,
+        "no":0.0001
+    }
+}
+
+{
+    "ob_name":"blockP",
+    "ob_type":"block",
+    "on_table":{
+        "yes":0.999,
+        "no":0.0001
+    },
+    "on_top_blockA":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockC":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockS":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "clear":{
+        "yes":0.999,
+        "no":0.0001
+    }
+}
+
+{
+    "ob_name":"blockS",
+    "ob_type":"block",
+    "on_table":{
+        "yes":0.999,
+        "no":0.0001
+    },
+    "on_top_blockA":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockC":{
+        "yes":0.001,
+        "no":0.999
+    },
+    "on_top_blockP":{
         "yes":0.001,
         "no":0.999
     },

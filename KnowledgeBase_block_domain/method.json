@@ -71,6 +71,69 @@
 
 {
     "type":"method",
+    "m_name":"stack_word_CAPSTONE", 
+    "precondition":[{
+        "blockE":{
+            "on_table":"yes"
+        },
+        "blockO":{
+            "on_table":"yes"
+        }, 
+        "blockN":{
+            "on_table":"yes"
+        },
+        "blockT":{
+            "on_table":"yes"
+        },
+        "blockC":{
+            "on_table":"yes"
+        },
+        "blockA":{
+            "on_table":"yes"
+        }, 
+        "blockP":{
+            "on_table":"yes"
+        },
+        "blockS":{
+            "on_table":"yes"
+        }
+    }],
+    "subtasks":[{
+        "stack_word_NE":{
+            "pre":[],
+            "dec":["stack_word_ON"]
+        },
+        "stack_word_ON":{
+            "pre":["stack_word_NE"],
+            "dec":["stack_word_TO"]
+        },
+        "stack_word_TO": {
+            "pre":["stack_word_ON"],
+            "dec":["stack_word_ST"]
+        },
+        "stack_word_ST": {
+            "pre":["stack_word_TO"],
+            "dec":["stack_word_PS"]
+        },
+        "stack_word_PS": {
+            "pre":["stack_word_ST"],
+            "dec":["stack_word_AP"]
+        },
+        "stack_word_AP": {
+            "pre":["stack_word_PS"],
+            "dec":["stack_word_CA"]
+        },
+        "stack_word_CA": {
+            "pre":["stack_word_AP"],
+            "dec":[]
+        }
+    }],
+    "parent":[],
+    "start_action":["pick_up_blockN"]
+}
+
+{
+    "type":"method",
     "m_name":"stack_word_TUNE", 
     "precondition":[{
         "blockE":{
@@ -180,7 +243,7 @@
             "dec":[]
         }
     }],
-    "parent":["stack_word_TONE"],
+    "parent":["stack_word_TONE", "stack_word_CAPSTONE"],
     "start_action":[]
 }
 
@@ -246,7 +309,7 @@
             "dec":[]
         }
     }],
-    "parent":["stack_word_TONE", "stack_word_TUNE"],
+    "parent":["stack_word_TONE", "stack_word_CAPSTONE", "stack_word_TUNE"],
     "start_action":[]
 }
 
@@ -268,7 +331,7 @@
             "dec":[]
         }
     }],
-    "parent":["stack_word_TONE", "stack_word_TUNE"],
+    "parent":["stack_word_TONE", "stack_word_CAPSTONE"],
     "start_action":[]
 }
 
@@ -379,5 +442,93 @@
         }
     }],
     "parent":["stack_word_HAWK"],
+    "start_action":[]
+}
+
+{
+    "type":"method",
+    "m_name":"stack_word_CA", 
+    "precondition":[{
+        "blockA":{
+            "clear":"yes"
+        }
+    }],
+    "subtasks":[{
+        "pick_up_blockC":{
+            "pre":[],
+            "dec":["put_down_CA"]
+        },
+        "put_down_CA":{
+            "pre":["pick_up_blockC"],
+            "dec":[]
+        }
+    }],
+    "parent":["stack_word_CAPSTONE"],
+    "start_action":[]
+}
+
+{
+    "type":"method",
+    "m_name":"stack_word_AP", 
+    "precondition":[{
+        "blockP":{
+            "clear":"yes"
+        }
+    }],
+    "subtasks":[{
+        "pick_up_blockA":{
+            "pre":[],
+            "dec":["put_down_AP"]
+        },
+        "put_down_AP":{
+            "pre":["pick_up_blockA"],
+            "dec":[]
+        }
+    }],
+    "parent":["stack_word_CAPSTONE"],
+    "start_action":[]
+}
+
+{
+    "type":"method",
+    "m_name":"stack_word_PS", 
+    "precondition":[{
+        "blockS":{
+            "clear":"yes"
+        }
+    }],
+    "subtasks":[{
+        "pick_up_blockP":{
+            "pre":[],
+            "dec":["put_down_PS"]
+        },
+        "put_down_PS":{
+            "pre":["pick_up_blockP"],
+            "dec":[]
+        }
+    }],
+    "parent":["stack_word_CAPSTONE"],
+    "start_action":[]
+}
+
+{
+    "type":"method",
+    "m_name":"stack_word_ST", 
+    "precondition":[{
+        "blockT":{
+            "clear":"yes"
+        }
+    }],
+    "subtasks":[{
+        "pick_up_blockS":{
+            "pre":[],
+            "dec":["put_down_ST"]
+        },
+        "put_down_ST":{
+            "pre":["pick_up_blockS"],
+            "dec":[]
+        }
+    }],
+    "parent":["stack_word_CAPSTONE"],
     "start_action":[]
 }
