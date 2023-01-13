@@ -50,10 +50,10 @@ if __name__ == '__main__':
     other_happens = [0.76, 0.765]  # 0.75 #0.68 try 0.78 next
 
     # sensor set up files
-    sensor_reliability = [0.99, 0.95, 0.9, 0.8]
-    # sensor_reliability = [0.99, 0.95, 0.9]
-    # sensor_reliability = [0.99, 0.8]
-    # sensor_reliability = [0.9, 0.8]
+    # sensor_reliability = [0.99, 0.95, 0.9, 0.8]
+    # sensor_reliability = [0.95, 0.9]
+    sensor_reliability = [0.99, 0.8]
+    # sensor_reliability = [0.8]
     trials = 51
     trials = 2
     config.seed = 5999
@@ -79,7 +79,7 @@ if __name__ == '__main__':
 
         # file_nums = [9]
         # for file_num in file_nums:
-        for file_num in range(1, 5):
+        for file_num in range(2, 4):
             if file_num == 4:
                 continue
             for x in sensor_reliability:

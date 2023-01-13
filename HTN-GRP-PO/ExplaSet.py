@@ -461,13 +461,17 @@ class explaSet(object):
         real_step = True):'''
         self.normalize()
         inverse_pending_dict = defaultdict(list)
+        aggregate_pending_set = np.zeros(shape=(1, 2))
         index = 0
         for expla in self._explaset:
             pending_set = expla.create_pendingSet()
             for act, prob in pending_set:
                 inverse_pending_dict[act].append(index)
+                aggregate_pending_set = np.vstack(
+                    [aggregate_pending_set, pending_set])
             index += 1
-        return inverse_pending_dict
+        aggregate_pending_set = np.delete(aggregate_pending_set, 0, 0)
+        return inverse_pending_dict, aggregate_pending_set
 
         '''##### pending set generate with
         aggregate_pending_set = np.zeros(shape=(1, 2))

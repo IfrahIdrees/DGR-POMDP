@@ -141,7 +141,14 @@ class Tracking_Engine(object):
                     agent_state.turn_information.update_turn_information(
                         step_index, step, goal)
                     agent_state.copy_explaset(exp)
-                    monte_carlo_tree.rollout_loop(agent_state, step)
+                    action_node, reward = monte_carlo_tree.rollout_loop(
+                        agent_state, step)
+                    action_name = action_node.turn_information.chosen_action.name
+                    if action_name == "ask-clarification-question":
+                        action_name = action_name + "_" + \
+                            action_node.turn_information.chosen_action.question_asked
+                    print("\n========================")
+                    print("CHOSEN ACTION IS", action_name, reward)
 
                 '''Restoring the state for next iteration, env variable in HTNcoachproblem should be reset'''
                 exp = real_exp
@@ -192,7 +199,7 @@ class Tracking_Engine(object):
                         csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
                     # spamwriter.writerow(['Spam'] * 5 + ['Baked Beans'])
                     spamwriter.writerow(
-                        [step_index, time_per_step])
+                        [step_index, time_per_step, action_name, reward])
                 step_index += 1
                 print("go into the next loop\n\n")
                 # print(

@@ -83,4 +83,22 @@ Include:
 4. if goal complete in simulation you start a new goal which is different
 
 
+[Jan-2-22]
+1. Fixed the correct steps and multiple goals
+
+Todo:
+1. Add the wrong steps
+2. Fix that multiple goals are opposite not 2 and 3.
+
+
+[Jan-8-22]
+1. Fixed the correct steps and single goals now with reward back propogation
+2. final action choice implementated after MCTSA
+3. fixed simulate function
+
+Todo:
+1. Fix action/observation node added correctly in the self.children.
+2. Fix multiple goal situation, the goal and next_human_action not propogated correctly.
+
+
 

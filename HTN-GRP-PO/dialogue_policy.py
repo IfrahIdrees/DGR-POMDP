@@ -98,6 +98,7 @@ class AgentState(_AS, MCNode):
         # stepindex, and goal
         hashint += self.turn_information._step_information[0] + \
             self.turn_information._goal[1]
+        '''Todo: action_node should not be included'''
         hashint += self.turn_information.action_node
         hashint += hash(self.turn_information.chosen_action)
         return hashint
@@ -116,6 +117,7 @@ class AgentState(_AS, MCNode):
     def find_action_children(self):
         children = []
         action_list = [Action("wait"), AgentAskClarificationQuestion()]
+
         for action in action_list:
             next_state = copy.deepcopy(self)
             # next_state.turn_information.action_node = True
