@@ -100,5 +100,20 @@ Todo:
 1. Fix action/observation node added correctly in the self.children.
 2. Fix multiple goal situation, the goal and next_human_action not propogated correctly.
 
+[Jan13]
+when new goal 9,0 for some reason main root node is not in self.children.
+step number is not propogating consistently
+
+[Jan14]
+1. Fixed the expand_action for all actions
+2. in monte carlo tree search adding argument to keep track of the first step
+3. Tried to fix the multi-goal bu adding condition in the 
+current_goal==0
+
+Todo:
+1. Fix that action node for every observation node in children
+2. rootnode is not in self.children 
+3. multigoal is giving error sometimes so not properly fixed.
+
 
 

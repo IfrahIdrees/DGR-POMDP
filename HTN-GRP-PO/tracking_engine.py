@@ -103,14 +103,14 @@ class Tracking_Engine(object):
         while(notif._notif.qsize() > 0):
             step, goal = notif.get_one_notif()
             notif.delete_one_notif()
-            if step == "turn_off_faucet_1":
-                print("here")
+            if step == "turn_on_faucet_1":
+                print("step here")
             # if no notification, and the random prob is less than
             # no_notif_trigger_prob, sleep the engine
             if step == "none" and random.random() < self._no_trigger:
                 time.sleep(self._sleep_interval)
 
-            # go through the engine logic
+            # go through the "here"engine logic
             else:
                 if step != "none":
                     sensor_notification = copy.deepcopy(
@@ -141,8 +141,10 @@ class Tracking_Engine(object):
                     agent_state.turn_information.update_turn_information(
                         step_index, step, goal)
                     agent_state.copy_explaset(exp)
+                    if step_index == 0:
+                        is_first_real_step = True
                     action_node, reward = monte_carlo_tree.rollout_loop(
-                        agent_state, step)
+                        agent_state, step, is_first_real_step)
                     action_name = action_node.turn_information.chosen_action.name
                     if action_name == "ask-clarification-question":
                         action_name = action_name + "_" + \

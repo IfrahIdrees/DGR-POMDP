@@ -6,7 +6,7 @@ import itertools
 
 from sortedcontainers import SortedSet
 
-from monte_carlo_tree_search import MCTS, MCNode
+from monte_carlo_tree_search import MCTS, MCNode, INVERSE_STEP_DICT
 from ExecuteSequence import *
 from TaskNet import *
 from Explanation import *
@@ -44,9 +44,9 @@ class AgentAskClarificationQuestion(Action):
     """
     # @II need to code that it increases instruction by 1. As in MoveAction East is (1,0) (just defining)
 
-    def __init__(self):
+    def __init__(self, question_asked=None):
         super().__init__("ask-clarification-question")
-        self.question_asked = None
+        self.question_asked = question_asked
 
     def update_question_asked_param(self, state):
         current_pending_set = np.asarray(state.sampled_explanation._pendingSet)
@@ -99,8 +99,8 @@ class AgentState(_AS, MCNode):
         hashint += self.turn_information._step_information[0] + \
             self.turn_information._goal[1]
         '''Todo: action_node should not be included'''
-        hashint += self.turn_information.action_node
-        hashint += hash(self.turn_information.chosen_action)
+        # hashint += self.turn_information.action_node
+        # hashint += hash(self.turn_information.chosen_action)
         return hashint
 
     def extract_execute_sequence(self, execute_sequence):
@@ -116,8 +116,14 @@ class AgentState(_AS, MCNode):
 
     def find_action_children(self):
         children = []
-        action_list = [Action("wait"), AgentAskClarificationQuestion()]
 
+        action_list = [Action("wait")]
+        partial_action = []
+        for action in INVERSE_STEP_DICT.keys():
+            partial_action.append(AgentAskClarificationQuestion(action))
+
+        # action_list = [Action("wait"), AgentAskClarificationQuestion()]
+        action_list.extend(partial_action)
         for action in action_list:
             next_state = copy.deepcopy(self)
             # next_state.turn_information.action_node = True
@@ -159,7 +165,7 @@ class AgentState(_AS, MCNode):
             children = self.append_children(children, new_explas)
 
         if "nothing" in self.explaset._action_posterior_prob.keys():
-            print("here")
+            print("here in find _observation_children")
             del self.explaset._action_posterior_prob["nothing"]
 
         state = State()
