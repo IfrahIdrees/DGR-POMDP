@@ -1,0 +1,162 @@
+{
+    "ob_name":"blockT",
+    "ob_type":"block",
+    "on_table":"yes",
+    "on_top_blockN": "no",
+    "on_top_blockO": "no",
+    "on_top_blockE": "no",
+    "on_top_blockU": "no",
+    "on_top_blockR": "no",
+    "on_top_blockC": "no",
+    "clear": "yes"
+}
+
+{
+    "ob_name":"blockR",
+    "ob_type":"block",
+    "on_table":"yes",
+    "on_top_blockN": "no",
+    "on_top_blockO": "no",
+    "on_top_blockE": "no",
+    "on_top_blockU": "no",
+    "on_top_blockT": "no",
+    "clear": "yes"
+}
+
+{
+    "ob_name":"blockO",
+    "ob_type":"block",
+    "on_table":"yes",
+    "on_top_blockN": "no",
+    "on_top_blockT": "no",
+    "on_top_blockE": "no",
+    "on_top_blockU": "no",
+    "on_top_blockR": "no",
+    "clear": "yes"
+}
+
+{
+    "ob_name":"blockN",
+    "ob_type":"block",
+    "on_table":"yes",
+    "on_top_blockO": "no",
+    "on_top_blockT": "no",
+    "on_top_blockE": "no",
+    "on_top_blockU": "no",
+    "on_top_blockR": "no",
+    "clear": "yes"
+}
+
+{
+    "ob_name":"blockE",
+    "ob_type":"block",
+    "on_table":"yes",
+    "on_top_blockO": "no",
+    "on_top_blockT": "no",
+    "on_top_blockN": "no",
+    "on_top_blockU": "no",
+    "on_top_blockR": "no",
+    "clear": "yes"
+}
+
+{
+    "ob_name":"blockU",
+    "ob_type":"block",
+    "on_table":"yes",
+    "on_top_blockO": "no",
+    "on_top_blockT": "no",
+    "on_top_blockN": "no",
+    "on_top_blockE": "no",
+    "on_top_blockR": "no",
+    "clear": "yes"
+}
+
+{
+    "ob_name":"hand_1",
+    "ob_type":"hand",
+    "is_holdingN":"no",
+    "is_holdingO":"no",
+    "is_holdingT":"no",
+    "is_holdingE":"no",
+    "is_holdingU":"no",
+    "is_holdingR":"no",
+    "is_holdingH":"no",
+    "is_holdingA":"no",
+    "is_holdingW":"no",
+    "is_holdingK":"no",
+    "is_holdingC":"no",
+    "is_holdingP":"no",
+    "is_holdingS":"no"
+}
+
+{
+    "ob_name":"blockH",
+    "ob_type":"block",
+    "on_table":"yes",
+    "on_top_blockA": "no",
+    "on_top_blockW": "no",
+    "on_top_blockK": "no",
+    "clear": "yes"
+}
+
+{
+    "ob_name":"blockA",
+    "ob_type":"block",
+    "on_table":"yes",
+    "on_top_blockH": "no",
+    "on_top_blockW": "no",
+    "on_top_blockK": "no",
+    "on_top_blockP": "no",
+    "on_top_blockC": "no",
+    "clear": "yes"
+}
+
+{
+    "ob_name":"blockW",
+    "ob_type":"block",
+    "on_table":"yes",
+    "on_top_blockA": "no",
+    "on_top_blockH": "no",
+    "on_top_blockK": "no",
+    "clear": "yes"
+}
+
+{
+    "ob_name":"blockK",
+    "ob_type":"block",
+    "on_table":"yes",
+    "on_top_blockA": "no",
+    "on_top_blockW": "no",
+    "on_top_blockH": "no",
+    "clear": "yes"
+}
+
+{
+    "ob_name":"blockC",
+    "ob_type":"block",
+    "on_table":"yes",
+    "on_top_blockA": "no",
+    "on_top_blockP": "no",
+    "on_top_blockS": "no",
+    "clear": "yes"
+}
+
+{
+    "ob_name":"blockP",
+    "ob_type":"block",
+    "on_table":"yes",
+    "on_top_blockA": "no",
+    "on_top_blockC": "no",
+    "on_top_blockS": "no",
+    "clear": "yes"
+}
+
+{
+    "ob_name":"blockS",
+    "ob_type":"block",
+    "on_table":"yes",
+    "on_top_blockA": "no",
+    "on_top_blockC": "no",
+    "on_top_blockP": "no",
+    "clear": "yes"
+}

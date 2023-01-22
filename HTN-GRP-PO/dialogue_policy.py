@@ -89,6 +89,12 @@ class AgentState(_AS, MCNode):
                 children.append(expla)
         return children
 
+    def extract_execute_sequence(self, execute_sequence):
+        # counter_execute_sequence = collections.Counter(itertools.chain(*execute_sequence)).most_common()
+        counter_execute_sequence = collections.Counter(
+            execute_sequence).most_common()
+        return counter_execute_sequence
+
     def __hash__(self) -> int:
         hashint = 0
         # hashint+=hash(str(self.terminal))
@@ -99,20 +105,36 @@ class AgentState(_AS, MCNode):
         hashint += self.turn_information._step_information[0] + \
             self.turn_information._goal[1]
         '''Todo: action_node should not be included'''
-        # hashint += self.turn_information.action_node
-        # hashint += hash(self.turn_information.chosen_action)
+        if self.turn_information.action_node:
+            hashint += self.turn_information.action_node
+            hashint += hash(self.turn_information.chosen_action)
+            if self.turn_information.chosen_action.name == "ask-clarification-question":
+                hashint += hash(self.turn_information.chosen_action.question_asked)
         return hashint
 
-    def extract_execute_sequence(self, execute_sequence):
-        # counter_execute_sequence = collections.Counter(itertools.chain(*execute_sequence)).most_common()
-        counter_execute_sequence = collections.Counter(
-            execute_sequence).most_common()
-        return counter_execute_sequence
+    '''def hash_action_node(self) -> int:
+        hashint = 0
+        hashint += self.turn_information.action_node
+        hashint += hash(self.turn_information.chosen_action)
+        if self.turn_information.chosen_action.name == "ask-clarification-question":
+            hashint+=hash(self.turn_information.chosen_action.question_asked)
+        return hashint'''
 
     def __eq__(self, other):
+        # do different equality for action and observation node
+        if self.turn_information.action_node != other.turn_information.action_node:
+            return False
         if self.__hash__() == other.__hash__():
             return True
         return False
+        # if self.turn_information.action_node:
+        #     if self.hash_action_node() == other.hash_action_node():
+        #         return True
+        #     return False
+        # else:
+        #     if self.__hash__() == other.__hash__():
+        #         return True
+        #     return False
 
     def find_action_children(self):
         children = []
@@ -126,7 +148,7 @@ class AgentState(_AS, MCNode):
         action_list.extend(partial_action)
         for action in action_list:
             next_state = copy.deepcopy(self)
-            # next_state.turn_information.action_node = True
+            next_state.turn_information.action_node = True  # sometimes commented out
             next_state = self.update_action(action, next_state)
             children.append(next_state)
 
@@ -136,8 +158,8 @@ class AgentState(_AS, MCNode):
         '''
         should not take on action_node, chosen_action from previous node
 
-        self.turn_information.chosen_action = tmp_node.turn_information.chosen_action'''
-        self.turn_information.action_node = tmp_node.turn_information.action_node
+        self.turn_information.chosen_action = tmp_node.turn_information.chosen_action
+        self.turn_information.action_node = tmp_node.turn_information.action_node'''
         self.turn_information.terminal = tmp_node.turn_information.terminal
         self.turn_information._step_information = tmp_node.turn_information._step_information
         self.turn_information._goal = tmp_node.turn_information._goal

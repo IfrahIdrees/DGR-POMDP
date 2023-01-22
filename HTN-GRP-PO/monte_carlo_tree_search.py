@@ -10,6 +10,7 @@ import math
 import copy
 import itertools
 from pathlib import Path
+import config
 
 from sortedcontainers import SortedSet
 
@@ -101,9 +102,10 @@ class MCTS:
         self.Q = defaultdict(int)
         # total visit count for each node N[state,action]
         self.N = defaultdict(int)
+        self.N_vnode = defaultdict(int)
+        # will store count for each observation node
         self.children = dict()
-        self.exploration_weight = exploration_weight
-        self.sim_num = sim_num
+
         self.db = db
         self.output_folder = output_folder
         self.output_filename = self.output_folder + "mcts_" + output_filename
@@ -111,9 +113,12 @@ class MCTS:
             self.output_folder +
             "mcts_Reward_" +
             output_filename).with_suffix('.csv')
-        self.depth = 25
+        self.exploration_weight = config.args.e
+        # self.sim_num = sim_num
+        self.depth = config.args.max_depth
         self.trial = trial
-        self.gamma = 0.95
+        self.gamma = config.args.d
+        self.num_sims = config.args.num_sims
 
     def choose(self, node):
         "Choose the best successor of node. (Choose a move in the game)"
@@ -148,7 +153,7 @@ class MCTS:
         # node.counter_execute_sequences = node.extract_execute_sequence(flattened_execute_sequences)
         # # for i in range(monte_carlo_tree.sim_num):
 
-        for i in range(5):
+        for i in range(self.num_sims):
             root_node = copy.deepcopy(node)
             root_node.sample()
 
@@ -221,6 +226,8 @@ class MCTS:
         is_haction_in_belief = True
         num_goals = 0
         is_goal_chosen = False
+        is_action_node = False
+        node = self.adjust_step_index(node)
         # human_turn =  True
         while True:
             # entering node is always observation
@@ -229,7 +236,7 @@ class MCTS:
 
             if node in self.children and not self.children[node]:
                 print("no children here")
-            if (not node.turn_information.action_node and node not in self.children):
+            if (not is_action_node and node not in self.children):
                 # or not self.children[
                 # node]:
                 # exiting node is always observation
@@ -237,7 +244,7 @@ class MCTS:
                 # step_rewards.append(0)
                 return path, step_rewards, is_haction_in_belief, num_goals, is_goal_chosen, is_first_real_step
 
-            if not node.turn_information.action_node:
+            if not is_action_node:
                 # handling vnode (observation node) and selecting action
                 # children for it
                 # return only when observation node
@@ -255,11 +262,13 @@ class MCTS:
 
                 # descend a layer deeper and get action node
                 previous_node = node
-                node = self._uct_select(node)  # UCT checked and verified
+                # UCT checked and verified, returned node has action_node True
+                node = self._uct_select(node)
 
                 # add step reward for asking questions
 
-                node.update_turn_information(previous_node)
+                # node.update_turn_information(previous_node) ## not needed if
+                # equality set correctly
                 action = node.turn_information.chosen_action
                 node = node.update_action(action, node)  # Todo: write better
                 step_reward = self.get_step_reward(
@@ -302,6 +311,8 @@ class MCTS:
                 if not next_human_action in inverse_pending_dict:
                     sensor_notification, is_haction_in_belief = self.execute_wrong_step_or_belief(
                         next_human_action)
+                    # so that previous node is kept intact
+                    node = copy.deepcopy(node)
                     node.explaset.setSensorNotification(sensor_notification)
                 else:
                     next_sampled_explanation_index = np.random.choice(
@@ -334,7 +345,8 @@ class MCTS:
                 node.explaset.action_posterior(
                     real_step=False, mcts_filename=self.output_filename)
 
-            node.turn_information.action_node = not node.turn_information.action_node
+            # node.turn_information.action_node = not node.turn_information.action_node
+            is_action_node = not is_action_node
 
     def _expand(self, node):
         "Update the `children` dict with the children of `node`"
@@ -342,20 +354,34 @@ class MCTS:
             return  # already expanded
         children = node.find_action_children()
         self.children[node] = children  # human_action: agent_action
-        self.N[node] = 0
+        self.N_vnode[node] = 0
         for action in children:
             self.N[action] = 0
             self.Q[action] = 0
 
-    def get_step_reward(self, is_haction_in_belief, action):
+    def get_step_reward(self, is_haction_in_belief, action,
+                        is_real_step=False, feedback=None):
         if not is_haction_in_belief and action.name == "ask-clarification-question":
-            return 5
+            return config.args.qr
         elif not is_haction_in_belief and action.name == "wait":
-            return -5
+            return config.args.wp
         elif is_haction_in_belief and action.name == "ask-clarification-question":
-            return -5
+            return config.args.qp
         else:
             return 0
+        # Todo: include the action argument
+
+        '''if not is_real_step and (not is_haction_in_belief and action.name == "ask-clarification-question") \
+            or is_real_step and feedback=="yes":
+            return 5
+        elif not is_real_step and (not is_haction_in_belief and action.name == "wait")\
+            or is_real_step and feedback=="no":
+            return -5
+        elif not is_real_step and (is_haction_in_belief and action.name == "ask-clarification-question")\
+            or is_real_step and feedback == None:
+            return -5
+        else:
+            return 0'''
 
     # def get_turn_information_select(self,children, is_goal_chosen, num_goals=0, previous_goal=0, ):
     #     current_explaset = children[0].explaset
@@ -478,13 +504,20 @@ class MCTS:
                 is_goal_chosen = True
             elif current_goal == -1:
                 current_goal = previous_goal
-            # if select:
+            '''else:
+                if select:
+                    if STEP_DICT[current_goal][step_name]'''
+
+            # why?
+            # adjust current goal to according to next_human_action chosen
+
+            # if select and next_human_action:
 
             next_goal = current_goal
 
             previous_next_human_action = next_human_action
-            # if not select: ## added just now
-            next_human_action = STEP_DICT[current_goal][step_index + 1]
+            if not select:  # added just now
+                next_human_action = STEP_DICT[current_goal][step_index + 1]
             if previous_next_human_action != next_human_action and select:
                 print("new human action here")
             step_index += 1
@@ -555,6 +588,27 @@ class MCTS:
         is_haction_in_belief = False
         return sensor_notification, is_haction_in_belief
 
+    def adjust_step_index(self, node):
+        # the node should already contain the correct goal and
+        # step_index can be more than length
+        real_current_goal = node.turn_information._goal[1]  # current goal
+        if real_current_goal != 0 and real_current_goal != 9:
+            # adjust for -1 goals
+            # current step names
+            real_current_step = node.turn_information._step_information[1]
+            # use the above information to update the step_information[0]
+            if real_current_goal == -1:
+                real_current_goal = np.random.choice([2, 3])
+            # this is not
+            if real_current_goal in INVERSE_STEP_DICT[real_current_step]:
+                adjusted_real_current_step_index = STEP_DICT[real_current_goal].index(
+                    real_current_step)
+                node.turn_information._step_information[0] = adjusted_real_current_step_index
+            else:
+                pass
+                # TODO
+        return node
+
     def _simulate(self, rootnode, is_haction_in_belief,
                   num_goals, is_goal_chosen, is_first_real_step=False):
         '''args:
@@ -584,25 +638,14 @@ class MCTS:
         # is_haction_in_belief = True ## Done TODO: use the one passed down
         # from select
         discount = 1
-
-        real_current_goal = node.turn_information._goal[1]  # current goal
-        if real_current_goal != 0 and real_current_goal != 9:
-            # adjust for -1 goals
-            # current step names
-            real_current_step = node.turn_information._step_information[1]
-            # use the above information to update the step_information[0]
-            if real_current_goal == -1:
-                real_current_goal = np.random.choice([2, 3])
-            adjusted_real_current_step_index = STEP_DICT[real_current_goal].index(
-                real_current_step)
-            node.turn_information._step_information[0] = adjusted_real_current_step_index
-
+        is_action_node = False
+        node = self.adjust_step_index(node)
         # fix the step index to be the one relative to one goal not the one in
         # multiple goal
         while True:
             # chose agent action first
 
-            if not node.turn_information.action_node:
+            if not is_action_node:  # node.turn_information.action_node:
                 # current node isif node in self.children:
                 #     children = self.children[node]
                 # else: observation node
@@ -617,7 +660,7 @@ class MCTS:
                 index = np.random.choice([0, 1])
                 previous_node = node
                 node = children[index]
-                node.update_turn_information(previous_node)
+                '''node.update_turn_information(previous_node)'''
                 # node.turn_information = tmp_turn_information
                 action = node.turn_information.chosen_action
                 node = node.update_action(action, node)  # Todo: write better
@@ -668,6 +711,7 @@ class MCTS:
                     # is_haction_in_belief = False
                     sensor_notification, is_haction_in_belief = self.execute_wrong_step_or_belief(
                         next_human_action)
+                    node = copy.deepcopy(node)
                     node.explaset.setSensorNotification(sensor_notification)
 
                     # keep the turn_information and node same, in case our simulator's action
@@ -717,7 +761,8 @@ class MCTS:
 
                 step_num += 1
                 # node.turn_information.step_index = step_num
-            node.turn_information.action_node = not node.turn_information.action_node
+            is_action_node = not is_action_node
+            '''node.turn_information.action_node = not node.turn_information.action_node'''
 
             # TODO: keep track of goal change and 0,0,0
             # keep track of wrong step
@@ -730,10 +775,14 @@ class MCTS:
     def _backpropagate(self, path, reward, step_rewards):
         "Send the reward back up to the ancestors of the leaf"
         # path [o,a,o] always end in o
+        # is_
         for node, step_reward in zip(reversed(path), reversed(step_rewards)):
-            self.N[node] += 1
+            # self.N[node] += 1
             if node.turn_information.action_node:
                 self.Q[node] += step_reward + self.gamma * reward
+                self.N[node] += 1
+            else:
+                self.N_vnode[node] += 1
             # reward = 1 - reward  # 1 for me is 0 for my enemy, and vice versa
 
     def _uct_select(self, node):
@@ -743,7 +792,8 @@ class MCTS:
         # assert all(n in self.children for n in self.children[node]) ## so not
         # handle 0/inf case
 
-        log_N_vertex = math.log(self.N[node])  # TODO:jason has plus 1 here
+        # TODO:jason has plus 1 here
+        log_N_vertex = math.log(self.N_vnode[node])
 
         def uct(n):
             "Upper confidence bound for trees"

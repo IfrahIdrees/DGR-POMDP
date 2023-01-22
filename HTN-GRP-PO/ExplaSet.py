@@ -213,6 +213,13 @@ class explaSet(object):
         # ---------------------------------
         # self.normalize_dict(self._action_posterior_prob)
         self._prior = copy.deepcopy(self._action_posterior_prob)
+
+        highest_action_PS = ["", float('-inf')]
+        for k, v in self._action_posterior_prob.items():
+            if v > highest_action_PS[1]:
+                highest_action_PS = [k, v]
+
+        self.highest_action_PS = highest_action_PS
         # otherHappen = 0
         otherHappen_dict = {}
         happen_dict = {}
@@ -229,7 +236,7 @@ class explaSet(object):
         # with open(self._output_file_name, 'a') as f:
         #     f.write(str(round(otherHappen, 4)) + "\t")
 
-        happen_posterior_dict = {}
+        '''happen_posterior_dict = {}
         for key, value in happen_dict.items():
             happen_posterior_dict[key] = happen_dict[key] * self._prior[key]
 
@@ -241,7 +248,7 @@ class explaSet(object):
         weighted_posterior_happen_dict = {}
         for key, value in happen_dict.items():
             weighted_posterior_happen_dict[key] = weighted_happen_dict[key] * \
-                self._prior[key]
+                self._prior[key]'''  # no used
 
         # return otherHappen > sum(happen_dict.values())
         # added to correct all except 10
@@ -612,4 +619,93 @@ class explaSet(object):
 
             db.update_state_belief(
                 belief_state[0], belief_state[1], new_att_distribution)
+        return
+
+    def update_with_language_feedback(self, step, highest_action_PS, p_l):
+        # for expla in self._explaset:
+        #     expla
+        weights = [0 for i in range(len(self._explaset))]
+        for ind, expla in enumerate(self._explaset):
+            # goal_prob = expla._prob
+            correct_taskNets = 0
+
+            for taskNet_ in expla._forest:
+                # for taskNet_ in forest:
+                ExecuteSequence = taskNet_._execute_sequence._sequence
+                if ExecuteSequence == []:
+                    # taskNet_._expandProb *= 0.01
+                    # expla._prob*=0.01
+                    continue
+                if highest_action_PS[0] == ExecuteSequence[-1] and step == 'yes':
+                    correct_taskNets += 1
+                    # taskNet_._expandProb *= 0.99
+                    # expla._prob*=0.99
+                elif not (highest_action_PS[0] == ExecuteSequence[-1]) and step == 'yes':
+                    # taskNet_._expandProb *= 0.01
+                    # expla._prob*=0.01
+                    continue
+                elif step == 'no' and not (highest_action_PS[0] == ExecuteSequence[-1]):
+                    correct_taskNets += 1
+                    # taskNet_._expandProb *= 0.99
+                    # expla._prob*=0.99
+                elif step == 'no' and (highest_action_PS[0] == ExecuteSequence[-1]):
+                    # taskNet_._expandProb *= 0.01
+                    # expla._prob*=0.01
+                    continue
+
+                # taskNet_._expandProb *= p_l
+                # expla._prob*=p_l
+            delta = 0.001
+            if len(expla._forest) == 0:
+                weight = 0 + delta
+            else:
+                weight = float(correct_taskNets) / len(expla._forest) + delta
+            # using tasknets as weightd for adjust probs of explanation prob.
+            # but after normalizing it is the same.
+            expla._prob *= weight * p_l
+
+            for ind in range(len(expla._pendingSet)):
+                '''expla._pendingSet[ind][1]*=weight*p_l'''
+                expla._pendingSet[ind][1] = expla._prob / \
+                    len(expla._pendingSet)
+
+        return
+
+        #         expla._pendingSet
+        # if action[0] in self._action_posterior_prob:
+        #     self._action_posterior_prob[action[0]] = self._action_posterior_prob[action[0]] + action[1]
+
+        # else:
+        #     self._action_posterior_prob[action[0]] = action[1]
+        # for ac
+
+    def update_without_language_feedback(self, p_l):
+        # for expla in self._explaset:
+        #     expla
+
+        for expla in self._explaset:
+            # goal_prob = expla._prob
+            # for taskNet_ in expla._forest:
+            # for taskNet_ in forest:
+            # ExecuteSequence =  taskNet_._execute_sequence._sequence
+            # if highest_action_PS[0] in ExecuteSequence and step == 'Yes':
+            #     taskNet_._expandProb *= 0.99
+            #     expla._prob*=0.99
+            # elif not (highest_action_PS[0] in ExecuteSequence) and step == 'Yes':
+            #     taskNet_._expandProb *= 0.01
+            #     expla._prob*=0.01
+            # elif step == 'No' and  not (highest_action_PS[0] in ExecuteSequence):
+            #     taskNet_._expandProb *= 0.99
+            #     expla._prob*=0.99
+            # elif step == 'No' and  (highest_action_PS[0] in ExecuteSequence):
+            #     taskNet_._expandProb *= 0.01
+            #     expla._prob*=0.01
+
+            # taskNet_._expandProb *= (1-p_l)
+            expla._prob *= (1 - p_l)
+            # expla._prob*= 1
+            for ind in range(len(expla._pendingSet)):
+                '''expla._pendingSet[ind][1]*=weight*p_l'''
+                expla._pendingSet[ind][1] = expla._prob / \
+                    len(expla._pendingSet)
         return

@@ -115,5 +115,24 @@ Todo:
 2. rootnode is not in self.children 
 3. multigoal is giving error sometimes so not properly fixed.
 
+Last error:
+real Simulate step:  open_coffee_box_1 
+ROLL OUT #  4
+here
+
+Starting select
+mcts Simulate step:  open_tea_box_1
+
+Starting Simulation
+
+[Jan 22]
+1. added result automation pipeline for two domains
+1. Fixed that action node for every observation node in children
+
+Todo:
+2. rootnode is not in self.children 
+3. multigoal is giving error sometimes so not properly fixed.
+
+
 
 

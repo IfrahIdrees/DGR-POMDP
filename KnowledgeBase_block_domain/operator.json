@@ -1,0 +1,535 @@
+{
+    "type":"step",
+    "st_name":"pick_up_blockO",
+    "precondition":{
+        "hand_1":{
+            "is_holdingO": "no"
+        }
+    },
+    "effect":{
+        "hand_1":{
+            "is_holdingO": "yes"
+        }
+    },
+    "parent":["stack_word_OT", "stack_word_ON"]
+}
+
+{
+    "type":"step",
+    "st_name":"pick_up_blockU",
+    "precondition":{
+        "hand_1":{
+            "is_holdingU": "no"
+        }
+    },
+    "effect":{
+        "hand_1":{
+            "is_holdingU": "yes"
+        }
+    },
+    "parent":["stack_word_UN"]
+}
+
+{
+    "type":"step",
+    "st_name":"pick_up_blockT",
+    "precondition":{
+        "hand_1":{
+            "is_holdingT": "no"
+        }
+    },
+    "effect":{
+        "hand_1":{
+            "is_holdingT": "yes"
+        }
+    },
+    "parent":["stack_word_TE"]
+}
+
+{
+    "type":"step",
+    "st_name":"pick_up_blockN",
+    "precondition":{
+        "hand_1":{
+            "is_holdingN": "no"
+        }
+    },
+    "effect":{
+        "hand_1":{
+            "is_holdingN": "yes"
+        }
+    },
+    "parent":["stack_word_NE"]
+}
+
+{
+    "type":"step",
+    "st_name":"pick_up_blockR",
+    "precondition":{
+        "hand_1":{
+            "is_holdingR": "no"
+        }
+    },
+    "effect":{
+        "hand_1":{
+            "is_holdingR": "yes"
+        }
+    },
+    "parent":["stack_word_RO"]
+}
+
+{
+    "type":"step",
+    "st_name":"put_down_OT",
+    "precondition":{
+        "blockT":{
+            "clear": "yes"
+        },
+        "hand_1":{
+            "is_holdingO": "yes"
+        }
+    },
+    "effect":{
+        "blockT":{
+            "clear": "no",
+            "on_top_blockO": "yes"
+        },
+        "hand_1":{
+            "is_holdingO": "no"
+        }
+    },
+    "parent":["stack_word_OT"]
+
+}
+
+{
+    "type":"step",
+    "st_name":"put_down_UN",
+    "precondition":{
+        "blockN":{
+            "clear": "yes"
+        },
+        "hand_1":{
+            "is_holdingU": "yes"
+        }
+    },
+    "effect":{
+        "blockN":{
+            "clear": "no",
+            "on_top_blockU": "yes"
+        },
+        "hand_1":{
+            "is_holdingU": "no"
+        }
+    },
+    "parent":["stack_word_UN"]
+
+}
+
+{
+    "type":"step",
+    "st_name":"put_down_TE",
+    "precondition":{
+        "hand_1":{
+            "is_holdingT": "yes"
+        },
+        "blockE":{
+            "clear":"yes"
+        }
+    },
+    "effect":{
+        "blockE":{
+            "clear": "no",
+            "on_top_blockT": "yes"
+        },
+        "hand_1":{
+            "is_holdingT": "no"
+        }
+    },
+    "parent":["stack_word_TE"]
+
+}
+
+{
+    "type":"step",
+    "st_name":"put_down_TU",
+    "precondition":{
+        "hand_1":{
+            "is_holdingT": "yes"
+        },
+        "blockU":{
+            "clear":"yes"
+        }
+    },
+    "effect":{
+        "blockU":{
+            "clear": "no",
+            "on_top_blockT": "yes"
+        },
+        "hand_1":{
+            "is_holdingT": "no"
+        }
+    },
+    "parent":["stack_word_TU"]
+
+}
+
+{
+    "type":"step",
+    "st_name":"put_down_NE",
+    "precondition":{
+        "hand_1":{
+            "is_holdingN": "yes"
+        },
+        "blockE":{
+            "clear":"yes"
+        }
+    },
+    "effect":{
+        "blockE":{
+            "clear": "no",
+            "on_top_blockN": "yes"
+        },
+        "hand_1":{
+            "is_holdingN": "no"
+        }
+    },
+    "parent":["stack_word_NE"]
+
+}
+
+{
+    "type":"step",
+    "st_name":"put_down_RO",
+    "precondition":{
+        "hand_1":{
+            "is_holdingR": "yes"
+        },
+        "blockO":{
+            "clear":"yes"
+        }
+    },
+    "effect":{
+        "blockO":{
+            "clear": "no",
+            "on_top_blockR": "yes"
+        },
+        "hand_1":{
+            "is_holdingR": "no"
+        }
+    },
+    "parent":["stack_word_RO"]
+
+}
+
+{
+    "type":"step",
+    "st_name":"put_down_ON",
+    "precondition":{
+        "blockN":{
+            "clear": "yes"
+        },
+        "hand_1":{
+            "is_holdingO": "yes"
+        }
+    },
+    "effect":{
+        "blockN":{
+            "clear": "no",
+            "on_top_blockO": "yes"
+        },
+        "hand_1":{
+            "is_holdingO": "no"
+        }
+    },
+    "parent":["stack_word_ON"]
+
+}
+
+{
+    "type":"step",
+    "st_name":"put_down_TO",
+    "precondition":{
+        "hand_1":{
+            "is_holdingT": "yes"
+        },
+        "blockO":{
+            "clear":"yes"
+        }
+    },
+    "effect":{
+        "blockO":{
+            "clear": "no",
+            "on_top_blockT": "yes"
+        },
+        "hand_1":{
+            "is_holdingT": "no"
+        }
+    },
+    "parent":["stack_word_TO"]
+
+}
+
+{
+    "type":"step",
+    "st_name":"pick_up_blockW",
+    "precondition":{
+        "hand_1":{
+            "is_holdingW": "no"
+        }
+    },
+    "effect":{
+        "hand_1":{
+            "is_holdingW": "yes"
+        }
+    },
+    "parent":["stack_word_WK"]
+}
+
+{
+    "type":"step",
+    "st_name":"pick_up_blockA",
+    "precondition":{
+        "hand_1":{
+            "is_holdingA": "no"
+        }
+    },
+    "effect":{
+        "hand_1":{
+            "is_holdingA": "yes"
+        }
+    },
+    "parent":["stack_word_AW", "stack_word_AP"]
+}
+
+{
+    "type":"step",
+    "st_name":"pick_up_blockC",
+    "precondition":{
+        "hand_1":{
+            "is_holdingC": "no"
+        }
+    },
+    "effect":{
+        "hand_1":{
+            "is_holdingC": "yes"
+        }
+    },
+    "parent":["stack_word_CA"]
+}
+
+{
+    "type":"step",
+    "st_name":"pick_up_blockP",
+    "precondition":{
+        "hand_1":{
+            "is_holdingP": "no"
+        }
+    },
+    "effect":{
+        "hand_1":{
+            "is_holdingP": "yes"
+        }
+    },
+    "parent":["stack_word_PS"]
+}
+
+{
+    "type":"step",
+    "st_name":"pick_up_blockS",
+    "precondition":{
+        "hand_1":{
+            "is_holdingS": "no"
+        }
+    },
+    "effect":{
+        "hand_1":{
+            "is_holdingS": "yes"
+        }
+    },
+    "parent":["stack_word_ST"]
+}
+
+{
+    "type":"step",
+    "st_name":"pick_up_blockH",
+    "precondition":{
+        "hand_1":{
+            "is_holdingH": "no"
+        }
+    },
+    "effect":{
+        "hand_1":{
+            "is_holdingH": "yes"
+        }
+    },
+    "parent":["stack_word_HA"]
+}
+
+{
+    "type":"step",
+    "st_name":"put_down_WK",
+    "precondition":{
+        "blockK":{
+            "clear": "yes"
+        },
+        "hand_1":{
+            "is_holdingW": "yes"
+        }
+    },
+    "effect":{
+        "blockK":{
+            "clear": "no",
+            "on_top_blockW": "yes"
+        },
+        "hand_1":{
+            "is_holdingW": "no"
+        }
+    },
+    "parent":["stack_word_WK"]
+
+}
+
+{
+    "type":"step",
+    "st_name":"put_down_AW",
+    "precondition":{
+        "blockW":{
+            "clear": "yes"
+        },
+        "hand_1":{
+            "is_holdingA": "yes"
+        }
+    },
+    "effect":{
+        "blockW":{
+            "clear": "no",
+            "on_top_blockA": "yes"
+        },
+        "hand_1":{
+            "is_holdingA": "no"
+        }
+    },
+    "parent":["stack_word_AW"]
+
+}
+
+{
+    "type":"step",
+    "st_name":"put_down_HA",
+    "precondition":{
+        "blockA":{
+            "clear": "yes"
+        },
+        "hand_1":{
+            "is_holdingH": "yes"
+        }
+    },
+    "effect":{
+        "blockA":{
+            "clear": "no",
+            "on_top_blockH": "yes"
+        },
+        "hand_1":{
+            "is_holdingH": "no"
+        }
+    },
+    "parent":["stack_word_HA"]
+
+}
+
+{
+    "type":"step",
+    "st_name":"put_down_ST",
+    "precondition":{
+        "blockT":{
+            "clear": "yes"
+        },
+        "hand_1":{
+            "is_holdingS": "yes"
+        }
+    },
+    "effect":{
+        "blockT":{
+            "clear": "no",
+            "on_top_blockS": "yes"
+        },
+        "hand_1":{
+            "is_holdingS": "no"
+        }
+    },
+    "parent":["stack_word_ST"]
+
+}
+
+{
+    "type":"step",
+    "st_name":"put_down_PS",
+    "precondition":{
+        "blockS":{
+            "clear": "yes"
+        },
+        "hand_1":{
+            "is_holdingP": "yes"
+        }
+    },
+    "effect":{
+        "blockS":{
+            "clear": "no",
+            "on_top_blockP": "yes"
+        },
+        "hand_1":{
+            "is_holdingP": "no"
+        }
+    },
+    "parent":["stack_word_PS"]
+
+}
+
+{
+    "type":"step",
+    "st_name":"put_down_AP",
+    "precondition":{
+        "blockP":{
+            "clear": "yes"
+        },
+        "hand_1":{
+            "is_holdingA": "yes"
+        }
+    },
+    "effect":{
+        "blockP":{
+            "clear": "no",
+            "on_top_blockA": "yes"
+        },
+        "hand_1":{
+            "is_holdingA": "no"
+        }
+    },
+    "parent":["stack_word_AP"]
+
+}
+
+{
+    "type":"step",
+    "st_name":"put_down_CA",
+    "precondition":{
+        "blockA":{
+            "clear": "yes"
+        },
+        "hand_1":{
+            "is_holdingC": "yes"
+        }
+    },
+    "effect":{
+        "blockA":{
+            "clear": "no",
+            "on_top_blockC": "yes"
+        },
+        "hand_1":{
+            "is_holdingC": "no"
+        }
+    },
+    "parent":["stack_word_CA"]
+
+}

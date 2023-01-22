@@ -1,6 +1,6 @@
 turn_on_faucet_1,0
 turn_off_faucet_1,-1
-turn_on_faucet_1-1
+turn_on_faucet_1,-1
 add_water_kettle_1,-1
 turn_off_faucet_1,-1
 switch_on_kettle_1,-1

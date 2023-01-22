@@ -1,0 +1,8 @@
+[]#['put_down_NE']
+[3]#['pick_up_blockU']
+[3]#['pick_up_blockU']
+[3]#['pick_up_blockU']
+[3]#['put_down_UN']
+[3]#['pick_up_blockT']
+[3]#['put_down_TU']
+[]#[]
