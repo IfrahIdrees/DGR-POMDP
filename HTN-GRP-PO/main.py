@@ -190,7 +190,7 @@ if __name__ == '__main__':
 
         # file_nums = [9]
         # for file_num in file_nums:
-        for file_num in range(1, 2):
+        for file_num in range(1, 12):
             if file_num == 4:
                 continue
             for x in sensor_reliability:
