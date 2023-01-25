@@ -81,26 +81,32 @@ class Tracking_Engine(object):
                 feedback = "Yes"
             else:
                 feedback = "No"
-
-        else:
-            feedback = None
         return feedback
 
-    def check_is_ha_inbelief(self,inverse_pending_action, action_name, action_args=None):
+    def check_is_ha_inbelief(self, inverse_pending_action,
+                             action_name, action_args=None):
         if action_name in inverse_pending_action:
             is_ha_inbelief = True
         else:
             is_ha_inbelief = False
         return is_ha_inbelief
-    def extract_action_name(self, action_node, num_question_asked, is_question_asked):
+
+    def extract_action_name(
+            self, action_node, num_question_asked, is_question_asked):
         action_name = action_node.turn_information.chosen_action.name
         action_arg = None
         if action_name == "ask-clarification-question":
             action_arg = action_node.turn_information.chosen_action.question_asked
             action_name = action_name + "_" + action_arg
             is_question_asked = 1
-            num_question_asked+=is_question_asked
+            num_question_asked += is_question_asked
         return action_name, action_arg, is_question_asked, num_question_asked
+
+    def create_wait_action_node(self, agent_state):
+        action_node = agent_state
+        action_node.turn_information.chosen_action = Action("wait")
+        feedback = None
+        return feedback, action_node
 
     def start(self):
         print
@@ -128,20 +134,20 @@ class Tracking_Engine(object):
 
         # always iterate
         step_index = 0
-        real_steps = [] 
-        num_questions = 0 
+        real_steps = []
+        num_questions = 0
         total_reward = 0
         total_discounted_reward = 0
         num_question_asked = 0
         gamma = 1
-        total_time=0.0
-        inverse_pending_dict={"turn_on_faucet":[0]}
+        total_time = 0.0
+        inverse_pending_dict = {"turn_on_faucet": [0]}
         while(notif._notif.qsize() > 0):
-            is_question_asked =  0
+            is_question_asked = 0
             step, goal = notif.get_one_notif()
             real_steps.append(step)
             notif.delete_one_notif()
-            if step == "open_coffee_box_1":
+            if step == "get_cup_1":
                 print("step here")
             # if no notification, and the random prob is less than
             # no_notif_trigger_prob, sleep the engine
@@ -180,24 +186,23 @@ class Tracking_Engine(object):
                         step_index, step, goal)
                     agent_state.copy_explaset(exp)
                     if step_index == 0:
-                        is_first_real_step = True
+                        # is_first_real_step = True
+                        feedback, action_node = self.create_wait_action_node(
+                            agent_state)
                     else:
                         is_first_real_step = False
-                    action_node, _= monte_carlo_tree.rollout_loop(
-                        agent_state, step, is_first_real_step)
-                    # action_name = action_node.turn_information.chosen_action.name
-                    # action_arg = None
-                    # if action_name == "ask-clarification-question":
-                    #     action_arg = action_node.turn_information.chosen_action.question_asked
-                    #     action_name = action_name + "_" + action_arg
-                    #     is_question_asked = 1
-                    #     num_question_asked+=is_question_asked
-                    action_name,action_arg, is_question_asked, num_question_asked = \
-                        self.extract_action_name(action_node, num_question_asked, is_question_asked)
-
-                    
-
-                    
+                        action_node, _ = monte_carlo_tree.rollout_loop(
+                            agent_state, step, is_first_real_step)
+                        # action_name = action_node.turn_information.chosen_action.name
+                        # action_arg = None
+                        # if action_name == "ask-clarification-question":
+                        #     action_arg = action_node.turn_information.chosen_action.question_asked
+                        #     action_name = action_name + "_" + action_arg
+                        #     is_question_asked = 1
+                        #     num_question_asked+=is_question_asked
+                    action_name, action_arg, is_question_asked, num_question_asked = \
+                        self.extract_action_name(
+                            action_node, num_question_asked, is_question_asked)
 
                 '''Restoring the state for next iteration, env variable in HTNcoachproblem should be reset'''
                 exp = real_exp
@@ -234,36 +239,48 @@ class Tracking_Engine(object):
                     exp.explaSet_expand_part2(length)
 
                 if config.args.agent_type == "fixed_always_ask":
-                    action_node= agent_state 
+                    action_node = agent_state
                     action_node.turn_information.chosen_action = AgentAskClarificationQuestion()
 
                     highest_action_PS = ["", float('-inf')]
                     for k, v in exp._action_posterior_prob.items():
                         if v > highest_action_PS[1]:
-                            highest_action_PS = [k,v]
+                            highest_action_PS = [k, v]
                     exp.highest_action_PS = highest_action_PS
-                    action_node.turn_information.chosen_action.question_asked = exp.highest_action_PS[0]
-                    action_name,action_arg, is_question_asked, num_question_asked = \
-                        self.extract_action_name(action_node, num_question_asked, is_question_asked)
+                    action_node.turn_information.chosen_action.question_asked = exp.highest_action_PS[
+                        0]
+                    action_name, action_arg, is_question_asked, num_question_asked = \
+                        self.extract_action_name(
+                            action_node, num_question_asked, is_question_asked)
                 if config.args.agent_type in ["pomdp", "fixed_always_ask"]:
-                    feedback = self.get_human_feedback(action_node.turn_information.chosen_action.name,real_steps,action_arg=action_arg)
+                    feedback = self.get_human_feedback(
+                        action_node.turn_information.chosen_action.name,
+                        real_steps,
+                        action_arg=action_arg)
                 elif config.args.agent_type == "htn":
-                    action_node=agent_state 
-                    action_node.turn_information.chosen_action = Action("wait")
-                    feedback = None
+                    feedback, action_node = self.create_wait_action_node(
+                        agent_state)
 
-                if feedback == None:
+                if feedback is None:
                     exp.update_without_language_feedback(self._p_l)
                 else:
-                    exp.update_with_language_feedback(feedback,exp.highest_action_PS, self._p_l)
-                is_haction_in_belief = self.check_is_ha_inbelief(inverse_pending_dict,action_node.turn_information.chosen_action.name)
-                env_reward = monte_carlo_tree.get_step_reward(is_haction_in_belief,action_node.turn_information.chosen_action) 
+                    exp.update_with_language_feedback(
+                        feedback, exp.highest_action_PS, self._p_l)
+                is_haction_in_belief = self.check_is_ha_inbelief(
+                    inverse_pending_dict, action_node.turn_information.chosen_action.name)
+                env_reward = monte_carlo_tree.get_step_reward(
+                    is_haction_in_belief, action_node)
                 total_reward += env_reward
                 total_discounted_reward += env_reward * gamma
                 gamma *= config.args.d
-                
+
                 print("\n========================")
-                print("CHOSEN ACTION IS", action_node.turn_information.chosen_action.name, env_reward)
+                print(
+                    "Step index is",
+                    step_index,
+                    "CHOSEN ACTION IS",
+                    action_node.turn_information.chosen_action.name,
+                    env_reward)
 
                 inverse_pending_dict, _ = exp.pendingset_generate()
 
@@ -281,22 +298,26 @@ class Tracking_Engine(object):
                     # spamwriter.writerow(['Spam'] * 5 + ['Baked Beans'])
                     if step_index == 0 and self.trial == 1:
                         spamwriter.writerow(
-                        ["step_index", "time_per_step", "action_name", "step_reward","total_reward", "cumulative_reward", "is_question_asked" ])
-                        
-                    spamwriter.writerow(
-                        [step_index, time_per_step, action_node.turn_information.chosen_action.name, env_reward, total_reward, total_discounted_reward, is_question_asked])
-                total_time+=time_per_step
+                            ["step_index", "time_per_step", "action_name", "step_reward", "total_reward", "cumulative_reward", "is_question_asked"])
+                    if config.args.agent_type == "htn":
+                        spamwriter.writerow(
+                            [step_index, time_per_step, action_node.turn_information.chosen_action.name, env_reward, total_reward, total_discounted_reward, is_question_asked])
+                    else:
+                        # action_name
+                        spamwriter.writerow(
+                            [step_index, time_per_step, action_name, env_reward, total_reward, total_discounted_reward, is_question_asked])
+                total_time += time_per_step
                 step_index += 1
                 print("go into the next loop\n\n")
                 # print(
                 # print
-        normalized_question_asked = num_question_asked/step_index
-        normalized_time = total_time/step_index
+        normalized_question_asked = num_question_asked / step_index
+        normalized_time = total_time / step_index
         config.episode_cumulative_reward_df.loc[len(config.episode_cumulative_reward_df.index)] = ([config.trial,
-                                                                              total_reward,
-                                                                              total_discounted_reward,
-                                                                              num_question_asked,
-                                                                              normalized_question_asked,
-                                                                              normalized_time])
+                                                                                                    total_reward,
+                                                                                                    total_discounted_reward,
+                                                                                                    num_question_asked,
+                                                                                                    normalized_question_asked,
+                                                                                                    normalized_time])
 
         # config.normalized_

@@ -125,3 +125,7 @@ TestCases_original/human_simulator_old.py
 TestCases_original/human_simulator.py
 tian/*
 logs/*
+logs-jan24/*
+logs-jan24-2/*
+HTN-GRP-PO/*.out
+logs*/

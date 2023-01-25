@@ -55,6 +55,27 @@ STEP_DICT = {
         ]
 }
 
+# INVERSE_STEP_DICT = {
+#     "turn_on_faucet_1": [1, 2, 3],
+#     "use_soap": [1],
+#     "rinse_hand": [1],
+#     "turn_off_faucet_1": [1],
+#     "dry_hand": [9],
+#     "open_tea_box_1": [2],
+#     "add_tea_cup_1": [2],
+#     "close_tea_box_1": [2],
+#     "add_water_cup_1": [-1],
+#     "drink": [9],
+#     "add_water_kettle_1": [-1],
+#     "turn_off_faucet_1": [-1],
+#     "switch_on_kettle_1": [-1],
+#     "switch_off_kettle_1": [-1],
+#     "get_cup_1": [-1],
+#     "open_coffee_box_1": [3],
+#     "add_coffee_cup_1": [3],
+#     "close_coffee_box_1": [3]
+# }
+
 INVERSE_STEP_DICT = {
     "turn_on_faucet_1": [1, 2, 3],
     "use_soap": [1],
@@ -64,17 +85,18 @@ INVERSE_STEP_DICT = {
     "open_tea_box_1": [2],
     "add_tea_cup_1": [2],
     "close_tea_box_1": [2],
-    "add_water_cup_1": [-1],
+    "add_water_cup_1": [2, 3],
     "drink": [9],
-    "add_water_kettle_1": [-1],
-    "turn_off_faucet_1": [-1],
-    "switch_on_kettle_1": [-1],
-    "switch_off_kettle_1": [-1],
-    "get_cup_1": [-1],
+    "add_water_kettle_1": [2, 3],
+    "turn_off_faucet_1": [2, 3],
+    "switch_on_kettle_1": [2, 3],
+    "switch_off_kettle_1": [2, 3],
+    "get_cup_1": [2, 3],
     "open_coffee_box_1": [3],
     "add_coffee_cup_1": [3],
     "close_coffee_box_1": [3]
 }
+
 
 GOAL = {
     1: "wash_hand",
@@ -105,6 +127,7 @@ class MCTS:
         self.N_vnode = defaultdict(int)
         # will store count for each observation node
         self.children = dict()
+        self.action_to_index_map = {}
 
         self.db = db
         self.output_folder = output_folder
@@ -137,11 +160,21 @@ class MCTS:
         action_node = max(self.children[node], key=score)
         print("\n=========All node Reward==========")
         for n in self.children[node]:
-            print(
-                "Node:",
-                n.turn_information.chosen_action.name,
-                "Reward",
-                score(n))
+            action_arg = None
+            if n.turn_information.chosen_action.name == "ask-clarification-question":
+                action_arg = n.turn_information.chosen_action.question_asked
+                print(
+                    "Node:",
+                    n.turn_information.chosen_action.name + "_" + action_arg,
+                    "Reward",
+                    score(n))
+            else:
+                print(
+                    "Node:",
+                    n.turn_information.chosen_action.name,
+                    "Reward",
+                    score(n))
+
             # "Reward": score(n))
         # print("self.children[")
         return action_node, score(action_node)
@@ -191,6 +224,12 @@ class MCTS:
                             "==============\n")
             # self._expand(root_node) ##Todo: trying what Jason does expands
             # the root
+            if i == 0:
+                self.action_to_index_map = defaultdict(int)
+                for index, action in enumerate(INVERSE_STEP_DICT.keys()):
+                    self.action_to_index_map[action] = index
+                # make the action_to_index map
+
             print("\n\n ROLL OUT # ", i)
             if i == 4:
                 print("here")
@@ -269,10 +308,12 @@ class MCTS:
 
                 # node.update_turn_information(previous_node) ## not needed if
                 # equality set correctly
-                action = node.turn_information.chosen_action
-                node = node.update_action(action, node)  # Todo: write better
+                '''action = node.turn_information.chosen_action'''
+                '''node = node.update_action(action, node)'''  # Todo: write better
+                # we dont need to update node with highest pending we have
+                # chosen based on reward
                 step_reward = self.get_step_reward(
-                    is_haction_in_belief, action)
+                    is_haction_in_belief, node)
                 # figure out is_haction_in_belief passed here
                 step_rewards.append(step_reward)
                 is_haction_in_belief = True  # reset is_haction_in_belief for the next step
@@ -344,6 +385,7 @@ class MCTS:
                 # two tasknets start
                 node.explaset.action_posterior(
                     real_step=False, mcts_filename=self.output_filename)
+                node.turn_information.action_node = False
 
             # node.turn_information.action_node = not node.turn_information.action_node
             is_action_node = not is_action_node
@@ -359,16 +401,59 @@ class MCTS:
             self.N[action] = 0
             self.Q[action] = 0
 
-    def get_step_reward(self, is_haction_in_belief, action,
-                        is_real_step=False, feedback=None):
-        if not is_haction_in_belief and action.name == "ask-clarification-question":
+        # print("\n=========All action node added==========")
+        # for n in self.children[node]:
+        #     action_arg=None
+        #     if n.turn_information.chosen_action.name == "ask-clarification-question":
+        #         action_arg = n.turn_information.chosen_action.question_asked
+        #         print(
+        #             "Node:",
+        #             n.turn_information.chosen_action.name+"_"+action_arg,
+        #             )
+        #     else:
+        #         print(
+        #             "Node:",
+        #             n.turn_information.chosen_action.name,
+        #             )
+
+    def choose_preferred_action(self, node):
+        current_pending_set = np.asarray(node.sampled_explanation._pendingSet)
+        index = np.argmax(current_pending_set[:, 1], axis=0)
+        question_asked = current_pending_set[index, 0]
+        return question_asked
+
+    def get_step_reward(self, is_haction_in_belief, action_node,
+                        is_real_step=False, feedback=None, action_arg=None):
+        action = action_node.turn_information.chosen_action
+        # if action.name == "ask-clarification-question"
+        #     action_arg = action.question
+        current_step = action_node.turn_information._step_information[1]
+        if not is_haction_in_belief and action.name == "ask-clarification-question" and action.question_asked == current_step:
             return config.args.qr
+        elif not is_haction_in_belief and action.name == "ask-clarification-question" and action.question_asked != current_step:
+            return config.args.qp
         elif not is_haction_in_belief and action.name == "wait":
             return config.args.wp
         elif is_haction_in_belief and action.name == "ask-clarification-question":
             return config.args.qp
         else:
             return 0
+
+        # if self.human_simulator.check_terminal_state(state.step_index):
+        #     return 0
+        # if self.human_simulator.check_terminal_state(next_state.step_index):
+        #     return self.goal_reward
+        # # elif self.human_simulator.check_terminal_state(state.step_index+1) and action.name == "ask-clarification-question":
+        #     # return self.goal_reward
+        # elif action.name == "wait":
+        #     return self.wait_penalty
+        # elif action.name == "ask-clarification-question" and self.human_simulator.check_wrong_step(state.step_index):  #and sensor_notification[-1] in self.human_simulator.all_wrong_actions and sensor_notification[-1] == question_asked:
+        #     return self.question_reward
+        # elif action.name == "ask-clarification-question" and sensor_notification[-1] != question_asked :  #and sensor_notification[-1] in self.human_simulator.all_wrong_actions and sensor_notification[-1] == question_asked:
+        #     return self.question_reward
+        # elif action.name == "ask-clarification-question":  #not(sensor_notification[-1] in self.human_simulator.all_wrong_actions and sensor_notification[-1] == question_asked):
+        #     return self.question_penalty
+        # # else:
         # Todo: include the action argument
 
         '''if not is_real_step and (not is_haction_in_belief and action.name == "ask-clarification-question") \
@@ -536,6 +621,10 @@ class MCTS:
             # second steps
             next_human_action = np.random.choice(
                 ["use_soap", "add_water_kettle_1"], p=[0.33, 1 - 0.33])
+            # if previous_goal == 1:
+            #     next_human_action = "add_water_kettle_1"
+            # elif previous_goal == 1:
+
             if next_human_action == "use_soap":
                 next_goal = 1
             else:
@@ -657,15 +746,24 @@ class MCTS:
                 # should NOT make the node.turn_information.action_node true since flip at bottom
                 # should make the node.turn_information.chosen_action non-None
 
-                index = np.random.choice([0, 1])
+                '''index = np.random.choice([0, 1])'''
+                # index = np.random.choice([0, 1])
+                # instead of random choose a preferred action based on the
+                # belief
+                if is_haction_in_belief:
+                    index = 0
+                else:
+                    question_arg = self.choose_preferred_action(node)
+                    # plus 1 to add for wait
+                    index = self.action_to_index_map[question_arg] + 1
                 previous_node = node
                 node = children[index]
                 '''node.update_turn_information(previous_node)'''
                 # node.turn_information = tmp_turn_information
-                action = node.turn_information.chosen_action
-                node = node.update_action(action, node)  # Todo: write better
+                '''action = node.turn_information.chosen_action'''
+                # node = node.update_action(action, node)  # Todo: write better
                 step_reward = self.get_step_reward(
-                    is_haction_in_belief, action)
+                    is_haction_in_belief, node)
                 is_haction_in_belief = True  # reset is_haction_in_belief for the next step
                 total_reward += step_reward * discount
                 discount *= self.gamma

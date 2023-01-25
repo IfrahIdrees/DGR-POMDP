@@ -149,7 +149,8 @@ class AgentState(_AS, MCNode):
         for action in action_list:
             next_state = copy.deepcopy(self)
             next_state.turn_information.action_node = True  # sometimes commented out
-            next_state = self.update_action(action, next_state)
+            # next_state = self.update_action(action, next_state)
+            next_state.turn_information.chosen_action = action
             children.append(next_state)
 
         return children

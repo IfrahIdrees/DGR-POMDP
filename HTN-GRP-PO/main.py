@@ -160,18 +160,22 @@ if __name__ == '__main__':
     other_happens = [0.76, 0.765]  # 0.75 #0.68 try 0.78 next
 
     # sensor set up files
-    # sensor_reliability = [0.99, 0.95, 0.9, 0.8]
+    sensor_reliability = [0.99, 0.95, 0.9, 0.8]
+    sensor_reliability = [0.99, 0.9, 0.8]
     # sensor_reliability = [0.95, 0.9]
-    sensor_reliability = [0.99, 0.8]
+    # sensor_reliability = [0.99, 0.8]
     sensor_reliability = [0.8]
     # trials = 51
-    trials = 11
+    # trials = 11
+    trials = 8
     config.seed = 5999
     config.trials = trials
     random.seed(config.seed)
-    config.randomNs = [random.random()
-                       #    for i in range((config.trials - 1) * 100)]
-                       for i in range((51 - 1) * 100)]
+    # other_happen=2
+    # file =12
+    # trial = 51
+    # steps = 17
+    # simulation = 11
 
     # file_nums = [1,2,3,5,7,9,10]
     # for file_num in file_nums:
@@ -182,6 +186,10 @@ if __name__ == '__main__':
             parser.add_argument("--oh", type=float, default=other_happen)
             is_first_other_happen = False
             parser, args = parseArguments()
+            config.randomNs = [random.random()
+                               #    for i in range((config.trials - 1) * 100)]
+                               for i in range(2 * 12 * args.max_depth * args.num_sims * (51 - 1) * 100)]
+
         else:
             args.oh = other_happen
 
@@ -190,7 +198,7 @@ if __name__ == '__main__':
 
         # file_nums = [9]
         # for file_num in file_nums:
-        for file_num in range(1, 12):
+        for file_num in range(1, 13):
             if file_num == 4:
                 continue
             for x in sensor_reliability:

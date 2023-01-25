@@ -136,3 +136,21 @@ Todo:
 
 
 
+pid: [1] 33008
+[1] 7960
+
+nohup python main.py --agent_type pomdp --max_depth 17 --num_sims 7 --d 0.95 --e 1 --wp -5 --qr 5 --qp -5 --domain kitchen &
+[1] 27984
+
+
+Jan 25
+1. Fixed the argument issues for the action node during simulation and selection
+2. fixed step_reward to include the action_arguments
+3. observation node should have action_node as zero
+4. added preferred action heuristic
+5. corrected the result renaming for tian
+6. do not ask question for first step
+
+Todo:
+1. not working for case 6 -previous_goal remains as -1
+2. action argument for wrong step is not, right.
