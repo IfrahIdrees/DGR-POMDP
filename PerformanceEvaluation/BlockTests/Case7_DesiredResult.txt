@@ -3,7 +3,7 @@
 [1]#['put_down_OT']
 [1]#['pick_up_blockR']
 [1]#['put_down_RO']
-[]#['pick_up_blockW']
+[]#[]
 [4]#['put_down_WK']
 [4]#['pick_up_blockA']
 [4]#['put_down_AW']

@@ -1,9 +1,10 @@
-pick_up_blockN
-put_down_NE
-pick_up_blockU
-put_down_UN
+copy of 7, MGWS
 pick_up_blockT
-put_down_TU
+put_down_TE
+pick_up_blockO
+put_down_OT
+pick_up_blockR
+put_down_RO
 pick_up_blockW
 put_down_WK
 pick_up_blockA

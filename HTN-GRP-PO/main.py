@@ -51,10 +51,10 @@ if __name__ == '__main__':
     other_happens = [0.76, 0.765]  # 0.75 #0.68 try 0.78 next
 
     # sensor set up files
-    # sensor_reliability = [0.99, 0.95, 0.9, 0.8]
+    sensor_reliability = [0.99, 0.95, 0.9, 0.8, 0.75]
     # sensor_reliability = [0.99, 0.95, 0.9, 0.8]
     # sensor_reliability = 	[0.95, 0.9, 0.8, 0.75]
-    sensor_reliability = [0.99]
+    # sensor_reliability = [0.99]
 
     trials = 21
     config.seed = 5999
@@ -63,7 +63,7 @@ if __name__ == '__main__':
     config.randomNs = [random.random()
                        for i in range((config.trials - 1) * 100)]
 
-    # file_nums = [1,2,3,5,7,9,10]
+    # file_nums = python3 ma[1,2,3,5,7,9,10]
     # for file_num in file_nums:
     for other_happen in np.arange(other_happens[0], other_happens[1], 0.005):
         output_folder_name = "otherhappen_" + str(other_happen) + "/"
@@ -78,7 +78,7 @@ if __name__ == '__main__':
 
         # file_nums = [9]
         # for file_num in file_nums:
-        for file_num in range(2, 3):
+        for file_num in range(1, 23):
             for x in sensor_reliability:
                 # output file name
                 if config.RANDOM_BASELINE:

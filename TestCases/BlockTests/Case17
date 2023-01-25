@@ -8,5 +8,7 @@ pick_up_blockW
 put_down_WK
 pick_up_blockA
 put_down_AW
+pick_up_blockR
+put_down_RO
 pick_up_blockH
 put_down_HA

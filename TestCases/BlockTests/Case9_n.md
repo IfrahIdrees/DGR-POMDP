@@ -1,18 +1,21 @@
+copy of case6 with capstone MG,CS
 pick_up_blockN
 put_down_NE
 pick_up_blockO
-put_down_ON
-put_down_ON
 put_down_ON
 pick_up_blockT
 put_down_TO
 pick_up_blockS
 put_down_ST
 pick_up_blockP
-pick_up_blockP
-pick_up_blockP
 put_down_PS
 pick_up_blockA
 put_down_AP
 pick_up_blockC
 put_down_CA
+pick_up_blockW
+put_down_WK
+pick_up_blockA
+put_down_AW
+pick_up_blockH
+put_down_HA

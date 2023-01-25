@@ -1,7 +1,10 @@
+copy of 11, MG,WS
 pick_up_blockN
 put_down_NE
 pick_up_blockU
 put_down_UN
+pick_up_blockR
+put_down_RO
 pick_up_blockT
 put_down_TU
 pick_up_blockW

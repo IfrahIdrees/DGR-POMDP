@@ -1,3 +1,4 @@
+SG,WS,RS capstone
 pick_up_blockN
 put_down_NE
 pick_up_blockO

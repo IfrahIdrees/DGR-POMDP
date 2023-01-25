@@ -90,7 +90,10 @@ goal: OXYTONE(S), ECOTONE(S), ROTE, HAWK,
 
 ignore case 10, go with case 8
 
+for casek 5 capstone increase otherhappen to 0.81
 
+
+look into: 5,12,15,21
 
 
 
