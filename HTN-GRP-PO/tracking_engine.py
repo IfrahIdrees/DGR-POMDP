@@ -242,13 +242,13 @@ class Tracking_Engine(object):
                     action_node = agent_state
                     action_node.turn_information.chosen_action = AgentAskClarificationQuestion()
 
-                    highest_action_PS = ["", float('-inf')]
-                    for k, v in exp._action_posterior_prob.items():
-                        if v > highest_action_PS[1]:
-                            highest_action_PS = [k, v]
-                    exp.highest_action_PS = highest_action_PS
-                    action_node.turn_information.chosen_action.question_asked = exp.highest_action_PS[
-                        0]
+                    # highest_action_PS = ["", float('-inf')]
+                    # for k, v in exp._action_posterior_prob.items():
+                    #     if v > highest_action_PS[1]:
+                    #         highest_action_PS = [k, v]
+                    # exp.highest_action_PS = highest_action_PS
+                    action_node.turn_information.chosen_action.question_asked = step
+                    # exp.highest_action_PS[0]
                     action_name, action_arg, is_question_asked, num_question_asked = \
                         self.extract_action_name(
                             action_node, num_question_asked, is_question_asked)
@@ -264,8 +264,13 @@ class Tracking_Engine(object):
                 if feedback is None:
                     exp.update_without_language_feedback(self._p_l)
                 else:
-                    exp.update_with_language_feedback(
-                        feedback, exp.highest_action_PS, self._p_l)
+                    if config.args.agent_type == "fixed_always_ask":
+                        exp.update_with_language_feedback(
+                        feedback, [action_arg,0.99], self._p_l)
+                    else:
+                        ##TODO:NEED TO FIX WHAT SHOULD BE PASSED
+                        exp.update_with_language_feedback(
+                            feedback, exp.highest_action_PS, self._p_l)
                 is_haction_in_belief = self.check_is_ha_inbelief(
                     inverse_pending_dict, action_node.turn_information.chosen_action.name)
                 env_reward = monte_carlo_tree.get_step_reward(
