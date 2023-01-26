@@ -1,14 +1,14 @@
-pick_up_blockN
-put_down_NE
-pick_up_blockO
-put_down_ON
-pick_up_blockR
-put_down_RO
-pick_up_blockT
-put_down_TO
-pick_up_blockW
-put_down_WK
-pick_up_blockA
-put_down_AW
-pick_up_blockH
-put_down_HA
+pick_up_blockN, 0
+put_down_NE, 2
+pick_up_blockO, 2
+put_down_ON, 2
+pick_up_blockR, 2
+put_down_RO, 2
+pick_up_blockT, 2
+put_down_TO, 9
+pick_up_blockW, 0
+put_down_WK, 4
+pick_up_blockA, 4
+put_down_AW, 4
+pick_up_blockH, 4
+put_down_HA, 9

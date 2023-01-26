@@ -1,8 +1,8 @@
-pick_up_blockT
-put_down_TE
-pick_up_blockO
-put_down_OT
-pick_up_blockW
-put_down_WK
-pick_up_blockR
-put_down_RO
+pick_up_blockT, 0
+put_down_TE, 1
+pick_up_blockO, 1
+put_down_OT, 1
+pick_up_blockW, 1
+put_down_WK, 1
+pick_up_blockR, 1
+put_down_RO, 9
