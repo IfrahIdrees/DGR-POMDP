@@ -303,3 +303,6 @@ class AgentState(_AS, MCNode):
         self.explaset._action_posterior_prob = explaset._action_posterior_prob
         self.explaset._explaset = explaset._explaset
         self.explaset._prior = explaset._prior
+        self.explaset._sensor_notification= explaset._sensor_notification
+        self.explaset.highest_action_PS = explaset.highest_action_PS
+        self.explaset._other_happen = explaset._other_happen

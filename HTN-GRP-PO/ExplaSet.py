@@ -262,6 +262,7 @@ class explaSet(object):
         else:
             with open(self._output_file_name, 'a') as f:
                 f.write(str(round(otherHappen, 4)) + "\t")
+        self._other_happen = otherHappen
         return otherHappen
 
     # version begin from March 14, 2017

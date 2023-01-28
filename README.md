@@ -154,3 +154,14 @@ Jan 25
 Todo:
 1. not working for case 6 -previous_goal remains as -1
 2. action argument for wrong step is not, right.
+
+sudo service mongod start
+
+Jan 28
+1. Fixed the explaset copy
+2. adding pending set generate in select
+
+
+Todo:
+1. fix action argument when other_happen > threshold, action is wrong
+2. when other_happen > and feedback is yes we correct the belief

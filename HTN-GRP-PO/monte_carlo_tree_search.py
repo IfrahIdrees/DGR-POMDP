@@ -281,6 +281,9 @@ class MCTS:
                 # exiting node is always observation
                 # node is either unexplored or terminal
                 # step_rewards.append(0)
+                # current_explaset = children[0].explaset
+                inverse_pending_dict, _ = node.explaset.pendingset_generate()
+                
                 return path, step_rewards, is_haction_in_belief, num_goals, is_goal_chosen, is_first_real_step
 
             if not is_action_node:
@@ -370,7 +373,7 @@ class MCTS:
 
                 # if next_human_action == "dry_hand":
                     # print("here")
-
+                '''unmove the setting up of node for the last one not everytime'''
                 node.pending_actions = SortedSet(
                     [action[0] for action in node.sampled_explanation._pendingSet])
                 node.execute_sequences = [
@@ -729,6 +732,7 @@ class MCTS:
         discount = 1
         is_action_node = False
         node = self.adjust_step_index(node)
+        path = []
         # fix the step index to be the one relative to one goal not the one in
         # multiple goal
         while True:
@@ -860,6 +864,8 @@ class MCTS:
                 step_num += 1
                 # node.turn_information.step_index = step_num
             is_action_node = not is_action_node
+            path.append(node)
+
             '''node.turn_information.action_node = not node.turn_information.action_node'''
 
             # TODO: keep track of goal change and 0,0,0

@@ -185,6 +185,7 @@ class Tracking_Engine(object):
                     agent_state.turn_information.update_turn_information(
                         step_index, step, goal)
                     agent_state.copy_explaset(exp)
+                    # agent_state.explaset =copy.deepcopy(exp)
                     if step_index == 0:
                         # is_first_real_step = True
                         feedback, action_node = self.create_wait_action_node(
