@@ -49,6 +49,7 @@ def get_output_path(args):
     mcts_dir = log_dir + "/mcts/"
     step_dir = log_dir + "/step_reward/"
     episode_dir = log_dir + "/episode_reward/"
+    corrective_action_dir = log_dir + "/corrective_actions_info/"
     # os.makedirs("../outputs", exist_ok=True)
     # os.makedirs("../outputs/{}".format(args.agent_type), exist_ok=True)
 
@@ -61,11 +62,13 @@ def get_output_path(args):
                                 output_name), exist_ok=True)
     os.makedirs(episode_dir.format(args.agent_type,
                                    output_name), exist_ok=True)
+    os.makedirs(corrective_action_dir.format(args.agent_type,
+                                   output_name), exist_ok=True)
     # os.makedirs("../logs/{}/{}real".format(args.agent_type), exist_ok=True)
 
     # os.makedirs(output_dir, exist_ok=True)
 
-    return output_name, log_dir, mcts_dir, step_dir, episode_dir
+    return output_name, log_dir, mcts_dir, step_dir, episode_dir, corrective_action_dir 
 
 
 def parseArguments():
@@ -118,13 +121,14 @@ def parseArguments():
     args = parser.parse_args()
 
     # I/O parameters
-    output_name, log_dir, mcts_dir, step_dir, episode_dir = get_output_path(
+    output_name, log_dir, mcts_dir, step_dir, episode_dir, corrective_action_dir  = get_output_path(
         args)
     parser.add_argument("--output_name", type=str, default=output_name)
     parser.add_argument("--log_dir", type=str, default=log_dir)
     parser.add_argument("--mcts_dir", type=str, default=mcts_dir)
     parser.add_argument("--step_dir", type=str, default=step_dir)
     parser.add_argument("--episode_dir", type=str, default=episode_dir)
+    parser.add_argument("--corrective_action_dir", type=str, default=corrective_action_dir)
     # parser.add_argument("-sr", type=float, default = 0.99, help="sensor reliability")
     args = parser.parse_args()
 

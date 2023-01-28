@@ -165,3 +165,11 @@ Jan 28
 Todo:
 1. fix action argument when other_happen > threshold, action is wrong
 2. when other_happen > and feedback is yes we correct the belief
+
+Jan 28
+1. fixed_always_kitchen
+2. when other_happen > and feedback is yes we correct the belief
+
+Todo:
+1. then htn block
+2. fix action argument when other_happen > threshold, action is wrong

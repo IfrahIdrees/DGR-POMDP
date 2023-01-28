@@ -72,6 +72,13 @@ class Tracking_Engine(object):
             config.args.step_dir +
             "Step_" +
             self.output_case_file_name).with_suffix('.csv')
+        self.corrective_action_filename = Path(
+            config.args.corrective_action_dir +
+            # "Step_" +
+            self.output_case_file_name
+        )
+        with open(self.corrective_action_filename, 'a') as f:
+            f.write('\n========================\n')
         self.trial = trial
 
     def get_human_feedback(self, action_name, real_steps, action_arg=None, ):
@@ -97,7 +104,7 @@ class Tracking_Engine(object):
         action_arg = None
         if action_name == "ask-clarification-question":
             action_arg = action_node.turn_information.chosen_action.question_asked
-            action_name = action_name + "_" + action_arg
+            # action_name = action_name + "_" + action_arg
             is_question_asked = 1
             num_question_asked += is_question_asked
         return action_name, action_arg, is_question_asked, num_question_asked
@@ -205,6 +212,29 @@ class Tracking_Engine(object):
                         self.extract_action_name(
                             action_node, num_question_asked, is_question_asked)
 
+                if config.args.agent_type == "fixed_always_ask":
+                    action_node = agent_state
+                    action_node.turn_information.chosen_action = AgentAskClarificationQuestion()
+
+                    # highest_action_PS = ["", float('-inf')]
+                    # for k, v in exp._action_posterior_prob.items():
+                    #     if v > highest_action_PS[1]:
+                    #         highest_action_PS = [k, v]
+                    # exp.highest_action_PS = highest_action_PS
+                    action_node.turn_information.chosen_action.question_asked = step
+                    action_name, action_arg, is_question_asked, num_question_asked = \
+                        self.extract_action_name(
+                            action_node, num_question_asked, is_question_asked)
+                
+                '''feedback generation'''
+                if config.args.agent_type in ["pomdp", "fixed_always_ask"]:
+                    feedback = self.get_human_feedback(
+                        action_node.turn_information.chosen_action.name,
+                        real_steps,
+                        action_arg=action_arg)
+                elif config.args.agent_type == "htn":
+                    feedback, action_node = self.create_wait_action_node(
+                        agent_state)
                 '''Restoring the state for next iteration, env variable in HTNcoachproblem should be reset'''
                 exp = real_exp
                 pipeline = [{"$match": {}},
@@ -221,7 +251,29 @@ class Tracking_Engine(object):
                     # if otherHappen:
                     # wrong step handling
                     # print("action posterior after bayseian inference is",  exp._action_posterior_prob)
-                    exp.handle_exception()
+                    if config.args.agent_type == "htn":
+                        exp.handle_exception()
+                    else:
+                        '''TODO: see what to do for pomdp when the action_arg can be wrong'''
+                        if action_name == "ask-clarification-question" and feedback=="Yes":
+                            sensor_notification = update_db(step_index,step, self.corrective_action_filename)
+                            exp.setSensorNotification(sensor_notification)
+                            exp.action_posterior(is_correction=True)
+                            length = len(exp._explaset)
+                    
+                            # input step start a new goal (bottom up procedure to create ongoing status)
+                            # include recognition and planning
+                            # exp._delete_trigger = config._real_delete_trigger
+                            exp.explaSet_expand_part1(length)
+
+                            # belief state update
+                            state = State()
+                            state.update_state_belief(exp)
+                            # input step continues an ongoing goal
+                            # include recognition and planning 
+                            exp.explaSet_expand_part2(length)
+
+                            # print("here")
 
                 # correct step procedure
                 else:
@@ -239,28 +291,7 @@ class Tracking_Engine(object):
                     # include recognition and planning
                     exp.explaSet_expand_part2(length)
 
-                if config.args.agent_type == "fixed_always_ask":
-                    action_node = agent_state
-                    action_node.turn_information.chosen_action = AgentAskClarificationQuestion()
-
-                    # highest_action_PS = ["", float('-inf')]
-                    # for k, v in exp._action_posterior_prob.items():
-                    #     if v > highest_action_PS[1]:
-                    #         highest_action_PS = [k, v]
-                    # exp.highest_action_PS = highest_action_PS
-                    action_node.turn_information.chosen_action.question_asked = step
-                    # exp.highest_action_PS[0]
-                    action_name, action_arg, is_question_asked, num_question_asked = \
-                        self.extract_action_name(
-                            action_node, num_question_asked, is_question_asked)
-                if config.args.agent_type in ["pomdp", "fixed_always_ask"]:
-                    feedback = self.get_human_feedback(
-                        action_node.turn_information.chosen_action.name,
-                        real_steps,
-                        action_arg=action_arg)
-                elif config.args.agent_type == "htn":
-                    feedback, action_node = self.create_wait_action_node(
-                        agent_state)
+                
 
                 if feedback is None:
                     exp.update_without_language_feedback(self._p_l)
@@ -305,13 +336,17 @@ class Tracking_Engine(object):
                     if step_index == 0 and self.trial == 1:
                         spamwriter.writerow(
                             ["step_index", "time_per_step", "action_name", "step_reward", "total_reward", "cumulative_reward", "is_question_asked"])
-                    if config.args.agent_type == "htn":
+                    if config.args.agent_type == "htn" or action_arg == None:
                         spamwriter.writerow(
                             [step_index, time_per_step, action_node.turn_information.chosen_action.name, env_reward, total_reward, total_discounted_reward, is_question_asked])
                     else:
                         # action_name
+                        # if action_arg!=None:
                         spamwriter.writerow(
-                            [step_index, time_per_step, action_name, env_reward, total_reward, total_discounted_reward, is_question_asked])
+                            [step_index, time_per_step, action_name+"_"+action_arg, env_reward, total_reward, total_discounted_reward, is_question_asked])
+                        # else:
+                            # spamwriter.writerow(
+                            # [step_index, time_per_step, action_name, env_reward, total_reward, total_discounted_reward, is_question_asked])
                 total_time += time_per_step
                 step_index += 1
                 print("go into the next loop\n\n")

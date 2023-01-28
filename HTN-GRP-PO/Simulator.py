@@ -51,6 +51,12 @@ def realStateANDSensorUpdate(
             if real_step:
                 db.update_obj_Rstate(obj, att, effect[obj][att])
             if not is_wrong_step_or_belief:
+                ## in case of simulation we want the sensor_notification to be []
+                ## so dont even go in update_Sensor which based on sr decide whether 
+                # sensor notification is []
+                ##for laguaue we need a new function that updates R and sensor_value but not dependant on threshold
+                ## do we want to add this output somewhere?
+                ## we can add new file
                 update_result = db.update_sensor_value(
                     obj, att, effect[obj][att], real_step)
                 if update_result:
@@ -59,4 +65,50 @@ def realStateANDSensorUpdate(
                     new_item["attribute"] = att
                     new_item["obj_att_value"] = effect[obj][att]
                     sensor_notification.append(new_item)
+
+    return sensor_notification
+
+
+def update_db(step_index,step_name, output_file_name):
+
+    print("step index", step_index, "Corrective step name is ", step_name)
+
+    with open(output_file_name, 'a') as f:
+        f.write("step index"+ str(step_index)+"Corrective step name is "+step_name+"\n")
+
+    sensor_notification = []
+    op = db.get_operator(step_name)
+    effect = op["effect"]
+    for obj in effect:
+        for att in effect[obj]:
+            # if real_step:
+            db.update_obj_Rstate(obj, att, effect[obj][att])
+                # if not is_wrong_step_or_belief:
+                ## in case of simulation we want the sensor_notification to be []
+                ## so dont even go in update_Sensor which based on sr decide whether 
+                # sensor notification is []
+                ##for laguaue we need a new function that updates R and sensor_value but not dependant on threshold
+                ## do we want to add this output somewhere?
+                ## we can add new file
+            sensor = list(db._sensor.find(
+            {"ob_name": obj, "attri_name": att}))
+            sensor = sensor[0]
+            valueNum = sensor["value"][1]
+            result = db._sensor.update_many(
+                {"ob_name": obj, "attri_name": att},
+                {
+                    "$set": {
+                        "value": [effect[obj][att], valueNum]
+                    }
+
+                }
+            )
+                            
+            if result:
+                new_item = {}
+                new_item["object"] = obj
+                new_item["attribute"] = att
+                new_item["obj_att_value"] = effect[obj][att]
+                sensor_notification.append(new_item)
+
     return sensor_notification

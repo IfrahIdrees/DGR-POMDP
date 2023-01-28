@@ -183,7 +183,7 @@ class explaSet(object):
     # Also refer to "Step recognition.md"
     ##########################################################################
 
-    def action_posterior(self, real_step=True, mcts_filename=None):
+    def action_posterior(self, real_step=True, mcts_filename=None, is_correction=None):
         self._action_posterior_prob = {}
         otherHappen = 1
         for expla in self._explaset:
@@ -256,12 +256,13 @@ class explaSet(object):
 
         # variance = max(self._prior.values())-min(self._prior.values()) #added to correct 10 plans 10 plans wrong but other happen not called
         # otherHappen = otherHappen*variance
-        if not real_step:
-            with open(mcts_filename, 'a') as f:
-                f.write(str(round(otherHappen, 4)) + "\n")
-        else:
-            with open(self._output_file_name, 'a') as f:
-                f.write(str(round(otherHappen, 4)) + "\t")
+        if not is_correction:
+            if not real_step:
+                with open(mcts_filename, 'a') as f:
+                    f.write(str(round(otherHappen, 4)) + "\n")
+            else:
+                with open(self._output_file_name, 'a') as f:
+                    f.write(str(round(otherHappen, 4)) + "\t")
         self._other_happen = otherHappen
         return otherHappen
 
