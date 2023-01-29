@@ -62,6 +62,11 @@ class Tracking_Engine(object):
         with open(self.corrective_action_filename, 'a') as f:
             f.write('\n========================\n')
         self.trial = trial
+        self.INVERSE_PENDING_DICT = {"kitchen":{"turn_on_faucet": [0]},
+                                     "block":{"pick_up_blockT":[0],
+                                             "pick_up_blockN":[0],
+                                             "pick_up_blockW":[0]
+                                             }}
 
     def get_human_feedback(self, action_name, real_steps, action_arg=None, ):
         feedback = None
@@ -130,7 +135,7 @@ class Tracking_Engine(object):
         num_question_asked = 0
         gamma = 1
         total_time = 0.0
-        inverse_pending_dict = {"turn_on_faucet": [0]}
+        inverse_pending_dict = self.INVERSE_PENDING_DICT[config.args.domain]
         while(notif._notif.qsize() > 0):
             is_question_asked = 0
             step, goal = notif.get_one_notif()
