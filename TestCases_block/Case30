@@ -2,8 +2,8 @@ pick_up_blockN, 0
 put_down_NE, 2
 pick_up_blockO, 2
 put_down_ON, 2
-pick_up_blockR, 2
-put_down_RO, 2
+pick_up_blockR, 0
+put_down_RO, 1
 pick_up_blockT, 2
 put_down_TO, 9
 pick_up_blockW, 0

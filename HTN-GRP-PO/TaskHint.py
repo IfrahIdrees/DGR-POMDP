@@ -24,7 +24,7 @@ class TaskHint(object):
         self._output_file_name = output_file_name
         self.prompt_task = {}
         self.step_dict = { "kitchen": set(['use_soap', 'rinse_hand', 'turn_on_faucet_1', 'turn_off_faucet_1', 'dry_hand', 'switch_on_kettle_1', 'switch_off_kettle_1', 'add_water_kettle_1', 'get_cup_1', 'open_tea_box_1', 'add_tea_cup_1', 'close_tea_box_1', 'add_water_cup_1', 'open_coffee_box_1', 'add_coffee_cup_1', 'close_coffee_box_1', 'drink']),
-        "block ": set([ "pick_up_blockN",
+        "block": set([ "pick_up_blockN",
             "pick_up_blockR",
             "put_down_RO",
             "pick_up_blockO",

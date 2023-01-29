@@ -8,7 +8,7 @@ pick_up_blockW, 0
 put_down_WK, 4
 pick_up_blockA, 4
 put_down_AW, 4
-pick_up_blockR, 4
-put_down_RO, 4
+pick_up_blockR, 0
+put_down_RO, 1
 pick_up_blockH, 4
 put_down_HA, 9

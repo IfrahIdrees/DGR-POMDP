@@ -206,8 +206,8 @@ if __name__ == '__main__':
 
         # file_nums = [9]
         # for file_num in file_nums:
-        for file_num in range(12, 13):
-            if file_num == 4:
+        for file_num in range(11, 30):
+            if config.args.domain == "kitchen" and file_num == 4:
                 continue
             for x in sensor_reliability:
                 # output file name

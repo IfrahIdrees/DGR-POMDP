@@ -1,7 +1,7 @@
 pick_up_blockT, 0
 put_down_TE, 1
-pick_up_blockW, 1
-put_down_WK, 1
+pick_up_blockW, 0
+put_down_WK, 4
 pick_up_blockO, 1
 put_down_OT, 1
 pick_up_blockR, 1
