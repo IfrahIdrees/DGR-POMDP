@@ -49,24 +49,6 @@ class Tracking_Engine(object):
         self._output_file_name = output_file_name
         self._output_folder_name = output_folder_name
         self._p_l = 0.95  # probablity of getting observation
-        self._step_dict = [
-            'use_soap',
-            'rinse_hand',
-            'turn_on_faucet_1',
-            'turn_off_faucet_1',
-            'dry_hand',
-            'switch_on_kettle_1',
-            'switch_off_kettle_1',
-            'add_water_kettle_1',
-            'get_cup_1',
-            'open_tea_box_1',
-            'add_tea_cup_1',
-            'close_tea_box_1',
-            'add_water_cup_1',
-            'open_coffee_box_1',
-            'add_coffee_cup_1',
-            'close_coffee_box_1',
-            'drink']
         self.output_case_file_name = output_file_name.split("/")[-1]
         self.reward_csv_filename = Path(
             config.args.step_dir +
@@ -154,7 +136,7 @@ class Tracking_Engine(object):
             step, goal = notif.get_one_notif()
             real_steps.append(step)
             notif.delete_one_notif()
-            if step == "get_cup_1":
+            if step == "close_coffee_box_1":
                 print("step here")
             # if no notification, and the random prob is less than
             # no_notif_trigger_prob, sleep the engine
@@ -225,7 +207,7 @@ class Tracking_Engine(object):
                     action_name, action_arg, is_question_asked, num_question_asked = \
                         self.extract_action_name(
                             action_node, num_question_asked, is_question_asked)
-                
+
                 '''feedback generation'''
                 if config.args.agent_type in ["pomdp", "fixed_always_ask"]:
                     feedback = self.get_human_feedback(
@@ -255,12 +237,13 @@ class Tracking_Engine(object):
                         exp.handle_exception()
                     else:
                         '''TODO: see what to do for pomdp when the action_arg can be wrong'''
-                        if action_name == "ask-clarification-question" and feedback=="Yes":
-                            sensor_notification = update_db(step_index,step, self.corrective_action_filename)
+                        if action_name == "ask-clarification-question" and feedback == "Yes":
+                            sensor_notification = update_db(
+                                step_index, step, self.corrective_action_filename)
                             exp.setSensorNotification(sensor_notification)
                             exp.action_posterior(is_correction=True)
                             length = len(exp._explaset)
-                    
+
                             # input step start a new goal (bottom up procedure to create ongoing status)
                             # include recognition and planning
                             # exp._delete_trigger = config._real_delete_trigger
@@ -270,7 +253,7 @@ class Tracking_Engine(object):
                             state = State()
                             state.update_state_belief(exp)
                             # input step continues an ongoing goal
-                            # include recognition and planning 
+                            # include recognition and planning
                             exp.explaSet_expand_part2(length)
 
                             # print("here")
@@ -291,16 +274,14 @@ class Tracking_Engine(object):
                     # include recognition and planning
                     exp.explaSet_expand_part2(length)
 
-                
-
                 if feedback is None:
                     exp.update_without_language_feedback(self._p_l)
                 else:
                     if config.args.agent_type == "fixed_always_ask":
                         exp.update_with_language_feedback(
-                        feedback, [action_arg,0.99], self._p_l)
+                            feedback, [action_arg, 0.99], self._p_l)
                     else:
-                        ##TODO:NEED TO FIX WHAT SHOULD BE PASSED
+                        # TODO:NEED TO FIX WHAT SHOULD BE PASSED
                         exp.update_with_language_feedback(
                             feedback, exp.highest_action_PS, self._p_l)
                 is_haction_in_belief = self.check_is_ha_inbelief(
@@ -336,17 +317,17 @@ class Tracking_Engine(object):
                     if step_index == 0 and self.trial == 1:
                         spamwriter.writerow(
                             ["step_index", "time_per_step", "action_name", "step_reward", "total_reward", "cumulative_reward", "is_question_asked"])
-                    if config.args.agent_type == "htn" or action_arg == None:
+                    if config.args.agent_type == "htn" or action_arg is None:
                         spamwriter.writerow(
                             [step_index, time_per_step, action_node.turn_information.chosen_action.name, env_reward, total_reward, total_discounted_reward, is_question_asked])
                     else:
                         # action_name
                         # if action_arg!=None:
                         spamwriter.writerow(
-                            [step_index, time_per_step, action_name+"_"+action_arg, env_reward, total_reward, total_discounted_reward, is_question_asked])
+                            [step_index, time_per_step, action_name + "_" + action_arg, env_reward, total_reward, total_discounted_reward, is_question_asked])
                         # else:
-                            # spamwriter.writerow(
-                            # [step_index, time_per_step, action_name, env_reward, total_reward, total_discounted_reward, is_question_asked])
+                        # spamwriter.writerow(
+                        # [step_index, time_per_step, action_name, env_reward, total_reward, total_discounted_reward, is_question_asked])
                 total_time += time_per_step
                 step_index += 1
                 print("go into the next loop\n\n")

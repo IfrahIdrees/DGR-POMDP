@@ -183,7 +183,8 @@ class explaSet(object):
     # Also refer to "Step recognition.md"
     ##########################################################################
 
-    def action_posterior(self, real_step=True, mcts_filename=None, is_correction=None):
+    def action_posterior(self, real_step=True,
+                         mcts_filename=None, is_correction=None):
         self._action_posterior_prob = {}
         otherHappen = 1
         for expla in self._explaset:

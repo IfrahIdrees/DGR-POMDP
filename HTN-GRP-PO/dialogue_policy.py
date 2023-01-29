@@ -103,7 +103,8 @@ class AgentState(_AS, MCNode):
         hashint += hash(json.dumps(self.sampled_explanation._start_task))
         # stepindex, and goal
         hashint += self.turn_information._step_information[0] + \
-            self.turn_information._goal[1]
+            self.turn_information._goal[1]  # + self.turn_information._goal[0] ##TODO: add previous goal
+        # to differentiate the execute sequence
         '''Todo: action_node should not be included'''
         if self.turn_information.action_node:
             hashint += self.turn_information.action_node
@@ -141,7 +142,7 @@ class AgentState(_AS, MCNode):
 
         action_list = [Action("wait")]
         partial_action = []
-        for action in INVERSE_STEP_DICT.keys():
+        for action in INVERSE_STEP_DICT[config.args.domain].keys():
             partial_action.append(AgentAskClarificationQuestion(action))
 
         # action_list = [Action("wait"), AgentAskClarificationQuestion()]
@@ -303,6 +304,6 @@ class AgentState(_AS, MCNode):
         self.explaset._action_posterior_prob = explaset._action_posterior_prob
         self.explaset._explaset = explaset._explaset
         self.explaset._prior = explaset._prior
-        self.explaset._sensor_notification= explaset._sensor_notification
+        self.explaset._sensor_notification = explaset._sensor_notification
         self.explaset.highest_action_PS = explaset.highest_action_PS
         self.explaset._other_happen = explaset._other_happen

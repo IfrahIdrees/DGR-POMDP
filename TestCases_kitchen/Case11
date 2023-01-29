@@ -3,8 +3,8 @@ use_soap,1
 rinse_hand,1
 rinse_hand,1
 turn_off_faucet_1,1
-turn_on_faucet_1,1
-dry_hand,1
+turn_on_faucet_1,0
+dry_hand,9
 add_water_kettle_1,-1
 turn_off_faucet_1,-1
 switch_on_kettle_1,-1

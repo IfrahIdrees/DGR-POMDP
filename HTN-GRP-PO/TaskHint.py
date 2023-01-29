@@ -23,7 +23,34 @@ class TaskHint(object):
     def __init__(self, output_file_name = "Case4.txt"):
         self._output_file_name = output_file_name
         self.prompt_task = {}
-        self.step_dict = set(['use_soap', 'rinse_hand', 'turn_on_faucet_1', 'turn_off_faucet_1', 'dry_hand', 'switch_on_kettle_1', 'switch_off_kettle_1', 'add_water_kettle_1', 'get_cup_1', 'open_tea_box_1', 'add_tea_cup_1', 'close_tea_box_1', 'add_water_cup_1', 'open_coffee_box_1', 'add_coffee_cup_1', 'close_coffee_box_1', 'drink'])
+        self.step_dict = { "kitchen": set(['use_soap', 'rinse_hand', 'turn_on_faucet_1', 'turn_off_faucet_1', 'dry_hand', 'switch_on_kettle_1', 'switch_off_kettle_1', 'add_water_kettle_1', 'get_cup_1', 'open_tea_box_1', 'add_tea_cup_1', 'close_tea_box_1', 'add_water_cup_1', 'open_coffee_box_1', 'add_coffee_cup_1', 'close_coffee_box_1', 'drink']),
+        "block ": set([ "pick_up_blockN",
+            "pick_up_blockR",
+            "put_down_RO",
+            "pick_up_blockO",
+            "put_down_OT",
+            "put_down_ON",
+            "pick_up_blockT",
+            "put_down_TO",
+            "put_down_ON",
+            "put_down_TE",
+            "put_down_NE",
+            "pick_up_blockU",
+            "put_down_UN",
+            "put_down_TU",
+            "pick_up_blockW",       
+            "put_down_WK",
+            "pick_up_blockA",
+            "put_down_AW",
+            "pick_up_blockH",
+            "put_down_HA",
+            "pick_up_blockS",
+            "put_down_ST",
+            "pick_up_blockP",
+            "put_down_PS",
+            "put_down_AP", 
+            "pick_up_blockC",
+            "put_down_CA"])}
         
         
     
@@ -64,22 +91,47 @@ class TaskHint(object):
     def print_taskhintInTable(self):
         step_level_hint = {}
         for k, v in self.prompt_task.items():
-            if k in self.step_dict:
+            if k in self.step_dict[config.args.domain]:
                 step_level_hint[k] = round(v[0], 8)
                 
         wash_hand = 0.0
         make_tea = 0.0
         make_coffee = 0.0
+
+        ##
+        stack_word_ROTE = 0.0
+        stack_word_TONE = 0.0
+        stack_word_TUNE = 0.0
+        stack_word_HAWK = 0.0
+        stack_word_CAPSTONE = 0.0
         
-        if 'wash_hand' in self.prompt_task:
-            wash_hand = round(self.prompt_task['wash_hand'][0], 8)
-        if 'make_tea' in self.prompt_task:
-            make_tea = round(self.prompt_task['make_tea'][0], 8)
-        if 'make_coffee' in self.prompt_task:
-            make_coffee = round(self.prompt_task['make_coffee'][0], 8)
+        if config.args.domain == "kitchen":
+            if 'wash_hand' in self.prompt_task:
+                wash_hand = round(self.prompt_task['wash_hand'][0], 8)
+            if 'make_tea' in self.prompt_task:
+                make_tea = round(self.prompt_task['make_tea'][0], 8)
+            if 'make_coffee' in self.prompt_task:
+                make_coffee = round(self.prompt_task['make_coffee'][0], 8)
             
-        with open(self._output_file_name, 'a') as f:
-            f.write(str(wash_hand) + "\t" + str(make_tea) + "\t" + str(make_coffee) + "\t" + str(step_level_hint) + "\t")
+            with open(self._output_file_name, 'a') as f:
+                f.write(str(wash_hand) + "\t" + str(make_tea) + "\t" + str(make_coffee) + "\t" + str(step_level_hint) + "\t")
+        
+        elif config.args.domain == "block":
+            if 'stack_word_ROTE' in self.prompt_task:
+                stack_word_ROTE = round(self.prompt_task['stack_word_ROTE'][0], 8)
+            if 'stack_word_TONE' in self.prompt_task:
+                stack_word_TONE = round(self.prompt_task['stack_word_TONE'][0], 8)
+            if 'stack_word_TUNE' in self.prompt_task:
+                stack_word_TUNE = round(self.prompt_task['stack_word_TUNE'][0], 8)
+            if 'stack_word_HAWK' in self.prompt_task:
+                stack_word_HAWK = round(self.prompt_task['stack_word_HAWK'][0], 8)
+            if 'stack_word_CAPSTONE' in self.prompt_task:
+                stack_word_CAPSTONE = round(self.prompt_task['stack_word_CAPSTONE'][0], 8)
+            with open(self._output_file_name, 'a') as f:
+                f.write(str(stack_word_ROTE) + "\t" + str(stack_word_TONE) + "\t" + str(stack_word_TUNE) + "\t" + str(stack_word_HAWK) + "\t" + str(stack_word_CAPSTONE) + "\t" + str(step_level_hint) + "\t")
+        
+
+        
         
     def print_taskhint(self):
         hint_in_level_format = {}

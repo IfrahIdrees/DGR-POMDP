@@ -22,37 +22,91 @@ from config import *
 # vnode child action node (qnode)
 
 STEP_DICT = {
-    1: ["turn_on_faucet_1",
-        "use_soap",
-        "rinse_hand",
-        "turn_off_faucet_1",
-        "dry_hand"],
+    "kitchen": {
+        1: ["turn_on_faucet_1",
+            "use_soap",
+            "rinse_hand",
+            "turn_off_faucet_1",
+            "dry_hand"],
 
-    2: ["turn_on_faucet_1",
-        "add_water_kettle_1",
-        "turn_off_faucet_1",
-        "switch_on_kettle_1",
-        "switch_off_kettle_1",
-        "get_cup_1",
-        "open_tea_box_1",
-        "add_tea_cup_1",
-        "close_tea_box_1",
-        "add_water_cup_1",
-        "drink"
+        2: ["turn_on_faucet_1",
+            "add_water_kettle_1",
+            "turn_off_faucet_1",
+            "switch_on_kettle_1",
+            "switch_off_kettle_1",
+            "get_cup_1",
+            "open_tea_box_1",
+            "add_tea_cup_1",
+            "close_tea_box_1",
+            "add_water_cup_1",
+            "drink"
+            ],
+
+        3: ["turn_on_faucet_1",
+            "add_water_kettle_1",
+            "turn_off_faucet_1",
+            "switch_on_kettle_1",
+            "switch_off_kettle_1",
+            "get_cup_1",
+            "open_coffee_box_1",
+            "add_coffee_cup_1",
+            "close_coffee_box_1",
+            "add_water_cup_1",
+            "drink"
+            ]
+    },
+    "block": {
+        1: [
+            "pick_up_blockT"
+            "put_down_TE"
+            "pick_up_blockO"
+            "put_down_OT"
+            "pick_up_blockR"
+            "put_down_RO"
         ],
 
-    3: ["turn_on_faucet_1",
-        "add_water_kettle_1",
-        "turn_off_faucet_1",
-        "switch_on_kettle_1",
-        "switch_off_kettle_1",
-        "get_cup_1",
-        "open_coffee_box_1",
-        "add_coffee_cup_1",
-        "close_coffee_box_1",
-        "add_water_cup_1",
-        "drink"
-        ]
+        2: [
+            "pick_up_blockN",
+            "put_down_NE",
+            "pick_up_blockO",
+            "put_down_ON",
+            "pick_up_blockT",
+            "put_down_TO"
+        ],
+        3: [
+            "pick_up_blockN",
+            "put_down_NE",
+            "pick_up_blockU",
+            "put_down_UN",
+            "pick_up_blockT",
+            "put_down_TU"
+        ],
+        4: [
+            "pick_up_blockW",
+            "put_down_WK",
+            "pick_up_blockA",
+            "put_down_AW",
+            "pick_up_blockH",
+            "put_down_HA"
+        ],
+        5: ["pick_up_blockN",
+            "put_down_NE",
+            "pick_up_blockO",
+            "put_down_ON",
+            "pick_up_blockT",
+            "put_down_TO",
+            "pick_up_blockS",
+            "put_down_ST",
+            "pick_up_blockP",
+            "put_down_PS",
+            "pick_up_blockA",
+            "put_down_AP",
+            "pick_up_blockC",
+            "put_down_CA",
+
+            ]
+
+    }
 }
 
 # INVERSE_STEP_DICT = {
@@ -77,31 +131,44 @@ STEP_DICT = {
 # }
 
 INVERSE_STEP_DICT = {
-    "turn_on_faucet_1": [1, 2, 3],
-    "use_soap": [1],
-    "rinse_hand": [1],
-    "turn_off_faucet_1": [1],
-    "dry_hand": [9],
-    "open_tea_box_1": [2],
-    "add_tea_cup_1": [2],
-    "close_tea_box_1": [2],
-    "add_water_cup_1": [2, 3],
-    "drink": [9],
-    "add_water_kettle_1": [2, 3],
-    "turn_off_faucet_1": [2, 3],
-    "switch_on_kettle_1": [2, 3],
-    "switch_off_kettle_1": [2, 3],
-    "get_cup_1": [2, 3],
-    "open_coffee_box_1": [3],
-    "add_coffee_cup_1": [3],
-    "close_coffee_box_1": [3]
+    "kitchen": {
+        "turn_on_faucet_1": [1, 2, 3],
+        "use_soap": [1],
+        "rinse_hand": [1],
+        "turn_off_faucet_1": [1, 2, 3],
+        "dry_hand": [9],
+        "open_tea_box_1": [2],
+        "add_tea_cup_1": [2],
+        "close_tea_box_1": [2],
+        "add_water_cup_1": [2, 3],
+        "drink": [9],
+        "add_water_kettle_1": [2, 3],
+        # "turn_off_faucet_1": [1,2, 3],
+        "switch_on_kettle_1": [2, 3],
+        "switch_off_kettle_1": [2, 3],
+        "get_cup_1": [2, 3],
+        "open_coffee_box_1": [3],
+        "add_coffee_cup_1": [3],
+        "close_coffee_box_1": [3]},
+    "block": {
+        "pickup_blockN": [1, 2]
+    }
 }
 
 
 GOAL = {
-    1: "wash_hand",
-    2: "make_tea",
-    3: "make_coffee"
+    "kitchen": {
+        1: "wash_hand",
+        2: "make_tea",
+        3: "make_coffee"},
+    "block": {
+        1: "stack_word_ROTE",
+        2: "stack_word_TONE",
+        3: "stack_word_TUNE",
+        4: "stack_word_HAWK",
+        5: "stack_word_CAPSTONE",
+    }
+
 }
 
 
@@ -226,8 +293,10 @@ class MCTS:
             # the root
             if i == 0:
                 self.action_to_index_map = defaultdict(int)
-                for index, action in enumerate(INVERSE_STEP_DICT.keys()):
+                for index, action in enumerate(
+                        INVERSE_STEP_DICT[config.args.domain].keys()):
                     self.action_to_index_map[action] = index
+                    # this is for indexing the action nodes
                 # make the action_to_index map
 
             print("\n\n ROLL OUT # ", i)
@@ -283,7 +352,7 @@ class MCTS:
                 # step_rewards.append(0)
                 # current_explaset = children[0].explaset
                 inverse_pending_dict, _ = node.explaset.pendingset_generate()
-                
+
                 return path, step_rewards, is_haction_in_belief, num_goals, is_goal_chosen, is_first_real_step
 
             if not is_action_node:
@@ -536,13 +605,19 @@ class MCTS:
                         ## last goal is complete
                         next_human_action = "add_water_kettle_1"
                     else:'''
-                    next_human_action = STEP_DICT[previous_goal][step_index]
+                    if previous_goal != 9:
+                        # when a new goal starts without the last being
+                        # completed
+                        next_human_action = np.random.choice(
+                            ["use_soap", "add_water_kettle_1"], p=[0.33, 1 - 0.33])
+                    else:
+                        next_human_action = STEP_DICT[config.args.domain][previous_goal][step_index]
                     # TODO: maybe currentgoal is -1,
                 # next_human action should be use_Soap/add_water if previous goal is complete
                 # else continue previous complete goal label as wrong step and continue it later
             # if next_human_action == "use_soap":  # restricted when multiple
             # goals
-            if next_human_action in STEP_DICT[1]:
+            if next_human_action in STEP_DICT[config.args.domain][1]:
                 next_goal = 1
             else:
                 next_goal = 2
@@ -557,7 +632,7 @@ class MCTS:
                # with new execute action added
                 step_index = 1
 
-            if step_index + 1 == len(STEP_DICT[next_goal]):
+            if step_index + 1 == len(STEP_DICT[config.args.domain][next_goal]):
                 # at second last step say that the goal for the last
                 # step is 9
                 next_goal = 9
@@ -581,7 +656,8 @@ class MCTS:
             if current_goal == -1 and not is_goal_chosen:
                 if select:
                     # fix this
-                    current_goal = 2 if start_task_dict[GOAL[2]] == 1 else 3
+                    current_goal = 2 if start_task_dict[GOAL[config.args.domain]
+                                                        [2]] == 1 else 3
                     # goal should be matching the next_human_Action
                     # if start_task_dict[GOAL[2]]==1 and next_human_action in STEP_DICT[2]:
                     #     current_goal=2
@@ -604,15 +680,24 @@ class MCTS:
             next_goal = current_goal
 
             previous_next_human_action = next_human_action
+
             if not select:  # added just now
-                next_human_action = STEP_DICT[current_goal][step_index + 1]
-            if previous_next_human_action != next_human_action and select:
-                print("new human action here")
-            step_index += 1
-            if step_index + 1 == len(STEP_DICT[current_goal]):
-                # at second last step say that the goal for the last
-                # step is 9
-                next_goal = 9
+                # adjust the index
+                if step_index < len(
+                        STEP_DICT[config.args.domain][current_goal]):
+                    next_human_action = STEP_DICT[config.args.domain][current_goal][step_index + 1]
+                else:
+                    next_human_action = step_name
+
+            # if previous_next_human_action != next_human_action and select:
+            #     print("new human action here")
+            if step_index < len(STEP_DICT[config.args.domain][current_goal]):
+                step_index += 1
+                if step_index + \
+                        1 == len(STEP_DICT[config.args.domain][current_goal]):
+                    # at second last step say that the goal for the last
+                    # step is 9
+                    next_goal = 9
 
         return step_index, next_human_action, next_goal, num_goals, is_goal_chosen, is_first_real_step
 
@@ -660,8 +745,9 @@ class MCTS:
             elif current_goal == -1:
                 current_goal = previous_goal
             next_goal = current_goal
-            next_human_action = STEP_DICT[current_goal][step_index + 1]
-            if step_index + 2 == len(STEP_DICT[current_goal]):
+            next_human_action = STEP_DICT[config.args.domain][current_goal][step_index + 1]
+            if step_index + \
+                    2 == len(STEP_DICT[config.args.domain][current_goal]):
                 # at second last step say that the goal for the last
                 # step is 9
                 next_goal = 9
@@ -692,13 +778,35 @@ class MCTS:
             if real_current_goal == -1:
                 real_current_goal = np.random.choice([2, 3])
             # this is not
-            if real_current_goal in INVERSE_STEP_DICT[real_current_step]:
-                adjusted_real_current_step_index = STEP_DICT[real_current_goal].index(
+            if real_current_goal in INVERSE_STEP_DICT[config.args.domain][real_current_step]:
+                adjusted_real_current_step_index = STEP_DICT[config.args.domain][real_current_goal].index(
                     real_current_step)
                 node.turn_information._step_information[0] = adjusted_real_current_step_index
             else:
-                pass
+                # change goal to the one that might contain the
+                # real_current_step
+                '''if real_current_goal in [2,3]:
+                    real_current_goal = 1
+                else:
+                    real_current_goal = np.random.choice([2, 3])'''
+                # pass
+                # adjusted_real_current_step_index = STEP_DICT
                 # TODO
+            '''
+            if real_current_goal in INVERSE_STEP_DICT[config.args.domain][real_current_step]:
+                if real_current_goal == -1:
+                    real_current_goal = np.random.choice([2, 3])
+            else:
+                ##change goal to the one that might contain the real_current_step
+                if real_current_goal in [2,3]:
+                    real_current_goal = 1
+                else:
+                    real_current_goal = np.random.choice([2, 3])
+            adjusted_real_current_step_index = STEP_DICT[config.args.domain][real_current_goal].index(
+                    real_current_step)
+            node.turn_information._step_information[0] = adjusted_real_current_step_index
+            '''
+
         return node
 
     def _simulate(self, rootnode, is_haction_in_belief,

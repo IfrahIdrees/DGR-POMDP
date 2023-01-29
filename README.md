@@ -173,3 +173,12 @@ Jan 28
 Todo:
 1. then htn block
 2. fix action argument when other_happen > threshold, action is wrong
+
+Jan 29
+1. fixed all the cases working for kitchen domain
+2. partial block domain fix
+
+Todo:
+1. make htn fixed_always work for block domain - so change dataset
+2. change the turn_on_function for block domain.
+2. fix action argument when other_happen > threshold, action is wrong
