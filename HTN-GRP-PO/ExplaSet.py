@@ -13,6 +13,9 @@ Research sponsored by AGEWELL Networks of Centers of Excellence (NCE).
 ##########################################################################
 
 # import numpy as np
+import operator
+import functools
+import itertools
 from config import *
 import math
 from CareGiver import *
@@ -23,9 +26,12 @@ from Explanation import *
 from database import *
 from collections import deque
 from collections import defaultdict
+import collections
+
 import copy
 import sys
 sys.dont_write_bytecode = True
+
 # np.random.seed(10)
 # from __future__ import print_function  # Only needed for Python 2
 
@@ -50,6 +56,9 @@ class explaSet(object):
         self._output_file_name = output_file_name
         self._prior = {}
         self._other_happen = None
+        self.aggregate_pending_set = None
+        self.flattened_execute_sequences = None
+        self.start_task = None
 
     ##########################################################################
     # Part I
@@ -464,6 +473,11 @@ class explaSet(object):
     # Generate the new pending set for each explanation
     # based on the current tree structure and belief state
     ##########################################################################
+    def extract_execute_sequence(self, execute_sequence):
+        # counter_execute_sequence = collections.Counter(itertools.chain(*execute_sequence)).most_common()
+        counter_execute_sequence = collections.Counter(
+            execute_sequence).most_common()
+        return counter_execute_sequence
 
     def pendingset_generate(self):
         ''',inverse_pending_set=None,
@@ -473,14 +487,29 @@ class explaSet(object):
         inverse_pending_dict = defaultdict(list)
         aggregate_pending_set = np.zeros(shape=(1, 2))
         index = 0
+        execute_sequences = []
+        start_tasks = []
         for expla in self._explaset:
             pending_set = expla.create_pendingSet()
             for act, prob in pending_set:
                 inverse_pending_dict[act].append(index)
                 aggregate_pending_set = np.vstack(
                     [aggregate_pending_set, pending_set])
+            start_tasks.append(expla._start_task)
+            # update the execute sequence and start task
+            for taskNet in expla._forest:
+                execute_sequences.append(taskNet._execute_sequence._sequence)
             index += 1
+        flattened_execute_sequences = itertools.chain(
+            *execute_sequences)
+        self.counter_execute_sequences = self.extract_execute_sequence(
+            flattened_execute_sequences)
+        self.start_task = dict(functools.reduce(operator.add,
+                                                map(collections.Counter, start_tasks)))
+        self.flattened_execute_sequences = execute_sequences
+        # self.counter_execute_sequences = counter_execute_sequences
         aggregate_pending_set = np.delete(aggregate_pending_set, 0, 0)
+        self.aggregate_pending_set = aggregate_pending_set[:, 0]
         return inverse_pending_dict, aggregate_pending_set
 
         '''##### pending set generate with

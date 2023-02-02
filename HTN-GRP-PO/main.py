@@ -171,7 +171,8 @@ if __name__ == '__main__':
     sensor_reliability = [0.99, 0.9, 0.8]
     # sensor_reliability = [0.95, 0.9]
     # sensor_reliability = [0.99, 0.8]
-    sensor_reliability = [0.8]
+    sensor_reliability = [0.99, 0.8]
+    sensor_reliability = [0.99]
     # trials = 51
     # trials = 11
     trials = 8
@@ -204,9 +205,10 @@ if __name__ == '__main__':
         config.args = args
         # ou
 
-        # file_nums = [9]
-        # for file_num in file_nums:
-        for file_num in range(11, 30):
+        # file_nums = [1,11]
+        file_nums = [11]
+        for file_num in file_nums:
+            # for file_num in range(11, 30):
             if config.args.domain == "kitchen" and file_num == 4:
                 continue
             for x in sensor_reliability:

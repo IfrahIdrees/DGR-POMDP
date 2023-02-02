@@ -62,11 +62,11 @@ class Tracking_Engine(object):
         with open(self.corrective_action_filename, 'a') as f:
             f.write('\n========================\n')
         self.trial = trial
-        self.INVERSE_PENDING_DICT = {"kitchen":{"turn_on_faucet": [0]},
-                                     "block":{"pick_up_blockT":[0],
-                                             "pick_up_blockN":[0],
-                                             "pick_up_blockW":[0]
-                                             }}
+        self.INVERSE_PENDING_DICT = {"kitchen": {"turn_on_faucet": [0]},
+                                     "block": {"pick_up_blockT": [0],
+                                               "pick_up_blockN": [0],
+                                               "pick_up_blockW": [0]
+                                               }}
 
     def get_human_feedback(self, action_name, real_steps, action_arg=None, ):
         feedback = None
@@ -141,7 +141,7 @@ class Tracking_Engine(object):
             step, goal = notif.get_one_notif()
             real_steps.append(step)
             notif.delete_one_notif()
-            if step == "close_coffee_box_1":
+            if step == "rinse_hand":
                 print("step here")
             # if no notification, and the random prob is less than
             # no_notif_trigger_prob, sleep the engine
@@ -329,7 +329,7 @@ class Tracking_Engine(object):
                         # action_name
                         # if action_arg!=None:
                         spamwriter.writerow(
-                            [step_index, time_per_step, action_name + "_" + action_arg, env_reward, total_reward, total_discounted_reward, is_question_asked])
+                            [step_index, time_per_step, action_name + "+" + action_arg, env_reward, total_reward, total_discounted_reward, is_question_asked])
                         # else:
                         # spamwriter.writerow(
                         # [step_index, time_per_step, action_name, env_reward, total_reward, total_discounted_reward, is_question_asked])

@@ -209,6 +209,7 @@ class MCTS:
         self.trial = trial
         self.gamma = config.args.d
         self.num_sims = config.args.num_sims
+        self.tmp_nodes = []
 
     def choose(self, node):
         "Choose the best successor of node. (Choose a move in the game)"
@@ -255,6 +256,8 @@ class MCTS:
 
         for i in range(self.num_sims):
             root_node = copy.deepcopy(node)
+            root_node.set_node_info()
+            self.root_node = root_node
             root_node.sample()
 
             pipeline = [{"$match": {}},
@@ -313,17 +316,30 @@ class MCTS:
         # self._expand(node)
         # agent_action_node = self._uct_select(node)
         #####
-        path, step_rewards, is_haction_in_belief, num_goals, is_goal_chosen, is_first_real_step = self._select(
+        path, step_rewards, is_haction_in_belief, num_goals, is_goal_chosen, is_first_real_step, is_terminal = self._select(
             node, is_first_real_step)
         leaf = path[-1]
         self._expand(leaf)
-        reward = self._simulate(
-            leaf,
-            is_haction_in_belief,
-            num_goals,
-            is_goal_chosen,
-            is_first_real_step)
+        if not is_terminal:
+            reward = self._simulate(
+                leaf,
+                is_haction_in_belief,
+                num_goals,
+                is_goal_chosen,
+                is_first_real_step)
+        else:
+            # reward = 0
+            step_rewards[-1] = step_rewards[-1] * self.gamma
+            reward = step_rewards[-1]
+            # step_rewards)
+            # discount = [ga]
+            # step_rewards[-1] #TODO: maybe multiply with discount.
         self._backpropagate(path, reward, step_rewards)
+
+    def choose_predefined_action(self, observation_node, step):
+        for action_node in self.children[observation_node]:
+            if action_node.turn_information._step_information[1] == step:
+                return action_node
 
     def _select(self, node, is_first_real_step=False):
         '''Find an unexplored descendent of `node` -
@@ -335,7 +351,10 @@ class MCTS:
         num_goals = 0
         is_goal_chosen = False
         is_action_node = False
+        sent_in_node = node
         node = self.adjust_step_index(node)
+        self.tmp_nodes = []
+        self.tmp_nodes.append(node)
         # human_turn =  True
         while True:
             # entering node is always observation
@@ -353,7 +372,7 @@ class MCTS:
                 # current_explaset = children[0].explaset
                 inverse_pending_dict, _ = node.explaset.pendingset_generate()
 
-                return path, step_rewards, is_haction_in_belief, num_goals, is_goal_chosen, is_first_real_step
+                return path, step_rewards, is_haction_in_belief, num_goals, is_goal_chosen, is_first_real_step, False
 
             if not is_action_node:
                 # handling vnode (observation node) and selecting action
@@ -375,6 +394,7 @@ class MCTS:
                 previous_node = node
                 # UCT checked and verified, returned node has action_node True
                 node = self._uct_select(node)
+                self.tmp_nodes.append(node)
 
                 # add step reward for asking questions
 
@@ -406,7 +426,25 @@ class MCTS:
                     print("trouble node")
                 '====================='
                 if children == []:
-                    return path, step_rewards, is_haction_in_belief, num_goals, is_goal_chosen, is_first_real_step
+                    # this is a terminal case. we can make the last action node ask
+                    # question and give reward accordingly.
+                    # node = copy.deepcopy(node)
+                    # node.turn_information.action_node = False
+                    # path.append(node)
+                    # step_rewards.append(0)
+                    # choose different child of previous node
+                    previous_node
+                    # node.handle_terminal_case()
+                    action = node.turn_information._step_information[1]
+                    action_node = self.choose_predefined_action(
+                        previous_node, action)
+                    # self.choo
+                    is_haction_in_belief = False
+                    step_reward = self.get_step_reward(
+                        is_haction_in_belief, node)
+                    step_rewards[-1] = step_reward
+                    path[-1] = action_node
+                    return path, step_rewards, is_haction_in_belief, num_goals, is_goal_chosen, is_first_real_step, True
                 inverse_pending_dict = defaultdict(list)
                 current_explaset = children[0].explaset
                 inverse_pending_dict, current_pending_set = current_explaset.pendingset_generate()
@@ -443,15 +481,15 @@ class MCTS:
                 # if next_human_action == "dry_hand":
                     # print("here")
                 '''unmove the setting up of node for the last one not everytime'''
-                node.pending_actions = SortedSet(
+                '''node.pending_actions = SortedSet(
                     [action[0] for action in node.sampled_explanation._pendingSet])
                 node.execute_sequences = [
                     taskNet._execute_sequence._sequence for taskNet in node.sampled_explanation._forest]
                 flattened_execute_sequences = itertools.chain(
                     *node.execute_sequences)
                 node.counter_execute_sequences = node.extract_execute_sequence(
-                    flattened_execute_sequences)
-
+                    flattened_execute_sequences)'''
+                node.set_node_info()
                 node.turn_information.update_turn_information(
                     step_index, next_human_action, next_goal)  # Todo: get the correct goal when turn_on comes again then
                 # two tasknets start
@@ -500,13 +538,14 @@ class MCTS:
         # if action.name == "ask-clarification-question"
         #     action_arg = action.question
         current_step = action_node.turn_information._step_information[1]
-        if not is_haction_in_belief and action.name == "ask-clarification-question" and action.question_asked == current_step:
+        is_wrong_happen = not is_haction_in_belief or action_node.explaset._other_happen > config.args.oh
+        if is_wrong_happen and action.name == "ask-clarification-question" and action.question_asked == current_step:
             return config.args.qr
-        elif not is_haction_in_belief and action.name == "ask-clarification-question" and action.question_asked != current_step:
+        elif is_wrong_happen and action.name == "ask-clarification-question" and action.question_asked != current_step:
             return config.args.qp
-        elif not is_haction_in_belief and action.name == "wait":
+        elif is_wrong_happen and action.name == "wait":
             return config.args.wp
-        elif is_haction_in_belief and action.name == "ask-clarification-question":
+        elif not is_wrong_happen and action.name == "ask-clarification-question":
             return config.args.qp
         else:
             return 0
@@ -862,7 +901,7 @@ class MCTS:
                 # index = np.random.choice([0, 1])
                 # instead of random choose a preferred action based on the
                 # belief
-                if is_haction_in_belief:
+                if is_haction_in_belief and node.explaset._other_happen < config.args.oh:
                     index = 0
                 else:
                     question_arg = self.choose_preferred_action(node)
@@ -1017,7 +1056,26 @@ class MCTS:
                 log_N_vertex / self.N[n]
             )
 
-        return max(self.children[node], key=uct)
+        max_nodes = []
+        max_val = -math.inf
+        # also save index of the node with chosen step or wait
+        for c in self.children[node]:
+            if c.turn_information.chosen_action.name != "wait":
+                print(
+                    c.turn_information.chosen_action.name,
+                    c.turn_information.chosen_action.question_asked,
+                    uct(c))
+            else:
+                print(c.turn_information.chosen_action.name, uct(c))
+            q_val = uct(c)
+            if q_val >= max_val:
+                max_val = q_val
+                max_nodes.append(c)
+
+        # max_nodes = np.reshape(np.array(max_nodes), (-1,1))
+        return random.sample(max_nodes, 1)[0]
+        # for child in
+        # return max(self.children[node], key=uct)
 
     def sample(belief_state):
         'explaset is belief state'

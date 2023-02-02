@@ -72,11 +72,11 @@ class AgentState(_AS, MCNode):
         # self.counter_execute_sequences = self.extract_execute_sequence(self.flattened_execute_sequences)
 
         self.pending_actions = None
-        self.execute_sequences = None
+        # self.execute_sequences = None
         self.counter_execute_sequences = None
         self.sampled_explanation = None
         self._delete_trigger = self.explaset._delete_trigger
-
+        self.start_task = None
         # self.current_action =
         # TODO: ADD ACTION LIST
         # self.question_asked = None
@@ -99,11 +99,19 @@ class AgentState(_AS, MCNode):
         hashint = 0
         # hashint+=hash(str(self.terminal))
         hashint += hash("".join(set(self.pending_actions)))
+        # print("hashint after pending action", hashint)
         hashint += hash(json.dumps(self.counter_execute_sequences))
-        hashint += hash(json.dumps(self.sampled_explanation._start_task))
+        # print("hashint after counter_execute", hashint)
+
+        # hashint += hash(json.dumps(self.sampled_explanation._start_task))
+        hashint += hash(json.dumps(self.start_task))
+        # print("hashint after self.start_task", hashint)
+
         # stepindex, and goal
         hashint += self.turn_information._step_information[0] + \
             self.turn_information._goal[1]  # + self.turn_information._goal[0] ##TODO: add previous goal
+        # print("hashint after turn_information", hashint)
+
         # to differentiate the execute sequence
         '''Todo: action_node should not be included'''
         if self.turn_information.action_node:
@@ -292,13 +300,13 @@ class AgentState(_AS, MCNode):
         self.sampled_explanation = copy.deepcopy(
             self.explaset._explaset[index])
 
-        self.pending_actions = SortedSet(
-            [action[0] for action in self.sampled_explanation._pendingSet])
-        self.execute_sequences = [
-            taskNet._execute_sequence._sequence for taskNet in self.sampled_explanation._forest]
-        flattened_execute_sequences = itertools.chain(*self.execute_sequences)
-        self.counter_execute_sequences = self.extract_execute_sequence(
-            flattened_execute_sequences)
+        # self.pending_actions = SortedSet(
+        #     [action[0] for action in self.sampled_explanation._pendingSet])
+        # self.execute_sequences = [
+        #     taskNet._execute_sequence._sequence for taskNet in self.sampled_explanation._forest]
+        # flattened_execute_sequences = itertools.chain(*self.execute_sequences)
+        # self.counter_execute_sequences = self.extract_execute_sequence(
+        #     flattened_execute_sequences)
 
     def copy_explaset(self, explaset):
         self.explaset._action_posterior_prob = explaset._action_posterior_prob
@@ -307,3 +315,24 @@ class AgentState(_AS, MCNode):
         self.explaset._sensor_notification = explaset._sensor_notification
         self.explaset.highest_action_PS = explaset.highest_action_PS
         self.explaset._other_happen = explaset._other_happen
+        self.explaset.aggregate_pending_set = explaset.aggregate_pending_set
+        self.explaset.flattened_execute_sequences = explaset.flattened_execute_sequences
+        self.explaset.start_task = explaset.start_task
+
+    def set_node_info(self):
+        self.explaset.pendingset_generate()
+        self.pending_actions = SortedSet(self.explaset.aggregate_pending_set)
+        self.counter_execute_sequences = self.explaset.counter_execute_sequences
+        self.start_task = self.explaset.start_task
+        # for expla in self.explaset:
+
+        # node.execute_sequences = [
+        #     taskNet._execute_sequence._sequence for taskNet in node.sampled_explanation._forest]
+        # flattened_execute_sequences = itertools.chain(
+        #     *node.execute_sequences)
+        # node.counter_execute_sequences = node.extract_execute_sequence(
+        #     flattened_execute_sequences)
+
+    # def handle_terminal_case(self):
+    #     action = self.turn_information._step_information[1]
+    #     self.turn_information.chosen_action = AgentAskClarificationQuestion(action)

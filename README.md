@@ -182,3 +182,21 @@ Todo:
 1. make htn fixed_always work for block domain - so change dataset
 2. change the turn_on_function for block domain.
 2. fix action argument when other_happen > threshold, action is wrong
+
+
+Feb 2
+1. Fixed the mcts_node variables and __hash__ function. All the observation node with different sample from same belief are considered as one node
+2. changed root_node.sample as well.
+3. pending_set generate adds pending_set variable in the mcts_node
+4. handle the case when the sampled node is the least probable node and the children are 0. In that case the action is a predefined chosen action and step reward is called.
+5. node.set_node_info() is set after every select step.
+6. step reward is improved to incorporate otherhappen > threshold as well.
+7. included other happen in the simulation action selection too.
+8. modified uct select to randomly select action if multiple action node have same reward
+
+TODO:
+1. see if node.set_info should be added after every  simulation step.
+2. fix oracle for kitchen domain
+3. work on pomdp-transition function for block domain.
+
+
