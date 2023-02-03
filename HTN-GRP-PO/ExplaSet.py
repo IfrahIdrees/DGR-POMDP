@@ -668,19 +668,19 @@ class explaSet(object):
                     # taskNet_._expandProb *= 0.01
                     # expla._prob*=0.01
                     continue
-                if highest_action_PS[0] == ExecuteSequence[-1] and step == 'yes':
+                if highest_action_PS[0] == ExecuteSequence[-1] and step == config.positive_feedback:
                     correct_taskNets += 1
                     # taskNet_._expandProb *= 0.99
                     # expla._prob*=0.99
-                elif not (highest_action_PS[0] == ExecuteSequence[-1]) and step == 'yes':
+                elif not (highest_action_PS[0] == ExecuteSequence[-1]) and step == config.positive_feedback:
                     # taskNet_._expandProb *= 0.01
                     # expla._prob*=0.01
                     continue
-                elif step == 'no' and not (highest_action_PS[0] == ExecuteSequence[-1]):
+                elif step == config.negative_feedback and not (highest_action_PS[0] == ExecuteSequence[-1]):
                     correct_taskNets += 1
                     # taskNet_._expandProb *= 0.99
                     # expla._prob*=0.99
-                elif step == 'no' and (highest_action_PS[0] == ExecuteSequence[-1]):
+                elif step == config.negative_feedback and (highest_action_PS[0] == ExecuteSequence[-1]):
                     # taskNet_._expandProb *= 0.01
                     # expla._prob*=0.01
                     continue
@@ -720,7 +720,7 @@ class explaSet(object):
             # for taskNet_ in expla._forest:
             # for taskNet_ in forest:
             # ExecuteSequence =  taskNet_._execute_sequence._sequence
-            # if highest_action_PS[0] in ExecuteSequence and step == 'Yes':
+            # if highest_action_PS[0] in ExecuteSequence and step == config.positive_feedback:
             #     taskNet_._expandProb *= 0.99
             #     expla._prob*=0.99
             # elif not (highest_action_PS[0] in ExecuteSequence) and step == 'Yes':

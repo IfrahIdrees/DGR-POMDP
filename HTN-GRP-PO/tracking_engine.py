@@ -72,9 +72,9 @@ class Tracking_Engine(object):
         feedback = None
         if action_name == "ask-clarification-question":
             if action_arg == real_steps[-1]:
-                feedback = "Yes"
+                feedback = config.positive_feedback
             else:
-                feedback = "No"
+                feedback = config.negative_feedback
         return feedback
 
     def check_is_ha_inbelief(self, inverse_pending_action,
@@ -242,7 +242,7 @@ class Tracking_Engine(object):
                         exp.handle_exception()
                     else:
                         '''TODO: see what to do for pomdp when the action_arg can be wrong'''
-                        if action_name == "ask-clarification-question" and feedback == "Yes":
+                        if action_name == "ask-clarification-question" and feedback == config.positive_feedback:
                             sensor_notification = update_db(
                                 step_index, step, self.corrective_action_filename)
                             exp.setSensorNotification(sensor_notification)
