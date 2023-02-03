@@ -200,3 +200,12 @@ TODO:
 3. work on pomdp-transition function for block domain.
 
 
+Feb 3
+1. Fixed the config.positive_feedback for belief update
+
+Todo:
+1. see if node.set_info should be added after every  simulation step.
+2. fix oracle for kitchen domain
+3. work on pomdp-transition function for block domain.
+
+
