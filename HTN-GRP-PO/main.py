@@ -175,8 +175,8 @@ if __name__ == '__main__':
     # sensor_reliability = [0.95]
     # trials = 51
     # trials = 11
-    trials = 8
-    # trials = 2
+    # trials = 8
+    trials = 2
     config.seed = 5999
     config.trials = trials
     random.seed(config.seed)

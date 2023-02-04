@@ -33,7 +33,7 @@ def realStateANDSensorUpdate(
     #         #version changed in March 14, generate a table
     #         f.write(step_name + "\t")
     else:
-        print("mcts Simulate step: ", step_name)
+        # print("mcts Simulate step: ", step_name)
         sep = "\t"
 
     #     with open("mcts"+output_file_name, 'a') as f:

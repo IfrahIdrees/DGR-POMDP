@@ -298,7 +298,7 @@ class AgentState(_AS, MCNode):
         probs = [self.explaset._explaset[i]._prob for i in range(
             len(self.explaset._explaset))]
         index = np.random.choice(len(self.explaset._explaset), 1, p=probs)[0]
-        print(self.explaset)
+        # print(self.explaset)
         self.sampled_explanation = copy.deepcopy(
             self.explaset._explaset[index])
 

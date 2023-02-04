@@ -250,22 +250,22 @@ class MCTS:
             return self.Q[n] / self.N[n]  # average reward
 
         action_node = max(self.children[node], key=score)
-        print("\n=========All node Reward==========")
-        for n in self.children[node]:
-            action_arg = None
-            if n.turn_information.chosen_action.name == "ask-clarification-question":
-                action_arg = n.turn_information.chosen_action.question_asked
-                print(
-                    "Node:",
-                    n.turn_information.chosen_action.name + "_" + action_arg,
-                    "Reward",
-                    score(n))
-            else:
-                print(
-                    "Node:",
-                    n.turn_information.chosen_action.name,
-                    "Reward",
-                    score(n))
+        # print("\n=========All node Reward==========")
+        # for n in self.children[node]:
+        #     action_arg = None
+        #     if n.turn_information.chosen_action.name == "ask-clarification-question":
+        #         action_arg = n.turn_information.chosen_action.question_asked
+        #         print(
+        #             "Node:",
+        #             n.turn_information.chosen_action.name + "_" + action_arg,
+        #             "Reward",
+        #             score(n))
+        #     else:
+        #         print(
+        #             "Node:",
+        #             n.turn_information.chosen_action.name,
+        #             "Reward",
+        #             score(n))
 
             # "Reward": score(n))
         # print("self.children[")
@@ -327,8 +327,8 @@ class MCTS:
                 # make the action_to_index map
 
             print("\n\n ROLL OUT # ", i)
-            if i == 4:
-                print("here")
+            # if i == 4:
+                # print("here")
             self.do_rollout(root_node, is_first_real_step)
 
         # TODO: check, jason does uct for choose as well
@@ -368,7 +368,7 @@ class MCTS:
     def _select(self, node, is_first_real_step=False):
         '''Find an unexplored descendent of `node` -
         find unexplored agent's move'''
-        print("\n Starting select")
+        # print("\n Starting select")
         path = []
         step_rewards = []  # o,a,o,a
         is_haction_in_belief = True
@@ -385,8 +385,8 @@ class MCTS:
             path.append(node)
             step_rewards.append(0)
 
-            if node in self.children and not self.children[node]:
-                print("no children here")
+            # if node in self.children and not self.children[node]:
+            #     print("no children here")
             if (not is_action_node and node not in self.children):
                 # or not self.children[
                 # node]:
@@ -445,9 +445,9 @@ class MCTS:
                 # see children is in the self.children then just to dict access
                 # add children and node in dict
                 '''for debug'''
-                if json.dumps(
-                        node.counter_execute_sequences) == '[["turn_on_faucet_1", 2], ["use_soap", 1], ["rinse_hand", 1], ["turn_off_faucet_1", 1]]':
-                    print("trouble node")
+                # if json.dumps(
+                #         node.counter_execute_sequences) == '[["turn_on_faucet_1", 2], ["use_soap", 1], ["rinse_hand", 1], ["turn_off_faucet_1", 1]]':
+                #     print("trouble node")
                 '====================='
                 if children == []:
                     # this is a terminal case. we can make the last action node ask
@@ -919,7 +919,7 @@ class MCTS:
 
         Returns the reward for a random simulation (to completion) of `node`"
         "one simulation till the end, this is rollout in jason's code'''
-        print("\nStarting Simulation")
+        # print("\nStarting Simulation")
         node = copy.deepcopy(rootnode)
         # num_goals = 1
         # invert_reward = True
@@ -1007,10 +1007,10 @@ class MCTS:
                 inverse_pending_dict, _ = current_explaset.pendingset_generate()
                 step_index, next_human_action, next_goal, num_goals, is_goal_chosen, is_first_real_step = self.get_turn_information(
                     children, num_goals=num_goals, select=False, is_goal_chosen=is_goal_chosen, is_first_real_step=is_first_real_step)
-                print("next human action is:", next_human_action, "next_goal is:", next_goal,
-                      "next human action is part of belief:", next_human_action in inverse_pending_dict,
-                      "pending dict is", inverse_pending_dict)
-                # if next_human_action == "get_cup_1":
+                # print("next human action is:", next_human_action, "next_goal is:", next_goal,
+                #       "next human action is part of belief:", next_human_action in inverse_pending_dict,
+                #       "pending dict is", inverse_pending_dict)
+                # # if next_human_action == "get_cup_1":
                 # print("here")
                 if not next_human_action in inverse_pending_dict:
                     # is_wrong_step_or_belief = True
@@ -1124,13 +1124,13 @@ class MCTS:
         max_val = -math.inf
         # also save index of the node with chosen step or wait
         for c in self.children[node]:
-            if c.turn_information.chosen_action.name != "wait":
-                print(
-                    c.turn_information.chosen_action.name,
-                    c.turn_information.chosen_action.question_asked,
-                    uct(c))
-            else:
-                print(c.turn_information.chosen_action.name, uct(c))
+            # if c.turn_information.chosen_action.name != "wait":
+            #     print(
+            #         c.turn_information.chosen_action.name,
+            #         c.turn_information.chosen_action.question_asked,
+            #         uct(c))
+            # else:
+            #     print(c.turn_information.chosen_action.name, uct(c))
             q_val = uct(c)
             if q_val >= max_val:
                 max_val = q_val
