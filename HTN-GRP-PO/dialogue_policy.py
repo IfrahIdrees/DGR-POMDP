@@ -116,10 +116,12 @@ class AgentState(_AS, MCNode):
         '''Todo: action_node should not be included'''
         if self.turn_information.action_node:
             hashint += self.turn_information.action_node
-            hashint += hash(self.turn_information.chosen_action)
+            hashint += hash(self.turn_information.chosen_action.name)
             if self.turn_information.chosen_action.name == "ask-clarification-question":
                 hashint += hash(self.turn_information.chosen_action.question_asked)
-        return hashint
+        # print("hashint after action_node", hashint)
+
+        return int(hashint)
 
     '''def hash_action_node(self) -> int:
         hashint = 0

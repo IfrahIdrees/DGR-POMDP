@@ -7,5 +7,5 @@ RANDOM_BASELINE = False
 np.random.seed(10)
 
 args = None
-positive_feedback="yes"
-negative_feedback="no"
+positive_feedback = "yes"
+negative_feedback = "no"

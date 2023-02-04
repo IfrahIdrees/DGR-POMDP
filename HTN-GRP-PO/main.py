@@ -168,15 +168,15 @@ if __name__ == '__main__':
 
     # sensor set up files
     sensor_reliability = [0.99, 0.95, 0.9, 0.8]
-    sensor_reliability = [0.99, 0.9, 0.8]
+    # sensor_reliability = [0.99, 0.9, 0.8]
     # sensor_reliability = [0.95, 0.9]
     # sensor_reliability = [0.99, 0.8]
-    sensor_reliability = [0.99, 0.8]
-    sensor_reliability = [0.95]
+    # sensor_reliability = [0.99, 0.8]
+    # sensor_reliability = [0.95]
     # trials = 51
     # trials = 11
     trials = 8
-    trials = 2
+    # trials = 2
     config.seed = 5999
     config.trials = trials
     random.seed(config.seed)
@@ -206,9 +206,9 @@ if __name__ == '__main__':
         # ou
 
         # file_nums = [1,11]
-        file_nums = [7]
-        for file_num in file_nums:
-            # for file_num in range(11, 30):
+        # file_nums = [7]
+        # for file_num in file_nums:
+        for file_num in range(1, 30):
             if config.args.domain == "kitchen" and file_num == 4:
                 continue
             for x in sensor_reliability:

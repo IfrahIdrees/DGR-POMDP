@@ -57,11 +57,11 @@ STEP_DICT = {
     },
     "block": {
         1: [
-            "pick_up_blockT"
-            "put_down_TE"
-            "pick_up_blockO"
-            "put_down_OT"
-            "pick_up_blockR"
+            "pick_up_blockT",
+            "put_down_TE",
+            "pick_up_blockO",
+            "put_down_OT",
+            "pick_up_blockR",
             "put_down_RO"
         ],
 
@@ -103,7 +103,6 @@ STEP_DICT = {
             "put_down_AP",
             "pick_up_blockC",
             "put_down_CA",
-
             ]
 
     }
@@ -151,7 +150,32 @@ INVERSE_STEP_DICT = {
         "add_coffee_cup_1": [3],
         "close_coffee_box_1": [3]},
     "block": {
-        "pickup_blockN": [1, 2]
+        "pick_up_blockT": [1, 3, 5],
+        "put_down_TE": [1],
+        "pick_up_blockO": [1, 2, 5],
+        "put_down_OT": [1],
+        "pick_up_blockR": [1],
+        "put_down_RO": [1],
+        "pick_up_blockN": [2, 3, 5],
+        "put_down_NE": [2, 3, 5],
+        "put_down_ON": [2, 5],
+        "put_down_TO": [2, 5],
+        "pick_up_blockU": [3],
+        "put_down_UN": [3],
+        "put_down_TU": [3],
+        "pick_up_blockW": [4],
+        "put_down_WK": [4],
+        "pick_up_blockA": [4, 5],
+        "put_down_AW": [4],
+        "pick_up_blockH": [4],
+        "put_down_HA": [4],
+        "pick_up_blockS": [5],
+        "put_down_ST": [5],
+        "pick_up_blockP": [5],
+        "put_down_PS": [5],
+        "put_down_AP": [5],
+        "pick_up_blockC": [5],
+        "put_down_CA": [5],
     }
 }
 
@@ -631,8 +655,18 @@ class MCTS:
                 # start of the
 
                 if is_first_real_step or previous_goal == 9:
-                    next_human_action = np.random.choice(
-                        ["use_soap", "add_water_kettle_1"], p=[0.33, 1 - 0.33])
+                    if config.args.domain == "kitchen":
+                        next_human_action = np.random.choice(
+                            ["use_soap", "add_water_kettle_1"], p=[0.33, 1 - 0.33])
+                    else:
+                        if step_name == "pick_up_blockT":
+                            next_human_action = "put_down_TE"
+                        elif step_name == "pick_up_blockN":
+                            next_human_action = "put_down_NE"
+                        elif step_name == "pick_up_blockW":
+                            next_human_action = "put_down_WK"
+                            #  np.random.choice(
+                            # ["use_soap", "add_water_kettle_1"])
                     is_first_real_step = False
                 else:
                     '''if step_name in [STEP_DICT[i][-1] for i in range(2,4)]:
@@ -646,9 +680,18 @@ class MCTS:
                     else:'''
                     if previous_goal != 9:
                         # when a new goal starts without the last being
-                        # completed
-                        next_human_action = np.random.choice(
-                            ["use_soap", "add_water_kettle_1"], p=[0.33, 1 - 0.33])
+                        # completed'
+                        if config.args.domain == "kitchen":
+                            next_human_action = np.random.choice(
+                                ["use_soap", "add_water_kettle_1"], p=[0.33, 1 - 0.33])
+                        else:
+                            if step_name == "pick_up_blockT":
+                                next_human_action = "put_down_TE"
+                            elif step_name == "pick_up_blockN":
+                                next_human_action = "put_down_NE"
+                            elif step_name == "pick_up_blockW":
+                                next_human_action = "put_down_WK"
+
                     else:
                         next_human_action = STEP_DICT[config.args.domain][previous_goal][step_index]
                     # TODO: maybe currentgoal is -1,
@@ -656,10 +699,23 @@ class MCTS:
                 # else continue previous complete goal label as wrong step and continue it later
             # if next_human_action == "use_soap":  # restricted when multiple
             # goals
-            if next_human_action in STEP_DICT[config.args.domain][1]:
-                next_goal = 1
+            if config.args.domain == "kitchen":
+                if next_human_action in STEP_DICT[config.args.domain][1]:
+                    next_goal = 1
+                else:
+                    next_goal = 2
             else:
-                next_goal = 2
+                # if next_human_action in STEP_DICT[config.args.domain][1]:
+                # all_goals_with_prefix_one = [1,2,3,5]
+                goals_with_pick_up_T = [1]
+                goals_with_pick_up_N = [2, 3, 5]
+                goals_with_pick_up_K = [4]
+                if INVERSE_STEP_DICT[config.args.domain][next_human_action] in goals_with_pick_up_T:
+                    next_goal = 1
+                elif INVERSE_STEP_DICT[config.args.domain][next_human_action] in goals_with_pick_up_N:
+                    next_goal = np.random.choice(goals_with_pick_up_N)
+                else:
+                    next_goal = 4
                 # TODO: need to make next goal random
                 # next_goal = np.random.choice([2,3])
                 # next_goal = -1
@@ -683,10 +739,18 @@ class MCTS:
             # rather reset it)
             # step_index = 1  # not restrict to 1
         elif current_goal == 9:
-            next_human_action = "turn_on_faucet_1"
-            next_goal = 0
-            step_index = 0
-            num_goals += 1
+            if config.args.domain == "kitchen":
+                next_human_action = "turn_on_faucet_1"
+                next_goal = 0
+                step_index = 0
+                num_goals += 1
+            else:
+                next_human_action = np.random.choice(
+                    ["pick_up_blockN", "pick_up_blockT", "pick_up_blockW"])
+                next_goal = 0
+                step_index = 0
+                num_goals += 1
+
         else:
             # select the next human action for
             # the current ongoing goal
