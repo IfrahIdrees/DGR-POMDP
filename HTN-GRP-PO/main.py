@@ -97,7 +97,7 @@ def parseArguments():
                         help="num_sims for POMCP")
     parser.add_argument("--d", type=float, default=0.95,
                         help="discount factor")
-    parser.add_argument("--e", type=int, default=0,
+    parser.add_argument("--e", type=float, default=0,
                         help="exploration constant")
     # parser.add_argument("--gr", type=int, default=5, help="goal reward")
     parser.add_argument("--wp", type=int, default=-5, help="wait penalty")
@@ -171,7 +171,7 @@ if __name__ == '__main__':
     # sensor_reliability = [0.99, 0.9, 0.8]
     # sensor_reliability = [0.95, 0.9]
     # sensor_reliability = [0.99, 0.8]
-    # sensor_reliability = [0.99, 0.8]
+    sensor_reliability = [0.99, 0.8]
     # sensor_reliability = [0.95]
     # trials = 51
     # trials = 11
@@ -190,8 +190,8 @@ if __name__ == '__main__':
     # for file_num in file_nums:
     is_first_other_happen = True
     for other_happen in [0.76]:
-    # for other_happen in config.np.arange(
-            # other_happens[0], other_happens[1], 0.005):
+        # for other_happen in config.np.arange(
+        # other_happens[0], other_happens[1], 0.005):
         if is_first_other_happen == True:
             parser.add_argument("--oh", type=float, default=other_happen)
             is_first_other_happen = False

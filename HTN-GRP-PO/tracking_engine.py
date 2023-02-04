@@ -141,7 +141,7 @@ class Tracking_Engine(object):
             step, goal = notif.get_one_notif()
             real_steps.append(step)
             notif.delete_one_notif()
-            if step == "rinse_hand":
+            if step == "pick_up_blockR":
                 print("step here")
             # if no notification, and the random prob is less than
             # no_notif_trigger_prob, sleep the engine
@@ -175,7 +175,7 @@ class Tracking_Engine(object):
 
                 real_exp = copy.deepcopy(exp)
 
-                if not notif._notif.empty() and config.args.agent_type == "pomdp":
+                if config.args.agent_type == "pomdp":
                     agent_state.turn_information.update_turn_information(
                         step_index, step, goal)
                     agent_state.copy_explaset(exp)
@@ -290,7 +290,7 @@ class Tracking_Engine(object):
                         exp.update_with_language_feedback(
                             feedback, exp.highest_action_PS, self._p_l)
                 is_haction_in_belief = self.check_is_ha_inbelief(
-                    inverse_pending_dict, action_node.turn_information.chosen_action.name)
+                    inverse_pending_dict, step)
                 env_reward = monte_carlo_tree.get_step_reward(
                     is_haction_in_belief, action_node)
                 total_reward += env_reward

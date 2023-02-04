@@ -249,8 +249,8 @@ class MCTS:
                 return float("-inf")  # avoid unseen moves
             return self.Q[n] / self.N[n]  # average reward
 
-        action_node = max(self.children[node], key=score)
-        # print("\n=========All node Reward==========")
+        # action_node = max(self.children[node], key=score)
+
         # for n in self.children[node]:
         #     action_arg = None
         #     if n.turn_information.chosen_action.name == "ask-clarification-question":
@@ -266,8 +266,36 @@ class MCTS:
         #             n.turn_information.chosen_action.name,
         #             "Reward",
         #             score(n))
+        print("\n=========All node Reward==========")
+        max_nodes = []
+        max_val = -math.inf
+        # also save index of the node with chosen step or wait
+        for c in self.children[node]:
+            # action_arg = None
+            # if c.turn_information.chosen_action.name == "ask-clarification-question":
+            #     action_arg = c.turn_information.chosen_action.question_asked
+            #     print(
+            #         "Node:",
+            #         c.turn_information.chosen_action.name + "_" + action_arg,
+            #         "Reward",
+            #         score(c))
+            # else:
+            #     print(
+            #         "Node:",
+            #         c.turn_information.chosen_action.name,
+            #         "Reward",
+            #         score(c))
 
-            # "Reward": score(n))
+            q_val = score(c)
+            if q_val >= max_val:
+                max_val = q_val
+                # if (c.turn_information.chosen_action.name == "wait") or \
+                # (c.turn_information.chosen_action.name == "ask-clarification-question" and \
+                # c.turn_information.chosen_action.question_asked in
+                # heuristic_questions):
+                max_nodes.append(c)
+        action_node = random.sample(max_nodes, 1)[0]
+        # "Reward": score(n))
         # print("self.children[")
         return action_node, score(action_node)
 
@@ -328,7 +356,7 @@ class MCTS:
 
             print("\n\n ROLL OUT # ", i)
             # if i == 4:
-                # print("here")
+            # print("here")
             self.do_rollout(root_node, is_first_real_step)
 
         # TODO: check, jason does uct for choose as well
@@ -570,7 +598,7 @@ class MCTS:
         elif is_wrong_happen and action.name == "wait":
             return config.args.wp
         elif not is_wrong_happen and action.name == "ask-clarification-question":
-            return config.args.qp
+            return config.args.qp * 2
         else:
             return 0
 
@@ -786,7 +814,7 @@ class MCTS:
 
             if not select:  # added just now
                 # adjust the index
-                if step_index < len(
+                if step_index + 1 < len(
                         STEP_DICT[config.args.domain][current_goal]):
                     next_human_action = STEP_DICT[config.args.domain][current_goal][step_index + 1]
                 else:
@@ -1110,12 +1138,26 @@ class MCTS:
         # TODO:jason has plus 1 here
         log_N_vertex = math.log(self.N_vnode[node])
 
+        # have a subset of potential questions based
+        # on adjusted_step_information heuristics
+        heuristic_step = node.turn_information._step_information[0]
+        heuristic_questions = []
+
+        for goal in STEP_DICT[config.args.domain].keys():
+            if heuristic_step < len(STEP_DICT[config.args.domain][goal]):
+                heuristic_questions.append(
+                    STEP_DICT[config.args.domain][goal][heuristic_step])
+
         def uct(n):
             "Upper confidence bound for trees"
             # Todo: handle n=0 case jason return Q
+            # print("Q, N"self.Q[n] , self.N[n])
             q_val = self.Q[n] / self.N[n] if self.N[n] != 0 else self.Q[n]
+
             if self.N[n] == 0:
                 return float("inf")
+            # print(q_val)
+            # print(q_val)
             return q_val + self.exploration_weight * math.sqrt(
                 log_N_vertex / self.N[n]
             )
@@ -1134,9 +1176,14 @@ class MCTS:
             q_val = uct(c)
             if q_val >= max_val:
                 max_val = q_val
-                max_nodes.append(c)
+                if (c.turn_information.chosen_action.name == "wait") or \
+                    (c.turn_information.chosen_action.name == "ask-clarification-question" and
+                     c.turn_information.chosen_action.question_asked in heuristic_questions):
+                    max_nodes.append(c)
 
         # max_nodes = np.reshape(np.array(max_nodes), (-1,1))
+        # print("max_nodes len", len(max_nodes), "q_val", q_val)
+        # print("max_nodes len", len(max_nodes))
         return random.sample(max_nodes, 1)[0]
         # for child in
         # return max(self.children[node], key=uct)

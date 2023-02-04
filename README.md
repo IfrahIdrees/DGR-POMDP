@@ -208,4 +208,12 @@ Todo:
 2. fix oracle for kitchen domain
 3. work on pomdp-transition function for block domain.
 
+[1] 12725
+
+Fb 4:
+changed step_reward, 
+argument of step_reward in tracking engine, 
+changed the max function for choose
+ask question at last step.
+
 
