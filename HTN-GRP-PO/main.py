@@ -176,7 +176,7 @@ if __name__ == '__main__':
     # trials = 51
     # trials = 11
     # trials = 8
-    trials = 2
+    trials = 20
     config.seed = 5999
     config.trials = trials
     random.seed(config.seed)
@@ -189,15 +189,16 @@ if __name__ == '__main__':
     # file_nums = [1,2,3,5,7,9,10]
     # for file_num in file_nums:
     is_first_other_happen = True
-    for other_happen in config.np.arange(
-            other_happens[0], other_happens[1], 0.005):
+    for other_happen in [0.76]:
+    # for other_happen in config.np.arange(
+            # other_happens[0], other_happens[1], 0.005):
         if is_first_other_happen == True:
             parser.add_argument("--oh", type=float, default=other_happen)
             is_first_other_happen = False
             parser, args = parseArguments()
             config.randomNs = [random.random()
                                #    for i in range((config.trials - 1) * 100)]
-                               for i in range(2 * 12 * args.max_depth * args.num_sims * (51 - 1) * 100)]
+                               for i in range(2 * 30 * args.max_depth * args.num_sims * (51 - 1) * 100)]
 
         else:
             args.oh = other_happen

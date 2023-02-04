@@ -16,7 +16,7 @@ import sys
 sys.dont_write_bytecode = True
 
 import copy
-from termcolor import colored
+# from termcolor import colored
 from database import *
 
 

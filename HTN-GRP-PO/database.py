@@ -215,7 +215,7 @@ class DB_Object(object):
                                 attri_name +
                                 "-" +
                                 "index - " +
-                                str(config.randomIndex) +
+                                str(config.realRandomIndex) +
                                 str(randomN) +
                                 '\n')
                 else:
@@ -226,7 +226,8 @@ class DB_Object(object):
                                 attri_name +
                                 "-" +
                                 "index - " +
-                                str(config.randomIndex) +
+                                str(config.realRandomIndex) +
+                                " , "+
                                 str(randomN) +
                                 '\n')
 
@@ -237,12 +238,14 @@ class DB_Object(object):
                     with open("mcts_debugrandom_no.txt", 'a') as f:
                         f.write(ob_name + "-" + attri_name + "-" +
                                 "index" + str(config.randomIndex) +
+                                " , "+
                                 str(randomN) +
                                 '\n')
                 else:
                     with open("mcts_random_no.txt", 'a') as f:
                         f.write(ob_name + "-" + attri_name + "-" +
                                 "index" + str(config.randomIndex) +
+                                " , "+
                                 str(randomN) +
                                 '\n')
                 config.randomIndex += 1
