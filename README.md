@@ -220,3 +220,14 @@ ask question at last step.
 feb 5:
 deleted delete trigger for the block domain 
 changed the updated with feedback for pomdp
+
+"block": {
+        "Single Goal, Correct Steps": [1,2,3,4,5],
+        "Multiple Goal, Correct Steps": [6,7,8,9,10],
+        "Single Goal, Wrong Steps": [11,12,13,15,23,24,25,26,27,28,29],
+        "Multiple Goal, Wrong Steps": [14,16,17,18,19,22,30],
+    }
+
+feb 5:
+self.start_task is updated in explaset
+moved the root_node outside for loop

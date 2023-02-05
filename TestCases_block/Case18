@@ -7,7 +7,7 @@ put_down_TU, 9
 pick_up_blockW, 0
 put_down_WK, 4
 pick_up_blockR, 1
-put_down_RO, 1
+put_down_RO, 9
 pick_up_blockA, 4
 put_down_AW, 4
 pick_up_blockH, 4

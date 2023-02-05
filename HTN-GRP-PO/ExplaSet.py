@@ -58,7 +58,21 @@ class explaSet(object):
         self._other_happen = None
         self.aggregate_pending_set = None
         self.flattened_execute_sequences = None
-        self.start_task = None
+        if config.args.domain == "kitchen":
+            self.start_task = {
+                'wash_hand': 0,
+                "make_tea": 0,
+                "make_coffee": 0
+            }
+        else:
+            self.start_task = {
+                "stack_word_ROTE": 0,
+                "stack_word_TONE": 0,
+                "stack_word_TUNE": 0,
+                "stack_word_HAWK": 0,
+                "stack_word_CAPSTONE": 0
+            }
+        # self.start_task = None
 
     ##########################################################################
     # Part I
@@ -504,8 +518,13 @@ class explaSet(object):
             *execute_sequences)
         self.counter_execute_sequences = self.extract_execute_sequence(
             flattened_execute_sequences)
-        self.start_task = dict(functools.reduce(operator.add,
-                                                map(collections.Counter, start_tasks)))
+        # self.start_task = dict(functools.reduce(operator.add,
+        # map(collections.Counter, start_tasks)))
+
+        for start_task_dict in start_tasks:
+            for key in start_task_dict:
+                self.start_task[key] += start_task_dict[key]
+
         self.flattened_execute_sequences = execute_sequences
         # self.counter_execute_sequences = counter_execute_sequences
         aggregate_pending_set = np.delete(aggregate_pending_set, 0, 0)

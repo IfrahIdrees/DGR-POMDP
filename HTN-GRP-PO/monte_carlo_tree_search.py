@@ -305,11 +305,10 @@ class MCTS:
         # flattened_execute_sequences = itertools.chain(*node.execute_sequences)
         # node.counter_execute_sequences = node.extract_execute_sequence(flattened_execute_sequences)
         # # for i in range(monte_carlo_tree.sim_num):
-
+        root_node = copy.deepcopy(node)
+        root_node.set_node_info()
+        self.root_node = root_node
         for i in range(self.num_sims):
-            root_node = copy.deepcopy(node)
-            root_node.set_node_info()
-            self.root_node = root_node
             root_node.sample()
 
             pipeline = [{"$match": {}},
