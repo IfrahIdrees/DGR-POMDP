@@ -192,6 +192,8 @@ class AgentState(_AS, MCNode):
         # update existing tree structure, if the action exist in the
         # pending set of this tree structure
         # TODO: human tuurn. agent tuen and terminal of next child set
+        # print("in observation function")
+
         for action, action_prob in self.explaset._action_posterior_prob.items():
             new_explas = self.sampled_explanation.generate_new_expla_part1(
                 [action, action_prob])

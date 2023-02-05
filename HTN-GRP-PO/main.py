@@ -171,12 +171,13 @@ if __name__ == '__main__':
     # sensor_reliability = [0.99, 0.9, 0.8]
     # sensor_reliability = [0.95, 0.9]
     # sensor_reliability = [0.99, 0.8]
-    sensor_reliability = [0.99, 0.8]
-    # sensor_reliability = [0.95]
+    # sensor_reliability = [0.99, 0.8]
+    # sensor_reliability = [0.8]
     # trials = 51
     # trials = 11
     # trials = 8
-    trials = 20
+    # trials = 11
+    trials = 11
     config.seed = 5999
     config.trials = trials
     random.seed(config.seed)
@@ -206,7 +207,7 @@ if __name__ == '__main__':
         config.args = args
         # ou
 
-        # file_nums = [1,11]
+        # file_nums = [5]
         # file_nums = [7]
         # for file_num in file_nums:
         for file_num in range(1, 30):

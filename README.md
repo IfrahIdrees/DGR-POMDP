@@ -217,3 +217,6 @@ changed the max function for choose
 ask question at last step.
 
 
+feb 5:
+deleted delete trigger for the block domain 
+changed the updated with feedback for pomdp

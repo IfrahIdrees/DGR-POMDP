@@ -368,10 +368,12 @@ class MCTS:
         # self._expand(node)
         # agent_action_node = self._uct_select(node)
         #####
+        print("starting select")
         path, step_rewards, is_haction_in_belief, num_goals, is_goal_chosen, is_first_real_step, is_terminal = self._select(
             node, is_first_real_step)
         leaf = path[-1]
         self._expand(leaf)
+        print("starting simulate")
         if not is_terminal:
             reward = self._simulate(
                 leaf,

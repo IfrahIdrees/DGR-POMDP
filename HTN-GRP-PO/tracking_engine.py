@@ -141,7 +141,7 @@ class Tracking_Engine(object):
             step, goal = notif.get_one_notif()
             real_steps.append(step)
             notif.delete_one_notif()
-            if step == "pick_up_blockR":
+            if step == "pick_up_blockT":
                 print("step here")
             # if no notification, and the random prob is less than
             # no_notif_trigger_prob, sleep the engine
@@ -282,13 +282,15 @@ class Tracking_Engine(object):
                 if feedback is None:
                     exp.update_without_language_feedback(self._p_l)
                 else:
-                    if config.args.agent_type == "fixed_always_ask":
+                    exp.update_with_language_feedback(
+                        feedback, [action_arg, 0.99], self._p_l)
+                    '''if config.args.agent_type == "fixed_always_ask":
                         exp.update_with_language_feedback(
                             feedback, [action_arg, 0.99], self._p_l)
                     else:
                         # TODO:NEED TO FIX WHAT SHOULD BE PASSED
                         exp.update_with_language_feedback(
-                            feedback, exp.highest_action_PS, self._p_l)
+                            feedback, exp.highest_action_PS, self._p_l)'''
                 is_haction_in_belief = self.check_is_ha_inbelief(
                     inverse_pending_dict, step)
                 env_reward = monte_carlo_tree.get_step_reward(
