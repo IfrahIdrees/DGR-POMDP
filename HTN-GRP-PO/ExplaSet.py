@@ -473,9 +473,12 @@ class explaSet(object):
     def explaSet_expand_part2(self, length):
         for i in range(length):
             x = self.pop()
+            print(x)
             for action in self._action_posterior_prob:
                 if action == "nothing":
                     continue
+                if action == "put_down_ON":
+                    print("here")
                 new_explas = x.generate_new_expla_part2(
                     [action, self._action_posterior_prob[action]])
                 for expla in new_explas:
@@ -497,6 +500,20 @@ class explaSet(object):
         ''',inverse_pending_set=None,
         single_goal_indices=None, previous_goal=None,
         real_step = True):'''
+        if config.args.domain == "kitchen":
+            self.start_task = {
+                'wash_hand': 0,
+                "make_tea": 0,
+                "make_coffee": 0
+            }
+        else:
+            self.start_task = {
+                "stack_word_ROTE": 0,
+                "stack_word_TONE": 0,
+                "stack_word_TUNE": 0,
+                "stack_word_HAWK": 0,
+                "stack_word_CAPSTONE": 0
+            }
         self.normalize()
         inverse_pending_dict = defaultdict(list)
         aggregate_pending_set = np.zeros(shape=(1, 2))

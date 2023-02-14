@@ -210,7 +210,7 @@ if __name__ == '__main__':
         # file_nums = [5]
         # file_nums = [7]
         # for file_num in file_nums:
-        for file_num in range(16, 17):
+        for file_num in range(1,13):
             if config.args.domain == "kitchen" and file_num == 4:
                 continue
             for x in sensor_reliability:

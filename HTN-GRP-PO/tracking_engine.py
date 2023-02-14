@@ -68,6 +68,37 @@ class Tracking_Engine(object):
                                                "pick_up_blockW": [0]
                                                }}
 
+        self.fixed_actions = [
+            Action("wait"),
+            Action("wait"),
+            Action("wait"),
+            AgentAskClarificationQuestion("put_down_ON"),
+            AgentAskClarificationQuestion("pick_up_blockR"),
+            Action("wait"),
+            Action("wait"),
+            Action("wait"),
+            Action("wait"),
+            Action("wait"),
+            Action("wait"),
+            Action("wait"),
+            Action("wait"),
+            Action("wait"),
+            Action("wait"),
+            Action("wait"),
+            Action("wait"),
+            Action("wait"),
+            Action("wait"),
+            Action("wait"),
+            Action("wait"),
+            Action("wait"),
+            Action("wait"),
+            Action("wait"),
+            Action("wait"),
+            Action("wait"),
+            Action("wait"),
+            Action("wait")
+        ]
+
     def get_human_feedback(self, action_name, real_steps, action_arg=None, ):
         feedback = None
         if action_name == "ask-clarification-question":
@@ -195,6 +226,8 @@ class Tracking_Engine(object):
                         #     action_name = action_name + "_" + action_arg
                         #     is_question_asked = 1
                         #     num_question_asked+=is_question_asked
+                        # action_node = agent_state
+                        # action_node.turn_information.chosen_action = self.fixed_actions[step_index]
                     action_name, action_arg, is_question_asked, num_question_asked = \
                         self.extract_action_name(
                             action_node, num_question_asked, is_question_asked)
@@ -282,6 +315,7 @@ class Tracking_Engine(object):
                 if feedback is None:
                     exp.update_without_language_feedback(self._p_l)
                 else:
+                    # exp_clone =  copy.deepcopy(exp._explaset)
                     exp.update_with_language_feedback(
                         feedback, [action_arg, 0.99], self._p_l)
                     '''if config.args.agent_type == "fixed_always_ask":

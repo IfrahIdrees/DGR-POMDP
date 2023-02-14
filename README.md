@@ -231,3 +231,19 @@ changed the updated with feedback for pomdp
 feb 5:
 self.start_task is updated in explaset
 moved the root_node outside for loop
+
+old .111
+case 5 gives error at ON
+.142
+16 gives error at UN
+self
+21 gives error at pickup A
+
+
+block with 0.01
+wrong trend for 2, 5, 6,12,13,15
+
+feb 14:
+1. re-initialize the self.start_task for every step
+2. added the fixed_actions
+3. nothing should change the HTN/always fixed for kitchen/blocks domain
