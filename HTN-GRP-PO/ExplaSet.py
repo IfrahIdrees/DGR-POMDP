@@ -689,7 +689,118 @@ class explaSet(object):
                 belief_state[0], belief_state[1], new_att_distribution)
         return
 
-    def update_with_language_feedback(self, step, highest_action_PS, p_l):
+    def update_with_language_feedback(
+            self, step, highest_action_PS, p_l, is_wrong_step=[]):
+        # real_exp._explaset[0]._pendingSet
+        # for expla in self._explaset:
+        #     expla
+        # weights = [0 for i in range(len(self._explaset))]
+        '''Need a way to incorporate HTN information
+        incorporate the otherhappen'''
+        if is_wrong_step[0]:
+            if step == config.positive_feedback:
+                step = config.negative_feedback
+            else:
+                step = config.positive_feedback
+            # step = not step
+        for ind, expla in enumerate(self._explaset):
+            # goal_prob = expla._prob
+            correct_expla = 0
+            pending_set = expla._pendingSet
+            # denominator = len(pending_set)
+            if len(pending_set) == 0:
+                continue
+            for action, act_prob in pending_set:
+                if action == highest_action_PS[0] and step == config.positive_feedback:
+                    correct_expla += 1
+                elif not (highest_action_PS[0] == action) and step == config.positive_feedback:
+                    # taskNet_._expandProb *= 0.01
+                    # expla._prob*=0.01
+                    continue
+                elif step == config.negative_feedback and not (highest_action_PS[0] == action):
+                    correct_expla += 1
+                elif step == config.negative_feedback and (highest_action_PS[0] == action):
+                    # taskNet_._expandProb *= 0.01
+                    # expla._prob*=0.01
+                    continue
+            # delta = config.args.dt*100
+            delta = config.delta
+            if len(pending_set) == 0 or correct_expla == 0:
+                weight = delta
+            else:
+                weight = 1
+                # float(correct_expla) / len(pending_set)
+            # using tasknets as weightd for adjust probs of explanation prob.
+            # but after normalizing it is the same.
+            expla._prob *= weight * p_l
+
+            for ind in range(len(expla._pendingSet)):
+                '''expla._pendingSet[ind][1]*=weight*p_l'''
+                expla._pendingSet[ind][1] = expla._prob / \
+                    len(expla._pendingSet)
+
+        return
+
+    def update_with_language_feedback_with_pending_set(
+            self, step, highest_action_PS, p_l):
+        # real_exp._explaset[0]._pendingSet
+        # for expla in self._explaset:
+        #     expla
+        # weights = [0 for i in range(len(self._explaset))]
+        '''Need a way to incorporate HTN information
+        incorporate the otherhappen'''
+
+        for ind, expla in enumerate(self._explaset):
+            # goal_prob = expla._prob
+            correct_expla = 0
+            pending_set = expla._pendingSet
+            # denominator = len(pending_set)
+            if len(pending_set) == 0:
+                continue
+            for action, act_prob in pending_set:
+                if action == highest_action_PS[0] and step == config.positive_feedback:
+                    correct_expla += 1
+                elif not (highest_action_PS[0] == action) and step == config.positive_feedback:
+                    # taskNet_._expandProb *= 0.01
+                    # expla._prob*=0.01
+                    continue
+                elif step == config.negative_feedback and not (highest_action_PS[0] == action):
+                    correct_expla += 1
+                elif step == config.negative_feedback and (highest_action_PS[0] == action):
+                    # taskNet_._expandProb *= 0.01
+                    # expla._prob*=0.01
+                    continue
+            # delta = config.args.dt*100
+            delta = config.delta
+            if len(pending_set) == 0 or correct_expla == 0:
+                weight = delta
+            else:
+                weight = 1
+                # float(correct_expla) / len(pending_set)
+            # using tasknets as weightd for adjust probs of explanation prob.
+            # but after normalizing it is the same.
+            expla._prob *= weight * p_l
+
+            for ind in range(len(expla._pendingSet)):
+                '''expla._pendingSet[ind][1]*=weight*p_l'''
+                expla._pendingSet[ind][1] = expla._prob / \
+                    len(expla._pendingSet)
+
+        return
+
+    def update_without_language_feedback(self, p_l):
+
+        for expla in self._explaset:
+            '''expla._prob *= config.delta'''
+            expla._prob *= (1 - p_l)
+            for ind in range(len(expla._pendingSet)):
+                '''expla._pendingSet[ind][1]*=weight*p_l'''
+                expla._pendingSet[ind][1] = expla._prob / \
+                    len(expla._pendingSet)
+        return
+
+    def update_with_language_feedback_with_execute_seq(
+            self, step, highest_action_PS, p_l):
         # for expla in self._explaset:
         #     expla
         weights = [0 for i in range(len(self._explaset))]
@@ -747,7 +858,7 @@ class explaSet(object):
         #     self._action_posterior_prob[action[0]] = action[1]
         # for ac
 
-    def update_without_language_feedback(self, p_l):
+    def update_without_language_feedback_execute_sequence(self, p_l):
         # for expla in self._explaset:
         #     expla
 

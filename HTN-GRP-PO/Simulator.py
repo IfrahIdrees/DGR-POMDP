@@ -23,25 +23,26 @@ db = DB_Object()
 
 # given the happened step, update the realState in database
 def realStateANDSensorUpdate(
-        step_name, output_file_name, real_step=True, is_wrong_step_or_belief=False):
+        step_name, output_file_name, real_step=True, is_wrong_step_or_belief=False, corrective_action=False):
     # print("Simulate step: ", step_name)
-    if real_step:
-        print("\nreal Simulate step: ", step_name, "\n")
-        sep = "\t"
+    if not corrective_action:
+        if real_step:
+            print("\nreal Simulate step: ", step_name, "\n")
+            sep = "\t"
 
-    #     with open(output_file_name, 'a') as f:
-    #         #version changed in March 14, generate a table
-    #         f.write(step_name + "\t")
-    else:
-        # print("mcts Simulate step: ", step_name)
-        sep = "\t"
+        #     with open(output_file_name, 'a') as f:
+        #         #version changed in March 14, generate a table
+        #         f.write(step_name + "\t")
+        else:
+            # print("mcts Simulate step: ", step_name)
+            sep = "\t"
 
-    #     with open("mcts"+output_file_name, 'a') as f:
-    #         #version changed in March 14, generate a table
-    #         f.write(step_name + "\t")
+        #     with open("mcts"+output_file_name, 'a') as f:
+        #         #version changed in March 14, generate a table
+        #         f.write(step_name + "\t")
 
-    with open(output_file_name, 'a') as f:
-        f.write(step_name + sep)
+        with open(output_file_name, 'a') as f:
+            f.write(step_name + sep)
 
     sensor_notification = []
     op = db.get_operator(step_name)

@@ -44,7 +44,7 @@ class Tracking_Engine(object):
         self._cond_notsatisfy = cond_notsatisfy
         self._delete_trigger = config.args.dt
         self._non_happen = non_happen
-        self._other_happen = config.args.oh
+        self._other_happen_thresh = config.args.oh
         self._file_name = file_name
         self._output_file_name = output_file_name
         self._output_folder_name = output_folder_name
@@ -172,7 +172,8 @@ class Tracking_Engine(object):
             step, goal = notif.get_one_notif()
             real_steps.append(step)
             notif.delete_one_notif()
-            if step == "pick_up_blockT":
+            # if step == "use_soap" or
+            if step == "switch_off_kettle_1":
                 print("step here")
             # if no notification, and the random prob is less than
             # no_notif_trigger_prob, sleep the engine
@@ -267,32 +268,57 @@ class Tracking_Engine(object):
                             ]
                 db._backup_sensor.aggregate(pipeline)
 
-                if otherHappen > self._other_happen:
+                if feedback is None:
+                    '''exp.update_without_language_feedback(self._p_l)'''
+                    pass
+                else:
+                    # exp_clone =  copy.deepcopy(exp._explaset)
+                    exp.update_with_language_feedback(
+                        feedback, [action_arg, 0.99], self._p_l, [otherHappen > self._other_happen_thresh, otherHappen])
+
+                if otherHappen > self._other_happen_thresh:
                     # if otherHappen:
                     # wrong step handling
                     # print("action posterior after bayseian inference is",  exp._action_posterior_prob)
                     if config.args.agent_type == "htn":
+                        # this should also be run when wrong step happens
                         exp.handle_exception()
                     else:
                         '''TODO: see what to do for pomdp when the action_arg can be wrong'''
+                        '''this should be run when sensor reliability gets reliability wrong'''
                         if action_name == "ask-clarification-question" and feedback == config.positive_feedback:
-                            sensor_notification = update_db(
-                                step_index, step, self.corrective_action_filename)
+                            '''if the human is saying that the human action has happened but in other happen so most probably
+                            noisy reading, get the reading again'''
+
+                            sensor_notification = copy.deepcopy(
+                                realStateANDSensorUpdate(
+                                    step, self._output_file_name, real_step=True, corrective_action=True))
+
                             exp.setSensorNotification(sensor_notification)
-                            exp.action_posterior(is_correction=True)
-                            length = len(exp._explaset)
+                            '''sensor_notification = update_db(
+                                step_index, step, self.corrective_action_filename)
+                                exp.setSensorNotification(sensor_notification)'''
+                            otherHappen = exp.action_posterior(
+                                is_correction=True)
 
-                            # input step start a new goal (bottom up procedure to create ongoing status)
-                            # include recognition and planning
-                            # exp._delete_trigger = config._real_delete_trigger
-                            exp.explaSet_expand_part1(length)
+                            if otherHappen > self._other_happen_thresh:
+                                '''this is for wrong step and noisy step'''
+                                exp.handle_exception()
+                            else:
+                                '''this is for noisy step and correct step'''
+                                length = len(exp._explaset)
 
-                            # belief state update
-                            state = State()
-                            state.update_state_belief(exp)
-                            # input step continues an ongoing goal
-                            # include recognition and planning
-                            exp.explaSet_expand_part2(length)
+                                # input step start a new goal (bottom up procedure to create ongoing status)
+                                # include recognition and planning
+                                # exp._delete_trigger = config._real_delete_trigger
+                                exp.explaSet_expand_part1(length)
+
+                                # belief state update
+                                state = State()
+                                state.update_state_belief(exp)
+                                # input step continues an ongoing goal
+                                # include recognition and planning
+                                exp.explaSet_expand_part2(length)
 
                             # print("here")
 
@@ -312,12 +338,6 @@ class Tracking_Engine(object):
                     # include recognition and planning
                     exp.explaSet_expand_part2(length)
 
-                if feedback is None:
-                    exp.update_without_language_feedback(self._p_l)
-                else:
-                    # exp_clone =  copy.deepcopy(exp._explaset)
-                    exp.update_with_language_feedback(
-                        feedback, [action_arg, 0.99], self._p_l)
                     '''if config.args.agent_type == "fixed_always_ask":
                         exp.update_with_language_feedback(
                             feedback, [action_arg, 0.99], self._p_l)
@@ -325,6 +345,26 @@ class Tracking_Engine(object):
                         # TODO:NEED TO FIX WHAT SHOULD BE PASSED
                         exp.update_with_language_feedback(
                             feedback, exp.highest_action_PS, self._p_l)'''
+                # if :
+                '''if config.args.agent_type != "htn" and otherHappen > self._other_happen and action_name == "ask-clarification-question" and feedback == config.positive_feedback:
+                    sensor_notification = update_db(
+                        step_index, step, self.corrective_action_filename)
+                    exp.setSensorNotification(sensor_notification)
+                    exp.action_posterior(is_correction=True)
+                    length = len(exp._explaset)
+
+                    # input step start a new goal (bottom up procedure to create ongoing status)
+                    # include recognition and planning
+                    # exp._delete_trigger = config._real_delete_trigger
+                    exp.explaSet_expand_part1(length)
+
+                    # belief state update
+                    state = State()
+                    state.update_state_belief(exp)
+                    # input step continues an ongoing goal
+                    # include recognition and planning
+                    exp.explaSet_expand_part2(length)'''
+
                 is_haction_in_belief = self.check_is_ha_inbelief(
                     inverse_pending_dict, step)
                 env_reward = monte_carlo_tree.get_step_reward(

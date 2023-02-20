@@ -167,9 +167,9 @@ if __name__ == '__main__':
     other_happens = [0.76, 0.765]  # 0.75 #0.68 try 0.78 next
 
     # sensor set up files
-    sensor_reliability = [0.99, 0.95, 0.9, 0.8]
+    # sensor_reliability = [0.99, 0.95, 0.9, 0.8]
     # sensor_reliability = [0.99, 0.9, 0.8]
-    # sensor_reliability = [0.95, 0.9]
+    sensor_reliability = [0.95, 0.9]
     # sensor_reliability = [0.99, 0.8]
     # sensor_reliability = [0.99, 0.8]
     # sensor_reliability = [0.8]
@@ -177,7 +177,7 @@ if __name__ == '__main__':
     # trials = 11
     # trials = 8
     # trials = 11
-    trials = 11
+    trials = 21  # 11
     config.seed = 5999
     config.trials = trials
     random.seed(config.seed)
@@ -210,7 +210,7 @@ if __name__ == '__main__':
         # file_nums = [5]
         # file_nums = [7]
         # for file_num in file_nums:
-        for file_num in range(1,13):
+        for file_num in range(1, 13):
             if config.args.domain == "kitchen" and file_num == 4:
                 continue
             for x in sensor_reliability:
@@ -294,7 +294,12 @@ if __name__ == '__main__':
                         config.randomIndex = 0
                         config.randomIndex = 48
                         config.realRandomIndex = 48
-                        # config.randomIndex = 321
+
+                        '''debugginh'''
+                        config.realrandomIndex = 174
+
+                    if repeat == 9:
+                        print("here")
 
                     db.method.drop()
                     db.state.drop()

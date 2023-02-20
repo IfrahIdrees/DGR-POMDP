@@ -9,3 +9,4 @@ np.random.seed(10)
 args = None
 positive_feedback = "yes"
 negative_feedback = "no"
+delta = 0.5

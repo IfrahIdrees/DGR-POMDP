@@ -247,3 +247,28 @@ feb 14:
 1. re-initialize the self.start_task for every step
 2. added the fixed_actions
 3. nothing should change the HTN/always fixed for kitchen/blocks domain
+
+
+
+
+feb 20:
+1. Add delta to config
+2. changed update_with_language_feedback to update based on pending set in explaset and not execute sequence
+4. also in update_with_language we shift the step to no if the other_happen is > self.threshold
+5. moved the the language feedback update to a position before the other_happen > threshold logic is called
+6. changed the logic when inside otherHappen > self.other_happen_threshold for fixed always ask
+7. if action_name is ask clarification question and feedback is positive then make the following changes:
+        a. change update_db to realStateANDSensorUpdate and do another detection
+        b. again do exp.action_posterior() and use the new otherHappen and check against threshold
+        c. so explaset is not called always inside otherhappen
+
+
+8. update without language is same as before and we multiple with 1-p_l
+9. add corrective_action in argument in realstateandsensor update, its used for only writing to file.
+10. changed other_happen_threshold variable in tracking engine
+
+
+TOdo:
+correct goal accuracyfor the following: 
+fixed_always: 1 wrong , 6 wrong, 8 0.8 lower
+htn: 12 0.9 and 0.8 has issue in htn where dry_hand becomes 0.
