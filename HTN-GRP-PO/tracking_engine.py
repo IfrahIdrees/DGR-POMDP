@@ -62,13 +62,22 @@ class Tracking_Engine(object):
         with open(self.corrective_action_filename, 'a') as f:
             f.write('\n========================\n')
         self.trial = trial
-        self.INVERSE_PENDING_DICT = {"kitchen": {"turn_on_faucet": [0]},
+        self.INVERSE_PENDING_DICT = {"kitchen": {"turn_on_faucet_1": [0]},
                                      "block": {"pick_up_blockT": [0],
                                                "pick_up_blockN": [0],
                                                "pick_up_blockW": [0]
                                                }}
 
         self.fixed_actions = [
+            # Action("wait"),
+            # AgentAskClarificationQuestion("use_soap"),
+            # Action("wait"),
+            # AgentAskClarificationQuestion("rinse_hand"),
+            # Action("wait"),
+            # Action("wait"),
+            # Action("wait"),
+            # =========================
+            Action("wait"),
             Action("wait"),
             Action("wait"),
             Action("wait"),
@@ -109,7 +118,10 @@ class Tracking_Engine(object):
         return feedback
 
     def check_is_ha_inbelief(self, inverse_pending_action,
-                             action_name, action_args=None):
+                             action_node, action_args=None):
+        if action_node.turn_information.chosen_action.name == "wait":
+            return True
+        action_name = action_node.turn_information.chosen_action.question_asked
         if action_name in inverse_pending_action:
             is_ha_inbelief = True
         else:
@@ -173,10 +185,10 @@ class Tracking_Engine(object):
             real_steps.append(step)
             notif.delete_one_notif()
             # if step == "use_soap" or
-            if step == "switch_off_kettle_1":
+            if step == "use_soap":
                 print("step here")
             # if no notification, and the random prob is less than
-            # no_notif_trigger_prob, sleep the engine
+            # no_notif_trigger_pcheck_is_ha_inbeliefrob, sleep the engine
             if step == "none" and random.random() < self._no_trigger:
                 time.sleep(self._sleep_interval)
 
@@ -207,10 +219,11 @@ class Tracking_Engine(object):
 
                 real_exp = copy.deepcopy(exp)
 
+                agent_state.turn_information.update_turn_information(
+                    step_index, step, goal)
+                agent_state.copy_explaset(exp)
+
                 if config.args.agent_type == "pomdp":
-                    agent_state.turn_information.update_turn_information(
-                        step_index, step, goal)
-                    agent_state.copy_explaset(exp)
                     # agent_state.explaset =copy.deepcopy(exp)
                     if step_index == 0:
                         # is_first_real_step = True
@@ -220,6 +233,7 @@ class Tracking_Engine(object):
                         is_first_real_step = False
                         action_node, _ = monte_carlo_tree.rollout_loop(
                             agent_state, step, is_first_real_step)
+
                         # action_name = action_node.turn_information.chosen_action.name
                         # action_arg = None
                         # if action_name == "ask-clarification-question":
@@ -227,8 +241,10 @@ class Tracking_Engine(object):
                         #     action_name = action_name + "_" + action_arg
                         #     is_question_asked = 1
                         #     num_question_asked+=is_question_asked
+                        '''fixed_policy'''
                         # action_node = agent_state
                         # action_node.turn_information.chosen_action = self.fixed_actions[step_index]
+
                     action_name, action_arg, is_question_asked, num_question_asked = \
                         self.extract_action_name(
                             action_node, num_question_asked, is_question_asked)
@@ -280,7 +296,7 @@ class Tracking_Engine(object):
                     # if otherHappen:
                     # wrong step handling
                     # print("action posterior after bayseian inference is",  exp._action_posterior_prob)
-                    if config.args.agent_type == "htn":
+                    if config.args.agent_type == "htn" or feedback is None:
                         # this should also be run when wrong step happens
                         exp.handle_exception()
                     else:
@@ -366,7 +382,7 @@ class Tracking_Engine(object):
                     exp.explaSet_expand_part2(length)'''
 
                 is_haction_in_belief = self.check_is_ha_inbelief(
-                    inverse_pending_dict, step)
+                    inverse_pending_dict, action_node)
                 env_reward = monte_carlo_tree.get_step_reward(
                     is_haction_in_belief, action_node)
                 total_reward += env_reward

@@ -1,0 +1,13 @@
+turn_on_faucet_1,0
+add_water_kettle_1,-1
+turn_off_faucet_1,-1
+switch_on_kettle_1,-1
+switch_off_kettle_1,-1
+get_cup_1,-1
+open_tea_box_1,2
+open_tea_box_1,2
+open_tea_box_1,2
+add_tea_cup_1,2
+close_tea_box_1,2
+add_water_cup_1,2
+drink,9

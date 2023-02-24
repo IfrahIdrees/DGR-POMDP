@@ -250,7 +250,10 @@ class explaSet(object):
         for k in self._action_posterior_prob:
             posteriorK, not_happen_prob = self.cal_posterior(k)
             happen_dict[k] = posteriorK
-            posteriorK = posteriorK / (posteriorK + not_happen_prob)
+            if posteriorK + not_happen_prob == 0:
+                posteriorK = config.args.dt
+            else:
+                posteriorK = posteriorK / (posteriorK + not_happen_prob)
             otherHappen = otherHappen - posteriorK * \
                 self._action_posterior_prob[k]  # * 1/ len(self._explaset)
             self._action_posterior_prob[k] = self._action_posterior_prob[k] * posteriorK

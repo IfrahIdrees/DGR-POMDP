@@ -268,7 +268,38 @@ feb 20:
 10. changed other_happen_threshold variable in tracking engine
 
 
-TOdo:
+Todo:
 correct goal accuracyfor the following: 
 fixed_always: 1 wrong , 6 wrong, 8 0.8 lower
 htn: 12 0.9 and 0.8 has issue in htn where dry_hand becomes 0.
+need to run block with 0.001, 0.005, 0.006, 0.007
+
+feb 24:
+1. if, elif for updating posteriorK
+2. if, elif for updating 
+3. updated check_is_ha_inbelief:
+        a. add action_node as argument to check_is_ha_inbelief adjust for htn and other method
+        b. pass in action argument for the ask_clarification
+4. update agent_state.turn_info and explaset before pomdp if condition
+5. added feedback == None in the if condition 
+6. Added new single goal test cases for kitchen domain
+
+Todo: 
+run for htn, pomdp and fixed_Always for kitchen and blocks domain
+
+
+experiments left
+[done] visualize kitchen 1-13 
+[done] visualize block 1-30 but wrong step not 1.0 at 0.99
+
+[done] visualize kitchen 1-16 - running 13-15 again on 141
+run experiments for blocks SIPS - running experiment
+[done] for now - fix pomdp for kitchen
+run SIPS on kitchen domain
+check why blocks not reach 0.99 accuracy
+
+HTN+orcale kitchen local+111(13,14)
+htn+oracle block 141
+SIPS block 141 - ask how to handle this?
+        1. running 300 on 141
+        2. runnng 100 on 111
