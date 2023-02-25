@@ -476,7 +476,7 @@ class explaSet(object):
     def explaSet_expand_part2(self, length):
         for i in range(length):
             x = self.pop()
-            print(x)
+            # print(x)
             for action in self._action_posterior_prob:
                 if action == "nothing":
                     continue

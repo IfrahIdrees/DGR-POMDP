@@ -1019,7 +1019,7 @@ class MCTS:
                 # then choose the human action with action response added to
                 # it.
                 children = node.find_observation_children()  # generate explasets
-                print("******step number", step_num, "depth:", self.max_depth)
+                # print("******step number", step_num, "depth:", self.max_depth)
 
                 if not children or step_num > self.max_depth + 1 or num_goals == total_goals:
                     return total_reward
