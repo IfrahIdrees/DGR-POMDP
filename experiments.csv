@@ -4,15 +4,23 @@ python main.py --agent_type htn --max_depth 19 --num_sims 6 --d 0.95 --e 1 --wp 
 python main.py --agent_type fixed_always_ask --max_depth 19 --num_sims 6 --d 0.95 --e 1 --wp -5 --qr 5 --qp -5 --domain block --dt 0.001, 141, cd14ab0507fd3bdcd6b42add0db44bbca2bf6158, feb20, done
 python main.py --agent_type htn --max_depth 19 --num_sims 6 --d 0.95 --e 1 --wp -5 --qr 5 --qp -5 --domain kitchen --dt 0.001, 111, cd14ab0507fd3bdcd6b42add0db44bbca2bf6158, feb 21, done
 python main.py --agent_type fixed_always_ask --max_depth 19 --num_sims 6 --d 0.95 --e 1 --wp -5 --qr 5 --qp -5 --domain kitchen --dt 0.001, 111, cd14ab0507fd3bdcd6b42add0db44bbca2bf6158, feb 21, done
-python main.py --agent_type pomdp --max_depth 17 --num_sims 6 --d 0.95 --e 1.0 --wp -5 --qr 5 --qp -5 --domain kitchen, 111, cd14ab0507fd3bdcd6b42add0db44bbca2bf6158+posteriorifcondition, feb 21, , need to run 5.0.8 again, done till 13
-python main.py --agent_type htn --max_depth 17 --num_sims 6 --d 0.95 --e 1.0 --wp -5 --qr 5 --qp -5 --domain kitchen, 141, cd14ab0507fd3bdcd6b42add0db44bbca2bf6158+posteriorifcondition, feb 21,done , just 15-13
-python main.py --agent_type fixed_always_ask --max_depth 17 --num_sims 6 --d 0.95 --e 1.0 --wp -5 --qr 5 --qp -5 --domain kitchen,141, cd14ab0507fd3bdcd6b42add0db44bbca2bf6158+posteriorifcondition, feb 21,done , just 15-13
+python main.py --agent_type pomdp --max_depth 17 --num_sims 6 --d 0.95 --e 1.0 --wp -5 --qr 5 --qp -5 --domain kitchen, 111, cd14ab0507fd3bdcd6b42add0db44bbca2bf6158+posteriorifcondition, feb 21, COMPLETE BUT INACCURATE , need to run 5.0.8 again, done till 13
+python main.py --agent_type htn --max_depth 17 --num_sims 6 --d 0.95 --e 1.0 --wp -5 --qr 5 --qp -5 --domain kitchen, 141, cd14ab0507fd3bdcd6b42add0db44bbca2bf6158+posteriorifcondition, feb 21,done COMPLETE BUT INACCURATE, just 15-13
+python main.py --agent_type fixed_always_ask --max_depth 17 --num_sims 6 --d 0.95 --e 1.0 --wp -5 --qr 5 --qp -5 --domain kitchen,141, cd14ab0507fd3bdcd6b42add0db44bbca2bf6158+posteriorifcondition, feb 21,done COMPLETE BUT INACCURATE, just 15-13
 python main.py --agent_type pomdp --max_depth 17 --num_sims 6 --d 0.95 --e 1.0 --wp -5 --qr 5 --qp -5 --domain kitchen,141, cd14ab0507fd3bdcd6b42add0db44bbca2bf6158+posteriorifcondition, feb 21, done,11-13
 python main.py --agent_type pomdp --max_depth 19 --num_sims 6 --d 0.95 --e 1.0 --wp -5 --qr 5 --qp -5 --domain block,local, cd14ab0507fd3bdcd6b42add0db44bbca2bf6158+posteriorifcondition, feb 21, , till 10
-python main.py --agent_type pomdp --max_depth 17 --num_sims 6 --d 0.95 --e 1.0 --wp -5 --qr 5 --qp -5 --domain kitchen,141, cd14ab0507fd3bdcd6b42add0db44bbca2bf6158+posteriorifcondition, feb 21, ,15-5 0.8(yes) 
+python main.py --agent_type pomdp --max_depth 17 --num_sims 6 --d 0.95 --e 1.0 --wp -5 --qr 5 --qp -5 --domain kitchen,141, cd14ab0507fd3bdcd6b42add0db44bbca2bf6158+posteriorifcondition, feb 21,COMPLETE BUT INACCURATE ,15-5 0.8(yes) 
 python main.py --agent_type pomdp --max_depth 19 --num_sims 6 --d 0.95 --e 1.0 --wp -5 --qr 5 --qp -5 --domain block,111, cd14ab0507fd3bdcd6b42add0db44bbca2bf6158+posteriorifcondition, feb 21, , till 5 0.8
+python main.py --agent_type htn --max_depth 17 --num_sims 6 --d 0.95 --e 1.0 --wp -5 --qr 5 --qp -5 --domain kitchen,141,936e24e89b2ceb77c051025fcd840c7f9ae5871f, feb24, done
+python main.py --agent_type fixed_always_ask --max_depth 17 --num_sims 6 --d 0.95 --e 1.0 --wp -5 --qr 5 --qp -5 --domain kitchen,141, 936e24e89b2ceb77c051025fcd840c7f9ae5871f, feb24, done
+python main.py --agent_type pomdp --max_depth 17 --num_sims 6 --d 0.95 --e 1.0 --wp -5 --qr 5 --qp -5 --domain kitchen,111,936e24e89b2ceb77c051025fcd840c7f9ae5871f, feb24, , till 5
+python main.py --agent_type htn --max_depth 19 --num_sims 6 --d 0.95 --e 1.0 --wp -5 --qr 5 --qp -5 --domain block,local,936e24e89b2ceb77c051025fcd840c7f9ae5871f, feb24, done, till 9
+python main.py --agent_type fixed_always_ask --max_depth 19 --num_sims 6 --d 0.95 --e 1.0 --wp -5 --qr 5 --qp -5 --domain block,local, 936e24e89b2ceb77c051025fcd840c7f9ae5871f,cancelled all , feb24
+python main.py --agent_type htn --max_depth 19 --num_sims 6 --d 0.95 --e 1.0 --wp -5 --qr 5 --qp -5 --domain block,141,936e24e89b2ceb77c051025fcd840c7f9ae5871f, feb24, done, 10-30
+
+
 SIPS optimal 300, 141, , done
-SIPS sub-optimal 300, 141, , 
+SIPS sub-optimal 300, 141, done, 
 SIPS optimal 50, mac, , done
 SIPS optimal 100, 111, , done
-SIPS sub-optimal 100, 111, , 
+SIPS sub-optimal 100, 111, , done

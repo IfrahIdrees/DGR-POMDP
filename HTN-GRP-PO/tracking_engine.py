@@ -185,7 +185,7 @@ class Tracking_Engine(object):
             real_steps.append(step)
             notif.delete_one_notif()
             # if step == "use_soap" or
-            if step == "use_soap":
+            if step == "add_water_kettle_1":
                 print("step here")
             # if no notification, and the random prob is less than
             # no_notif_trigger_pcheck_is_ha_inbeliefrob, sleep the engine

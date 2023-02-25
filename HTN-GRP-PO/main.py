@@ -178,7 +178,7 @@ if __name__ == '__main__':
     # trials = 11
     # trials = 8
     # trials = 11
-    trials = 11  # 11
+    trials = 21  # 11
     config.seed = 5999
     config.trials = trials
     random.seed(config.seed)
@@ -212,7 +212,7 @@ if __name__ == '__main__':
         # file_nums = [7,9,12]
         # file_nums = [12]
         # for file_num in file_nums:
-        for file_num in range(1, 2):
+        for file_num in range(1, 30):
             if config.args.domain == "kitchen" and file_num == 4:
                 continue
             for x in sensor_reliability:

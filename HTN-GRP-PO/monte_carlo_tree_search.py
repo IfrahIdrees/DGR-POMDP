@@ -229,11 +229,12 @@ class MCTS:
             output_filename).with_suffix('.csv')
         self.exploration_weight = config.args.e
         # self.sim_num = sim_num
-        self.depth = config.args.max_depth
+        self.max_depth = config.args.max_depth
         self.trial = trial
         self.gamma = config.args.d
         self.num_sims = config.args.num_sims
         self.tmp_nodes = []
+        self.current_depth = 0
 
     def choose(self, node):
         "Choose the best successor of node. (Choose a move in the game)"
@@ -356,6 +357,7 @@ class MCTS:
             print("\n\n ROLL OUT # ", i)
             # if i == 4:
             # print("here")
+            self.current_depth = 0
             self.do_rollout(root_node, is_first_real_step)
 
         # TODO: check, jason does uct for choose as well
@@ -416,7 +418,7 @@ class MCTS:
 
             # if node in self.children and not self.children[node]:
             #     print("no children here")
-            if (not is_action_node and node not in self.children):
+            if (not is_action_node and node not in self.children) or self.current_depth > self.max_depth:
                 # or not self.children[
                 # node]:
                 # exiting node is always observation
@@ -471,6 +473,8 @@ class MCTS:
                 # children = []
                 # while not children:
                 children = node.find_observation_children()  # generate explasets
+                self.current_depth += 1
+
                 # see children is in the self.children then just to dict access
                 # add children and node in dict
                 '''for debug'''
@@ -959,7 +963,7 @@ class MCTS:
         #     node = node.find_random_child()
         #     invert_reward = not invert_reward
         # https://www.geeksforgeeks.org/print-all-interleavings-of-given-two-strings/
-        step_num = 0
+        step_num = self.current_depth
         # previous_goal = None
         # second_action = None
         # num_goals = 0
@@ -1015,7 +1019,9 @@ class MCTS:
                 # then choose the human action with action response added to
                 # it.
                 children = node.find_observation_children()  # generate explasets
-                if not children or step_num > self.depth or num_goals == total_goals:
+                print("******step number", step_num, "depth:", self.max_depth)
+
+                if not children or step_num > self.max_depth + 1 or num_goals == total_goals:
                     return total_reward
 
                 '''goal_complete = False

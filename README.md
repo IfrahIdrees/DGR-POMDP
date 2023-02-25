@@ -288,6 +288,12 @@ Todo:
 run for htn, pomdp and fixed_Always for kitchen and blocks domain
 
 
+feb 25:
+1. added self.max_depth and current_depth and continue the depth starting from select to simulate
+
+Todo:
+new run for kitchen and block pomdp. continue htn and fixed_Always for kitchen and blocks domain
+
 experiments left
 [done] visualize kitchen 1-13 
 [done] visualize block 1-30 but wrong step not 1.0 at 0.99
@@ -300,6 +306,33 @@ check why blocks not reach 0.99 accuracy
 
 HTN+orcale kitchen local+111(13,14)
 htn+oracle block 141
-SIPS block 141 - ask how to handle this?
+[done] SIPS block 141 - ask how to handle this?
         1. running 300 on 141
         2. runnng 100 on 111
+
+
+
+==========================
+feb25
+Experiments before are wrong
+
+kitchen
+HTN+orcale 141 till 13
+pomdp      111 running
+SIPS       ???
+
+block
+HTN+oracel 141 running
+pomdp      ???
+SIPS-300   141 done
+SIPS-100   141 done
+
+
+POMDP depth not satisfied check that
+SIPS kitchen write
+blocks not reaching 0.99 blocks htn+pomdp for wrong step is importantt
+visualize       
+
+
+
+ 
